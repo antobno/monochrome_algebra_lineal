@@ -212,11 +212,11 @@ BoldItalicFont=Lato Italic
 \urlstyle{rm}
 \hypersetup{
 	pdfborder={1 1 0},
-	pdfcreator=LaTeX,
+	pdfcreator=LuaLaTeX,
     pdftitle={Fundamentos y principios del álgebra lineal},
 	pdfauthor={Antonio M. Mendoza},
     pdfsubject={Desde la teoría de espacios vectoriales y sus transformaciones lineales hasta la resolución de sistemas de ecuaciones lineales y la diagonalización de matrices.},
-    pdfpagemode=FullScreen,
+    %pdfpagemode=FullScreen,
     %bookmarks=true,
     bookmarksopen=false,
     linktocpage=true,

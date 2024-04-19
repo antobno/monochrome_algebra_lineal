@@ -16,6 +16,10 @@ Este repositorio contiene notas detalladas sobre álgebra lineal, incluyendo con
 
 Estas notas se presentan en formato PDF para facilitar su uso y visualización. Puedes clonarlas o descargarlas para estudiarlas a tu propio ritmo.
 
+## Descarga
+
+Las notas las puedes descargar dando clic en [este enlace](https://tr.ee/cupo46p9ZC)
+
 ## Contribuciones
 
 Si tienes sugerencias o mejoras, siéntete libre de abrir una *issue* o hacer un *pull request*. ¡Tu contribución es bienvenida!

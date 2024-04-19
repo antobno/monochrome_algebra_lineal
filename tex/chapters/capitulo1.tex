@@ -1287,7 +1287,7 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
 \end{example}
 
 \begin{theorem}
-    Si $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_m \right\}$ y $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n \right\}$ son dos bases de un espacio vectorial $V$ de dimensión finita, entonces $m = n$. Es decir, cualesquiera dos bases de un espacio vectorial $V$ de dimensión finita tienen el mismo número de vectores. \newpage
+    Si $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_m \right\}$ y $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n \right\}$ son dos bases de un espacio vectorial $V$ de dimensión finita, entonces $m = n$. Es decir, cualesquiera dos bases de un espacio vectorial $V$ de dimensión finita tienen el mismo número de vectores. \\
     \demostracion Sea $S_1 = \left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_m \right\}$ y $S_2 = \left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n \right\}$ dos bases de $V$. Es necesario demostrar que $m = n$. Para ello, se procede a mostrar que si $m > n$, entonces $S_1$ es linealmente independiente, lo cual contradice la premisa de que $S_1$ es una base. Esto establecerá que $m \leq n$. De manera análoga, se demuestra que $n \leq m$, lo que concluye el teorema. Por lo tanto, es suficiente demostrar que si $m > n$, entonces $S_1$ es un conjunto linealmente dependiente. Dado que $S_2$ es una base, cada vector $\mathbb{u}_i$ puede expresarse como una combinación lineal de los vectores $\mathbb{v}_j$. Por consiguiente, se tiene
     \begin{equation}
         \begin{aligned}
@@ -1324,14 +1324,14 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
         frame hidden,
         left = 2cm,
         right = 2cm,
-        top=1mm,
+        top=6mm,
         bottom=1mm,
         colback=gray!20,
         coltitle=black,
-        %attach title to upper={\ },
+        attach title to upper={\ },
         sharp corners,
-        %title = Observaciones,
-        fonttitle=\bfseries\large,
+        title = Algunas observaciones:,
+        fonttitle=\bfseries\LARGE,
         fontupper=\normalsize
     ]
         \begin{tikzpicture}[remember picture,overlay] \filldraw[gray!20] (current page.south west) rectangle ($(current page.south east) + (0,3)$); \end{tikzpicture}
@@ -1340,7 +1340,7 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
             
             \hspace*{5.5mm}Es importante destacar que $\CC[n]$, el espacio de los vectores $n$-dimensionales con coeficientes complejos, constituye un espacio vectorial sobre los números complejos $\CC$. Demostraremos en el capítulo \ref{chap:espacios_complejos} que las propiedades fundamentales de los espacios vectoriales se mantienen cuando trabajamos con coeficientes complejos. Así, aunque nos hemos centrado en los espacios vectoriales reales en este capítulo, es importante reconocer la relevancia y la conexión entre ambos ámbitos. La extensión de nuestros conocimientos a los espacios vectoriales complejos nos permitirá abordar una gama aún más amplia de problemas y aplicaciones en matemáticas y disciplinas relacionadas.
             
-            \hspace*{5.5mm}Para aquellos lectores que no estén familiarizados con los números complejos, se recomienda consultar el \hyperref[chap:numeros-complejos]{Apéndice B}, donde se proporciona una introducción detallada y accesible a este campo. %En este apéndice, se abordan los conceptos básicos de los números complejos, incluyendo operaciones fundamentales como la suma, la resta, la multiplicación y la división; así como propiedades importantes como el conjugado y el módulo.
+            \hspace*{5.5mm}Para aquellos lectores que no estén familiarizados con los números complejos, se recomienda consultar el \hyperref[chap:numeros-complejos]{Apéndice B}, donde se proporciona una introducción detallada y accesible a este campo. En este apéndice, se abordan los conceptos básicos de los números complejos, incluyendo operaciones fundamentales como la suma, la resta, la multiplicación y la división; así como propiedades importantes como el conjugado y el módulo.
         \end{multicols}
     \end{tcolorbox}
 \end{adjustwidth}
