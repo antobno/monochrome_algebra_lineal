@@ -1,0 +1,569 @@
+\chapter[EL TEOREMA FUNDAMENTAL DEL ÁLGEBRA]{EL TEOREMA \\ FUNDAMENTAL DEL \\ ÁLGEBRA} \label{FUNDAMENTAL}
+\printchaptertableofcontents
+
+La importancia del teorema fundamental del álgebra trasciende las fronteras de las matemáticas puras y encuentra aplicaciones en numerosos campos científicos y tecnológicos. Por ejemplo, en ingeniería, el teorema se utiliza en el diseño de sistemas de control, procesamiento de señales y telecomunicaciones. Además, en economía y finanzas, el teorema puede aplicarse en modelos matemáticos para analizar y predecir comportamientos económicos y financieros. En las siguientes páginas, desarrollaremos algunas cosas sobre los números complejos.
+
+Sea $z=a+bi$ un número complejo y sea $r=|z|$. Si $z \neq 0$, considerando su representación geométrica, sea $\theta$ la medida del ángulo que forman el eje real positivo y el segmento que une el origen del plano complejo con el punto que representa a $z$, entonces se tiene que
+\begin{align*}
+    a &=r \cos \theta , \\ 
+    b &=r \sen \theta .
+\end{align*}
+En consecuencia
+\begin{align*}
+    z & = r \cos \theta + r i \sen \theta , \\ 
+    &=r \left( \cos \theta + i \sen \theta \right) .
+\end{align*}\newpage
+A $\theta$ se le llama la amplitud o argumento de $z$, y escribimos $\theta=\arg z$. Si $z=0$, entonces $r=0$, y por lo tanto $z=r(\cos \theta+i \sen \theta)$ para cualquier $\theta$.
+
+En consecuencia, todo complejo $z=a+b i$ puede expresarse como
+$$z=r(\cos \theta+i \sen \theta),$$
+donde $r=|z|$ y $\theta=\arg z$, llamada forma trigonométrica de $z$.
+
+Para comprender plenamente la forma trigonométrica de un número complejo, es imperativo contar con sólidos conocimientos en geometría. La conexión entre la trigonometría y la geometría es fundamental para comprender cómo los números complejos se representan en términos de magnitudes y ángulos en el plano complejo. La interpretación geométrica de funciones como el coseno y el seno desempeña un papel crucial al visualizar el comportamiento de estos números en el plano.
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \coordinate (A) at (0,0);
+        \draw (0,0) -- (3,3) coordinate (C);
+        \node[fill=white] at (1.5,1.5) {$|z|$};
+            
+        \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+        
+        \draw[thick,-stealth] (0,-2) -- (0,5);
+        \draw[thick,-stealth] (-2,0) -- (5,0) coordinate (B);
+            
+        \filldraw (3,3) circle (2pt) node[right] {$z=a+bi$};
+            
+        \pic[draw, -, "$\theta$", angle eccentricity=1.5] {angle = B--A--C};
+    \end{tikzpicture}
+    \caption{Forma trigonométrica de un número complejo}
+\end{figure}
+
+Puesto que $\forall m \in \mathbb{Z}$
+$$\cos (2m\pi + \alpha ) = \cos (\alpha)$$
+y
+$$\sen (2m\pi + \alpha) = \sen (\alpha),$$
+entonces $\theta = \arg z$ puede tomar muchos valores, difiriendo cada dos por múltiplos de $2\pi$. Será conveniente elegir $\theta$ de modo que $-2\pi < \theta < 2\pi$.
+
+Dado $z=a+bi$, con $a \neq 0$ y $b \neq 0$, para determinar un argumento de $\theta$ de $z$ podemos emplear la función tangente, pues por definición
+$$\tan (\alpha) = \frac{\sen (\alpha)}{\cos (\alpha)},$$
+y las tablas trigonométricas, bajo las siguientes condiciones: Primero determinamos el ángulo agudo $\omega$ (positivo) por
+$$\omega = \tan^{-1} \frac{|b|}{|a|}$$
+y luego\newpage
+\begin{enumerate}[label=\roman*.]
+    \item Si $a>0$ y $b>0$, elegimos $\theta = \omega >0$ o $\theta = \omega - 2\pi<0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw (0,0) -- (3,3) coordinate (C);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+        
+            \draw[thick,-stealth] (0,-2) -- (0,5);
+            \draw[thick,-stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw (3,3) circle (2pt) node[right] {$z=a+bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\omega - 2\pi$", angle eccentricity=2,angle radius=0.5cm] {angle = C--A--B};
+        \end{tikzpicture}
+        \caption{~}
+    \end{figure}
+    \item Si $a<0$ y $b<0$, elegimos $\theta = \omega + \pi >0$ o $\theta = \omega - \pi <0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw (0,0) -- (3,3) coordinate (C);
+            \draw (0,0) -- (-3,-3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (0,-3) node[right] {$-b$} -- (-3,-3) -- (-3,0) node[above] {$-a$};
+        
+            \draw[thick,-stealth] (0,-5) -- (0,5);
+            \draw[thick,-stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \filldraw (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw (-3,-3) circle (2pt) node[left] {$z=-a-bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\quad\omega - \pi$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+            \pic[draw, -latex, "$\omega + \pi\quad$", angle eccentricity=1.6,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+        \caption{~}
+    \end{figure}\newpage
+    \item Si $a>0$ y $b<0$, elegimos $\theta = 2\pi - \omega >0$ o $\theta = - \omega <0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw (0,0) -- (3,3) coordinate (C);
+            \draw (0,0) -- (3,-3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below right] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (3,0) -- (3,-3) -- (0,-3) node[left] {$-b$};
+        
+            \draw[thick,-stealth] (0,-5) -- (0,5);
+            \draw[thick,-stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \filldraw (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw (3,-3) circle (2pt) node[right] {$z=a-bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$-\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = D--A--B};
+            \pic[draw, -latex, "$2\pi - \omega$", angle eccentricity=2.4,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+        \caption{~}
+    \end{figure}
+    \item Si $a<0$ y $b>0$, elegimos $\theta = \pi - \omega >0$ o $\theta = -\pi - \omega <0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw (0,0) -- (3,3) coordinate (C);
+            \draw (0,0) -- (-3,3) coordinate (D);
+            %\node[fill=white] at (1.5,1.5) {$\color{gray_60}|z|$};
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[above right] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (0,3) -- (-3,3) -- (-3,0) node[below] {$-a$};
+        
+            \draw[thick,-stealth] (0,-2) -- (0,5);
+            \draw[thick,-stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \filldraw (3,3) circle (2pt) node[right] {$z=a+bi$};
+            \filldraw (-3,3) circle (2pt) node[left] {$z=-a+bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, -latex, "$\pi - \omega\quad$", angle eccentricity=1.7,angle radius=0.4cm] {angle = B--A--D};
+            \pic[draw, latex-, "$-\pi - \omega\quad$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+        \end{tikzpicture}
+        \caption{~}
+    \end{figure}
+\end{enumerate}
+
+\begin{observation}
+    Sean $z$, $w$ dos números complejos tal que en su forma trigonométrica estén dados por $z=r \left( \cos \theta +i \sen \theta \right)$ y $w=s \left( \cos \varphi +i \sen \varphi \right)$.
+    \begin{itemize}
+        \item Si $0 \leq \theta ,  \varphi <2 \pi$, entonces $z=w$ si y solo si $r=s$ y $\theta = \varphi$.
+        \item Si $\theta ,  \varphi$ no tienen restricciones, entonces $z=w$, si y solo si $r=s$ y $\theta = \varphi +2m \pi$ con $m \in \mathbb{Z}$.
+    \end{itemize}
+\end{observation}
+
+\begin{theorem}
+    Sean $z_1$, $z_2 \in \CC$, con
+    $$z_1=|z_1| \left( \cos \varphi _1 +i \sen \varphi _1 \right) \quad \text{ y } \quad z_2=|z_2| \left( \cos \varphi _2 +i \sen \varphi _2 \right).$$
+    Entonces
+    $$z_1z_2=|z_1||z_2|\big( \cos (\varphi _1+ \varphi _2 )+i \sen (\varphi _1+\varphi _2) \big).$$
+    \demostracion Tenemos:
+    \begin{align*}
+        \quad\quad\quad z_1z_2 &=\big( |z_1|\left( \cos \varphi _1 +i \sen \varphi _1 \right) \big) \cdot \big( |z_2|\left( \cos \varphi _2 +i \sen \varphi _2 \right) \big) \\
+        &=|z_1||z_2| \left( \cos \varphi _1 +i \sen \varphi _1 \right) \left( \cos \varphi _2 +i \sen \varphi _2 \right) \\
+        &=|z_1||z_2| \left( \cos \varphi _1 \cos \varphi _2 +i \sen \varphi _1 \cos \varphi _2 + \cos \varphi _1 \cdot i \sen \varphi _2 +i \sen \varphi _1 \cdot i \sen \varphi _2 \right) \\
+        &=|z_1||z_2| \big( \cos \varphi _1 \cos \varphi _2 - \sen \varphi _1 \sen \varphi _2+i \left( \sen \varphi _1 \cos \varphi _2 + \cos \varphi _1 \sen \varphi _2 \right) \big) \\
+        &=|z_1||z_2| \big( \cos (\varphi _1 + \varphi _2 )+i \sen (\varphi _1+\varphi _2 ) \big)
+    \end{align*}
+    Por lo tanto, $z_1z_2=|z_1||z_2|\big( \cos (\varphi _1+ \varphi _2 )+i \sen (\varphi _1+\varphi _2) \big)$.
+\end{theorem}
+
+\begin{proposition}
+    Sean $z_1=|z_1| \left( \cos \varphi _1+i \sen \varphi _1 \right),  \dots,  z_n=|z_n| \left( \cos \varphi _n+i \sen \varphi _n \right)$, entonces
+    $$z_1 \cdots z_n=|z_1|\cdots |z_n| \big( \cos (\varphi _1+\cdots +\varphi _n)+i \sen (\varphi _1+\cdots +\varphi _n) \big).$$
+    \demostracion Procederemos por inducción sobre $n$.
+    \begin{enumerate}[label=\roman*.]
+        \item Si $n=1$, entonces $$z_1=|z_1| \left( \cos \varphi _1+ i \sen \varphi _1 \right).$$
+        Si $n=2$, entonces por el teorema anterior
+        $$z_1z_2=|z_1||z_2| \big( \cos (\varphi _1+\varphi _2) +i \sen (\varphi _1+\varphi _2) \big).$$
+        \item Supongamos que $n=k$, es decir
+        $$z_1 \cdots z_k=|z_1|\cdots |z_k| \big( \cos (\varphi _1+\cdots +\varphi _k)+i \sen (\varphi _1+\cdots +\varphi _k) \big).$$
+        Verifiquemos para $n=k+1$, entonces
+        \begin{align*}
+            z_1 \cdots z_k \cdot z_{k+1} &=(z_1 \cdots z_k)(z_{k+1}) \\
+            &=\left\lbrace |z_1|\cdots |z_k| \big( \cos (\varphi _1+\cdots +\varphi _k) \big) +i \sen (\varphi _1+\cdots +\varphi _k) \big) \right\rbrace \\
+            & \hspace{4.5cm} \left\lbrace |z_{k+1}| (\cos \varphi _{k+1}+i \sen \varphi _{k+1}) \right\rbrace \\
+            &=(|z_1 \cdots z_k|)(|z_{k+1}|) \Big( \cos \big( (\varphi _1+\cdots +\varphi _k)+\varphi _{k+1} \big) \\
+            & \hspace{4.3cm} +i \sen \big( (\varphi _1+\cdots +\varphi _k)+\varphi _{k+1} \big) \Big) \\
+            &=|z_1 \cdots z_k||z_{k+1}| \big( \cos (\varphi _1+\cdots +\varphi _k+\varphi _{k+1}) \\
+            & \hspace{4.3cm} +i \sen (\varphi _1+\cdots +\varphi _k+\varphi _{k+1}) \big).
+        \end{align*}
+    \end{enumerate}
+    Por lo tanto
+    $$z_1 \cdots z_n=|z_1|\cdots |z_n| \big( \cos (\varphi _1+\cdots +\varphi _n)+i \sen (\varphi _1+\cdots +\varphi _n) \big).$$
+\end{proposition}
+
+\begin{corollary}
+    Si $z=|z| (\cos \varphi +i \sen \varphi )$, entonces
+    $$z^n=|z|^n (\cos n \varphi +i \sen n \varphi).$$
+\end{corollary}
+
+\begin{corollary}
+    Si $z=|z| (\cos \varphi +i \sen \varphi )$, entonces
+    $$z^{-1}=|z|^{-1} \left(\cos \left(-\varphi \right)+i \sen \left( -\varphi \right) \right).$$
+\end{corollary}
+
+Se tiene que si $\textrm{arg}  z=\varphi$, entonces $\textrm{arg}  z^n=n\varphi$. Si $|z|=1$, es decir, si
+$$z=\cos \varphi +i \sen \varphi$$
+entonces
+$$z^n=\cos \left( n \varphi \right)+i \sen \left( n\varphi \right).$$
+Pero $z^n=\left[ \cos \varphi +i \sen \varphi \right]^n$, donde se sigue la identidad conocida como fórmula de De Moivre:
+$$\left[ \cos \varphi +i \sen \varphi \right]^n= \cos \left( n\varphi \right) +i \sen \left( n \varphi \right),  \forall n \in \mathbb{N}.$$
+
+Consideremos los complejos en forma trigonométrica
+$$z_1=|z_1| \left( \cos \varphi _1+i \sen \varphi _1 \right)$$
+y
+$$z_2=|z_2| \left( \cos \varphi _2+i \sen \varphi _2 \right),$$
+con $z_2 \neq 0$, entonces
+\begin{align*}
+    \quad\quad\quad\frac{z_1}{z_2} &= \frac{|z_1| \left( \cos \varphi _1 +i \sen \varphi _1 \right)}{|z_2| \left( \cos \varphi _2 +i \sen \varphi _2 \right)} \\
+    &=\frac{|z_1| \left( \cos \varphi _1 +i \sen \varphi _1 \right)}{|z_2| \left( \cos \varphi _2 +i \sen \varphi _2 \right)} \cdot \frac{\cos \varphi _2 - i \sen \varphi _2}{\cos \varphi _2 -i \sen \varphi _2} \\
+    &= \frac{|z_1|}{|z_2|} \left[ \frac{ \left( \cos \varphi _1 \cos \varphi _2 + \sen \varphi _1 \sen \varphi _2 \right) + i \left( \sen \varphi _1 \cos \varphi _2 - \cos \varphi _1 \sen \varphi _2 \right)}{\cos ^2 \varphi _2 + \sen ^2 \varphi _2} \right] \\
+    &= \frac{|z_1|}{|z_2|} \left[ \cos \left( \varphi _1 - \varphi _2 \right) + i \sen \left( \varphi _1 - \varphi _2 \right) \right].
+\end{align*}
+
+Nótese que el módulo del cociente es el cociente de los módulos del dividendo y el divisor. Mientras tanto, el argumento del cociente es la diferencia de los argumentos del dividendo y el divisor.
+
+Si $z=\cos \varphi +i \sen \varphi $, entonces $z \neq 0$, y puesto que $1=\cos 0 +i \sen 0$, entonces
+$$\frac{1}{\cos \varphi +i \sen \varphi} = \cos \left( - \varphi \right)+i \sen \left( -\varphi \right),$$
+es decir:
+$$\left( \cos \varphi +i \sen \varphi \right)^{-1}=\cos \left( - \varphi \right)+i \sen \left( -\varphi \right).$$
+
+Sin pérdida de generalidad, $\forall n \in \mathbb{N}$
+$$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\left[ \left( \cos \varphi +i \sen \varphi \right)^{-1} \right]^n,$$
+y por la fórmula de De Moivre, se tiene que
+$$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\cos \left( -n \varphi \right) +i \sen \left( -n\varphi \right).$$
+
+En consecuencia, la fórmula de De Moivre también es válida para $\mathbb{Z}$. Es decir:
+$$\left( \cos \varphi +i \sen \varphi \right)^{m}=\cos \left( m \varphi \right) +i \sen \left( m \varphi \right),  \forall m \in \mathbb{Z},$$
+ya que si $m=0$, cada miembro de la identidad anterior tiene valor 1.
+
+\newpage
+
+Sea $z \in \CC$, con $z=r(\cos \theta +i \sen \theta )$ y sea $n \in \mathbb{N}$. Deseamos resolver $x^n=z$, es decir, deseamos encontrar los complejos que satisfagan $w^n=z$, a dichos números se les llama \textit{raíces de la ecuación}.
+
+Sea $w \in \CC$ una raíz de la ecuación $x^n=z$. Expresemos a $w$ en forma trigonométrica, es decir, $w=s(\cos \varphi +i \sen \varphi )$. Entonces
+$$r( \cos \theta +i \sen \theta )=z=w^n=s^n\big( \cos (n \varphi )+i \sen (n \varphi ) \big).$$
+Nótese que son iguales si $0 \leq \varphi ,  \theta <2 \pi$, pero no conocemos a $n \varphi$. Luego
+\begin{align*}
+    s^n &=r \\
+    n \varphi &=\theta +2k \pi,  k \in \mathbb{Z}
+\end{align*}
+donde $s$ es la raíz $n$-ésima de $r$. En consecuencia
+\begin{align*}
+    s &=\sqrt[n]{r} \\
+    \varphi &=\frac{\theta +2k \pi}{n},  k \in \mathbb{Z}
+\end{align*}
+En consecuencia, para cada $k \in \mathbb{Z}$, sea
+$$w_k=\sqrt[n]{r} \left( \cos \frac{\theta +2k\pi}{n} +i \sen \frac{\theta +2k\pi}{n} \right).$$
+
+Verifiquemos que las raíces se repiten, para lo cual hacemos uso del algoritmo de la división con $n$. Entonces existen $q,  l \in \mathbb{Z}$ tal que $k=nq+l$, con $0 \leq l <n$. Así pues
+\begin{align*}
+    \frac{\theta +2k\pi}{n} &=\frac{\theta +2(nq+l)\pi}{n} \\
+    &=\frac{\theta +2nq\pi +2l\pi}{n} \\
+    &=\frac{\theta +2l\pi}{n}+2q\pi .
+\end{align*}
+Por lo tanto, $w_k=w_l$, y la ecuación $x^n=z$ tiene a lo más $n$ raíces $w_0,  w_1,  \dots,  w_{n-1}$.
+
+Ahora verifiquemos que todas las raíces son distintas. Sean $l$, $k \in \left\{ 0,  1,  \dots,  n-1 \right\}$ tales que $l \neq k$. Si $w_k=w_l$, entonces
+\begin{align*}
+    \frac{\theta +2k\pi}{n} &= \frac{\theta +2l\pi}{n}+2m\pi,  m \in \mathbb{Z} \\
+    \theta +2k\pi &= \theta +2l\pi +2nm\pi \\
+    2k\pi &=2l\pi +2nm\pi \\
+    k &=l+nm \\
+    k-l &=nm
+\end{align*}
+por lo que
+$$n \mid k-l,$$
+lo cual no puede ser. Por lo tanto, la ecuación $x^n=z$ tiene exactamente $n$ raíces distintas, a saber
+$$w_0,  w_1,  \dots,  w_{n-1}.$$
+
+\begin{example}
+    Resolver la ecuación $x^3=8 i$. \\
+    \solucion Es claro que $r=|8 i|=8$ y que $\displaystyle  \theta=\arg 8 i=\frac{\pi}{2}$, y por lo tanto
+    $$ 8 i=8\left(\cos \frac{\pi}{2}+i \sen \frac{\pi}{2}\right).$$
+    Así que la ecuación dada puede escribirse como
+    $$x^3=8\left(\cos \frac{\pi}{2}+i \sen \frac{\pi}{2}\right),$$
+    y sus soluciones vienen dadas por
+    \begin{align*}
+        w_k &=\sqrt[3]{8}\left(\cos \frac{\displaystyle\frac{\pi}{2}+2 k \pi}{3}+i \sen \frac{\displaystyle\frac{\pi}{2}+2 k \pi}{3}\right) \\
+        &= 2 \left(\cos \frac{\pi +4k\pi}{6}+i \sen \frac{\pi +4k\pi}{6} \right),
+    \end{align*}
+    sustituyendo $k=0, \, 1, \,2$.
+    \begin{itemize}
+        \item Si $k=0$,
+        $$ \begin{aligned} w_0 &=2\left(\cos \frac{\pi}{6}+i \sen \frac{\pi}{6}\right) \\ &=2\left(\frac{\sqrt{3}}{2}+\frac{1}{2} i\right) \\ &=\sqrt{3}+i \end{aligned} $$ 
+        \item Para $k=1$,
+        $$ \begin{aligned} w_1 &=2\left(\cos \frac{5 \pi}{6}+i \operatorname{sen} \frac{5 \pi}{6}\right) \\ &=2\left(-\frac{\sqrt{3}}{2}+\frac{1}{2} i\right) \\ &=-\sqrt{3}+i \end{aligned} $$
+        \item Para $k=2$,
+        $$ \begin{aligned} w_2 &=2\left(\cos \frac{3 \pi}{2}+i \sen \frac{3 \pi}{2}\right) \\ &=2(0-i) \\ &=-2 i \end{aligned} $$
+    \end{itemize}
+    Así pues, las raíces o soluciones de $x^3=8 i$ son:
+    \begin{align*}
+        w_0 &=\sqrt{3}+i, \\
+        w_1 &=-\sqrt{3}+i, \\
+        w_2 &=-2 i.
+    \end{align*}
+\end{example}
+
+\section{El teorema fundamental del álgebra}
+
+Procedemos a probar uno de los más importantes enunciados, el teorema acerca de que el campo de los números complejos es algebraicamente cerrado. Este teorema tiene aplicación en varios campos de las matemáticas. En particular, subyace a toda la teoría posterior de los operadores lineales. Siguiendo la tradición establecida se llamará \textit{teorema fundamental del álgebra}.
+
+Así pues, hemos de mostrar que todo polinomio de grado $n \geq 1$, con coeficientes complejos tiene al menos una raíz, en general una raíz compleja.
+
+Sea $f(z)$ un polinomio arbitrario con coeficientes complejos. Consideremos que es una función compleja con argumento complejo $z$. Para tales funciones, como para las funciones reales con argumento real, es posible introducir los conceptos de continuidad, de derivada, etc. No todas estas nociones nos serán igualmente necesarias, pero todas se basan en el uso de la completitud del espacio de los números complejos. Se dice que una función compleja $f(z)$ de una variable compleja $z$ es continua en un punto $z_0$, si para cualquier $\varepsilon >0$ podemos encontrar $\delta >0$ tal que para cualquier número complejo $z$ que satisfaga la desigualdad
+$$|z-z_0| < \delta,$$
+tenemos
+$$|f(z)-f(z_0)| < \varepsilon.$$
+Una función $f(z)$ continua en cada punto de su dominio se llama continua en todas partes o simplemente \textit{continua}.
+
+\begin{lemma}
+    Un polinomio $f(z)$ con coeficientes complejos es una función continua. \\
+    \demostracion Sea
+    $$f(z)=a_0+a_1z+ \cdots + a_nz^n$$
+    y sea $z_0$ un número complejo arbitrario pero fijo. Sea $h=z-z_0$. Mostremos que para cualquier número $\varepsilon >0$ tan pequeño, podemos encontrar $\delta >0$ tal que $|f(z)-f(z_0)|<\varepsilon$ para $|h|<\delta$. Al desarrollar el polinomio $f(z)$ en factores de $(z-z_0)$, tenemos
+    $$f(z)=A_0+A_1(z-z_0)+\cdots + A_n(z-z_0)^n.$$
+    Puesto que $A_0=f(z_0)$ y $(z-z_0)$ está designado por $h$, tenemos
+    $$f(z_0+h)-f(z_0)=A_1h+\cdots +A_nh^n.$$
+    De lo anterior, se sigue que
+    \begin{equation}
+        |f(z_0+h)-f(z_0)| \leq |A_1||h|+ \cdots +|A_n||h|^n=A(|h|) \label{PAPAPA}
+    \end{equation}
+    La función real $A(|h|)$ es un polinomio con coeficientes reales $|A_i|$ respecto a la variable real $|h|$. Por el curso de análisis matemático, sabemos que $A(|h|)$ es una función continua en todo punto y, en particular, cuando $|h|=0$. Como $A(0)=0$, dado $\varepsilon >0$ podemos encontrar $\delta >0$ tal que
+    \begin{equation}
+        |h|<\delta. \label{LALISA}
+    \end{equation}
+    Entonces $A(|h|)<\varepsilon$. Tomando en consideración la desigualdad \eqref{PAPAPA}, concluimos que si \eqref{LALISA} se cumple, también se cumplirá la desigualdad
+    $$|f(z_0+h)-f(z_0)|<\varepsilon.$$
+\end{lemma}
+
+\begin{corollary}\label{COROLARIOIMPORTANTE}
+    El valor absoluto de un polinomio es una función continua. \\
+    \demostracion Esta afirmación es inmediata a partir de la siguiente relación:
+    $$\big| |f(z)|-|f(z_0)| \big| \leq |f(z)-f(z_0)|.$$
+\end{corollary}
+
+\begin{corollary}
+    Si una sucesión de números complejos $\{z_k\}$ converge a $z_0$, entonces para cualquier polinomio $f(z)$
+    $$\lim_{k \rightarrow \infty} f(z_k)=f(z_0).$$
+\end{corollary}
+
+\begin{lemma}\label{LEMAIMPORTANTE2}
+    Si un polinomio $f(z)$ de grado $n \geq 1$ no se anula cuando $z = z_0$ entonces siempre existe un número complejo $h$ tal que
+    $$|f(z_0+h)|<|f(z_0)|$$
+    \demostracion Tomemos nuevamente la expansión
+    \begin{equation}
+        f(z_0+h)-f(z_0)=A_1h+\cdots +A_nh^n. \label{FOCO}
+    \end{equation}
+    Sea $A_k$ el primer coeficiente no cero entre $A_1,  A_2,  \dots,  A_n$. Tomemos
+    \begin{equation}
+        h=t \sqrt[k]{-\frac{f(z_0)}{A_k}}. \label{PERRO}
+    \end{equation}
+    donde tomemos como raíz $k$-ésima cualquiera de sus valores y
+    \begin{equation}
+        0 \leq t \leq 1. \label{YOUT}
+    \end{equation}
+    Sea
+    $$B_p=A_p \left( \sqrt[k]{-\frac{f(z_0)}{A_k}} \right) ^p.$$
+    Ahora, de \eqref{FOCO}, teniendo en cuenta \eqref{PERRO} y \eqref{YOUT}, encontramos
+    \begin{align*}
+        |f(z_0+h)| &= \left| f(z_0)-t^kf(z_0)+t^{k+1}B_{k+1}+ \cdots +t^nB_n \right| \\
+        & \leq \left| \left( 1-t^k \right) f(z_0) \right| +t^{k+1}|B_{k+1}|+ \cdots +t^n |B_n| \\
+        &=\left( 1-t^k \right) |f(z_0)| + t^{k+1}|B_{k+1}|+ \cdots + t^n|B_n| \\
+        &=|f(z_0)|+t^k \left( -|f(z_0)|+t|B_{k+1}|+ \cdots + t^{n-k}|B_n| \right) \\
+        &=|f(z_0)| + t^k B(t)
+    \end{align*}
+    Finalmente tenemos que $|f(z_0+h)| \leq |f(z_0)| + t^k B(t)$. La función $B(t)$ es un polinomio con coeficientes reales y variable independiente $t$. Es una función continua, pero $B (0) = -|f (z_0)| <0$ y por lo tanto, en virtud de la continuidad de $B(t)$, existe $t_0$ dentro de $0 < t_0 \leq 1$ tal que $B(t_0)$ también sea negativo. Para un número complejo $h$ definido por un número $t_0$, según \eqref{PERRO}, obtenemos
+    $$|f(z_0+h) \leq |f(z_0)| + t_0^k B(t_0) < |f(z_0)|.$$
+\end{lemma}
+
+\begin{lemma}\label{LEMAIMPORTANTE}
+    Para cualquier polinomio $f(z)$ de grado $n \geq 1$ y cualquier sucesión infinitamente grande $\{z_k\}$ de números complejos, existe una relación límite
+    $$\lim_{k \rightarrow \infty} |f(z_k)| = + \infty.$$
+    \demostracion Consideremos el polinomio
+    $$f(z)=a_0+a_1z+ \cdots + a_nz^n.$$
+    Para $z \neq 0$, encontremos
+    \begin{equation}
+        |f(z)| \geq |a_n||z|^n \left( 1- \left| \frac{a_0}{a_n} \right| |z|^{-n}- \cdots - \left| \frac{a_{n-1}}{a_n} \right| |z|^{-1} \right) \label{PIPIO}
+    \end{equation}
+    Desde que $\{z_k\}$ es infinitamente grande,
+    $$\lim_{k \rightarrow \infty} |z_k|=+\infty.$$
+    El lado derecho de la relación \eqref{PIPIO} es una función de valor real, y es fácil ver que
+    $$\lim_{|z_k| \rightarrow \infty} \left( 1- \left| \frac{a_0}{a_n} \right| |z_k|^{-n}- \cdots - \left| \frac{a_{n-1}}{a_n} \right| |z_k|^{-1} \right) =1.$$
+    Pero para el otro factor de \eqref{PIPIO} tenemos
+    $$\lim_{|z_k| \rightarrow \infty} |a_n| |z_k|^n=+\infty.$$
+    En consecuencia,
+    $$\lim_{k \rightarrow \infty} |f(z_k)| = + \infty.$$
+\end{lemma}
+
+\begin{theorem}[Teorema Fundamental del Álgebra {[TFA]}]
+    Cualquier polinomio $f(z)$ de grado $n \geq 1$ con coeficientes complejos tiene al menos una raíz, en general, una raíz compleja. \\
+    \demostracion Consideremos el conjunto de todos los posibles valores absolutos de $f(z)$. Como $|f(z)| \geq 0$, ese conjunto está acotado inferiormente, se sabe a partir del análisis matemático que cualquier límite inferior a un conjunto no vacío de números reales tiene un límite inferior máximo. Sea $l$ para el conjunto de valores $|f(z)|$. Esto significa que para cada $k$ natural podemos encontrar un número complejo $z_k$ tal que
+    $$0 \leq |f(z_k)| - l \leq 2^{-k}.$$
+    Se sigue que
+    \begin{equation}
+        \lim_{k \rightarrow \infty} |f(z_k)|=l. \label{RELACIONN}
+    \end{equation}
+    Suponiendo que $\{z_k\}$ no esté acotado, sería posible elegir un subsucesión infinitamente grande de ella, y de acuerdo con el lema \ref{LEMAIMPORTANTE}, la relación \eqref{RELACIONN} no podría cumplirse. Por lo tanto, $\{z_k\}$ está acotado. Elijamos una subsucesión $\{z_{k_v}\}$ y supongamos que
+    $$\lim_{k_v \rightarrow \infty} z_{k_v} = z_0.$$
+    Por el corolario \ref{COROLARIOIMPORTANTE}, tenemos
+    $$|f(z_0)| = \lim_{k_v \rightarrow \infty} |f(z_{k_v})|=l.$$
+    Si $l=0$, entonces del lema \ref{LEMAIMPORTANTE2} se sigue que hay un número $z_0$ tal que $|f(z'_0)|<l$. Esto contradice el hecho de que $l$ es el límite inferior mayor de los valores absolutos del polinomio y, por lo tanto, $l=0$. Así que hemos demostrado que existe un número complejo $z_0$, tal que $|f(z_0)|=0$ o equivalentemente
+    $$f(z_0)=0.$$
+    Esto significa que $z_0$ es una raíz de $f(z)$.
+\end{theorem}
+
+\section{Consecuencias del teorema fundamental}
+
+Surgen una variedad de consecuencias de la teorema fundamental. Consideremos el más importante de ellos.
+
+Un polinomio $f(z)$ de grado $n \geq 1$ con coeficientes complejos tiene al menos una raíz $z_1$. Por lo tanto $f(z)$ tiene una factorización
+$$f(z)=(z-z_1) \varphi (z)$$
+donde $\varphi(z)$ es un polinomio de grado $n - 1$. Los coeficientes de $\varphi(z)$ son nuevamente números complejos. En consecuencia, $\varphi(z)$ tiene una raíz $z_2$ (si $n \geq 2$) y
+$$\varphi (z) = (z-z_2) \psi (z)$$
+donde se sigue que
+$$f(z) = (z-z_1)(z-z_2) \psi (z)$$
+Continuando con el proceso obtenemos una representación del polinomio como producto de factores lineales:
+$$f(z) = b (z-z_1)(z-z_2) \cdots (z-z_n)$$
+donde $b$ es algún número. Eliminando los paréntesis a la derecha y comparando los coeficientes de las potencias con los coeficientes $a_i$ de $f(z)$ concluimos que $b = a_n$.
+
+Pueden haber números iguales entre $z_1,  z_2,  \dots ,  z_n$. Supongamos por simplicidad que $z_1,  \dots,  z_r$ son mutuamente distintos y que cada uno de los números $z_{r+1},  \dots,  z_n$ es igual a uno de los primeros números. Entonces $f(z)$ se puede escribir de la siguiente manera:
+\begin{equation}
+    f(z)=a_n (z-z_1)^{k_1}(z-z_2)^{k_2} \cdots (z-z_r)^{k_r} \label{OMG}
+\end{equation}
+donde $z_i \neq z_j$ para $i \neq j$ y
+$$k_1+k_2+\cdots +k_r=n.$$
+La factorización \eqref{OMG} se denomina \textit{factorización canónica de un polinomio} $f(z)$.
+
+La factorización canónica es única para un polinomio $f(z)$ salvo el orden que se disponen los factores. En efecto, supongamos que junto con la factorización \eqref{OMG} existe otra factorización canónica, por ejemplo
+$$f(z)=a_n (z-v_1)^{l_1}(z-v_2)^{l_2} \cdots (z-v_r)^{l_m}.$$
+Luego
+\begin{equation}
+    (z-z_1)^{k_1}(z-z_2)^{k_2} \cdots (z-z_r)^{k_r} = (z-v_1)^{l_1}(z-v_2)^{l_2} \cdots (z-v_r)^{l_m} \label{OMFG}
+\end{equation}
+Observemos que la colección de números $z_1,  \dots,  z_r$ debe coincidir con la colección de números $v_1,  \dots,  v_m$. Si, por ejemplo, $z_1$ no es igual a ninguno de los números $v_1,  \dots,  v_m$, entonces al sustituir $z = z_1$ en \eqref{OMFG} obtenemos cero a la izquierda y un número distinto de cero a la derecha. Entonces, si hay dos factorizaciones canónicas de $f(z)$, entonces \eqref{OMFG} puede ser solo como sigue:
+$$(z-z_1)^{k_1}(z-z_2)^{k_2} \cdots (z-z_r)^{k_r} = (z-z_1)^{l_1}(z-z_2)^{l_2} \cdots (z-z_r)^{l_r}$$
+Supongamos, por ejemplo, que $k_1 \neq l_1$ y sea $k_1 > l_1$ por definición. Al dividir ambos miembros de la última ecuación por el mismo divisor $(z - z_1)^{l_1}$, obtenemos
+$$(z-z_1)^{k_1-l_1}(z-z_2)^{k_2} \cdots (z-z_r)^{k_r} = (z-z_2)^{l_2} \cdots (z-z_r)^{l_r}$$
+Sustituyendo $z = z_1$ vemos de nuevo que hay un cero a la izquierda y un número distinto de cero a la derecha. Queda así demostrada la unicidad de la factorización canónica.
+
+Si $k_i = 1$ en la factorización canónica \eqref{OMG}, entonces una raíz $z_i$ se dice que es simple; si $k_i > 1$, entonces se dice que $z_i$ es una raíz múltiple. Un número $k_i$ es la multiplicidad de una raíz $z_i$. Ahora podemos enunciar una deducción muy importante:
+
+\begin{tcolorbox}[
+        theorem style=change break,
+        enhanced,
+        breakable,
+        boxrule=0pt,
+        frame hidden,
+        borderline west={3pt}{0pt}{black},
+        colback=gray!20,
+        coltitle=gray!90,
+        attach title to upper={\ },
+        sharp corners,
+        fonttitle=\bfseries,
+        fontupper=\normalsize
+    ]
+    Cualquier polinomio de grado $n \geq 1$ con coeficientes complejos tiene $n$ raíces, si cada una de las raíces se cuenta tantas veces según su multiplicidad.\label{CONSECUENCIA1_FUNDAMENTAL}
+\end{tcolorbox}
+
+Un polinomio de grado cero no tiene raíces. El único polinomio que tiene arbitrariamente muchas raíces mutuamente distintas es el polinomio cero. Estos hechos pueden usarse para sacar la siguiente conclusión:
+
+\begin{tcolorbox}[
+        theorem style=change break,
+        enhanced,
+        breakable,
+        boxrule=0pt,
+        frame hidden,
+        borderline west={3pt}{0pt}{black},
+        colback=gray!20,
+        coltitle=gray!90,
+        attach title to upper={\ },
+        sharp corners,
+        fonttitle=\bfseries,
+        fontupper=\normalsize
+    ]
+    Si dos polinomios $f(z)$ y $g(z)$ de grado no superior a $n$ tienen valores iguales para más de $n$ valores distintos del argumento, entonces todos los coeficientes correspondientes de dichos polinomios son iguales entre sí.
+\end{tcolorbox}
+
+En efecto, el polinomio $f(z) - g (z)$ tiene, por hipótesis, más de $n$ raíces. Pero su grado no excede de $n$ y por lo tanto $f (z) - g (z) = 0$.
+
+Así pues, un polinomio $f(z)$ cuyo grado no es mayor que $n$ está completamente definido por sus valores para cualquier $n + 1$ valores distintos de la variable independiente. Esto permite restablecer el polinomio por medio de sus valores. No es difícil mostrar una forma explícita de este polinomio \textit{reconstructor}. Si el polinomio $f(z)$ toma para los valores del argumento $\alpha_1,  \dots,  \alpha_{n+1}$, los valores $f(\alpha_1),  \dots,  f(\alpha_{n+1})$, entonces
+$$f(z)=\sum_{i=1}^{n+1} f(\alpha_i) \frac{(z-\alpha_1) \cdots (z-\alpha_{i-1})(z-\alpha_{l+1}) \cdots (z-\alpha_{n+1})}{(\alpha_i - \alpha_1) \cdots (\alpha_i - \alpha_{i-1})(\alpha_i - \alpha_{l+1}) \cdots (\alpha_i - \alpha_{n+1})}$$
+Es claro que el grado del polinomio de la derecha no excede de $n$, y en los puntos $z = \alpha_i$ asume los valores $f (\alpha_i)$. Un polinomio construido de esta manera se llama \textit{polinomio de interpolación de Lagrange}.
+
+Consideremos ahora un polinomio $f(z)$ de grado $n$ y sean $z_1,  z_2,  \dots,  z_n$ sus raíces repetidas según su multiplicidad. Entonces
+$$f(z)=a_n (z-z_1)(z-z_2) \cdots (z-z_n).$$
+Multiplicando los paréntesis de la derecha, reuniendo términos similares y comparando los coeficientes resultantes con los de
+$$f(z)=a_0+a_1z+ \cdots + a_nz^n$$
+podemos derivar las siguientes ecuaciones:
+\begin{align*}
+    \frac{a_{n-1}}{a_n} &= - (z_1 + z_2 + \cdots + z_n) \\ 
+    \frac{a_{n-2}}{a_n} &= + (z_1z_2 + z_1z_3 + \cdots +z_1z_n + \cdots + a_{n-1}z_n) \\ 
+    \frac{a_{n-3}}{a_n} &= - (z_1z_2z_3 + z_1z_2z_4 + \cdots + z_{n-2}z_{n-1}z_n) \\ 
+    & \vdots \\ 
+    \frac{a_1}{a_n} &= (-1)^{n-1} (z_1z_2 \cdots z_{n-1} + \cdots + z_2z_3 \cdots z_n) \\ 
+    \frac{a_0}{a_n} &= (-1)^n z_1z_2 \cdots z_n
+\end{align*}
+Estas se llaman fórmulas de Vieta y expresan los coeficientes del polinomio en términos de sus raíces. A la derecha de la ecuación $k$-ésima está la suma de todos los productos posibles de $k$ raíces tomadas con un signo más o menos según $k$ sea par o impar.
+
+Para mayor discusión necesitaremos algunas consecuencias del teorema fundamental del álgebra, relacionado con polinomios con coeficientes reales.
+
+Sea un polinomio
+$$f(z)=a_0+a_1z+ \cdots + a_nz^n$$
+con coeficientes reales tienen una raíz compleja (pero no real) $v$, es decir
+$$a_0+a_1v+ \cdots + a_nv^n=0$$
+La última ecuación no se viola si todos los números se reemplazan en ella por conjugados complejos. Sin embargo, los coeficientes $a_0,  \dots,  a_n$ y el número $0$, al ser reales, no se verá afectado por el reemplazo. Por lo tanto
+$$a_0+a_1\overline{v}+ \cdots + a_n\overline{v^n}=0$$
+es decir, $f(\overline{v})=0$.
+
+Así, si un número complejo (pero no real) es una raíz de un polinomio $f(z)$ con coeficientes reales, entonces también lo es el número complejo conjugado $\overline{v}$. De ello se deduce que $f(z)$ será divisible por un trinomio cuadrático
+$$\varphi (z)=(z-v)(z-\overline{v}) = z^2 - (v+\overline{v})z+v \overline{v}$$
+con coeficientes reales. Usando este hecho demostramos que $v$ y $\overline{v}$ tienen la misma multiplicidad. Supongamos que tienen multiplicidades $k$ y $l$ respectivamente y que $k > l$, por ejemplo. Entonces $f(z)$ es divisible por el $l$-ésimo grado del polinomio $\varphi (z)$, es decir
+$$f(z)=\varphi _l^l (z) \cdot q(z)$$
+El polinomio $q(z)$, como cociente de dos polinomios con coeficientes reales, también tiene coeficientes reales. Por hipótesis, el número $v$ debe ser la raíz de multiplicidad $(k - l)$ y no debe tener una raíz igual a $\overline{v}$. Según lo probado anteriormente es imposible y por lo tanto $k = l$. Así todas las raíces complejas de cualquier polinomio con coeficientes reales son complejas conjugadas dos a dos. De la unicidad de la factorización canónica podemos sacar la siguiente conclusión:
+
+\begin{tcolorbox}[
+        theorem style=change break,
+        enhanced,
+        breakable,
+        boxrule=0pt,
+        frame hidden,
+        borderline west={3pt}{0pt}{black},
+        colback=gray!20,
+        coltitle=gray!90,
+        attach title to upper={\ },
+        sharp corners,
+        fonttitle=\bfseries,
+        fontupper=\normalsize
+    ]
+    Se puede representar cualquier polinomio con coeficientes reales, salvo el orden en que se disponen los factores, de un modo único como producto de su coeficiente principal y polinomios con coeficientes reales.
+\end{tcolorbox}
+
+Dichos polinomios tienen coeficientes principales iguales a la unidad y son lineales, si corresponden a raíces reales, y cuadráticos o si corresponden a un par de raíces complejas conjugadas.
+
+Finalmente, procedemos a la conclusión más importante, en interés de, propiamente hablando, se demostraba el teorema fundamental del álgebra.
+
+Sea $A$ un operador lineal en un espacio complejo. Los eigenvalores de ese operador, y solo ellos, son las raíces del polinomio característico. Por el teorema fundamental, $A$ tiene al menos un eigenvalor $\lambda$. Por consiguiente:
+
+\begin{tcolorbox}[
+        theorem style=change break,
+        enhanced,
+        breakable,
+        boxrule=0pt,
+        frame hidden,
+        borderline west={3pt}{0pt}{black},
+        colback=gray!20,
+        coltitle=gray!90,
+        attach title to upper={\ },
+        sharp corners,
+        fonttitle=\bfseries,
+        fontupper=\normalsize
+    ]
+    Todo operador lineal en un espacio vectorial complejo tiene al menos un vector propio.
+\end{tcolorbox}
+
+Observemos que si $A$ es un operador en un espacio real o racional, esta conclusión ya no es válida.
+
+En relación a los eigenvalores, aplicaremos la misma terminología como en referencia a las raíces de un polinomio. En particular, un eigenvalor se dice que es simple, si es raíz simple de un polinomio característico, y múltiple en caso contrario. La multiplicidad de un eigenvalor $\lambda$ será la multiplicidad de $\lambda$ como la raíz del polinomio característico.

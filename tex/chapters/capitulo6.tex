@@ -1,0 +1,519 @@
+\chapter{FORMAS BILINEALES}\label{chapter:bilineal}
+%\startcontents
+\printchaptertableofcontents
+
+\section{Eigenvalores y eigenvectores}
+
+Los conceptos de eigenvalores y eigenvectores son fundamentales para entender las transformaciones lineales y sus efectos sobre el espacio vectorial. Dada una transformación lineal $T: V \longrightarrow W$, en diversas aplicaciones  resulta útil encontrar un vector $\mathbb{v}$ en $V$ tal que $T\mathbb{v}$ y $\mathbb{v}$ son paralelos. Es decir, se busca un vector $\mathbb{v}$ no nulo y un escalar $\lambda$ tal que\infoBulle{Los eigenvalores y eigenvectores son comúnmente conocidos como valores y vectores propios, respectivamente, o valores y vectores característicos. El término alemán \emph{eigen} se traduce como “propio”, lo que refleja la propiedad distintiva de estos valores y vectores en relación con una transformación lineal o una matriz.}
+$$T\mathbb{v} = \lambda \mathbb{v}$$
+Al escalar $\lambda$ se le denomina \emph{eigenvalor} asociado al \emph{eigenvector} $\mathbb{v}$. Es importante destacar que cada eigenvector puede tener asociado más de un eigenvalor.
+
+\begin{definition}\label{def:eigenvalor}
+    Sea $A$ una matriz de $n \times n$ con componentes reales y $\lambda$ un número real o complejo. Se dice que $\lambda$ es un eigenvalor de la matriz $A$, si existe $\mathbb{v} \in \CC[n]$ no nulo tal que\infoBulle{La definición \ref{def:eigenvalor} es válida incluso si $A$ tiene componentes complejas. Sin embargo, dado que las matrices que estamos considerando principalmente tienen componentes reales, la definición es adecuada para nuestros propósitos.}
+    $$A\mathbb{v} = \lambda \mathbb{v}$$
+    A $\mathbb{v} \neq \mathbb{0}$ se le denomina eigenvector de $A$ correspondiente al eigenvalor $\lambda$.
+\end{definition}
+
+\begin{observation}
+    Como se mostrará más adelante, incluso una matriz con elementos reales puede poseer eigenvalores y eigenvectores complejos. Por esta razón, en la definición anterior, se especifica que $\mathbb{v} \in \CC[n]$. Aunque no se profundizarán en este trabajo numerosos aspectos relacionados con los números complejos, se incluye una exposición básica de aquellos conceptos indispensables en el \hyperref[chap:numeros-complejos]{Apéndice B}.
+\end{observation}
+
+Hemos visto la definición de un eigenvalor y eigenvector, pero ¿cómo podemos calcular estos mismos? Observemos que para calcular los eigenvalores y eigenvectores de una matriz cuadrada, necesitamos encontrar los valores de $\lambda$ que permiten que la ecuación $A \mathbb{v} = \lambda \mathbb{v}$ se cumpla para un vector no nulo $\mathbb{v}$. Esto se puede hacer reescribiendo la ecuación como
+$$A \mathbb{v} - \lambda \mathbb{v} = \mathbb{0}$$
+o bien,
+$$(A - \lambda I_n) \mathbb{v} = \mathbb{0}$$
+donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lleva a buscar valores de $\lambda$ que hagan que $A - \lambda I_n$ sea singular. Una vez que se encuentran estos eigenvalores, se puede calcular el eigenvector correspondiente resolviendo el sistema de ecuaciones lineales asociado.
+
+\begin{theorem}
+    Sea $A$ una matriz de $n \times n$. Entonces $\lambda$ es un eigenvalor de $A$ si y solo si
+    $$p(\lambda) = \det(A - \lambda I_n) = 0$$
+    A esta expresión se le denomina ecuación característica de $A$, y la función
+    $$p(\lambda) = \det(A - \lambda I_n)$$
+    se conoce como el polinomio característico de $A$. \\
+    \demostracion Si $A$ tiene un eigenvalor $\lambda$ correspondiente a un eigenvector $\mathbb{v}$, entonces, por definición, $A \mathbb{v} = \lambda \mathbb{v}$ o equivalentemente
+    $$A \mathbb{v} - \lambda \mathbb{v} = \mathbb{0}$$
+    Es decir,
+    $$(A - \lambda I_n) \mathbb{v} = \mathbb{0}$$
+    Dado que $\mathbb{v} \neq \mathbb{0}$, de la expresión anterior se deduce que $A - \lambda I_n$ es singular. Por lo tanto, los eigenvalores de $A$ son solo aquellos números $\lambda$ reales o complejos para los cuales $A - \lambda I_n$ son singulares. Así, del teorema \ref{singular_determinante} se hereda que $A - \lambda I_n$ es singular si
+    $$\det(A - \lambda I_n) = 0$$
+    Recíprocamente, supongamos que $\det(A - \lambda I_n) = 0$. Entonces, de nuevo por el teorema \ref{singular_determinante}, $A - \lambda I_n$ no es invertible. Luego existe $\mathbb{v} \neq \mathbb{0}$ tal que $(A - \lambda I_n) \mathbb{v} = \mathbb{0}$ y claramente $A \mathbb{v} = \lambda \mathbb{v}$. Por lo tanto, $\mathbb{v}$ es un eigenvector (con $\lambda$ como eigenvalor asociado) de $A$.
+\end{theorem}
+
+\begin{example}
+    Determine los eigenvalores y los eigenvectores correspondientes a cada eigenvalor de la matriz $A = \begin{bmatrix*}[r]
+        1 & 0 \\
+        0 & -1
+    \end{bmatrix*}$. \\
+    \solucion Usando el teorema anterior, tenemos
+    \begin{align*}
+        \det(A - \lambda I_n) & = \begin{vmatrix}
+            1 - \lambda & \phantom{-} 0 \\
+            0 & -1 - \lambda
+        \end{vmatrix} \\
+        & = (1 - \lambda)(-1 - \lambda) \\
+        & = (\lambda - 1)(\lambda + 1) \\
+        & = \lambda^2 - 1
+    \end{align*}
+    Por lo tanto, los eigenvalores son las raíces del polinomio $\lambda^2 - 1 = 0$. De esta forma, los eigenvalores de $A$ son $\lambda_1 = 1$ y $\lambda_2 = -1$. Ahora, determinemos los eigenvectores de $A$. Sea $\mathbb{v}_1 = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$, esto significa que para $\lambda_1 = 1$
+    $$A \mathbb{v}_1 = \lambda_1 \mathbb{v}_1$$
+    entonces
+    $$\begin{bmatrix*}[r]
+        1 & 0 \\
+        0 & -1
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = 1 \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix}$$
+    y, por ende
+    \begin{align*}
+        a & = a \\
+        - b & = b
+    \end{align*}\newpage\noindent
+    Observemos que $b = 0$ y $a$ puede ser cualquier número real distinto de $0$. Así, el eigenvector $\mathbb{v}_1$ correspondiente a $\lambda_1 = 1$ está dado por
+    $$\mathbb{v}_1 = \begin{pmatrix}
+        a \\
+        0
+    \end{pmatrix}$$
+    En particular,
+    $$\mathbb{v}_1 = \begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix}$$
+    De manera análoga, sea $\mathbb{v}_2 = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$, esto significa que para $\lambda_2 = -1$
+    $$A \mathbb{v}_2 = \lambda_2 \mathbb{v}_2$$
+    entonces
+    $$\begin{bmatrix*}[r]
+        1 & 0 \\
+        0 & -1
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = - 1 \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix}$$
+    y, por ende
+    \begin{align*}
+        a & = - a \\
+        b & = b
+    \end{align*}
+    Observemos que $a = 0$ y $b$ puede ser cualquier número real distinto de $0$. Así, el eigenvector $\mathbb{v}_2$ correspondiente a $\lambda_2 = -1$ está dado por
+    $$\mathbb{v}_2 = \begin{pmatrix}
+        0 \\
+        b
+    \end{pmatrix}$$
+    En particular,
+    $$\mathbb{v}_2 = \begin{pmatrix}
+        0 \\
+        1
+    \end{pmatrix}$$
+\end{example}
+
+\begin{example}\label{ejemplo_eigenvalores_complejos}
+    Determine los eigenvalores y los eigenvectores correspondientes a cada eigenvalor de la matriz $A = \begin{bmatrix*}[r]
+        3 & -5 \\
+        1 & -1
+    \end{bmatrix*}$. \\
+    \solucion Usando el teorema anterior, tenemos
+    \begin{align*}
+        \det(A - \lambda I_n) & = \begin{vmatrix}
+            3 - \lambda & \phantom{-} -5 \\
+            1 & -1 - \lambda
+        \end{vmatrix} \\
+        & = (3 - \lambda)(-1 - \lambda) + 5 \\
+        & = \lambda^2 - 2\lambda + 2
+    \end{align*}
+    Por lo tanto, los eigenvalores son las raíces del polinomio $\lambda^2 - 2\lambda + 2 = 0$. De esta forma, los eigenvalores de $A$ son $\lambda = 1 + i$ y $\overline{\lambda} = 1 - i$. Ahora, determinemos los eigenvectores de $A$. Sea $\mathbb{v} = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$, esto significa que para $\lambda = 1 + i$
+    $$A \mathbb{v} = \lambda \mathbb{v}$$
+    entonces
+    $$\begin{bmatrix*}[r]
+        3 & -5 \\
+        1 & -1
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = (1 + i) \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix}$$
+    es decir
+    \begin{align*}
+        3a - 5b & = (1 + i)a \\
+        a - b & = (1 + i)b
+    \end{align*}
+    lo cual se traduce en
+    \begin{align*}
+        3a - (1 + i)a - 5b & = 0 \\
+        a - b - (1 + i)b & = 0
+    \end{align*}\newpage\noindent
+    y, por ende,
+    \begin{align*}
+        (2 - i)a - 5b & = 0 \\
+        a - (2 + i)b & = 0
+    \end{align*}
+    Observemos que la segunda ecuación es igual a la primera, pues multiplicando la segunda ecuación por $2 - i$, se sigue que
+    $$(2 - i)a - (2 + i)(2 - i)b = 0$$
+    y se obtiene
+    $$(2 - i)a - 5b = 0$$
+    que es la primer ecuación. Así que basta resolver esta ecuación para encontrar el eigenvector deseado. De la segunda ecuación del sistema, se sigue que $a = (2 + i)b$, por lo que
+    $$\mathbb{v} = \begin{pmatrix}
+        (2 + i)b \\
+        b
+    \end{pmatrix}$$
+    En particular, el eigenvector $\mathbb{v}$ correspondiente a $\lambda = 1 + i$ está dado por
+    $$\mathbb{v} = \begin{pmatrix}
+        2 + i \\
+        1
+    \end{pmatrix}$$
+    De manera análoga, sea $\mathbb{v} = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$, esto significa que para $\overline{\lambda} = 1 - i$
+    $$A \mathbb{v} = \overline{\lambda} \mathbb{v}$$
+    entonces
+    $$\begin{bmatrix*}[r]
+        3 & -5 \\
+        1 & -1
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = (1 - i) \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix}$$
+    es decir
+    \begin{align*}
+        3a - 5b & = (1 - i)a \\
+        a - b & = (1 - i)b
+    \end{align*}
+    lo cual se traduce en
+    \begin{align*}
+        3a - (1 - i)a - 5b & = 0 \\
+        a - b - (1 - i)b & = 0
+    \end{align*}
+    y, por ende,
+    \begin{align*}
+        (2 + i)a - 5b & = 0 \\
+        a - (2 - i)b & = 0
+    \end{align*}
+    Observemos que la segunda ecuación es igual a la primera, pues multiplicando la segunda ecuación por $2 + i$, se sigue que
+    $$(2 + i)a - (2 + i)(2 - i)b = 0$$
+    y se obtiene
+    $$(2 + i)a - 5b = 0$$
+    que es la primer ecuación. Así que basta resolver esta ecuación para encontrar el eigenvector deseado. De la segunda ecuación del sistema, se sigue que $a = (2 - i)b$, por lo que
+    $$\mathbb{v} = \begin{pmatrix}
+        (2 - i)b \\
+        b
+    \end{pmatrix}$$
+    En particular, el eigenvector $\mathbb{v}$ correspondiente a $\overline{\lambda} = 1 - i$ está dado por
+    $$\mathbb{v} = \begin{pmatrix}
+        2 - i \\
+        1
+    \end{pmatrix}$$
+    Observemos que este vector tiene como entradas el conjugado del primer eigenvector que obtuvimos, por lo que podemos denotarlo como $\overline{\mathbb{v}}$.
+\end{example}
+
+\newpage
+
+\begin{observation}
+    Los eigenvalores de una matriz real ocurren en pares de números complejos conjugados, y los eigenvectores correspondientes son también complejos conjugados entre sí.
+\end{observation}
+
+\begin{definition}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$ y $\lambda$ un eigenvalor de $A$. Definimos el eigenespacio o espacio propio de la matriz $A$ correspondiente a $\lambda$ como
+    $$E_{\lambda} = \left\{ \mathbb{v} \in \CC[n] \mid A \mathbb{v} = \lambda \mathbb{v} \right\}$$
+\end{definition}
+
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$ y $\lambda$ un eigenvalor de $A$. Entonces $E_{\lambda}$ es un subespacio de $\CC[n]$. \\
+    \demostracion Para probar que $E_{\lambda}$ es subespacio de $\CC[n]$, debemos probar que $E_{\lambda}$ cumple los dos axiomas de cerradura. Sean $\mathbb{v}_1$, $\mathbb{v}_2 \in E_{\lambda}$, entonces
+    $$A \mathbb{v}_1 = \lambda \mathbb{v}_1$$
+    y
+    $$A \mathbb{v}_2 = \lambda \mathbb{v}_2$$
+    Así
+    \begin{align*}
+        A(\mathbb{v}_1 + \mathbb{v}_2) & = A\mathbb{v}_1 + A\mathbb{v}_2 \\
+        & = \lambda \mathbb{v}_1 + \lambda \mathbb{v}_2 \\
+        & = \lambda (\mathbb{v}_1 + \mathbb{v}_2)
+    \end{align*}
+    Por lo tanto, $A(\mathbb{v}_1 + \mathbb{v}_2) = \lambda (\mathbb{v}_1 + \mathbb{v}_2)$ de donde se sigue que $\mathbb{v}_1 + \mathbb{v}_2 \in E_{\lambda}$. De manera análoga, sean $\mathbb{v} \in E_{\lambda}$ y $\alpha \in \CC$, entonces
+    \begin{align*}
+        A(\alpha \mathbb{v}) & = \alpha (A \mathbb{v}) \\
+        & = \alpha (\lambda \mathbb{v}) \\
+        & = \lambda \alpha \mathbb{v} \\
+        & = \lambda (\alpha \mathbb{v})
+    \end{align*}
+    En consecuencia, $\alpha \mathbb{v} \in E_{\lambda}$. Por lo tanto, dado que se cumplen ambas propiedades de cerradura, se concluye que $E_{\lambda}$ es un subespacio de $\CC[n]$.
+\end{theorem}
+
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$ y sean $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_k$ eigenvalores distintos entre sí de $A$ correspondientes a los eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_k$. Entonces el conjunto de vectores $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_k \right\}$ es linealmente independiente. \\
+    \demostracion Procedamos por inducción sobre $k$. Es evidente que, para $k = 1$, obtenemos un eigenvalor $\lambda_1$ asociado con un eigenvector $\mathbb{v}_1$, lo que da lugar a un único vector que es linealmente independiente. Si $k = 2$, entonces tenemos dos eigenvalores $\lambda_1$ y $\lambda_2$ asociados con los eigenvectores $\mathbb{v}_1$ y $\mathbb{v}_2$ respectivamente. Demostremos que el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2 \right\}$ es, en efecto, linealmente independiente. Por definición,
+    \begin{equation}
+        a\mathbb{v}_1 + b\mathbb{v}_2 = \mathbb{0}, \text{ con } a, b \in \CC \label{JAJAJASGQQTAUSOSOQIAOAOA}
+    \end{equation}
+    así que debemos probar que $a = 0 = b$. Para ello, de la anterior expresión si multiplicamos por la matriz $A$, entonces
+    $$A \left( a\mathbb{v}_1 + b\mathbb{v}_2 \right) = \mathbb{0}$$
+    lo que se traduce en
+    $$A(a\mathbb{v}_1) + A(b\mathbb{v}_2) = \mathbb{0}$$
+    y, por ende
+    $$aA\mathbb{v}_1 + bA\mathbb{v}_2 = \mathbb{0}$$
+    entonces
+    \begin{equation}
+        a \lambda_1 \mathbb{v}_1 + b \lambda_2 \mathbb{v}_2 = \mathbb{0} \label{JAJAJSBDJJDJDJDJDJD}
+    \end{equation}
+    Ahora, multiplicando por $\lambda_1$ la ecuación \eqref{JAJAJASGQQTAUSOSOQIAOAOA}, obtenemos
+    \begin{equation}
+        a \lambda_1 \mathbb{v}_1 + b \lambda_1 \mathbb{v}_2 = \mathbb{0} \label{JAJAJQQUWJSJSISIS}
+    \end{equation}
+    Al restar la ecuación \eqref{JAJAJQQUWJSJSISIS} de la ecuación \eqref{JAJAJSBDJJDJDJDJDJD}, se sigue que
+    $$- {\extrarowheight = 0.5ex
+    \begin{array}{r}
+        a\lambda_1\mathbb{v}_1 + b\lambda_2\mathbb{v}_2 = \mathbb{0} \\
+        a\lambda_1\mathbb{v}_1 + b\lambda_1\mathbb{v}_2 = \mathbb{0} \\
+        \hline
+        b (\lambda_2 - \lambda_1) \mathbb{v}_2 = \mathbb{0}
+    \end{array}}$$
+    Sin embargo, según la hipótesis, se cumple que $\lambda_2 - \lambda_1 \neq 0$, ya que los eigenvalores de $A$ son diferentes entre sí. Además, dado que $\mathbb{v}_2$ es un eigenvector, se tiene que, por definición, $\mathbb{v}_2 \neq \mathbb{0}$; lo que implica que necesariamente $b = 0$. Al sustituir el valor de $b$ en la ecuación \eqref{JAJAJASGQQTAUSOSOQIAOAOA}, se obtiene que $a\mathbb{v}_1 = \mathbb{0}$. Dado que $\mathbb{v}_1$ es un eigenvector, se cumple por definición que $\mathbb{v}_1 \neq \mathbb{0}$, lo que implica que $a = 0$. Esto prueba que el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2 \right\}$ es, en efecto, linealmente independiente. Supongamos que el teorema se cumple para $k = l$ eigenvectores, es decir, supongamos que el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_l \right\}$ es linealmente independiente. Entonces debemos probar el teorema para $k = l + 1$ eigenvectores, es decir, debemos probar que el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_{l + 1} \right\}$ es linealmente independiente. Por definición,
+    \begin{equation}
+        \alpha_1 \mathbb{v}_1 + \alpha_2 \mathbb{v}_2 + \cdots + \alpha_{l} \mathbb{v}_{l} + \alpha_{l + 1} \mathbb{v}_{l + 1} = \mathbb{0} \label{JAJSJSBBAJQHQJQJQVCQFQTQIOAOAO}
+    \end{equation}
+    con $\alpha_i \in \CC$. Así que debemos probar que $\alpha_i = 0$ y para ello, de la anterior expresión si la multiplicamos por la matriz $A$, entonces
+    $$A \left( \alpha_1 \mathbb{v}_1 + \alpha_2 \mathbb{v}_2 + \cdots + \alpha_{l} \mathbb{v}_{l} + \alpha_{l + 1} \mathbb{v}_{l + 1} \right) = \mathbb{0}$$
+    lo que de traduce en
+    $$A(\alpha_1\mathbb{v}_1) + A(\alpha_2\mathbb{v}_2) + \cdots + A(\alpha_l\mathbb{v}_l)+ A(\alpha_{l+1}\mathbb{v}_{l+1}) = \mathbb{0}$$
+    y, por ende
+    $$\alpha_1A\mathbb{v}_1 + \alpha_2A\mathbb{v}_2 + \cdots + \alpha_lA\mathbb{v}_l + \alpha_{l+1}A\mathbb{v}_{l+1} = \mathbb{0}$$
+    entonces
+    \begin{equation}
+        \alpha_1\lambda_1\mathbb{v}_1 + \alpha_2\lambda_2\mathbb{v}_2 + \cdots + \alpha_l\lambda_l\mathbb{v}_l + \alpha_{l+1}\lambda_{l+1}\mathbb{v}_{l+1} = \mathbb{0} \label{IAJQUUQJQVQHQHAHHAHAHAVACACAVA}
+    \end{equation}
+    Ahora, multiplicando $\lambda_{l+1}$ la ecuación \eqref{JAJSJSBBAJQHQJQJQVCQFQTQIOAOAO}, obtenemos
+    \begin{equation}
+        \alpha_1\lambda_{l+1}\mathbb{v}_1 + \alpha_2\lambda_{l+1}\mathbb{v}_2 + \cdots + \alpha_l\lambda_{l+1}\mathbb{v}_l + \alpha_{l+1}\lambda_{l+1}\mathbb{v}_{l+1} = \mathbb{0} \label{AAOSIKQKWJWHGWHWVSVS}
+    \end{equation}
+    Al restar la ecuación \eqref{AAOSIKQKWJWHGWHWVSVS} de la ecuación \eqref{IAJQUUQJQVQHQHAHHAHAHAVACACAVA}, se sigue que
+    $$- {\extrarowheight = 0.5ex
+    \begin{array}{r}
+        \alpha_1\lambda_1\mathbb{v}_1 + \alpha_2\lambda_2\mathbb{v}_2 + \cdots + \alpha_l\lambda_l\mathbb{v}_l + \alpha_{l+1}\lambda_{l+1}\mathbb{v}_{l+1} = \mathbb{0} \\
+        \alpha_1\lambda_{l+1}\mathbb{v}_1 + \alpha_2\lambda_{l+1}\mathbb{v}_2 + \cdots + \alpha_l\lambda_{l+1}\mathbb{v}_l + \alpha_{l+1}\lambda_{l+1}\mathbb{v}_{l+1} = \mathbb{0} \\
+        \hline
+        \alpha_1(\lambda_1 - \lambda_{l+1})\mathbb{v}_1 + \alpha_2(\lambda_2 - \lambda_{l+1})\mathbb{v}_2 + \cdots + \alpha_l(\lambda_l - \lambda_{l+1})\mathbb{v}_l = \mathbb{0}
+    \end{array}}$$
+    Pero de acuerdo con la suposición de inducción, el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_l \right\}$ es linealmente independiente. Así,
+    $$\alpha_1(\lambda_1 - \lambda_{l+1}) = \alpha_2(\lambda_2 - \lambda_{l+1}) = \cdots = \alpha_l(\lambda_l - \lambda_{l+1}) = 0$$
+    y como los eigenvalores de $A$ son diferentes entre sí, se concluye que
+    $$\alpha_1 = \alpha_2 = \cdots = \alpha_l = 0$$
+    Pero, de la expresión \eqref{JAJSJSBBAJQHQJQJQVCQFQTQIOAOAO} se sigue que $\alpha_{l+1} = 0$. Por lo tanto, el teorema se cumple para $k = l + 1$. Por lo tanto, dados $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_k$ eigenvalores distintos entre sí de $A$ correspondientes a los eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_k$, el conjunto de vectores $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_k \right\}$ es linealmente independiente.
+\end{theorem}
+
+\newpage
+
+\begin{example}
+    En el ejemplo \ref{ejemplo_eigenvalores_complejos}, se determinó que $\lambda = 1 + i$ y $\overline{\lambda} = 1 - i$ son eigenvalores de la matriz $A$ y, además, son distintos entre sí. En ese mismo ejemplo, se calcularon los eigenvectores asociados a $\lambda$ y $\overline{\lambda}$, que son
+    $$\mathbb{v} = \begin{pmatrix} 2 + i \\ 1 \end{pmatrix} \quad \text{ y } \quad \overline{\mathbb{v}} = \begin{pmatrix} 2 - i \\ 1 \end{pmatrix}$$
+    respectivamente. Demostremos que estos vectores son linealmente independientes, es decir, demostremos que no existen $\alpha_1$, $\alpha_2 \in \CC$ no nulos tales que
+    $$\alpha_1 \mathbb{v} + \alpha_2 \overline{\mathbb{v}} = \mathbb{0}$$
+    Sustituyendo los valores de $\mathbb{v}$ y $\overline{\mathbb{v}}$, se sigue que
+    $$\alpha_1 \begin{pmatrix} 2 + i \\ 1 \end{pmatrix} + \alpha_2 \begin{pmatrix} 2 - i \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$$
+    Del cual, obtenemos el siguiente sistema
+    \begin{align*}
+        \alpha_1 (2 + i) + \alpha_2 (2 - i) & = 0 \\
+        \alpha_1 + \alpha_2 & = 0
+    \end{align*}
+    Al multiplicar la segunda ecuación por $2 + i$ y restarla de la primera ecuación, se obtiene lo siguiente:
+    $$- {\extrarowheight = 0.5ex
+    \begin{array}{r}
+        \alpha_1 (2 + i) + \alpha_2 (2 - i) = 0 \\
+        \alpha_1(2 + i) + \alpha_2(2 + i) = 0 \\
+        \hline
+        \alpha_2 [(2 - i) - (2 + i)] = 0
+    \end{array}}$$
+    Por lo tanto, $\alpha_2(-2i) = 0$, de donde se deduce que $\alpha_2 = 0$. Al sustituir el valor de $\alpha_2$ en la primera ecuación, se concluye que $\alpha_1 = 0$. De esta forma, se demuestra que $\mathbb{v}$ y $\overline{\mathbb{v}}$ son linealmente independientes. Además, este ejemplo particular ilustra la validez del teorema anterior.
+\end{example}
+
+\begin{theorem}
+    Los eigenvalores de una matriz triangular superior o inferior son exactamente los elementos de la diagonal de la matriz. \\
+    \demostracion Sea $A$ una matriz de $n \times n$ triangular superior como sigue:
+    $$A = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        0 & a_{22} & \cdots & a_{2n} \\
+        \vdots & & \ddots & \\
+        0 & 0 & \cdots & a_{nn}
+    \end{bmatrix}$$
+    Del teorema \ref{determinante_triangular} se sigue que
+    \begin{align*}
+        \Det (A - \lambda I_n) & = \begin{vmatrix}
+            a_{11} - \lambda & a_{12} & \cdots & a_{1n} \\
+            0 & a_{22} - \lambda & \cdots & a_{2n} \\
+            \vdots & & \ddots & \\
+            0 & 0 & \cdots & a_{nn} - \lambda
+        \end{vmatrix} \\
+        & = (a_{11} - \lambda)(a_{22} - \lambda) \cdots (a_{nn} - \lambda) \\
+        & = (-1)^n (\lambda - a_{11})(\lambda - a_{22}) \cdots (\lambda - a_{nn})
+    \end{align*}
+    Por lo tanto, los eigenvectores son las raíces del polinomio
+    $$(-1)^n (\lambda - a_{11})(\lambda - a_{22}) \cdots (\lambda - a_{nn}) = 0$$
+    Es evidente que las raíces de este polinomio son $a_{11}$, $a_{22}$, $\dots$, $a_{nn}$, que coinciden exactamente con los elementos de la diagonal de la matriz $A$. La demostración para una matriz triangular inferior es prácticamente idéntica.
+\end{theorem}
+
+\newpage
+
+\begin{observation}
+    De acuerdo con el teorema fundamental del álgebra, cualquier polinomio de grado $n$ con coeficientes reales o complejos tiene exactamente $n$ raíces, considerando sus multiplicidades (vea el \hyperref[FUNDAMENTAL]{Apéndice C}, pág. \pageref{CONSECUENCIA1_FUNDAMENTAL}). Esto significa, por ejemplo, que el polinomio $(\lambda - 2)^5$ tiene cinco raíces, todas iguales a $2$. Dado que cualquier eigenvalor de $A$ es una raíz de la ecuación característica de $A$, se puede concluir que, contando multiplicidades, toda matriz de tamaño $n \times n$ tiene exactamente $n$ eigenvalores.
+\end{observation}
+
+\begin{example}
+    Determine los eigenvalores y los eigenvectores correspondientes a cada eigenvalor de la matriz $A = \begin{bmatrix}
+        1 & 1 & 1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+    \end{bmatrix}$. \\
+    \solucion Primero calculemos el polinomio característico de la matriz $A$ como sigue:
+    \begin{align*}
+        \Det(A - \lambda I_n) & = \begin{vmatrix}
+            1 - \lambda & 1 & 1 \\
+            0 & 1 - \lambda & 1 \\
+            0 & 0 & 1 - \lambda
+        \end{vmatrix} \\
+        & = (1 - \lambda)^3 \\
+        & = (-1)^3 (\lambda - 1)^3
+    \end{align*}
+    Por lo tanto, los eigenvalores son las raíces del polinomio $(-1)^3 (\lambda - 1)^3 = 0$, cuya única raíz es $\lambda = 1$. De esta manera, la matriz $A$ tiene un único eigenvalor, $\lambda = 1$, con una multiplicidad algebraica de $3$. A continuación, determinemos el eigenvector asociado con $\lambda = 1$. Sea $\mathbb{v} = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$. Esto significa que, para $\lambda = 1$
+    $$\begin{bmatrix}
+        1 & 1 & 1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+    \end{bmatrix} \begin{bmatrix}
+        a \\
+        b \\
+        c
+    \end{bmatrix} = \begin{bmatrix}
+        a \\
+        b \\
+        c
+    \end{bmatrix}$$
+    del cual se obtiene el siguiente sistema
+    \begin{align*}
+        a + b + c & = 0 \\
+        b + c & = 0 \\
+        c & = c
+    \end{align*}
+    De este sistema se concluye inequívocamente que $c = 0$. Como resultado, también se deduce que $b = 0$ y, por lo tanto, $a$ puede tomar cualquier valor real. Así, el eigenvector correspondiente a $\lambda = 1$ está dado por
+    $$\mathbb{v} = \begin{pmatrix}
+        a \\
+        0 \\
+        0
+    \end{pmatrix}$$
+    En particular, si $a = 1$, obtenemos
+    $$\mathbb{v} = \begin{pmatrix}
+        1 \\
+        0 \\
+        0
+    \end{pmatrix}$$
+\end{example}
+
+\begin{definition}
+    Sea $\lambda$ un eigenvalor de una matriz $A$; entonces la multiplicidad geométrica de $\lambda$ es la dimensión del espacio característico correspondiente a $\lambda$ (que es la nulidad de la matriz $A - \lambda I_n$). Esto es, $\Dim (E_{\lambda})$.
+\end{definition}
+
+\begin{example}
+    Si consideramos el ejemplo anterior, podemos observar que
+    $$E_{\lambda} = \Gen \left(\left\{ \begin{pmatrix}
+        1 \\
+        0 \\
+        0
+    \end{pmatrix} \right\}\right)$$
+    Por lo tanto, $\dim(E_{\lambda}) = 1$. En consecuencia, la multiplicidad geométrica del eigenvalor $\lambda = 1$ es igual a $1$.
+\end{example}
+
+\newpage
+
+\section{Matrices semejantes y diagonalización}
+
+\begin{definition}
+    Sean $A$, $B \in \mathcal{M}_{n \times n}(\RR)$. Se dice que la matriz $B$ es semejante con la matriz $A$ o que la matriz $A$ es semejante con la matriz $B$ si existe una matriz $C$ de $n \times n$ (con entradas reales o complejas) invertible tal que
+    $$B = C^{-1} A C$$
+\end{definition}
+
+\begin{definition}
+    Sea $T: \mathcal{M}_{n \times n}(\RR) \longrightarrow \mathcal{M}_{n \times n}(\CC)$ una transformación definida de la siguiente manera:
+    \begin{align*}
+        T: \mathcal{M}_{n \times n}(\RR) & \longrightarrow \mathcal{M}_{n \times n}(\CC) \\
+        A & \longmapsto T(A) = C^{-1} A C = B
+    \end{align*}
+    A esta transformación $T$, que lleva la matriz $A$ a la matriz $B$, se le conoce como \emph{transformación de semejanza}.
+\end{definition}
+
+\section{El teorema de Cayley-Hamilton}
+
+\newpage
+
+\section{Ejercicios}
+
+\noindent
+De los problemas 1 al 27 calcule los eigenvalores y los espacios característicos de la matriz dada. Si la multiplicidad algebraica de un eigenvalor es mayor que $1$, calcule su multiplicidad geométrica.
+\begin{tasks}[
+    style=enumerate,
+    label-offset = 3mm,
+    %label-width = 13.97498pt,
+    ](2)
+    \task $\begin{bmatrix*}[r]-81 & 16 \\ -420 & 83\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-2 & -2 \\ -5 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-12 & 7 \\ -7 & 2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]23 & 12 \\ -42 & -22\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]2 & -1 \\ 5 & -2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-3 & 0 \\ 0 & -3\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-62 & -20 \\ 192 & 62\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]3 & 2 \\ -5 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-3 & 2 \\ 0 & -3\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-10 & -71 & -19 \\ 3 & 34 & 9 \\ -1 & -61 & -16\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}5 & 4 & 2 \\ 4 & 5 & 2 \\ 2 & 2 & 2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]13 & 3 & 1 \\ -56 & -13 & -4 \\ -14 & -3 & -2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -3 & 3\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & 2 & 2 \\ 0 & 2 & 1 \\ -1 & 2 & 2\end{bmatrix*}$
+    %\task $\begin{bmatrix*}[r]260 & 0 & \\ -1 & 0 & 1 \\ -1 & -2 & 3\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-2 & 5 & 0 \\ 5 & -2 & 0 \\ 0 & 0 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]7 & -2 & -4 \\ 3 & 0 & -2 \\ 6 & -2 & -3\end{bmatrix*}$
+    %\task $\begin{bmatrix*}[r]-662 & 5 & \\ 0 & 3 & 0 \\ -10 & 0 & 9\end{bmatrix*}$
+    \task $\begin{bmatrix*}1 & 2 & 4 \\ 0 & 2 & 3 \\ 0 & 0 & 5\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]4 & 6 & 6 \\ 1 & 3 & 2 \\ -1 & -5 & -2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]18 & 42 & 26 & -10 \\ 22 & 70 & 37 & -17 \\ -20 & -60 & -31 & 15 \\ 62 & 186 & 104 & -44\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]4 & 1 & 0 & 1 \\ 2 & 3 & 0 & 1 \\ -2 & 1 & 2 & -3 \\ 2 & -1 & 0 & 5\end{bmatrix*}$
+    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & 0 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b \neq 0$
+    \task $\begin{bmatrix*}a & 0 & 0 & 0 \\ 0 & a & b & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$
+    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & d \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c d \neq 0$
+    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c \neq 0$
+    \task $\begin{bmatrix*}3 & 1 & 0 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 1 \\ 0 & 0 & 0 & 4\end{bmatrix*}$
+\end{tasks}
+\begin{enumerate}[start=27]
+    \item Demuestre que para cualesquiera $a$, $b \in \RR$, la matriz $A=\begin{bmatrix*}[r]a & b \\ -b & a\end{bmatrix*}$ tiene eigenvalores $a \pm i b$.
+\end{enumerate}
+De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.
+\begin{enumerate}[resume]
+    \item Demuestre que los eigenvalores de $A^{T}$ son $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.\newpage
+    \item Demuestre que los eigenvalores de $\alpha A$ son $\alpha \lambda_{1}, \alpha \lambda_{2}, \dots, \alpha \lambda_{k}$.
+    \item Demuestre que $A^{-1}$ existe si y sólo si $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k} \neq 0$.
+    \item Si $A^{-1}$ existe, demuestre que los eigenvalores de $A^{-1}$ están dados por $\dfrac{1}{\lambda_{1}}, \dfrac{1}{\lambda_{2}}, \dots, \dfrac{1}{\lambda_{k}}$.
+    \item Demuestre que la matriz $A-\alpha I_n$ tiene como eigenvalores a los escalares $\lambda_{1}-\alpha, \lambda_{2}-\alpha, \dots, \lambda_{k}-\alpha$.
+    \item Demuestre que los eigenvalores de $A^{2}$ son $\lambda_{1}^{2}, \lambda_{2}^{2}, \dots, \lambda_{k}^{2}$.
+    \item Demuestre que los eigenvalores de $A^{m}$ son $\lambda_{1}^{m}, \lambda_{2}^{m}, \dots, \lambda_{k}^{m}$ para $m=1,2,3, \dots$
+    \item Sea $\lambda$ un eigenvalor de $A$ con $\mathbb{v}$ como el eigenvector correspondiente. Sea $p(\lambda)=a_{0}+a_{1} \lambda+a_{2} \lambda^{2}+\cdots+a_{n} \lambda^{n}$. Defina la matriz $p(A)$ por $p(A)=a_{0} I_n+a_{1} A+a_{2} A^{2}$ $+\cdots+a_{n} A^{n}$. Demuestre que, en efecto, $p(A) \mathbb{v}=p(\lambda) \mathbb{v}$.
+    \item Utilizando el resultado del problema 37, demuestre que si $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$ son eigenvalores de $A$, entonces $p\left(\lambda_{1}\right), p\left(\lambda_{2}\right), \dots, p\left(\lambda_{k}\right)$ son vectores característicos de $p(A)$.
+    \item Demuestre que si $A$ es una matriz diagonal, entonces los eigenvalores de $A$ son las componentes de la diagonal de $A$.
+    \item Sea $A_{1}=\begin{bmatrix*}2 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{2}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{3}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{4}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 2\end{bmatrix*}$.
+    Demuestre que para cada matriz $\lambda=2$ es un eigenvalor con multiplicidad algebraica $4$. En cada caso calcule la multiplicidad geométrica de $\lambda=2$.
+    \item Sea $A$ una matriz real de $n \times n$. Demuestre que si $\lambda_{1}$ es un eigenvalor complejo de $A$ con eigenvector $\mathbb{v}_{1}$, entonces $\overline{\lambda_{1}}$ es un eigenvalor de $A$ con eigenvector $\overline{\mathbb{v}}_{1}$.
+    \item Una matriz de probabilidad es una matriz de $n \times n$ que tiene dos propiedades:
+    \begin{enumerate}
+        \item $a_{i j} \geq 0$ para toda $i$ y $j$.
+        \item La suma de las componentes en cada columna es $1$.
+    \end{enumerate}
+    Demuestre que $1$ es un eigenvalor de toda matriz de probabilidad.
+    \item Sea $A=\begin{bmatrix*}a & b \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Suponga que $b \neq 0$. Sea $m$ una raíz (real o compleja) de la ecuación
+    $$b m^{2}+(a-d) m-c=0$$
+    Demuestre que $a+b m$ es un eigenvalor de $A$ con eigenvector correspondiente $\mathbb{v}=\begin{pmatrix*}1 \\ m\end{pmatrix*}$. Esto proporciona un método sencillo para calcular los valores y vectores característicos de las matrices de $2 \times 2$.
+    \item Sea $A=\begin{bmatrix*}[r]a & 0 \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Demuestre que $d$ es un eigenvalor de $A$ con eigenvector correspondiente $\begin{pmatrix*}1 \\ 0\end{pmatrix*}$.\newpage
+    \item Sea $A=\begin{bmatrix*}[r]\alpha & \beta \\ -\beta & \alpha\end{bmatrix*}$, donde $\alpha, \beta \in \RR$. Encuentre los eigenvalores de la matriz $B=A^{T} A$.
+\end{enumerate}

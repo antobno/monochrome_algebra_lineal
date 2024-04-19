@@ -1,0 +1,36 @@
+\includepdf[pages=-]{GOOODINEZ.pdf}
+
+\newpage
+
+\symmetricalPage%
+
+\begin{tikzpicture}[remember picture,overlay]%
+      \coordinate (A) at ($(current page.north)!.4!(current page.north east)$);
+      \coordinate (B) at (current page.east);
+      \coordinate (C) at (current page.north east);
+
+      \filldraw[black!50] (A) -- (B) -- (C) -- cycle;
+      \filldraw ($(current page.north)!.4!(current page.north east)+(0.5,0)$) -- ($(current page.east)+(0,0.25)$) -- (C) -- cycle;
+\end{tikzpicture}
+
+
+\vspace{1.5cm}
+\begin{center}
+\scalebox{6.5}{\textbf{ÁLGEBRA}}\\[10mm]
+\scalebox{6.5}{\textbf{LINEAL}}\\[2cm]
+
+\scalebox{2}{\textbf{Luis Alfonso Godínez Contreras}}\\[4mm]
+Escuela Superior de Física y Matemáticas\\[1.5cm]
+\begin{center}
+    \begin{tikzpicture}
+        \node at (current page.center) {\includegraphics[width=0.3\textwidth]{Images/Portada/POLITECNICO.pdf}}; % Logo de institución
+    \end{tikzpicture}
+\end{center}
+\vfill
+México, 2024
+\end{center}
+
+\restoregeometry%
+
+\newpage
+\,
