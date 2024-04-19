@@ -18,7 +18,7 @@ Estas notas se presentan en formato PDF para facilitar su uso y visualización. 
 
 ## Descarga
 
-Las notas las puedes descargar dando clic en [este enlace](https://tr.ee/cupo46p9ZC)
+Las notas las puedes descargar dando clic en [este enlace](https://linktr.ee/biblioteca_esfm)
 
 ## Contribuciones
 
