@@ -246,7 +246,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     En consecuencia, $\alpha \mathbb{v} \in E_{\lambda}$. Por lo tanto, dado que se cumplen ambas propiedades de cerradura, se concluye que $E_{\lambda}$ es un subespacio de $\CC[n]$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}\label{eigenvalores_distintos_eigenvectoresli}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ y sean $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_k$ eigenvalores distintos entre sí de $A$ correspondientes a los eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_k$. Entonces el conjunto de vectores $\left\{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_k \right\}$ es linealmente independiente. \\
     \demostracion Procedamos por inducción sobre $k$. Es evidente que, para $k = 1$, obtenemos un eigenvalor $\lambda_1$ asociado con un eigenvector $\mathbb{v}_1$, lo que da lugar a un único vector que es linealmente independiente. Si $k = 2$, entonces tenemos dos eigenvalores $\lambda_1$ y $\lambda_2$ asociados con los eigenvectores $\mathbb{v}_1$ y $\mathbb{v}_2$ respectivamente. Demostremos que el conjunto $\left\{ \mathbb{v}_1, \mathbb{v}_2 \right\}$ es, en efecto, linealmente independiente. Por definición,
     \begin{equation}
@@ -444,6 +444,111 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     \end{align*}
     A esta transformación $T$, que lleva la matriz $A$ a la matriz $B$, se le conoce como \emph{transformación de semejanza}.
 \end{definition}
+
+\begin{theorem}
+    Sean $A$, $B \in \mathcal{M}_{n \times n}(\RR)$ dos matrices semejantes, entonces $A$ y $B$ tienen el mismo polinomio característico y, por consiguiente, tienen los mismos eigenvalores. \\
+    \demostracion Como $A$ y $B$ son semejantes, entonces existe una matriz $C$ invertible tal que
+    $$B = C^{-1}AC$$
+    Así,
+    \begin{align*}
+        \Det(B - \lambda I_n) & = \Det\left(C^{-1}AC - \lambda I_n\right) \\
+        & = \Det\left(C^{-1}AC - \lambda C^{-1}I_nC\right) \\
+        & = \Det\left(C^{-1}(AC - \lambda I_nC)\right) \\
+        & = \Det\left(C^{-1}(A - \lambda I_n)C\right) \\
+        & = \Det\left(C^{-1}\right) \Det(A - \lambda I_n) \Det(C) \\
+        & = \Det(A - \lambda I_n)
+    \end{align*}
+    Esto significa que $A$ y $B$ tienen la misma ecuación característica, y como los eigenvalores son raíces de la ecuación característica, tienen los mismos eigenvalores.
+\end{theorem}
+
+\begin{definition}
+    Se dice que una matriz $A$ de $n \times n$ es diagonalizable si existe una matriz diagonal $D$ de $n \times n$ tal que $A$ es semejante a $D$.
+\end{definition}
+
+\begin{theorem}
+    Una matriz $A$ de $n \times n$ es diagonalizable si y solo si tiene $n$ eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ linealmente independientes correspondientes a los eigenvalores $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n$. En tal caso, la matriz diagonal $D$ semejante a $A$ está dada por
+    $$D = \begin{bmatrix}
+        \lambda_1 & 0 & \cdots & 0 \\
+        0 & \lambda_2 & \cdots & 0 \\
+        \vdots & & \ddots & \\
+        0 & 0 & \cdots & \lambda_n
+    \end{bmatrix}$$
+    Si $C$ es una matriz cuyas columnas son eigenvectores linealmente independientes de $A$, entonces
+    $$D = C^{-1}AC$$
+    \demostracion Sea $A$ una matriz de $n \times n$. Supongamos que $A$ tiene $n$ eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ linealmente independientes correspondientes a los eigenvalores $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n$ (no necesariamente diferentes). Sean
+    $$\mathbb{v}_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \vdots \\ c_{n1} \end{pmatrix}, \mathbb{v}_2 = \begin{pmatrix} c_{12} \\ c_{22} \\ \vdots \\ c_{n2} \end{pmatrix}, \dots, \mathbb{v}_n = \begin{pmatrix} c_{1n} \\ c_{2n} \\ \vdots \\ c_{nn} \end{pmatrix}$$\newpage\noindent
+    y sea\infoBulle{Si los vectores columna de una matriz de $n \times n$ son linealmente independientes, entonces la matriz tiene rango $n$, lo que significa que su determinante es distinto de cero. Ya que el determinante distinto de cero es una condición necesaria y suficiente para que una matriz sea invertible, podemos concluir que la matriz es invertible si sus vectores columna son linealmente independientes.}
+    \begin{equation*}
+        C = \left[\begin{array}{cccc}
+            \tikzmarkin[ver=style azull]{col 1-a}c_{11} & \tikzmarkin[ver=style azull]{col 2-a}c_{12} & \cdots & \tikzmarkin[ver=style azull]{col n-a}c_{1n} \\
+            c_{12} & c_{22} & \cdots & c_{2n} \\
+            \vdots & & \ddots & \\
+            c_{n1} \tikzmarkend{col 1-a} & c_{n2}\tikzmarkend{col 2-a} & \cdots & c_{nn}\tikzmarkend{col n-a} \\
+        \end{array}\right]
+        \begin{tikzpicture}[overlay, remember picture]
+            \node[below=50pt of col 1-a.south west,xshift=4pt](A) {};
+            \node[right=2pt of A] (B) {};
+            \node[below=25pt of B] (C) {$\mathbb{v}_1$};
+            \draw[-latex] (C) -- (B);
+
+            \node[below=50pt of col 2-a.south west,xshift=4pt](D) {};
+            \node[right=2pt of D] (E) {};
+            \node[below=25pt of E] (F) {$\mathbb{v}_2$};
+            \draw[-latex] (F) -- (E);
+
+            \node[below=50pt of col n-a.south west,xshift=4pt](G) {};
+            \node[right=2pt of G] (H) {};
+            \node[below=25pt of H] (I) {$\mathbb{v}_n$};
+            \draw[-latex] (I) -- (H);
+        \end{tikzpicture}
+    \end{equation*}
+    \,\\ \,\\ \,\\ \,\\
+    Entonces $C$ es invertible ya que sus columnas son linealmente independientes. Ahora bien,
+    $$AC = \begin{bmatrix}
+        A\mathbb{v}_1 & A\mathbb{v}_2 & \cdots & A\mathbb{v}_n
+    \end{bmatrix}$$
+    Pero por la definición \ref{def:eigenvalor}, se sigue que
+    $$AC = \begin{bmatrix}
+        \lambda_1\mathbb{v}_1 & \lambda_2\mathbb{v}_2 & \cdots & \lambda_n\mathbb{v}_n
+    \end{bmatrix}$$
+    Es decir,
+    $$AC = \begin{bmatrix}
+        \lambda_1c_{11} & \lambda_2c_{12} & \cdots & \lambda_nc_{1n} \\
+        \lambda_1c_{21} & \lambda_2c_{22} & \cdots & \lambda_nc_{2n} \\
+        \vdots & & \ddots & \\
+        \lambda_1c_{n1} & \lambda_2c_{n2} & \cdots & \lambda_nc_{nn}
+    \end{bmatrix}$$
+    Pero
+    \begin{align*}
+        CD & = \begin{bmatrix}
+            c_{11} & c_{12} & \cdots & c_{1n} \\
+            c_{21} & c_{22} & \cdots & c_{2n} \\
+            \vdots & & \ddots & \\
+            c_{n1} & c_{n2} & \cdots & c_{nn}
+        \end{bmatrix} \begin{bmatrix}
+            \lambda_1 & 0 & \cdots & 0 \\
+            0 & \lambda_2 & \cdots & 0 \\
+            \vdots & & \ddots & \\
+            0 & 0 & \cdots & \lambda_n
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            \lambda_1c_{11} & \lambda_2c_{12} & \cdots & \lambda_nc_{1n} \\
+            \lambda_1c_{21} & \lambda_2c_{22} & \cdots & \lambda_nc_{2n} \\
+            \vdots & & \ddots & \\
+            \lambda_1c_{n1} & \lambda_2c_{n2} & \cdots & \lambda_nc_{nn}
+        \end{bmatrix}
+    \end{align*}
+    Entonces
+    $$AC = BD$$
+    y como $C$ es invertible, se sigue que
+    $$D = C^{-1}AC$$
+    lo que por definición, significa que $D$ es semejante a $A$. Recíprocamente, se procede de manera similar.
+\end{theorem}
+
+\begin{theorem}
+    Si una matriz $A$ de $n \times n$ tiene $n$ eigenvalores diferentes, entonces $A$ es diagonalizable. \\
+    \demostracion Dado que $A$ tiene $n$ eigenvalores distintos, según el teorema \ref{eigenvalores_distintos_eigenvectoresli}, posee $n$ eigenvectores linealmente independientes. Además, con base en el teorema previo, se deduce que $A$ es diagonalizable.
+\end{theorem}
 
 \section{El teorema de Cayley-Hamilton}
 
