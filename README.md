@@ -1,6 +1,6 @@
 # Notas de Álgebra Lineal
 
-Este repositorio contiene notas detalladas sobre álgebra lineal, incluyendo conceptos fundamentales y ejercicios prácticos. Estas notas están diseñadas para estudiantes ingeniería y disciplinas afines, así como para cualquiera que desee profundizar sus conocimientos en álgebra lineal.
+Este repositorio contiene notas detalladas sobre álgebra lineal, incluyendo conceptos fundamentales y ejercicios prácticos. Estas notas están diseñadas para estudiantes de ingeniería y disciplinas afines, así como para cualquiera que desee profundizar sus conocimientos en álgebra lineal.
 
 ## Contenido
 
@@ -18,7 +18,7 @@ Estas notas se presentan en formato PDF para facilitar su uso y visualización. 
 
 ## Descarga
 
-Las notas las puedes descargar dando clic en [este enlace](https://tr.ee/cupo46p9ZC)
+Puedes descargar las notas haciendo clic en el enlace que se encuentra al principio de este repositorio.
 
 ## Contribuciones
 
