@@ -39,7 +39,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     Recíprocamente, supongamos que $\det(A - \lambda I_n) = 0$. Entonces, de nuevo por el teorema \ref{singular_determinante}, $A - \lambda I_n$ no es invertible. Luego existe $\mathbb{v} \neq \mathbb{0}$ tal que $(A - \lambda I_n) \mathbb{v} = \mathbb{0}$ y claramente $A \mathbb{v} = \lambda \mathbb{v}$. Por lo tanto, $\mathbb{v}$ es un eigenvector (con $\lambda$ como eigenvalor asociado) de $A$.
 \end{theorem}
 
-\begin{example}
+\begin{example}\label{example_primero_eigenvalores}
     Determine los eigenvalores y los eigenvectores correspondientes a cada eigenvalor de la matriz $A = \begin{bmatrix*}[r]
         1 & 0 \\
         0 & -1
@@ -359,6 +359,93 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
 
 \newpage
 
+\begin{tcolorbox}[
+    lower separated=false,
+    theorem style=change apart,
+    enhanced,
+    breakable,
+    boxrule=0pt,
+    frame hidden,
+    borderline north={1.5pt}{0pt}{black},
+    borderline south={1.5pt}{0pt}{black},
+    colback=white,
+    coltitle=black,
+    %attach title to upper={\ },
+    sharp corners,
+    fonttitle=\bfseries\boldmath\large,
+    fontupper=\normalsize,
+    left=0mm,
+    right=0mm,
+    top=2mm,
+    bottom=2mm,
+    title={Un método eficiente para encontrar los eigenvalores y eigenvectores de una matriz $2 \times 2$:}
+]
+    Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales dada por
+    $$A = \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}$$
+    Sea $T$ la traza de $A$, es decir, $T = a + d$ y sea $D$ el determinante de $A$, es decir, $D = ad - bc$. Calculemos primero el polinomio característico de $A$:
+    \begin{align*}
+        \Det(A - \lambda I_n) & = \begin{vmatrix} a - \lambda & b \\ c & d - \lambda \end{vmatrix} \\
+        & = (a - \lambda)(d - \lambda) - bc \\
+        %& = ad - \lambda d - \lambda a + \lambda^2 - bc \\
+        & = \lambda^2 - (a + d)\lambda + (ad - bc) \\
+        & = \lambda^2 - T\lambda + D
+    \end{align*}
+    Por lo tanto, los eigenvalores son las raíces del polinomio $\lambda^2 - T\lambda + D = 0$. Para resolver dicha ecuación, podemos usar la fórmula general. Así
+    \begin{align*}
+        \lambda & = \frac{-(-T) \pm \sqrt{(-T)^2 - 4(1)(D)}}{2(1)} \\
+        & = \frac{T \pm \sqrt{T^2 - 4D}}{2}
+    \end{align*}
+    Es decir, los eigenvalores de $A$ están dados por
+    $$\lambda_1 = \frac{T + \sqrt{T^2 - 4D}}{2} \quad \text{ y } \quad \lambda_2 = \frac{T - \sqrt{T^2 - 4D}}{2}$$
+    Para encontrar los eigenvectores correspondientes, tenemos tres casos:
+    \begin{enumerate}[label=\roman*)]
+        \item Si $c \neq 0$, entonces los eigenvectores están dados por $\mathbb{v}_1 = \begin{pmatrix} \lambda_1 - d \\ c \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} \lambda_2 - d \\ c \end{pmatrix}$. Sustituyendo $\mathbb{v}_1$ en la ecuación $A\mathbb{v}_1 = \lambda_1\mathbb{v}_1$, obtenemos:
+        \begin{align*}
+            a(\lambda_1 - d) + bc &= \lambda_1 (\lambda_1 - d), \\
+            c(\lambda_1 - d) + dc &= \lambda_1 c.
+        \end{align*}
+        La segunda ecuación se satisface trivialmente. La primera ecuación se reduce a
+        $$a\lambda_1 - ad + bc = \lambda_1^2 - d\lambda_1,$$
+        que es cierta al sustituir el valor de $\lambda_1$. Por lo tanto, $\mathbb{v}_1$ es un eigenvector de $A$ correspondiente a $\lambda_1$. De manera similar, se puede demostrar que $\mathbb{v}_2$ es un eigenvector de $A$ correspondiente a $\lambda_2$.
+        \item Si $b \neq 0$, entonces los eigenvectores están dados por $\mathbb{v}_1 = \begin{pmatrix} b \\ \lambda_1 - a \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} b \\ \lambda_2 - a \end{pmatrix}$. Siguiendo un procedimiento similar al anterior inciso, se puede demostrar que estos vectores son eigenvectores de $A$.
+        \item Si $b = c = 0$, entonces la matriz es diagonal, lo que significa que sus eigenvectores son simplemente $\mathbb{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
+    \end{enumerate}
+\end{tcolorbox}
+
+\newpage
+
+\begin{example}
+    Tomemos la matriz del ejemplo \ref{ejemplo_eigenvalores_complejos}. Primero calculemos los eigenvalores, sabiendo que
+    $$T = 3 - 1 = 2 \quad \text{ y } \quad D = (3)(-1) - (-5)(1) = 2$$
+    Por lo tanto, los eigenvalores están dados por
+    \begin{align*}
+        \lambda_1 & = \frac{2 + \sqrt{(2)^2 - 4(2)}}{2} & \lambda_2 & = \frac{2 - \sqrt{(2)^2 - 4(2)}}{2} \\
+        & = 1 - i & & = 1 + i
+    \end{align*}
+    Para calcular los eigenvectores, observemos que $b \neq 0$ y $c \neq 0$, por lo que podemos utilizar cualquiera de las dos fórmulas proporcionadas en los incisos (i) o (ii). En este caso, dado que $c = 1$, optamos por usar las fórmulas del inciso (i). De esta manera, obtenemos los eigenvectores $\mathbb{v}_1$ y $\mathbb{v}_2$ correspondientes a los eigenvalores $\lambda_1 = 1 - i$ y $\lambda_2 = 1 + i$, respectivamente están dados por:
+    \begin{align*}
+        \mathbb{v}_1 & = \begin{pmatrix} (1 - i) - (-1) \\ 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} (1 + i) - (-1) \\ 1 \end{pmatrix} \\
+        & = \begin{pmatrix} 2 - i \\ 1 \end{pmatrix} & & = \begin{pmatrix} 2 + i \\ 1 \end{pmatrix} 
+    \end{align*}
+    que son los mismos resultados que obtuvimos en el ejemplo \ref{ejemplo_eigenvalores_complejos}.
+\end{example}
+
+\begin{example}
+    Tomemos la matriz del ejemplo \ref{example_primero_eigenvalores}. Primero calculemos los eigenvalores, sabiendo que
+    $$T = 1 + (-1) = 0 \quad \text{ y } \quad D = (1)(-1) - (0)(0) = - 1$$
+    Por lo tanto, los eigenvalores están dados por
+    \begin{align*}
+        \lambda_1 & = \frac{0 + \sqrt{(0)^2 - 4(-1)}}{2} & \lambda_2 & = \frac{0 - \sqrt{(0)^2 - 4(-1)}}{2} \\
+        & = 1 & & = - 1
+    \end{align*}
+    Ahora, en este caso observemos que $b = 0$ y $c = 0$. Por lo tanto, los eigenvalores correspondientes a $\lambda_1$ y $\lambda_2$ respectivamente están dados por
+    $$\mathbb{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$$
+    que son los mismos resultados que obtuvimos en el ejemplo \ref{example_primero_eigenvalores}.
+\end{example}
+
 \begin{observation}
     De acuerdo con el teorema fundamental del álgebra, cualquier polinomio de grado $n$ con coeficientes reales o complejos tiene exactamente $n$ raíces, considerando sus multiplicidades (vea el \hyperref[FUNDAMENTAL]{Apéndice C}, pág. \pageref{CONSECUENCIA1_FUNDAMENTAL}). Esto significa, por ejemplo, que el polinomio $(\lambda - 2)^5$ tiene cinco raíces, todas iguales a $2$. Dado que cualquier eigenvalor de $A$ es una raíz de la ecuación característica de $A$, se puede concluir que, contando multiplicidades, toda matriz de tamaño $n \times n$ tiene exactamente $n$ eigenvalores.
 \end{observation}
@@ -378,7 +465,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
         \end{vmatrix} \\
         & = (1 - \lambda)^3 \\
         & = (-1)^3 (\lambda - 1)^3
-    \end{align*}
+    \end{align*}\newpage\noindent
     Por lo tanto, los eigenvalores son las raíces del polinomio $(-1)^3 (\lambda - 1)^3 = 0$, cuya única raíz es $\lambda = 1$. De esta manera, la matriz $A$ tiene un único eigenvalor, $\lambda = 1$, con una multiplicidad algebraica de $3$. A continuación, determinemos el eigenvector asociado con $\lambda = 1$. Sea $\mathbb{v} = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$. Esto significa que, para $\lambda = 1$
     $$\begin{bmatrix}
         1 & 1 & 1 \\
@@ -427,8 +514,6 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     Por lo tanto, $\dim(E_{\lambda}) = 1$. En consecuencia, la multiplicidad geométrica del eigenvalor $\lambda = 1$ es igual a $1$.
 \end{example}
 
-\newpage
-
 \section{Matrices semejantes y diagonalización}
 
 \begin{definition}
@@ -444,6 +529,8 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     \end{align*}
     A esta transformación $T$, que lleva la matriz $A$ a la matriz $B$, se le conoce como \emph{transformación de semejanza}.
 \end{definition}
+
+\newpage
 
 \begin{theorem}
     Sean $A$, $B \in \mathcal{M}_{n \times n}(\RR)$ dos matrices semejantes, entonces $A$ y $B$ tienen el mismo polinomio característico y, por consiguiente, tienen los mismos eigenvalores. \\
@@ -476,7 +563,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     Si $C$ es una matriz cuyas columnas son eigenvectores linealmente independientes de $A$, entonces
     $$D = C^{-1}AC$$
     \demostracion Sea $A$ una matriz de $n \times n$. Supongamos que $A$ tiene $n$ eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ linealmente independientes correspondientes a los eigenvalores $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n$ (no necesariamente diferentes). Sean
-    $$\mathbb{v}_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \vdots \\ c_{n1} \end{pmatrix}, \mathbb{v}_2 = \begin{pmatrix} c_{12} \\ c_{22} \\ \vdots \\ c_{n2} \end{pmatrix}, \dots, \mathbb{v}_n = \begin{pmatrix} c_{1n} \\ c_{2n} \\ \vdots \\ c_{nn} \end{pmatrix}$$\newpage\noindent
+    $$\mathbb{v}_1 = \begin{pmatrix} c_{11} \\ c_{21} \\ \vdots \\ c_{n1} \end{pmatrix}, \mathbb{v}_2 = \begin{pmatrix} c_{12} \\ c_{22} \\ \vdots \\ c_{n2} \end{pmatrix}, \dots, \mathbb{v}_n = \begin{pmatrix} c_{1n} \\ c_{2n} \\ \vdots \\ c_{nn} \end{pmatrix}$$
     y sea\infoBulle{Si los vectores columna de una matriz de $n \times n$ son linealmente independientes, entonces la matriz tiene rango $n$, lo que significa que su determinante es distinto de cero. Ya que el determinante distinto de cero es una condición necesaria y suficiente para que una matriz sea invertible, podemos concluir que la matriz es invertible si sus vectores columna son linealmente independientes.}
     \begin{equation*}
         C = \left[\begin{array}{cccc}
@@ -506,7 +593,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     Entonces $C$ es invertible ya que sus columnas son linealmente independientes. Ahora bien,
     $$AC = \begin{bmatrix}
         A\mathbb{v}_1 & A\mathbb{v}_2 & \cdots & A\mathbb{v}_n
-    \end{bmatrix}$$
+    \end{bmatrix}$$\newpage\noindent
     Pero por la definición \ref{def:eigenvalor}, se sigue que
     $$AC = \begin{bmatrix}
         \lambda_1\mathbb{v}_1 & \lambda_2\mathbb{v}_2 & \cdots & \lambda_n\mathbb{v}_n
@@ -609,7 +696,7 @@ De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_
     \item Demuestre que si $A$ es una matriz diagonal, entonces los eigenvalores de $A$ son las componentes de la diagonal de $A$.
     \item Sea $A_{1}=\begin{bmatrix*}2 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{2}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{3}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{4}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 2\end{bmatrix*}$.
     Demuestre que para cada matriz $\lambda=2$ es un eigenvalor con multiplicidad algebraica $4$. En cada caso calcule la multiplicidad geométrica de $\lambda=2$.
-    \item Sea $A$ una matriz real de $n \times n$. Demuestre que si $\lambda_{1}$ es un eigenvalor complejo de $A$ con eigenvector $\mathbb{v}_{1}$, entonces $\overline{\lambda_{1}}$ es un eigenvalor de $A$ con eigenvector $\overline{\mathbb{v}}_{1}$.
+    \item Sea $A$ una matriz real de $n \times n$. Demuestre que si $\lambda_{1}$ es un eigenvalor complejo de $A$ con eigenvector $\mathbb{v}_{1}$, entonces $\overline{\lambda_{1}}$ es un eigenvalor de $A$ con eigenvector $\overline{\mathbb{v}_{1}}$.
     \item Una matriz de probabilidad es una matriz de $n \times n$ que tiene dos propiedades:
     \begin{enumerate}
         \item $a_{i j} \geq 0$ para toda $i$ y $j$.

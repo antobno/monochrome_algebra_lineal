@@ -132,15 +132,11 @@ BoldItalicFont=Lato Italic
 
 
 \RequirePackage{lipsum} % Genera texto aleatorio, esto sirve para hacer pruebas a la plantilla
+
+
 %------------------------------------------------------------------------------
 %	 UNIDADES DE MEDIDAS Y DIMENSIONES PARA EL DOCUMENTO
 %------------------------------------------------------------------------------
-
-\newlength{\hscale}
-\newlength{\vscale}
-% De forma predeterminada, las escalas están configuradas para funcionar para a4paper
-\setlength{\hscale}{1mm}
-\setlength{\vscale}{1mm}
 
 \setlength{\parskip}{0.8\baselineskip}
 %\setlength{\parindent}{0ex}
