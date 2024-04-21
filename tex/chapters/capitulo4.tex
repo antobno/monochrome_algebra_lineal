@@ -1445,16 +1445,16 @@ A la matriz anterior se le llama \textbf{matriz de transición} de la base $\mat
 Además, observemos que
 \begin{equation*}
     A^{-1} = \left[\begin{array}{cc}
-        \tikzmarkin[ver=style azull]{col 1-a}2 & \tikzmarkin[ver=style azull]{col 2-a}1 \\
-        1 \tikzmarkend{col 1-a} & 2\tikzmarkend{col 2-a} \\
+        \tikzmarkin[ver=style azull]{col 1-b}2 & \tikzmarkin[ver=style azull]{col 2-b}1 \\
+        1 \tikzmarkend{col 1-b} & 2\tikzmarkend{col 2-b} \\
     \end{array}\right]
     \tikz[overlay, remember picture]{
-    \node[below=20pt of col 1-a.south west](A) {};
+    \node[below=20pt of col 1-b.south west](A) {};
     \node[right=2pt of A] (B) {};
     \node[below=20pt of B] (C) {$\mathbb{u}_1$};
     \draw[-latex] (C) -- (B);
 
-    \node[below=20pt of col 2-a.south west](D) {};
+    \node[below=20pt of col 2-b.south west](D) {};
     \node[right=2pt of D] (E) {};
     \node[below=20pt of E] (F) {$\mathbb{u}_2$};
     \draw[-latex] (F) -- (E);
