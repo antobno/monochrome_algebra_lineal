@@ -726,6 +726,63 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     y según la proposición \ref{conjugado-real}, se sigue que $\lambda$ es un número real.
 \end{theorem}
 
+En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los eigenvectores asociados a eigenvalores distintos son linealmente independientes. Sin embargo, para matrices simétricas reales, el resultado es aún más sorprendente: los eigenvectores de una matriz simétrica real correspondientes a eigenvalores distintos son ortogonales.
+
+\newpage
+
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$ simétrica. Si $\lambda_1$ y $\lambda_2$ son eigenvalores distintos con eigenvectores reales correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$, entonces $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales. \\
+    \demostracion Sea $\lambda_1$ y $\lambda_2$ eigenvalores de $A$ distintos correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$. De la definición del producto interno (definición \ref{def:espaciocomplejo_productointerno}), obtenemos
+    \begin{align*}
+        \langle A\mathbb{v}_1, \mathbb{v}_2 \rangle & = \langle \lambda_1 \mathbb{v}_1, \mathbb{v}_2 \rangle \\
+        & = \lambda \langle \mathbb{v}_1, \mathbb{v}_2 \rangle
+    \end{align*}
+    Dado que $A$ es simétrica, entonces $A = A^T$. Por el teorema \ref{JAJSJSJSJJSJSHSTTYQUUQHIAIIQVVCGTQYHHAHAHA} y el teorema anterior, se sigue que
+    \begin{align*}
+        \langle A\mathbb{v}_1, \mathbb{v}_2 \rangle & = \left\langle \mathbb{v}_1, A^T \mathbb{v}_2 \right\rangle \\
+        & = \langle \mathbb{v}_1, A\mathbb{v}_2 \rangle \\
+        & = \langle \mathbb{v}_1, \lambda_2 \mathbb{v}_2 \rangle \\
+        & = \overline{\lambda_2} \langle \mathbb{v}_1, \mathbb{v}_2 \rangle \\
+        & = \lambda_2 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle
+    \end{align*}
+    Por lo tanto, consideremos la siguiente expresión
+    $$\lambda_1 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle = \lambda_2 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle$$
+    De esta ecuación, podemos deducir lo siguiente
+    $$(\lambda_1 - \lambda_2) \langle \mathbb{v}_1, \mathbb{v}_2 \rangle = 0$$
+    Dado que los eigenvalores $\lambda_1$ y $\lambda_2$ son distintos, podemos afirmar que $\lambda_1 \neq \lambda_2$. Por lo tanto, $\lambda_1 - \lambda_2 \neq 0$. Esto nos lleva a la conclusión de que $\langle \mathbb{v}_1, \mathbb{v}_2 \rangle = 0$. Según la definición \ref{orto_prodinterno}, esto implica que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales.
+\end{theorem}
+
+\begin{definition}
+    Se dice que una matriz $A \in \mathcal{M}_{n \times n}(\RR)$ es diagonalizable ortogonalmente si existe una matriz ortogonal $Q$ tal que
+    $$D = Q^{T}AQ$$
+    donde $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$ y $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de la matriz $A$.
+\end{definition}
+
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$. Entonces $A$ es diagonalizable ortogonalmente si y solo si $A$ es simétrica. \\
+    \demostracion Por la definición anterior, $A$ es diagonalizable ortogonalmente si y solo si existe una matriz $Q$ ortogonal tal que
+    $$D = Q^{T}AQ$$
+    donde $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$ y $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de la matriz $A$. Así
+    $$D = Q^{T}AQ$$
+    Al multiplicar la ecuación anterior por la izquierda por $Q$, se sigue que
+    $$QD = QQ^{T}AQ$$
+    Al utilizar el hecho de que $QQ^{T} = I_n$ y al multiplicar por la derecha por $Q^{T}$, obtenemos
+    $$QDQ^{T} = AQQ^{T}$$
+    De igual manera, al utilizar el hecho de que $QQ^{T} = I_n$, se sigue que
+    $$QDQ^{T} = A$$\newpage\noindent
+    Ahora bien, utilizando el teorema \ref{theo:matrixtranspu}, se sigue que
+    \begin{align*}
+        A^{T} & = \left( QDQ^{T} \right)^{T} \\
+        & = \left( Q^{T} \right)^{T} D^{T} Q^{T}
+    \end{align*}
+    Utilizando el inciso (i) de la proposición \ref{propiedades_transpuesta} y el inciso (iv) de la proposición \ref{propiedades_diagonal}, obtenemos
+    \begin{align*}
+        A^T & = QDQ^{T} \\
+        & = A
+    \end{align*}
+    Así, $A$ es simétrica y el teorema queda demostrado.
+\end{theorem}
+
 \section{El teorema de Cayley-Hamilton}
 
 \newpage

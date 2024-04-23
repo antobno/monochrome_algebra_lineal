@@ -989,7 +989,7 @@ Para que sea más claro de ver, observe la figura \ref{bhfrfbhfbhh}. Proporciona
     \end{bmatrix} = (AB)^T$$
 \end{theorem}
 
-\begin{proposition}
+\begin{proposition}\label{propiedades_transpuesta}
     Sean $A$, $B \in \mathcal{M}_{n \times n}(\RR)$ y sea $\alpha \in \RR$, entonces
     \begin{enumerate}[label=\roman*.]
         \item $\left(A^T\right)^T = A$.
@@ -1013,12 +1013,13 @@ Para que sea más claro de ver, observe la figura \ref{bhfrfbhfbhh}. Proporciona
     entonces $A = \operatorname{diag} \{ -1, -6, -9 \}$.
 \end{example}
 
-\begin{proposition}
+\begin{proposition}\label{propiedades_diagonal}
     Sean $A$, $B$ matrices diagonales y sea $\alpha \in \RR$, entonces
     \begin{enumerate}[label=\roman*.]
         \item $A+B$ es diagonal.
         \item $AB$ es diagonal.
         \item $\alpha A$ es diagonal.
+        \item $A^{T} = A$.
     \end{enumerate}
     \demostracion Se dejan como ejercicio al lector.
 \end{proposition}
