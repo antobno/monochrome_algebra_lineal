@@ -380,7 +380,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     bottom=2mm,
     title={Un método eficiente para encontrar los eigenvalores y eigenvectores de una matriz $2 \times 2$:}
 ]
-    Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales dada por
+    \label{metodo_eigen_2x2}Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales dada por
     $$A = \begin{bmatrix}
         a & b \\
         c & d
@@ -414,6 +414,12 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
         \item Si $b = c = 0$, entonces la matriz es diagonal, lo que significa que sus eigenvectores son simplemente $\mathbb{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
     \end{enumerate}
 \end{tcolorbox}
+
+\infoBulle{Cuando hablamos de eigenvalores y eigenvectores, estamos tratando con propiedades especiales de las matrices cuadradas. Un eigenvalor es un número escalar que representa cómo un eigenvector se estira o contrae cuando se multiplica por la matriz. En otras palabras, si tenemos una matriz $A$ y un eigenvector $\mathbb{v}$, entonces tenemos
+$$A\mathbb{v} = \lambda \mathbb{v}$$
+Ahora, consideremos un escalar $k$. Si multiplicamos la matriz $A$ por $k$, la nueva matriz resultante $kA$ tendrá los mismos eigenvectores que la matriz original $A$. Esto significa que los eigenvalores de $kA$ también serán los mismos que los de $A$. En términos más formales, si $\lambda$ es un eigenvalor de $A$, entonces $k\lambda$ también será un eigenvalor de $kA$. Esto se debe a que:
+$$(kA)\mathbb{v} = k(A\mathbb{v}) = k(\lambda \mathbb{v}) = \lambda (k\mathbb{v})$$
+Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ multiplicados por el escalar $k$. En otras palabras, podemos multiplicar los eigenvectores de $A$, obtenidos en los incisos (i) y (ii), por un escalar $k$ y estos seguirán siendo eigenvectores de $A$.}
 
 \newpage
 
@@ -635,6 +641,89 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
 \begin{theorem}
     Si una matriz $A$ de $n \times n$ tiene $n$ eigenvalores diferentes, entonces $A$ es diagonalizable. \\
     \demostracion Dado que $A$ tiene $n$ eigenvalores distintos, según el teorema \ref{eigenvalores_distintos_eigenvectoresli}, posee $n$ eigenvectores linealmente independientes. Además, con base en el teorema previo, se deduce que $A$ es diagonalizable.
+\end{theorem}
+
+\begin{example}
+    Sea $A = \begin{bmatrix*}[r]
+        2 & -1 \\
+        5 & -2
+    \end{bmatrix*}$. ¿Es diagonalizable? Sí lo es, determine la matriz diagonal. \\
+    \solucion En primer lugar, determinemos los eigenvalores de $A$. Utilizando el método expuesto en la página \pageref{metodo_eigen_2x2}, se obtiene que los eigenvalores son
+    \begin{align*}
+        \lambda_1 & = \frac{0 + \sqrt{(0)^2 - 4(1)}}{2} & \lambda_2 & = \frac{0 - \sqrt{(0)^2 - 4(1)}}{2} \\
+        & = i & & = - i
+    \end{align*}
+    De acuerdo con el teorema anterior, como $\lambda_1 \neq \lambda_2$, se concluye que $A$ es diagonalizable. Ahora, determinemos los eigenvectores correspondientes a $\lambda_1 = i$ y $\lambda_2 = -i$. Dado que $b \neq 0$ y $c \neq 0$, podemos emplear cualquiera de las dos fórmulas indicadas en la página \pageref{metodo_eigen_2x2}. Optemos por las fórmulas del inciso (ii), obteniendo así
+    \begin{align*}
+        \mathbb{v}_1 & = \begin{pmatrix} -1 \\ i - 2 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} -1 \\ - i -2 \end{pmatrix} \\
+        & = \begin{pmatrix} 1 \\ 2 - i \end{pmatrix} & & = \begin{pmatrix} 1 \\ 2 + i \end{pmatrix}
+    \end{align*}
+    Ahora bien, sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$. Es decir,
+    \begin{align*}
+        C & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix} 1 & 1 \\ 2 - i & 2 + i \end{bmatrix}
+    \end{align*}\newpage\noindent
+    Ahora, determinemos $C^{-1}$ mediante la expresión \ref{Jjaksksksisid},
+    \begin{align*}
+        C^{-1} & = \frac{1}{2i} \begin{bmatrix*}[r]
+            2 + i & - 1 \\
+            -(2 - i) & 1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            \dfrac{1}{2} - i & \dfrac{1}{2}i \\[2mm]
+            \dfrac{1}{2} + i & - \dfrac{1}{2}i
+        \end{bmatrix*}
+    \end{align*}
+    Así, obtenemos
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix*}[r]
+            \dfrac{1}{2} - i & \dfrac{1}{2}i \\[2mm]
+            \dfrac{1}{2} + i & - \dfrac{1}{2}i
+        \end{bmatrix*} \begin{bmatrix*}
+            2 & - 1 \\
+            5 & - 2
+        \end{bmatrix*} \begin{bmatrix}
+            1 & 1 \\
+            2 - i & 2 + i
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            1 + \dfrac{1}{2}i & - \dfrac{1}{2} \\[2mm]
+            1 - \dfrac{1}{2}i & - \dfrac{1}{2}
+        \end{bmatrix} \begin{bmatrix}
+            1 & 1 \\
+            2 - i & 2 + i
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            i & 0 \\
+            0 & - i
+        \end{bmatrix*}
+    \end{align*}
+    que corresponde a la matriz $D$ diagonal deseada.
+\end{example}
+
+\section{Análisis de matrices simétricas y diagonalización ortogonal}
+
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{n \times n}(\RR)$ una matriz simétrica. Entonces los eigenvalores de $A$ son números reales. \\
+    \demostracion Sea $\lambda$ un eigenvalor de $A$ con eigenvector $\mathbf{v}$, es decir,
+    $$A\mathbf{v} = \lambda \mathbf{v}$$
+    En general, $\lambda \in \mathbb{C}$, por lo tanto, $\mathbf{v} \in \mathbb{C}^n$. Utilizando el producto interno definido en el ejemplo \ref{interno-usual_complejo}, obtenemos
+    \begin{align*}
+        \langle A\mathbb{v}, \mathbb{v} \rangle & = \langle \lambda \mathbb{v}, \mathbb{v} \rangle \\
+        & = \lambda \langle \mathbb{v}, \mathbb{v} \rangle
+    \end{align*}
+    Dado que $A$ es simétrica, entonces $A = A^T$, y según el teorema \ref{JAJSJSJSJJSJSHSTTYQUUQHIAIIQVVCGTQYHHAHAHA}, se sigue que
+    \begin{align*}
+        \langle A\mathbb{v}, \mathbb{v} \rangle & = \left\langle \mathbb{v}, A^T \mathbb{v} \right\rangle \\
+        & = \langle \mathbb{v}, A\mathbb{v} \rangle \\
+        & = \langle \mathbb{v}, \lambda \mathbb{v} \rangle \\
+        & = \overline{\lambda} \langle \mathbb{v}, \mathbb{v} \rangle
+    \end{align*}
+    Por lo tanto,
+    $$\lambda \langle \mathbb{v}, \mathbb{v} \rangle = \overline{\lambda} \langle \mathbb{v}, \mathbb{v} \rangle$$
+    pero $\langle \mathbb{v}, \mathbb{v} \rangle = \| \mathbb{v} \| \neq 0$, ya que $\mathbb{v}$ es un eigenvector, es decir, $\mathbb{v} \neq \mathbb{0}$. Dividiendo ambos lados entre $\langle \mathbb{v}, \mathbb{v} \rangle$, obtenemos
+    $$\lambda = \overline{\lambda}$$
+    y según la proposición \ref{conjugado-real}, se sigue que $\lambda$ es un número real.
 \end{theorem}
 
 \section{El teorema de Cayley-Hamilton}
