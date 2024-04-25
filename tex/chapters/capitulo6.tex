@@ -417,7 +417,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
 
 \infoBulle{Cuando hablamos de eigenvalores y eigenvectores, estamos tratando con propiedades especiales de las matrices cuadradas. Un eigenvalor es un número escalar que representa cómo un eigenvector se estira o contrae cuando se multiplica por la matriz. En otras palabras, si tenemos una matriz $A$ y un eigenvector $\mathbb{v}$, entonces tenemos
 $$A\mathbb{v} = \lambda \mathbb{v}$$
-Ahora, consideremos un escalar $k$. Si multiplicamos la matriz $A$ por $k$, la nueva matriz resultante $kA$ tendrá los mismos eigenvectores que la matriz original $A$. Esto significa que los eigenvalores de $kA$ también serán los mismos que los de $A$. En términos más formales, si $\lambda$ es un eigenvalor de $A$, entonces $k\lambda$ también será un eigenvalor de $kA$. Esto se debe a que:
+Ahora, consideremos un escalar $k$ no nulo. Si multiplicamos la matriz $A$ por $k$, la nueva matriz resultante $kA$ tendrá los mismos eigenvectores que la matriz original $A$. Esto significa que los eigenvalores de $kA$ también serán los mismos que los de $A$. En términos más formales, si $\lambda$ es un eigenvalor de $A$, entonces $k\lambda$ también será un eigenvalor de $kA$. Esto se debe a que:
 $$(kA)\mathbb{v} = k(A\mathbb{v}) = k(\lambda \mathbb{v}) = \lambda (k\mathbb{v})$$
 Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ multiplicados por el escalar $k$. En otras palabras, podemos multiplicar los eigenvectores de $A$, obtenidos en los incisos (i) y (ii), por un escalar $k$ y estos seguirán siendo eigenvectores de $A$.}
 
@@ -854,4 +854,37 @@ De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_
     Demuestre que $a+b m$ es un eigenvalor de $A$ con eigenvector correspondiente $\mathbb{v}=\begin{pmatrix*}1 \\ m\end{pmatrix*}$. Esto proporciona un método sencillo para calcular los valores y vectores característicos de las matrices de $2 \times 2$.
     \item Sea $A=\begin{bmatrix*}[r]a & 0 \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Demuestre que $d$ es un eigenvalor de $A$ con eigenvector correspondiente $\begin{pmatrix*}1 \\ 0\end{pmatrix*}$.\newpage
     \item Sea $A=\begin{bmatrix*}[r]\alpha & \beta \\ -\beta & \alpha\end{bmatrix*}$, donde $\alpha, \beta \in \RR$. Encuentre los eigenvalores de la matriz $B=A^{T} A$.
+\end{enumerate}
+De los problemas 44 al 53 encuentre la matriz ortogonal $Q$ que diagonaliza la matriz simétrica dada. Después verifique que $Q^{T} A Q=D$, una matriz diagonal cuyas componentes diagonales son los eigenvalores de $A$.
+\begin{tasks}[
+    style=enumerate,
+    label-offset = 3mm,
+    start=44,
+    %label-width = 13.97498pt,
+    ](2)
+    %\task $\begin{bmatrix*}3 & 2 \\ 2 & 3\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]3 & 4 \\ 4 & -3\end{bmatrix*}$
+    \task $\begin{bmatrix*}2 & 1 \\ 1 & 2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-4 & 2 \\ 2 & 5\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 \\ -1 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]20 & 16 & -4 \\ 16 & 32 & 16 \\ -4 & 16 & 20\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]-1 & 2 & 2 \\ 2 & -1 & 2 \\ 2 & 2 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$
+    \task $\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$
+\end{tasks}
+\begin{enumerate}[start=54]
+    \item Sea $Q$ una matriz ortogonal simétrica. Demuestre que si $\lambda$ es un eigenvalor de $Q$, entonces $\lambda= \pm 1$.
+    \item La matriz $A$ es ortogonalmente semejante a la matriz $B$ si existe una matriz ortogonal $Q$ tal que $B=Q^{T} A Q$. Suponga que $A$ es ortogonalmente semejante a $B$ y que $B$ es ortogonalmente semejante a $C$. Demuestre que $A$ es ortogonalmente semejante a $C$.
+    \item Demuestre que si $Q=\begin{bmatrix*}a & b \\ c & d\end{bmatrix*}$ es ortogonal, entonces $b= \pm c$.
+    \item Suponga que $A$ es una matriz simétrica real para la que todos sus eigenvalores son cero. Demuestre que $A$ es la matriz cero.
+    \item Demuestre que si una matriz real $A$ de $2 \times 2$ tiene eigenvectores ortogonales, entonces $A$ es simétrica.
+    \item Sea $A$ una matriz real antisimétrica. Demuestre que todo eigenvalor de $A$ es de la forma $i \alpha$, donde $\alpha \in \RR$ e $i=\sqrt{-1}$. Es decir, demuestre que todo eigenvalor de $A$ es un número imaginario.
+    \item Demuestre que los eigenvalores de una matriz hermitiana compleja de $n \times n$ son reales.
+    \item Si $A$ es una matriz hermitiana de $n \times n$, demuestre que los eigenvectores correspondientes a eigenvalores distintos son ortogonales.
+    %\item Repitiendo la demostración del teorema 8.4.3, pero sustituyendo $\overline{\mathbb{v}}_i^{t}$ por $\mathbb{v}_i^{t}$ donde sea adecuado, demuestre que cualquier matriz hermitiana de $n \times n$ tiene $n$ eigenvectores ortonormales.
+    \item Encuentre una matriz unitaria $U$ tal que $U^* A U$ es diagonal, donde $A=\begin{bmatrix*}0 & 3-2 i \\ 3+2 i & 0\end{bmatrix*}$.
+    \item Haga lo mismo que en el problema anterior para $A=\begin{bmatrix*}-2 & -3+2 i \\ -3-4 i & 2\end{bmatrix*}$.
+    \item Demuestre que el determinante de una matriz hermitiana es real.
 \end{enumerate}

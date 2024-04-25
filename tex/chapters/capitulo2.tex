@@ -375,11 +375,10 @@ Para que sea más claro de ver, observe la figura \ref{bhfrfbhfbhh}. Proporciona
         matrix of math nodes,
         outer sep=0pt,
         nodes={
-            draw,
+            draw=gray,
             text width=2.5em,
             align=center,
-            minimum height=2.5em,
-            text=gray
+            minimum height=2.75em
         },
         nodes in empty cells,
         column sep=-\pgflinewidth,
@@ -387,79 +386,55 @@ Para que sea más claro de ver, observe la figura \ref{bhfrfbhfbhh}. Proporciona
         left delimiter=[,
         right delimiter=],
         },
-        mycircle/.style 2 args={
-        draw=#1,
-        circle,
-        fill=#2,
-        line width=2pt,
-        inner sep=5pt
-        },
-        arr/.style={
-        line width=4pt,
-        -{Triangle[angle=60:1.5pt 3]},
-        #1,
-        shorten >= 3pt,
-        shorten <= 3pt
-        }
         ]
 
-        %the matrices
+        % Las matrices
         \matrix[mymatrix] (A)
         {
-        |[text=black]|a_{11} & |[text=black]|a_{12} \\
-        |[text=black]|a_{21} & |[text=black]|a_{22} \\
+        a_{11} & a_{12} \\
+        a_{21} & a_{22} \\
         };
+        
         \matrix[mymatrix,right=of A.north east,anchor=north west] (prod)
         {
-        & \\
-        & \\
-        %& \\
-        %& & \\
+        & & \\
+        & & \\
         };
+        
         \matrix[mymatrix,above=of prod.north west,anchor=south west] (B)
         {
-        |[text=black]|b_{11} & |[text=black]|b_{12} \\
-        |[text=black]|b_{21} & |[text=black]|b_{22} \\
+        b_{11} & b_{12} & b_{13} \\
+        b_{21} & b_{22} & b_{23} \\
         };
         
-        %the labels for the matrices
-        \node[font=\Large,above=2pt of A] {$A$};
-        \node[font=\Large,right=6pt of B] {$B$};
+        % Los nombres de las matrices
+        \node[font=\Large,left=6pt of A] {$A = $};
+        \node[font=\Large,left=6pt of B] {$B = $};
         
-        %the frames in both matrices
-        \draw[line width=2pt]
-        ([shift={(1.2pt,-1.2pt)}]A-1-1.north west) 
-        rectangle ([shift={(-1.2pt,1.2pt)}]A-1-2.south east);
-        \draw[line width=2pt]
-        ([shift={(1.2pt,-1.2pt)}]B-1-1.north west) 
-        rectangle 
-        ([shift={(-1.2pt,1.2pt)}]B-2-1.south east);
-        \draw[line width=2pt]
-        ([shift={(1.2pt,-1.2pt)}]A-2-1.north west)
-        rectangle 
-        ([shift={(-1.2pt,1.2pt)}]A-2-2.south east);
-        \draw[line width=2pt]
-        ([shift={(1.2pt,-1.2pt)}]B-1-2.north west) 
-        rectangle 
-        ([shift={(-1.2pt,1.2pt)}]B-2-2.south east);
+        % Las celdas rellenas de las matrices A y B
+        \filldraw[gray,opacity=0.15] (A-1-1.north west) rectangle (A-1-2.south east);
+        \filldraw[gray,opacity=0.15] (B-1-2.north west) rectangle (B-2-3.south east);
+        \filldraw[gray,opacity=0.2] (B-1-3.north west) rectangle (B-2-3.south east);
+
+        % Las celdas rellenas del producto de matrices
+        \filldraw[gray,opacity=0.15] (prod-1-1.north west) rectangle (prod-1-1.south east);
+        \filldraw[gray,opacity=0.3] (prod-2-3.north west) rectangle (prod-2-3.south east);
         
-        %the filled circles in the product
-        \node[mycircle={black}{gray!50}]
-        at (prod-2-2) (prod33) {};
-        \node[mycircle={black}{gray!50}]
+        % Los círculos llenos en el producto
+        \node
+        at (prod-2-3) (prod33) {};
+        \filldraw (prod33) circle (4pt);
+        \node
         at (prod-1-1) (prod12) {};
+        \filldraw (prod12) circle (4pt);
         
-        %the arrows
-        \draw[arr=black]
-        (A-1-2.east) -- (prod12);
-        \draw[arr=black]
-        (B-2-1.south) -- (prod12); 
-        \draw[arr=black]
-        (A-2-2.east) -- (prod33); 
-        \draw[arr=black]
-        (B-2-2.south) -- (prod33); 
+        % Las lineas interlineadas
+        \draw[dash pattern=on 3pt off 3pt]
+        (A-1-2.east) -- (prod12) -- (B-2-1.south);
+        \draw[dash pattern=on 3pt off 3pt]
+        (A-2-2.east) -- (prod33) -- (B-2-3.south); 
         
-        %the legend
+        % La leyenda de los productos de matrices
         \matrix[
         matrix of math nodes,
         nodes in empty cells,
@@ -475,14 +450,16 @@ Para que sea más claro de ver, observe la figura \ref{bhfrfbhfbhh}. Proporciona
         (legend)
         {
         & a_{11}b_{11} + a_{12}b_{21} \\
-        & a_{21}b_{12} + a_{22}b_{22} \\
+        & a_{21}b_{13} + a_{22}b_{23} \\
         };
-        \node[mycircle={black}{gray!50}]
-        at (legend-2-1) {};
-        \node[mycircle={black}{gray!50}]
-        at (legend-1-1) {};
+        \node[rectangle, fill=gray,opacity=0.3, inner sep=5pt] at (legend-2-1) {};
+        \node[rectangle,draw=gray,minimum size=10pt,line width=0.6pt,
+        inner sep=5pt] at (legend-2-1) {};
+        \node[rectangle, fill=gray,opacity=0.15, inner sep=5pt] at (legend-1-1) {};
+        \node[rectangle,draw=gray,minimum size=10pt,line width=0.6pt,
+        inner sep=5pt] at (legend-1-1) {};
     \end{tikzpicture}
-    \caption{Representación del producto de matrices}\label{bhfrfbhfbhh}
+    \caption{La representación del producto de matrices}\label{bhfrfbhfbhh}
 \end{figure}
 \marginElement{\justify
 \noindent\colorbox{gray!20}{\parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{
