@@ -765,7 +765,7 @@ Cuando se trabaja con operadores ortogonales, es común representarlos mediante 
     \[ Q^T Q = I_n \]
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{Qorto_vectoresorto}
     Dada $Q \in \mathcal{M}_{n \times n}(\RR)$. Entonces $Q$ es ortogonal si y solo si sus vectores columnas son ortonormales. \\
     \demostracion Sea
     $$Q = \begin{bmatrix}
@@ -2148,7 +2148,7 @@ De los problemas 57 al 61 encuentre una isometría entre los pares de espacios d
     \task $\mathcal{M}_{2 \times 2}(\RR)$, $P_{3}[-1,1]$
 \end{tasks}
 \begin{enumerate}[start=62]
-    \item Sea $A$ una matriz de $n \times n$ con elementos complejos. Entonces la transpuesta conjugada de $A$, denotada por $A^{*}$, está definida por $A^{*} = \overline{\llparenthesis a_{j i} \rrparenthesis}$. Calcule $A^{*}$ si $A = \begin{bmatrix} 1+i & -4+2 i \\ 3 & 6-3 i \end{bmatrix}$.
+    \item Sea $A$ una matriz de $n \times n$ con elementos complejos. Entonces la transpuesta conjugada de $A$, denotada por $A^{*}$, está definida por $A^{*} = \overline{\llparenthesis a_{j i} \rrparenthesis}$. Calcule $A^{*}$ si $A = \begin{bmatrix} 1+i & -4+2 i \\ 3 & 6-3 i \end{bmatrix}$.\infoBulle{Los temas de matrices hermitianas y unitarias se verán a detalle más adelante, en la sección \ref{sec:matrices_sim_her_uni}.}
     \item La matriz compleja $A$ de $n \times n$ se llama hermitiana si $A^{*} = A$. Demuestre que la matriz $A = \begin{bmatrix} 4 & 3-2 i \\ 3+2 i & 6 \end{bmatrix}$ es hermitiana.
     \item Demuestre que si $A$ es hermitiana, entonces las componentes de la diagonal de $A$ son reales.
     \item La matriz compleja $A$ de $n \times n$ se llama unitaria si $A^{*}=A^{-1}$. Demuestre que la matriz

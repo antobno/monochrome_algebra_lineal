@@ -472,7 +472,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
         & = (1 - \lambda)^3 \\
         & = (-1)^3 (\lambda - 1)^3
     \end{align*}\newpage\noindent
-    Por lo tanto, los eigenvalores son las raíces del polinomio $(-1)^3 (\lambda - 1)^3 = 0$, cuya única raíz es $\lambda = 1$. De esta manera, la matriz $A$ tiene un único eigenvalor, $\lambda = 1$, con una multiplicidad algebraica de $3$. A continuación, determinemos el eigenvector asociado con $\lambda = 1$. Sea $\mathbb{v} = \begin{pmatrix} a \\ b \end{pmatrix}$ un eigenvector de $A$. Esto significa que, para $\lambda = 1$
+    Por lo tanto, los eigenvalores son las raíces del polinomio $(-1)^3 (\lambda - 1)^3 = 0$, cuya única raíz es $\lambda = 1$. De esta manera, la matriz $A$ tiene un único eigenvalor, $\lambda = 1$, con una multiplicidad algebraica de $3$. A continuación, determinemos el eigenvector asociado con $\lambda = 1$. Sea $\mathbb{v} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}$ un eigenvector de $A$. Esto significa que, para $\lambda = 1$
     $$\begin{bmatrix}
         1 & 1 & 1 \\
         0 & 1 & 1 \\
@@ -698,12 +698,12 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
             0 & - i
         \end{bmatrix*}
     \end{align*}
-    que corresponde a la matriz $D$ diagonal deseada.
+    que corresponde a la matriz diagonal $D$ formada por los eigenvectores de $A$.
 \end{example}
 
-\section{Análisis de matrices simétricas y diagonalización ortogonal}
+\section{Análisis de matrices hermitianas y diagonalización ortogonal}\label{sec:matrices_sim_her_uni}
 
-\begin{theorem}
+\begin{theorem}\label{theorem_simetrica1}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ una matriz simétrica. Entonces los eigenvalores de $A$ son números reales. \\
     \demostracion Sea $\lambda$ un eigenvalor de $A$ con eigenvector $\mathbb{v}$, es decir,
     $$A\mathbb{v} = \lambda \mathbb{v}$$
@@ -730,7 +730,7 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
 
 \newpage
 
-\begin{theorem}
+\begin{theorem}\label{theorem_simetrica2}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ simétrica. Si $\lambda_1$ y $\lambda_2$ son eigenvalores distintos con eigenvectores reales correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$, entonces $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales. \\
     \demostracion Sea $\lambda_1$ y $\lambda_2$ eigenvalores de $A$ distintos correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$. De la definición del producto interno (definición \ref{def:espaciocomplejo_productointerno}), obtenemos
     \begin{align*}
@@ -758,7 +758,7 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
     donde $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$ y $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de la matriz $A$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{theorem_simetrica3}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$. Entonces $A$ es diagonalizable ortogonalmente si y solo si $A$ es simétrica. \\
     \demostracion Por la definición anterior, $A$ es diagonalizable ortogonalmente si y solo si existe una matriz $Q$ ortogonal tal que
     $$D = Q^{T}AQ$$
@@ -781,6 +781,87 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
         & = A
     \end{align*}
     Así, $A$ es simétrica y el teorema queda demostrado.
+\end{theorem}
+
+\begin{example}
+    Consideremos la matriz $A = \begin{bmatrix*}[r]
+        1 & -1 \\
+        -1 & 1
+    \end{bmatrix*}$, la cual es simétrica. Según el teorema \ref{theorem_simetrica1}, podemos inferir que sus eigenvalores son números reales. Además, conforme al teorema \ref{theorem_simetrica2}, los eigenvectores correspondientes a sus eigenvalores son ortogonales. Finalmente, derivado del teorema \ref{theorem_simetrica3}, concluimos que $A$ es diagonalizable ortogonalmente. Para demostrar lo anteriormente mencionado, primero calcularemos los eigenvalores de $A$. Para esto, emplearemos el método detallado en la página \pageref{metodo_eigen_2x2}. Así
+    \begin{align*}
+        \lambda_1 & = \frac{2 + \sqrt{(2)^2 - 4(0)}}{2} & \lambda_2 & = \frac{2 - \sqrt{(2)^2 - 4(0)}}{2} \\
+        & = 2 & & = 0
+    \end{align*}
+    Dado que $b \neq 0$ y $c \neq 0$, podemos emplear cualquiera de las dos fórmulas indicadas en la página \pageref{metodo_eigen_2x2}. Optemos por las fórmulas del inciso (i), obteniendo
+    \begin{align*}
+        \mathbb{v}_1 & = \begin{pmatrix} 2 - 1 \\ - 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} 0 - 1 \\ - 1 \end{pmatrix} \\
+        & = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} & & = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+    \end{align*}
+    Para determinar la matriz $Q$, podemos emplear el teorema \ref{Qorto_vectoresorto}. Notemos que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales, ya que $\mathbb{v}_1 \bullet \mathbb{v}_2 = 0$. Por lo tanto,
+    \begin{align*}
+        \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 & \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{v}_2 \|} \mathbb{v}_2 \\
+        & = \begin{pmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}}
+        \end{pmatrix*} & & = \begin{pmatrix}
+            \dfrac{1}{\sqrt{2}} \\[3mm]
+            \dfrac{1}{\sqrt{2}}
+        \end{pmatrix}
+    \end{align*}
+    Así, sea $Q = \begin{bmatrix*}[r]
+        \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
+        -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+    \end{bmatrix*}$, entonces $Q^T = \begin{bmatrix*}[r]
+        \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+        \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+    \end{bmatrix*}$. Por lo tanto,
+    \begin{align*}
+        Q^TAQ & = \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            1 & -1 \\
+            -1 & 1
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            \sqrt{2} & -\sqrt{2} \\
+            0 & 0
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            2 & 0 \\
+            0 & 0
+        \end{bmatrix}
+    \end{align*}
+    que corresponde a la matriz diagonal $D$ formada por los eigenvectores de $A$.
+\end{example}
+
+\newpage
+
+En esta sección se han probado resultados para matrices simétricas reales. Estos resultados se pueden extender a matrices complejas.
+
+\begin{definition}
+    Si $A = \llparenthesis a_{ij} \rrparenthesis$ es una matriz compleja, entonces la transpuesta conjugada de $A$, denotada por $A^*$, está definida por el elemento $ij$ de $A = \overline{\llparenthesis a_{ij} \rrparenthesis}$. La matriz $A$ se denomina hermitiana si $A^* = A$.
+\end{definition}
+
+\begin{example}
+    Si $A = \begin{bmatrix}
+        5 & 3 + 7i \\
+        3 - 7i & 2
+    \end{bmatrix}$, entonces $A^* = \begin{bmatrix}
+        5 & 3 + 7i \\
+        3 - 7i & 2
+    \end{bmatrix}$. Por lo tanto, $A^* = A$ y se concluye que $A$ es una matriz hermitiana.
+\end{example}
+
+\begin{theorem}
+    Sean $A \in \mathcal{M}_{n \times n}(\CC)$, $\mathbb{x}$, $\mathbb{y} \in \CC[n]$. Entonces
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left\langle \mathbb{x}, A^*\mathbb{y} \right\rangle$$
 \end{theorem}
 
 \section{El teorema de Cayley-Hamilton}
@@ -883,7 +964,7 @@ De los problemas 44 al 53 encuentre la matriz ortogonal $Q$ que diagonaliza la m
     \item Sea $A$ una matriz real antisimétrica. Demuestre que todo eigenvalor de $A$ es de la forma $i \alpha$, donde $\alpha \in \RR$ e $i=\sqrt{-1}$. Es decir, demuestre que todo eigenvalor de $A$ es un número imaginario.
     \item Demuestre que los eigenvalores de una matriz hermitiana compleja de $n \times n$ son reales.
     \item Si $A$ es una matriz hermitiana de $n \times n$, demuestre que los eigenvectores correspondientes a eigenvalores distintos son ortogonales.
-    %\item Repitiendo la demostración del teorema 8.4.3, pero sustituyendo $\overline{\mathbb{v}}_i^{t}$ por $\mathbb{v}_i^{t}$ donde sea adecuado, demuestre que cualquier matriz hermitiana de $n \times n$ tiene $n$ eigenvectores ortonormales.
+    \item Repitiendo la demostración del teorema \ref{theorem_simetrica2}, pero sustituyendo $\overline{\mathbb{v}}_i^{t}$ por $\mathbb{v}_i^{t}$ donde sea adecuado, demuestre que cualquier matriz hermitiana de $n \times n$ tiene $n$ eigenvectores ortonormales.
     \item Encuentre una matriz unitaria $U$ tal que $U^* A U$ es diagonal, donde $A=\begin{bmatrix*}0 & 3-2 i \\ 3+2 i & 0\end{bmatrix*}$.
     \item Haga lo mismo que en el problema anterior para $A=\begin{bmatrix*}-2 & -3+2 i \\ -3-4 i & 2\end{bmatrix*}$.
     \item Demuestre que el determinante de una matriz hermitiana es real.
