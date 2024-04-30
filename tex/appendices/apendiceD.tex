@@ -775,21 +775,9 @@ es decir,
     $$x^3+bx^2+cx+d=0$$
     posee coeficientes reales (y por consiguiente, también su ecuación asociada $y^3 + py + q=0$ tiene coeficientes reales). Dado que esta ecuación es de grado impar, garantiza la existencia de al menos una raíz real. Por lo tanto, se presentan las siguientes tres posibilidades en relación con sus raíces:\newpage
     \begin{enumerate}[label=\roman*.]
-        \item Tiene tres raíces reales diferentes.
-        \item Tiene tres raíces reales y por lo menos dos de ellas iguales.
-        \item Tiene una raíz real y dos raíces complejas conjugadas.
-    \end{enumerate}
-    En el primer caso, claramente, el discriminante $\Delta$ es positivo. En el segundo caso, el discriminante $\Delta$ es cero. En el tercer caso, el discriminante $\Delta$ es negativo, pues si $x_1=\alpha + \beta i$ y $x_2=\alpha - \beta i$ son las dos raíces complejas conjugadas, entonces
-    \begin{align*}
-        \Delta &=(x_1-x_2)^2 (x_1-x_3)^2 (x_2-x_3)^2 \\ 
-        &= [2 \beta i]^2 [(\alpha - x_3)+\beta i]^2[(\alpha -x_3)-\beta i]^2 \\ 
-        &=-4 \beta^2 \left[ (\alpha - x_3)^2+\beta^2 \right] <0
-    \end{align*}
-    Debido a las tres posibilidades anteriores, si una ecuación cúbica es de coeficientes reales, entonces:
-    \begin{enumerate}[label=\roman*.]
-        \item Si $\Delta >0$, entonces tiene tres raíces reales diferentes.
+        \item Si $\Delta >0$, entonces tiene una raíz real y dos raíces complejas conjugadas.
         \item Si $\Delta =0$, entonces tiene tres raíces reales y por lo menos dos de ellas son iguales.
-        \item Si $\Delta <0$, entonces tiene una raíz real y dos raíces complejas conjugadas.
+        \item Si $\Delta <0$, entonces tiene tres raíces reales diferentes.
     \end{enumerate}
 \end{observation}
 
@@ -802,12 +790,12 @@ es decir,
     $$\frac{q^2}{4}+\frac{p^3}{27}=\frac{49}{4}>0.$$
     Entonces, la ecuación
     $$x^3-6x-9=0$$
-    tiene una raíz real y dos raíces complejas conjugadas. Según \eqref{APPCOSIPA1} y \eqref{APPCOSIPA2},
+    tiene una raíz real y dos raíces complejas conjugadas. Según las expresiones \eqref{APPCOSIPA1} y \eqref{APPCOSIPA2},
     $$u_1=\sqrt[3]{\frac{9}{2}+\frac{7}{2}}=\sqrt[3]{8} \quad \text{ y } \quad v_1=\sqrt[3]{\frac{9}{2}-\frac{7}{2}}=\sqrt[3]{1}.$$
     Por consiguiente, $u_1=2$ y $v_1=1$, es decir, $x_1=3$. Las otras dos raíces se hallan por las fórmulas \eqref{APPCOSIPA3}:
-    $$x_2=-\frac{3}{2}+\frac{\sqrt{3}}{2}i \quad \text{ y } \quad x_3=-\frac{3}{2}-\frac{\sqrt{3}}{2}i.$$
+    $$x_2 = - \frac{3}{2} + \frac{\sqrt{3}}{2}i \quad \text{ y } \quad x_2 = - \frac{3}{2} - \frac{\sqrt{3}}{2}.$$
     De aquí se deduce que las raíces de la ecuación dada son:
-    $$y_1=2, \quad y_2=-\frac{5}{2}+\frac{\sqrt{3}}{2}i, \quad y_3=-\frac{5}{2}-\frac{\sqrt{3}}{2}i.$$
+    $$y_1 = 2, \quad y_2 = - \frac{5}{2} + \frac{\sqrt{3}}{2}i, \quad y_3 = - \frac{5}{2} - \frac{\sqrt{3}}{2}i.$$
 \end{example}
 
 \begin{example}
@@ -818,7 +806,23 @@ es decir,
     De esta ecuación, obtenemos $u_1=\sqrt[3]{-8}$, lo que implica que $u_1=-2$. En consecuencia, las raíces son $x_1=-4$ y $x_2=2=x_3$.
 \end{example}
 
-\newpage
+\begin{example}
+    Resuelva la ecuación
+    $$x^3 - 9x^2 + 36x - 80 = 0.$$
+    \solucion Usando la sustitución $x = y + 3$ reducimos esta ecuación a la forma
+    $$y^3 + 9y - 26 = 0.$$
+    Notemos que $p=9$ y $q=-26$, por lo cual
+    $$\frac{q^2}{4}+\frac{p^3}{27}=196>0.$$
+    Entonces, la ecuación
+    $$y^3 + 9y - 26 = 0$$
+    tiene una raíz real y dos raíces complejas conjugadas. Según las expresiones \eqref{APPCOSIPA1} y \eqref{APPCOSIPA2},
+    $$u_1=\sqrt[3]{13 + \sqrt{196}}=\sqrt[3]{27} \quad \text{ y } \quad v_1=\sqrt[3]{13 - \sqrt{196}}=\sqrt[3]{-1}.$$
+    Por consiguiente, $u_1=3$ y $v_1=-1$, es decir, $y_1=2$. Las otras dos raíces se hallan por las fórmulas \eqref{APPCOSIPA3}:
+    $$y_2=-1+2\sqrt{3}i, \quad y_3=-1-2\sqrt{3}i.$$
+    De aquí se deduce que las raíces de la ecuación dada son:
+    $$x_1=5, \quad x_2=2+2\sqrt{3}i, \quad x_3=2-2\sqrt{3}i.$$
+\end{example}
+
 \section{La ecuación de cuarto grado}
 
 Consideremos la ecuación general de cuarto grado,
@@ -886,7 +890,7 @@ si y solo si
 \end{equation}
 
 Si $y_0$ es una solución cualquiera de la ecuación cúbica \eqref{ecuacioncuarto7.5}, la cual es llamada la \textit{resolvente} de la ecuación \eqref{ecuacioncuarto7.2} de grado cuatro, entonces por \eqref{ecuacioncuarto7.4} tenemos que:
-$$\left( x^2+\frac{a}{2}x+\frac{y_0}{2} \right)^2 = (ex+f)^2$$
+$$\left( x^2+\frac{a}{2}x+\frac{y_0}{2} \right)^2 = (ex+f)^2$$\newpage\noindent
 por tanto
 \begin{equation}
     x^2+\frac{a}{2}x+\frac{y_0}{2}=ex+f \label{ecuacioncuarto7.6}
@@ -897,8 +901,6 @@ y
 \end{equation}
 
 Las cuatro soluciones de \eqref{ecuacioncuarto7.6} y \eqref{ecuacioncuarto7.7} son las raíces de \eqref{ecuacioncuarto7.2}.
-
-\newpage
 
 \section{La ecuación de quinto grado}\label{ecuacion_quinto_grado}
 
