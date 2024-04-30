@@ -417,9 +417,9 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
 
 \infoBulle{Cuando hablamos de eigenvalores y eigenvectores, estamos tratando con propiedades especiales de las matrices cuadradas. Un eigenvalor es un número escalar que representa cómo un eigenvector se estira o contrae cuando se multiplica por la matriz. En otras palabras, si tenemos una matriz $A$ y un eigenvector $\mathbb{v}$, entonces tenemos
 $$A\mathbb{v} = \lambda \mathbb{v}$$
-Ahora, consideremos un escalar $k$ no nulo. Si multiplicamos la matriz $A$ por $k$, la nueva matriz resultante $kA$ tendrá los mismos eigenvectores que la matriz original $A$. Esto significa que los eigenvalores de $kA$ también serán los mismos que los de $A$. En términos más formales, si $\lambda$ es un eigenvalor de $A$, entonces $k\lambda$ también será un eigenvalor de $kA$. Esto se debe a que:
-$$(kA)\mathbb{v} = k(A\mathbb{v}) = k(\lambda \mathbb{v}) = \lambda (k\mathbb{v})$$
-Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ multiplicados por el escalar $k$. En otras palabras, podemos multiplicar los eigenvectores de $A$, obtenidos en los incisos (i) y (ii), por un escalar $k$ y estos seguirán siendo eigenvectores de $A$.}
+Ahora, consideremos un escalar no nulo $k$ complejo o real, y multiplicamos el eigenvector $\mathbb{v}$ por $k$, obteniendo $k\mathbb{v}$. Al aplicar la matriz $A$ a $k\mathbb{v}$, tenemos:
+$$A (k\mathbb{v}) = k(A\mathbb{v}) = k(\lambda \mathbb{v}) = \lambda (k\mathbb{v})$$
+Esto demuestra que $k\mathbb{v}$ también es un eigenvector de $A$ asociado al mismo eigenvalor $\lambda$. Por lo tanto, cualquier múltiplo escalar no nulo de un eigenvector es también un eigenvector de la matriz $A$. En resumen, al multiplicar los eigenvectores de $A$, previamente obtenidos en los incisos (i) y (ii), por un escalar $k$ no nulo, podemos obtener eigenvectores más fácilmente manipulables, los cuales conservarán su condición de eigenvectores de $A$.}
 
 \newpage
 
@@ -520,6 +520,56 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     Por lo tanto, $\dim(E_{\lambda}) = 1$. En consecuencia, la multiplicidad geométrica del eigenvalor $\lambda = 1$ es igual a $1$.
 \end{example}
 
+\begin{example}
+    Determine los eigenvalores de la matriz $A = \begin{bmatrix}
+        1 & 1 & 1 \\
+        0 & 1 & 1 \\
+        1 & 0 & 1
+    \end{bmatrix}$. \\
+    \solucion Primero calculemos el polinomio característico de la matriz $A$ usando la regla de Sarrus,
+    \begin{align*}
+        \Det(A - \lambda I_n) & = \begin{vmatrix}
+            1 - \lambda & 1 & 1 \\
+            0 & 1 - \lambda & 1 \\
+            1 & 0 & 1 - \lambda
+        \end{vmatrix} \\
+        & = (1 - \lambda)(1 - \lambda)(1 - \lambda) + (1)(1)(1) + (1)(0)(0) \\
+        & \hspace{1.5cm} - (1)(1 - \lambda)(1) - (0)(1)(1 - \lambda) - (1 - \lambda)(0)(1) \\
+        & = (1 - \lambda)^3 + 1 - 1 + \lambda \\
+        & = 1 - 3\lambda + 3\lambda^2 - \lambda^3 + \lambda \\
+        & = - \lambda^3 + 3 \lambda^2 - 2\lambda + 1
+    \end{align*}\newpage\noindent
+    Por lo tanto, los eigenvalores son las raíces del polinomio
+    $$- \lambda^3 + 3 \lambda^2 - 2\lambda + 1 = 0$$
+    o equivalentemente
+    \begin{equation}
+        \lambda^3 - 3 \lambda^2 + 2\lambda - 1 = 0 \label{ec:tercer_grado_eigen}
+    \end{equation}
+    Es fácil probar que la anterior ecuación no tiene raíces enteras ni racionales. Para resolver esta ecuación, es necesario que el lector haya visto la sección \ref{sec:B4} y la sección \ref{disc_tercergrado}. Usando la sustitución $\lambda = y + 1$, reducimos la ecuación \eqref{ec:tercer_grado_eigen} a la forma
+    \begin{equation}
+        y^3 - y - 1 = 0 \label{ec:tercer_grado_eigen2}
+    \end{equation}
+    Notemos que $p = -1$ y $q = -1$, por lo cual
+    $$\frac{q^2}{4} + \frac{p^3}{27} = \frac{23}{108} > 0$$
+    Entonces la ecuación
+    $$y^3 - y - 1 = 0$$
+    tiene una raíz real y dos raíces complejas conjugadas. Según las expresiones \eqref{APPCOSIPA1} y \eqref{APPCOSIPA2},
+    $$u_1=\sqrt[3]{\frac{1}{2}+\frac{\sqrt{69}}{18}} \quad \text{ y } \quad v_1=\sqrt[3]{\frac{1}{2}-\frac{\sqrt{69}}{18}}.$$
+    Entones una raíz de \eqref{ec:tercer_grado_eigen2}, es
+    $$y_1 = u_1 + v_1 = \sqrt[3]{\frac{1}{2}+\frac{\sqrt{69}}{18}} + \sqrt[3]{\frac{1}{2}-\frac{\sqrt{69}}{18}}$$
+    Las otras dos raíces se hallan por las fórmulas \eqref{APPCOSIPA3}. Así
+    $$y_2 = -\sqrt[3]{\frac{1}{16}+\frac{\sqrt{69}}{144}}-\sqrt[3]{\frac{1}{16}-\frac{\sqrt{69}}{144}}+\frac{\sqrt[3]{12 \sqrt{3}+4 \sqrt{23}} i-\sqrt[3]{12 \sqrt{3}-4 \sqrt{23}} i}{4}$$
+    y
+    $$y_3 = -\sqrt[3]{\frac{1}{16}-\frac{\sqrt{69}}{144}}-\sqrt[3]{\frac{1}{16}+\frac{\sqrt{69}}{144}}+\frac{\sqrt[3]{12 \sqrt{3}-4 \sqrt{23}} i-\sqrt[3]{12 \sqrt{3}+4 \sqrt{23}} i}{4}$$
+    Finalmente, revirtiendo la sustitución inicial obtenemos que las raíces de la ecuación \eqref{ec:tercer_grado_eigen} está dadas por
+    $$\lambda_1 = y_1 + 1, \quad \lambda_2 = y_2 + 1, \quad \lambda_3 = y_3 + 1$$
+\end{example}
+
+\begin{observation}
+    El cálculo de los eigenvalores y eigenvectores para matrices de dimensión $3 \times 3$ representa un proceso considerablemente más laborioso y complejo que el correspondiente a matrices de $2 \times 2$. En el caso de matrices $2 \times 2$, es posible llevar a cabo el procedimiento de manera relativamente directa, empleando métodos como el que se describe en la página \pageref{metodo_eigen_2x2}. Por otro lado, para matrices de $3 \times 3$, se hace necesario resolver un sistema de ecuaciones más amplio y elaborado para determinar los eigenvectores, lo cual demanda una inversión mayor de tiempo y esfuerzo. Adicionalmente, al tratar con matrices de $3 \times 3$, surge la obligación de solucionar ecuaciones polinómicas de mayor complejidad para hallar los eigenvalores, incrementando así el nivel de dificultad del proceso. La magnitud de las operaciones y la complejidad matemática inherente al cálculo de eigenvalores y eigenvectores para matrices de $3 \times 3$ convierten a esta tarea en un desafío significativamente más exigente en comparación con su análogo de menor dimensión. \newpage
+    Por esta razón, en el presente texto de Álgebra Lineal, optamos por concentrarnos exclusivamente en matrices de $2 \times 2$. Esta elección está motivada por el deseo de ofrecer a los lectores una exposición clara y concisa de los conceptos esenciales, evitando sobrecargarlos con la intrincada complejidad que conllevan las matrices de dimensiones superiores. Al restringir nuestro enfoque a matrices de $2 \times 2$, permitimos que los estudiantes se enfoquen en la comprensión profunda de los principios fundamentales y en el desarrollo de habilidades robustas que les servirán de cimiento para abordar conceptos más avanzados en etapas educativas subsiguientes.
+\end{observation}
+
 \section{Matrices semejantes y diagonalización}
 
 \begin{definition}
@@ -535,8 +585,6 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     \end{align*}
     A esta transformación $T$, que lleva la matriz $A$ a la matriz $B$, se le conoce como \emph{transformación de semejanza}.
 \end{definition}
-
-\newpage
 
 \begin{theorem}
     Sean $A$, $B \in \mathcal{M}_{n \times n}(\RR)$ dos matrices semejantes, entonces $A$ y $B$ tienen el mismo polinomio característico y, por consiguiente, tienen los mismos eigenvalores. \\
@@ -565,7 +613,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
         0 & \lambda_2 & \cdots & 0 \\
         \vdots & & \ddots & \\
         0 & 0 & \cdots & \lambda_n
-    \end{bmatrix}$$
+    \end{bmatrix}$$\newpage\noindent
     Si $C$ es una matriz cuyas columnas son eigenvectores linealmente independientes de $A$, entonces
     $$D = C^{-1}AC$$
     \demostracion Sea $A$ una matriz de $n \times n$. Supongamos que $A$ tiene $n$ eigenvectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ linealmente independientes correspondientes a los eigenvalores $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_n$ (no necesariamente diferentes). Sean
@@ -599,7 +647,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     Entonces $C$ es invertible ya que sus columnas son linealmente independientes. Ahora bien,
     $$AC = \begin{bmatrix}
         A\mathbb{v}_1 & A\mathbb{v}_2 & \cdots & A\mathbb{v}_n
-    \end{bmatrix}$$\newpage\noindent
+    \end{bmatrix}$$
     Pero por la definición \ref{def:eigenvalor}, se sigue que
     $$AC = \begin{bmatrix}
         \lambda_1\mathbb{v}_1 & \lambda_2\mathbb{v}_2 & \cdots & \lambda_n\mathbb{v}_n
@@ -643,6 +691,8 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     \demostracion Dado que $A$ tiene $n$ eigenvalores distintos, según el teorema \ref{eigenvalores_distintos_eigenvectoresli}, posee $n$ eigenvectores linealmente independientes. Además, con base en el teorema previo, se deduce que $A$ es diagonalizable.
 \end{theorem}
 
+\newpage
+
 \begin{example}
     Sea $A = \begin{bmatrix*}[r]
         2 & -1 \\
@@ -662,7 +712,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     \begin{align*}
         C & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
         & = \begin{bmatrix} 1 & 1 \\ 2 - i & 2 + i \end{bmatrix}
-    \end{align*}\newpage\noindent
+    \end{align*}
     Ahora, determinemos $C^{-1}$ mediante la expresión \ref{Jjaksksksisid},
     \begin{align*}
         C^{-1} & = \frac{1}{2i} \begin{bmatrix*}[r]
@@ -706,7 +756,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
 \begin{theorem}\label{theorem_simetrica1}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ una matriz simétrica. Entonces los eigenvalores de $A$ son números reales. \\
     \demostracion Sea $\lambda$ un eigenvalor de $A$ con eigenvector $\mathbb{v}$, es decir,
-    $$A\mathbb{v} = \lambda \mathbb{v}$$
+    $$A\mathbb{v} = \lambda \mathbb{v}$$\newpage\noindent
     En general, $\lambda \in \CC$, por lo tanto, $\mathbb{v} \in \CC[n]$. De la definición del producto interno (definición \ref{def:espaciocomplejo_productointerno}), obtenemos
     \begin{align*}
         \langle A\mathbb{v}, \mathbb{v} \rangle & = \langle \lambda \mathbb{v}, \mathbb{v} \rangle \\
@@ -726,9 +776,7 @@ Por lo tanto, los eigenvalores de $kA$ son simplemente los eigenvalores de $A$ m
     y según la proposición \ref{conjugado-real}, se sigue que $\lambda$ es un número real.
 \end{theorem}
 
-En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los eigenvectores asociados a eigenvalores distintos son linealmente independientes. Sin embargo, para matrices simétricas reales, el resultado es aún más sorprendente: los eigenvectores de una matriz simétrica real correspondientes a eigenvalores distintos son ortogonales.
-
-\newpage
+En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los eigenvectores asociados a eigenvalores distintos son linealmente independientes. Sin embargo, para matrices simétricas reales, el resultado es aún más sorprendente: \emph{los eigenvectores de una matriz simétrica real correspondientes a eigenvalores distintos son ortogonales}.
 
 \begin{theorem}\label{theorem_simetrica2}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ simétrica. Si $\lambda_1$ y $\lambda_2$ son eigenvalores distintos con eigenvectores reales correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$, entonces $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales. \\
@@ -752,6 +800,8 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
     Dado que los eigenvalores $\lambda_1$ y $\lambda_2$ son distintos, podemos afirmar que $\lambda_1 \neq \lambda_2$. Por lo tanto, $\lambda_1 - \lambda_2 \neq 0$. Esto nos lleva a la conclusión de que $\langle \mathbb{v}_1, \mathbb{v}_2 \rangle = 0$. Según la definición \ref{orto_prodinterno}, esto implica que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales.
 \end{theorem}
 
+\newpage
+
 \begin{definition}
     Se dice que una matriz $A \in \mathcal{M}_{n \times n}(\RR)$ es diagonalizable ortogonalmente si existe una matriz ortogonal $Q$ tal que
     $$D = Q^{T}AQ$$
@@ -769,7 +819,7 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
     Al utilizar el hecho de que $QQ^{T} = I_n$ y al multiplicar por la derecha por $Q^{T}$, obtenemos
     $$QDQ^{T} = AQQ^{T}$$
     De igual manera, al utilizar el hecho de que $QQ^{T} = I_n$, se sigue que
-    $$QDQ^{T} = A$$\newpage\noindent
+    $$QDQ^{T} = A$$
     Ahora bien, utilizando el teorema \ref{theo:matrixtranspu}, se sigue que
     \begin{align*}
         A^{T} & = \left( QDQ^{T} \right)^{T} \\
@@ -796,7 +846,7 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
     \begin{align*}
         \mathbb{v}_1 & = \begin{pmatrix} 2 - 1 \\ - 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} 0 - 1 \\ - 1 \end{pmatrix} \\
         & = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} & & = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
-    \end{align*}
+    \end{align*}\newpage\noindent
     Para determinar la matriz $Q$, podemos emplear el teorema \ref{Qorto_vectoresorto}. Notemos que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales, ya que $\mathbb{v}_1 \bullet \mathbb{v}_2 = 0$. Por lo tanto,
     \begin{align*}
         \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 & \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{v}_2 \|} \mathbb{v}_2 \\
@@ -838,10 +888,8 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
             0 & 0
         \end{bmatrix}
     \end{align*}
-    que corresponde a la matriz diagonal $D$ formada por los eigenvectores de $A$.
+    que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$.
 \end{example}
-
-\newpage
 
 En esta sección se han probado resultados para matrices simétricas reales. Estos resultados se pueden extender a matrices complejas.
 
@@ -861,6 +909,59 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
 
 \begin{theorem}
     Sean $A \in \mathcal{M}_{n \times n}(\CC)$, $\mathbb{x}$, $\mathbb{y} \in \CC[n]$. Entonces
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left\langle \mathbb{x}, A^*\mathbb{y} \right\rangle$$
+    \demostracion Consideremos el producto interno usual en $\CC[n]$, es decir,
+    $$\langle \mathbb{u}, \mathbb{v} \rangle = u_1 \overline{\mathbb{v}_1} + u_2 \overline{\mathbb{v}_2} + \cdots + u_n \overline{\mathbb{v}_n}$$
+    De esta forma, tenemos que si
+    $$A\mathbb{x} = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots &  & \ddots & \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        \vdots \\
+        x_n
+    \end{bmatrix} = \begin{bmatrix}
+        \displaystyle\sum_{j=1}^n a_{1j}x_j \\
+        \displaystyle\sum_{j=1}^n a_{2j}x_j \\
+        \vdots \\
+        \displaystyle\sum_{j=1}^n a_{nj}x_j
+    \end{bmatrix} \quad \text{ y } \quad \mathbb{y} = \begin{bmatrix}
+        y_1 \\
+        y_2 \\
+        \vdots \\
+        y_n
+    \end{bmatrix}$$\newpage\noindent
+    entonces
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left( \sum_{j=1}^n a_{1j}x_j \right) \overline{y_1} + \left( \sum_{j=1}^n a_{2j}x_j \right) \overline{y_2} + \cdots + \left( \sum_{j=1}^n a_{nj}x_j \right) \overline{y_n}$$
+    lo que se traduce en
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left( \sum_{i=1}^n a_{i1} \overline{y_i} \right) x_1 + \left( \sum_{i=1}^n a_{i2} \overline{y_i} \right) x_2 + \cdots + \left( \sum_{i=1}^n a_{in} \overline{y_i} \right) x_n$$
+    es decir
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \overline{\overline{\left( \sum_{i=1}^n a_{i1} \overline{y_i} \right)}} x_1 + \overline{\overline{\left( \sum_{i=1}^n a_{i2} \overline{y_i} \right)}} x_2 + \cdots + \overline{\overline{\left( \sum_{i=1}^n a_{in} \overline{y_i} \right)}} x_n$$
+    entonces
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = \overline{\left( \sum_{i=1}^n \overline{a_{i1} \overline{y_i}} \right)} x_1 + \overline{\left( \sum_{i=1}^n \overline{a_{i2} \overline{y_i}} \right)} x_2 + \cdots + \overline{\left( \sum_{i=1}^n \overline{a_{in} \overline{y_i}} \right)} x_n$$
+    de donde se deduce que
+    $$\langle A\mathbb{x}, \mathbb{y} \rangle = x_1 \overline{\left( \sum_{i=1}^n \overline{a_{i1}} y_i \right)} + x_2 \overline{\left( \sum_{i=1}^n \overline{a_{i2}} y_i \right)} + \cdots + x_n \overline{\left( \sum_{i=1}^n \overline{a_{in}} y_i \right)}$$
+    Pero observemos que
+    $$A^* \mathbb{y} = \begin{bmatrix}
+        \overline{a_{11}} & \overline{a_{21}} & \cdots & \overline{a_{n1}} \\
+        \overline{a_{12}} & \overline{a_{22}} & \cdots & \overline{a_{n2}} \\
+        \vdots &  & \ddots & \\
+        \overline{a_{1n}} & \overline{a_{2n}} & \cdots & \overline{a_{nn}}
+    \end{bmatrix} \begin{bmatrix}
+        y_1 \\
+        y_2 \\
+        \vdots \\
+        y_n
+    \end{bmatrix} = \begin{bmatrix}
+        \displaystyle\sum_{i=1}^n \overline{a_{i1}} y_i \\
+        \displaystyle\sum_{i=1}^n \overline{a_{i2}} y_i \\
+        \vdots \\
+        \displaystyle\sum_{i=1}^n \overline{a_{in}} y_i
+    \end{bmatrix}$$
+    así que de la última expresión se hereda que
     $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left\langle \mathbb{x}, A^*\mathbb{y} \right\rangle$$
 \end{theorem}
 
