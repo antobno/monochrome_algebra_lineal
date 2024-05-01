@@ -380,7 +380,7 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
     bottom=2mm,
     title={Un método eficiente para encontrar los eigenvalores y eigenvectores de una matriz $2 \times 2$:}
 ]
-    \label{metodo_eigen_2x2}Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales dada por
+    \label{metodo_eigen_2x2}Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales o complejos dada por
     $$A = \begin{bmatrix}
         a & b \\
         c & d
@@ -845,7 +845,7 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
     Dado que $b \neq 0$ y $c \neq 0$, podemos emplear cualquiera de las dos fórmulas indicadas en la página \pageref{metodo_eigen_2x2}. Optemos por las fórmulas del inciso (i), obteniendo
     \begin{align*}
         \mathbb{v}_1 & = \begin{pmatrix} 2 - 1 \\ - 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} 0 - 1 \\ - 1 \end{pmatrix} \\
-        & = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} & & = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+        & = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} & & = \begin{pmatrix} -1 \\ -1 \end{pmatrix}
     \end{align*}\newpage\noindent
     Para determinar la matriz $Q$, podemos emplear el teorema \ref{Qorto_vectoresorto}. Notemos que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales, ya que $\mathbb{v}_1 \bullet \mathbb{v}_2 = 0$. Por lo tanto,
     \begin{align*}
@@ -854,34 +854,34 @@ En el teorema \ref{eigenvalores_distintos_eigenvectoresli}, se demostró que los
             \dfrac{1}{\sqrt{2}} \\[3mm]
             -\dfrac{1}{\sqrt{2}}
         \end{pmatrix*} & & = \begin{pmatrix}
-            \dfrac{1}{\sqrt{2}} \\[3mm]
-            \dfrac{1}{\sqrt{2}}
+            -\dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}}
         \end{pmatrix}
     \end{align*}
     Así, sea $Q = \begin{bmatrix*}[r]
-        \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
-        -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+        \dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}} \\[3mm]
+        -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
     \end{bmatrix*}$, entonces $Q^T = \begin{bmatrix*}[r]
         \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
-        \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+        -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
     \end{bmatrix*}$. Por lo tanto,
     \begin{align*}
         Q^TAQ & = \begin{bmatrix*}[r]
             \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
-            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
         \end{bmatrix*} \begin{bmatrix*}[r]
             1 & -1 \\
             -1 & 1
         \end{bmatrix*} \begin{bmatrix*}[r]
-            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
-            -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+            \dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
         \end{bmatrix*} \\
         & = \begin{bmatrix*}[r]
             \sqrt{2} & -\sqrt{2} \\
             0 & 0
         \end{bmatrix*} \begin{bmatrix*}[r]
-            \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}} \\[3mm]
-            -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{2}}
+            \dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
         \end{bmatrix*} \\
         & = \begin{bmatrix}
             2 & 0 \\
@@ -907,7 +907,7 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
     \end{bmatrix}$. Por lo tanto, $A^* = A$ y se concluye que $A$ es una matriz hermitiana.
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{inner_prod_A_Ahermitiana}
     Sean $A \in \mathcal{M}_{n \times n}(\CC)$, $\mathbb{x}$, $\mathbb{y} \in \CC[n]$. Entonces
     $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left\langle \mathbb{x}, A^*\mathbb{y} \right\rangle$$
     \demostracion Consideremos el producto interno usual en $\CC[n]$, es decir,
@@ -964,6 +964,82 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
     así que de la última expresión se hereda que
     $$\langle A\mathbb{x}, \mathbb{y} \rangle = \left\langle \mathbb{x}, A^*\mathbb{y} \right\rangle$$
 \end{theorem}
+
+\begin{theorem}\label{theorem_hermitiana1}
+    Sea $A \in \mathcal{M}_{n \times n}(\CC)$ una matriz hermitiana. Entonces los eigenvalores de $A$ son números reales. \\
+    \demostracion Sea $\lambda$ un eigenvalor de $A$ con eigenvector $\mathbb{v}$, es decir,
+    $$A\mathbb{v} = \lambda \mathbb{v}$$
+    En general, $\lambda \in \CC$, por lo tanto, $\mathbb{v} \in \CC[n]$. De la definición del producto interno (definición \ref{def:espaciocomplejo_productointerno}), obtenemos
+    \begin{align*}
+        \langle A\mathbb{v}, \mathbb{v} \rangle & = \langle \lambda \mathbb{v}, \mathbb{v} \rangle \\
+        & = \lambda \langle \mathbb{v}, \mathbb{v} \rangle
+    \end{align*}
+    Dado que $A$ es hermitiana, entonces $A = A^*$, y según el teorema anterior, se sigue que
+    \begin{align*}
+        \langle A\mathbb{v}, \mathbb{v} \rangle & = \left\langle \mathbb{v}, A^* \mathbb{v} \right\rangle \\
+        & = \langle \mathbb{v}, A\mathbb{v} \rangle \\
+        & = \langle \mathbb{v}, \lambda \mathbb{v} \rangle \\
+        & = \overline{\lambda} \langle \mathbb{v}, \mathbb{v} \rangle
+    \end{align*}
+    Por lo tanto,
+    $$\lambda \langle \mathbb{v}, \mathbb{v} \rangle = \overline{\lambda} \langle \mathbb{v}, \mathbb{v} \rangle$$\newpage\noindent
+    pero $\langle \mathbb{v}, \mathbb{v} \rangle = \| \mathbb{v} \| \neq 0$, ya que $\mathbb{v}$ es un eigenvector, es decir, $\mathbb{v} \neq \mathbb{0}$. Dividiendo ambos lados entre $\langle \mathbb{v}, \mathbb{v} \rangle$, obtenemos
+    $$\lambda = \overline{\lambda}$$
+    y según la proposición \ref{conjugado-real}, se sigue que $\lambda$ es un número real.
+\end{theorem}
+
+\begin{theorem}\label{theorem_hermitiana2}
+    Sea $A \in \mathcal{M}_{n \times n}(\CC)$ hermitiana. Si $\lambda_1$ y $\lambda_2$ son eigenvalores distintos con eigenvectores correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$, entonces $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales. \\
+    \demostracion Sea $\lambda_1$ y $\lambda_2$ eigenvalores de $A$ distintos correspondientes a $\mathbb{v}_1$ y $\mathbb{v}_2$. De la definición del producto interno (definición \ref{def:espaciocomplejo_productointerno}), obtenemos
+    \begin{align*}
+        \langle A\mathbb{v}_1, \mathbb{v}_2 \rangle & = \langle \lambda_1 \mathbb{v}_1, \mathbb{v}_2 \rangle \\
+        & = \lambda_1 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle
+    \end{align*}
+    Dado que $A$ es hermitiana, entonces $A = A^*$. Por el teorema \ref{inner_prod_A_Ahermitiana} y el teorema anterior, se sigue que
+    \begin{align*}
+        \langle A\mathbb{v}_1, \mathbb{v}_2 \rangle & = \left\langle \mathbb{v}_1, A^* \mathbb{v}_2 \right\rangle \\
+        & = \langle \mathbb{v}_1, A\mathbb{v}_2 \rangle \\
+        & = \langle \mathbb{v}_1, \lambda_2 \mathbb{v}_2 \rangle \\
+        & = \overline{\lambda_2} \langle \mathbb{v}_1, \mathbb{v}_2 \rangle \\
+        & = \lambda_2 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle
+    \end{align*}
+    Por lo tanto, consideremos la siguiente expresión
+    $$\lambda_1 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle = \lambda_2 \langle \mathbb{v}_1, \mathbb{v}_2 \rangle$$
+    De esta ecuación, podemos deducir lo siguiente
+    $$(\lambda_1 - \lambda_2) \langle \mathbb{v}_1, \mathbb{v}_2 \rangle = 0$$
+    Dado que los eigenvalores $\lambda_1$ y $\lambda_2$ son distintos, podemos afirmar que $\lambda_1 \neq \lambda_2$. Por lo tanto, $\lambda_1 - \lambda_2 \neq 0$. Esto nos lleva a la conclusión de que $\langle \mathbb{v}_1, \mathbb{v}_2 \rangle = 0$. Según la definición \ref{orto_prodinterno}, esto implica que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales.
+\end{theorem}
+
+\begin{definition}
+    Una matriz unitaria es una matriz cuadrada cuya inversa es igual a su transpuesta conjugada. Es decir, una matriz $U \in \mathcal{M}_{n \times n}(\CC)$ se llama unitaria si $U$ es invertible y $U^{-1} = U^*$. Formalmente, una matriz $U$ se considera unitaria si cumple con la siguiente propiedad:
+    \[ U^* U = I_n \]
+\end{definition}
+
+\begin{definition}
+    Se dice que una matriz $A \in \mathcal{M}_{n \times n}(\CC)$ es diagonalizable unitariamente si existe una matriz unitaria $U$ tal que
+    $$D = U^*AU$$
+    donde $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$ y $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de la matriz $A$.
+\end{definition}
+
+\begin{theorem}\label{theorem_hermitiana3}
+    Sea $A \in \mathcal{M}_{n \times n}(\CC)$. Entonces $A$ es diagonalizable unitariamente si y solo si $A$ es hermitiana. \\
+    \demostracion Usando la demostración del teorema \ref{theorem_simetrica3}, se puede demostrar este teorema. Este hecho se propone como ejercicio al lector.
+\end{theorem}
+
+\begin{example}
+    Consideremos la matriz $A = \begin{bmatrix*}[r]
+        1 & i \\
+        -i & -1
+    \end{bmatrix*}$, la cual es hermitiana. Según el teorema \ref{theorem_hermitiana1}, podemos inferir que sus eigenvalores son números reales. Además, conforme al teorema \ref{theorem_hermitiana2}, los eigenvectores correspondientes a sus eigenvalores son ortogonales. Finalmente, derivado del teorema \ref{theorem_hermitiana3}, concluimos que $A$ es diagonalizable unitariamemte. Para demostrar lo anteriormente mencionado, primero calcularemos los eigenvalores de $A$. Para esto, emplearemos el método detallado en la página \pageref{metodo_eigen_2x2}. Así
+    \begin{align*}
+        \lambda_1 & = \frac{0 + \sqrt{(0)^2 - 4(-2)}}{2} & \lambda_2 & = \frac{0 - \sqrt{(0)^2 - 4(-2)}}{2} \\
+        & = \sqrt{2} & & = -\sqrt{2}
+    \end{align*}
+    Dado que $b \neq 0$ y $c \neq 0$, podemos emplear cualquiera de las dos fórmulas indicadas en la página \pageref{metodo_eigen_2x2}. Optemos por las fórmulas del inciso (ii), obteniendo
+    \begin{align*}
+        \mathbb{v}_1 & = \begin{pmatrix} i \\ \sqrt{2} - 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} i \\ - \sqrt{2} - 1 \end{pmatrix}
+    \end{align*}
+\end{example}
 
 \section{El teorema de Cayley-Hamilton}
 
