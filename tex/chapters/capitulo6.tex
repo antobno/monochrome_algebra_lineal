@@ -359,61 +359,74 @@ donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lle
 
 \newpage
 
-\begin{tcolorbox}[
-    lower separated=false,
-    theorem style=change apart,
-    enhanced,
-    breakable,
-    boxrule=0pt,
-    frame hidden,
-    borderline north={1.5pt}{0pt}{black},
-    borderline south={1.5pt}{0pt}{black},
-    colback=white,
-    coltitle=black,
-    %attach title to upper={\ },
-    sharp corners,
-    fonttitle=\bfseries\boldmath\large,
-    fontupper=\normalsize,
-    left=0mm,
-    right=0mm,
-    top=2mm,
-    bottom=2mm,
-    title={Un método eficiente para encontrar los eigenvalores y eigenvectores de una matriz $2 \times 2$:}
-]
-    \label{metodo_eigen_2x2}Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales o complejos dada por
-    $$A = \begin{bmatrix}
-        a & b \\
-        c & d
-    \end{bmatrix}$$
-    Sea $T$ la traza de $A$, es decir, $T = a + d$ y sea $D$ el determinante de $A$, es decir, $D = ad - bc$. Calculemos primero el polinomio característico de $A$:
+\section*{Un método eficiente para encontrar los eigenvalores y eigenvectores de una matriz {\boldmath$2 \times 2$}}\label{metodo_eigen_2x2}
+
+Calcular manualmente eigenvalores y eigenvectores de matrices puede ser una tarea difícil. Para matrices de $2 \times 2$, $3 \times 3$ y $4 \times 4$, se pueden dar fórmulas algebraicas explícitas para las soluciones. Para matrices de $5 \times 5$, ya no se puede encontrar una solución algebraica explícita, ya que habría que dar fórmulas de las raíces de un polinomio de grado $5$ y eso no es posible (vea la sección \ref{ecuacion_quinto_grado}). A continuación, presentamos la solución para el caso de $2 \times 2$. Consideremos una matriz $A$ de $2 \times 2$ con coeficientes reales o complejos dada por
+$$A = \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}$$
+Sea $T$ la traza de $A$, es decir, $T = a + d$ y sea $D$ el determinante de $A$, es decir, $D = ad - bc$. Calculemos primero el polinomio característico de $A$:
+\begin{align*}
+    \Det(A - \lambda I_n) & = \begin{vmatrix} a - \lambda & b \\ c & d - \lambda \end{vmatrix} \\
+    & = (a - \lambda)(d - \lambda) - bc \\
+    %& = ad - \lambda d - \lambda a + \lambda^2 - bc \\
+    & = \lambda^2 - (a + d)\lambda + (ad - bc) \\
+    & = \lambda^2 - T\lambda + D
+\end{align*}
+Por lo tanto, los eigenvalores son las raíces del polinomio $\lambda^2 - T\lambda + D = 0$. Para resolver dicha ecuación, podemos usar la fórmula general. Así
+\begin{align*}
+    \lambda & = \frac{-(-T) \pm \sqrt{(-T)^2 - 4(1)(D)}}{2(1)} \\
+    & = \frac{T \pm \sqrt{T^2 - 4D}}{2}
+\end{align*}
+Es decir, los eigenvalores de $A$ están dados por
+$$\lambda_1 = \frac{T + \sqrt{T^2 - 4D}}{2} \quad \text{ y } \quad \lambda_2 = \frac{T - \sqrt{T^2 - 4D}}{2}$$
+Para hallar los eigenvectores correspondientes, buscamos vectores no nulos que cumplan con la ecuación característica
+$$(A - \lambda I_n)\mathbb{v} = \mathbb{0}$$
+Esto implica resolver el sistema de ecuaciones
+\begin{align*}
+    (a - \lambda)x + by & = 0 \\
+    cx + (d - \lambda)y & = 0
+\end{align*}
+Es decir, buscamos soluciones no triviales (no cero) para $x$ e $y$. Del sistema anterior, obtenemos los siguientes casos:
+\begin{enumerate}[label=\roman*)]
+    \item Si $c \neq 0$, podemos resolver la segunda ecuación para $x$, obteniendo
+    $$x = \frac{( \lambda - d )y}{c}$$
+    Si elegimos $y = c$, entonces $x = \lambda - d$, y obtenemos el eigenvector
+    $$\mathbb{v} = \begin{pmatrix} \lambda - d \\ c \end{pmatrix}$$
+    En particular, para $\lambda_1$ y $\lambda_2$, los eigenvectores están dados respectivamente por
+    $$\mathbb{v}_1 = \begin{pmatrix} \lambda_1 - d \\ c \end{pmatrix} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix} \lambda_2 - d \\ c \end{pmatrix}$$\newpage
+    Para demostrar que $\mathbb{v}_1$ y $\mathbb{v}_2$ son efectivamente eigenvectores de $A$, es necesario verificar que satisfacen las siguientes ecuaciones respectivamente: $A\mathbb{v}_1 = \lambda_1\mathbb{v}_1$ y $A\mathbb{v}_2 = \lambda_2\mathbb{v}_2$. Comencemos demostrando que $\mathbb{v}_1$ es un eigenvector. Sustituyendo en la ecuación, obtenemos el siguiente sistema:
     \begin{align*}
-        \Det(A - \lambda I_n) & = \begin{vmatrix} a - \lambda & b \\ c & d - \lambda \end{vmatrix} \\
-        & = (a - \lambda)(d - \lambda) - bc \\
-        %& = ad - \lambda d - \lambda a + \lambda^2 - bc \\
-        & = \lambda^2 - (a + d)\lambda + (ad - bc) \\
-        & = \lambda^2 - T\lambda + D
+        a(\lambda_1 - d) + bc & = \lambda_1 (\lambda_1 - d) \\
+        c(\lambda_1 - d) + dc & = \lambda_1 c
     \end{align*}
-    Por lo tanto, los eigenvalores son las raíces del polinomio $\lambda^2 - T\lambda + D = 0$. Para resolver dicha ecuación, podemos usar la fórmula general. Así
+    La segunda ecuación se satisface trivialmente. La primera ecuación se reduce a
+    $$a\lambda_1 - ad + bc = \lambda_1^2 - d\lambda_1,$$
+    que es cierta al sustituir el valor de $\lambda_1$, pues del lado izquierdo obtenemos que
     \begin{align*}
-        \lambda & = \frac{-(-T) \pm \sqrt{(-T)^2 - 4(1)(D)}}{2(1)} \\
-        & = \frac{T \pm \sqrt{T^2 - 4D}}{2}
+        a\lambda_1 - ad + bc & = a \left( \frac{a + d + \sqrt{(a + d)^2 - 4(ad - bc)}}{2} \right) - ad + bc \\
+        & = \frac{a^2 + ad + a\sqrt{a^2 + 2ad + d^2 - 4ad + 4bc}}{2} - ad + bc \\
+        & = \frac{a^2 + 2bc - ad + a\sqrt{a^2 - 2ad + d^2 + 4bc}}{2}
     \end{align*}
-    Es decir, los eigenvalores de $A$ están dados por
-    $$\lambda_1 = \frac{T + \sqrt{T^2 - 4D}}{2} \quad \text{ y } \quad \lambda_2 = \frac{T - \sqrt{T^2 - 4D}}{2}$$
-    Para encontrar los eigenvectores correspondientes, tenemos tres casos:
-    \begin{enumerate}[label=\roman*)]
-        \item Si $c \neq 0$, entonces los eigenvectores están dados por $\mathbb{v}_1 = \begin{pmatrix} \lambda_1 - d \\ c \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} \lambda_2 - d \\ c \end{pmatrix}$. Sustituyendo $\mathbb{v}_1$ en la ecuación $A\mathbb{v}_1 = \lambda_1\mathbb{v}_1$, obtenemos:
-        \begin{align*}
-            a(\lambda_1 - d) + bc &= \lambda_1 (\lambda_1 - d), \\
-            c(\lambda_1 - d) + dc &= \lambda_1 c.
-        \end{align*}
-        La segunda ecuación se satisface trivialmente. La primera ecuación se reduce a
-        $$a\lambda_1 - ad + bc = \lambda_1^2 - d\lambda_1,$$
-        que es cierta al sustituir el valor de $\lambda_1$. Por lo tanto, $\mathbb{v}_1$ es un eigenvector de $A$ correspondiente a $\lambda_1$. De manera similar, se puede demostrar que $\mathbb{v}_2$ es un eigenvector de $A$ correspondiente a $\lambda_2$.
-        \item Si $b \neq 0$, entonces los eigenvectores están dados por $\mathbb{v}_1 = \begin{pmatrix} b \\ \lambda_1 - a \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} b \\ \lambda_2 - a \end{pmatrix}$. Siguiendo un procedimiento similar al anterior inciso, se puede demostrar que estos vectores son eigenvectores de $A$.
-        \item Si $b = c = 0$, entonces la matriz es diagonal, lo que significa que sus eigenvectores son simplemente $\mathbb{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
-    \end{enumerate}
-\end{tcolorbox}
+    y del lado derecho, tenemos que
+    \begin{align*}
+        \lambda_1^2 - d\lambda_1 & = \left( \frac{a + d + \sqrt{(a + d)^2 - 4(ad - bc)}}{2} \right)^2 \\
+        & \hspace{1.5cm} - d \left( \frac{a + d + \sqrt{(a + d)^2 - 4(ad - bc)}}{2} \right) \\
+        & = \left( \frac{a + d + \sqrt{a^2 + 2ad + d^2 - 4ad + 4bc}}{2} \right)^2 \\
+        & \hspace{1.5cm} - \frac{ad + d^2 + d\sqrt{a^2 + 2ad + d^2 - 4ad + 4bc}}{2} \\
+        & = \frac{a^2 + 2bc - ad + a\sqrt{a^2 - 2ad + d^2 + 4bc}}{2}
+    \end{align*}
+    En consecuencia, $\mathbb{v}_1$ es un eigenvector de $A$ correspondiente a $\lambda_1$. De manera similar, se puede demostrar que $\mathbb{v}_2$ es un eigenvector de $A$ correspondiente a $\lambda_2$.
+    \item Si $b \neq 0$, podemos resolver la segunda ecuación para $x$, obteniendo
+    $$y = \frac{( \lambda - a )x}{b}$$
+    Si elegimos $x = b$, entonces $y = \lambda - a$, y obtenemos el eigenvector
+    $$\mathbb{v} = \begin{pmatrix} b \\ \lambda - a \end{pmatrix}$$
+    En particular, para $\lambda_1$ y $\lambda_2$, los eigenvectores están dados respectivamente por
+    $$\mathbb{v}_1 = \begin{pmatrix} b \\ \lambda_1 - a \end{pmatrix} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix} b \\ \lambda_2 - a \end{pmatrix}$$
+    Siguiendo un procedimiento similar al anterior inciso, se puede demostrar que estos vectores son eigenvectores de $A$.
+    \item Si $b = c = 0$, entonces la matriz es diagonal, lo que significa que sus eigenvectores son simplemente $\mathbb{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\mathbb{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$.
+\end{enumerate}
 
 \infoBulle{Cuando hablamos de eigenvalores y eigenvectores, estamos tratando con propiedades especiales de las matrices cuadradas. Un eigenvalor es un número escalar que representa cómo un eigenvector se estira o contrae cuando se multiplica por la matriz. En otras palabras, si tenemos una matriz $A$ y un eigenvector $\mathbb{v}$, entonces tenemos
 $$A\mathbb{v} = \lambda \mathbb{v}$$
