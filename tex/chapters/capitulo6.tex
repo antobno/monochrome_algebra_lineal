@@ -1,26 +1,30 @@
-\chapter{FORMAS BILINEALES}\label{chapter:bilineal}
+\chapter{FORMAS BILINEALES Y CUADRÁTICAS}\label{chapter:bilineal}
 %\startcontents
 \printchaptertableofcontents
 
 \section{Eigenvalores y eigenvectores}
 
-Los conceptos de eigenvalores y eigenvectores son fundamentales para entender las transformaciones lineales y sus efectos sobre el espacio vectorial. Dada una transformación lineal $T: V \longrightarrow W$, en diversas aplicaciones  resulta útil encontrar un vector $\mathbb{v}$ en $V$ tal que $T\mathbb{v}$ y $\mathbb{v}$ son paralelos. Es decir, se busca un vector $\mathbb{v}$ no nulo y un escalar $\lambda$ tal que\infoBulle{Los eigenvalores y eigenvectores son comúnmente conocidos como valores y vectores propios, respectivamente, o valores y vectores característicos. El término alemán \emph{eigen} se traduce como “propio”, lo que refleja la propiedad distintiva de estos valores y vectores en relación con una transformación lineal o una matriz.}
+%Los conceptos de eigenvalores y eigenvectores son fundamentales para entender las transformaciones lineales y sus efectos sobre el espacio vectorial.
+Dada una transformación lineal $T: V \longrightarrow W$, en diversas aplicaciones  resulta útil encontrar un vector $\mathbb{v}$ en $V$ tal que $T\mathbb{v}$ y $\mathbb{v}$ son paralelos. Es decir, se busca un vector $\mathbb{v}$ no nulo y un escalar $\lambda$ tal que
 $$T\mathbb{v} = \lambda \mathbb{v}$$
 Al escalar $\lambda$ se le denomina \emph{eigenvalor} asociado al \emph{eigenvector} $\mathbb{v}$. Es importante destacar que cada eigenvector puede tener asociado más de un eigenvalor.
 
 \begin{definition}\label{def:eigenvalor}
-    Sea $A$ una matriz de $n \times n$ con componentes reales y $\lambda$ un número real o complejo. Se dice que $\lambda$ es un eigenvalor de la matriz $A$, si existe $\mathbb{v} \in \CC[n]$ no nulo tal que\infoBulle{La definición \ref{def:eigenvalor} es válida incluso si $A$ tiene componentes complejas. Sin embargo, dado que las matrices que estamos considerando principalmente tienen componentes reales, la definición es adecuada para nuestros propósitos.}
+    Sea $A$ una matriz de $n \times n$ con componentes reales y $\lambda$ un número real o complejo. Se dice que $\lambda$ es un eigenvalor de la matriz $A$, si existe $\mathbb{v} \in \CC[n]$ no nulo tal que
     $$A\mathbb{v} = \lambda \mathbb{v}$$
     A $\mathbb{v} \neq \mathbb{0}$ se le denomina eigenvector de $A$ correspondiente al eigenvalor $\lambda$.
 \end{definition}
 
-\begin{observation}
-    Como se mostrará más adelante, incluso una matriz con elementos reales puede poseer eigenvalores y eigenvectores complejos. Por esta razón, en la definición anterior, se especifica que $\mathbb{v} \in \CC[n]$. Aunque no se profundizarán en este trabajo numerosos aspectos relacionados con los números complejos, se incluye una exposición básica de aquellos conceptos indispensables en el \hyperref[chap:numeros-complejos]{Apéndice B}.
-\end{observation}
-
 Hemos visto la definición de un eigenvalor y eigenvector, pero ¿cómo podemos calcular estos mismos? Observemos que para calcular los eigenvalores y eigenvectores de una matriz cuadrada, necesitamos encontrar los valores de $\lambda$ que permiten que la ecuación $A \mathbb{v} = \lambda \mathbb{v}$ se cumpla para un vector no nulo $\mathbb{v}$. Esto se puede hacer reescribiendo la ecuación como
 $$A \mathbb{v} - \lambda \mathbb{v} = \mathbb{0}$$
-o bien,
+
+\infoBulle{Los eigenvalores y eigenvectores son comúnmente conocidos como valores y vectores propios, respectivamente, o valores y vectores característicos. El término alemán \emph{eigen} significa “propio”.}
+\infoBulle{La definición \ref{def:eigenvalor} es válida incluso si $A$ tiene componentes complejas. Sin embargo, dado que las matrices que estamos considerando principalmente tienen componentes reales, la definición es adecuada para nuestros propósitos.}
+
+\newpage
+\infoBulle{Como se mostrará más adelante, incluso una matriz con elementos reales puede poseer eigenvalores y eigenvectores complejos. Por esta razón, en la definición \ref{def:eigenvalor}, se especifica que el eigenvector tiene entradas complejas, es decir, $\mathbb{v} \in \CC[n]$. Aunque no se abordarán exhaustivamente muchos aspectos relacionados con los números complejos en esta obra, se incluye una exposición básica de los conceptos indispensables en el \hyperref[chap:numeros-complejos]{Apéndice B}.}
+
+\noindent o bien,
 $$(A - \lambda I_n) \mathbb{v} = \mathbb{0}$$
 donde $I_n$ es la matriz identidad del mismo tamaño que la matriz $A$. Esto lleva a buscar valores de $\lambda$ que hagan que $A - \lambda I_n$ sea singular. Una vez que se encuentran estos eigenvalores, se puede calcular el eigenvector correspondiente resolviendo el sistema de ecuaciones lineales asociado.
 
@@ -764,7 +768,7 @@ Esto demuestra que $k\mathbb{v}$ también es un eigenvector de $A$ asociado al m
     que corresponde a la matriz diagonal $D$ formada por los eigenvectores de $A$.
 \end{example}
 
-\section{Análisis de matrices hermitianas y diagonalización ortogonal}\label{sec:matrices_sim_her_uni}
+\section{Análisis de matrices simétricas y diagonalización ortogonal}\label{sec:matrices_sim_her_uni}
 
 \begin{theorem}\label{theorem_simetrica1}
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$ una matriz simétrica. Entonces los eigenvalores de $A$ son números reales. \\
@@ -1028,11 +1032,18 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
     \[ U^* U = I_n \]
 \end{definition}
 
+\begin{theorem}\label{Uorto_vectoresorto}
+    Dada $U \in \mathcal{M}_{n \times n}(\CC)$. Entonces $U$ es unitaria si y solo si sus vectores columnas son ortonormales. \\
+    \demostracion Supongamos que $U$ es una matriz unitaria de $n \times n$. Entonces, por definición de matriz unitaria, $U^* U = I_n$. Dado que la entrada \( (i, j) \) de $U^*U$ es el producto interno entre la $j$-ésima columna de $U^*$ y la $i$-ésima columna de $U$, y este producto interno es igual a $0$ si $i$ y $j$ son distintos y $1$ si $i = j$ (debido a que las columnas de $U$ son ortonormales), entonces la matriz $U^* U$ es la matriz identidad, lo que implica que $U$ es unitaria. Por otro lado, si las columnas de $U$ son ortonormales, entonces la matriz $U^* U$ será la matriz identidad, ya que las entradas fuera de la diagonal serán $0$ y las entradas diagonales serán $1$ (debido a la normalización de los vectores columna). Por lo tanto, $U$ es unitaria.
+\end{theorem}
+
 \begin{definition}
     Se dice que una matriz $A \in \mathcal{M}_{n \times n}(\CC)$ es diagonalizable unitariamente si existe una matriz unitaria $U$ tal que
     $$D = U^*AU$$
     donde $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$ y $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de la matriz $A$.
 \end{definition}
+
+\newpage
 
 \begin{theorem}\label{theorem_hermitiana3}
     Sea $A \in \mathcal{M}_{n \times n}(\CC)$. Entonces $A$ es diagonalizable unitariamente si y solo si $A$ es hermitiana. \\
@@ -1052,7 +1063,94 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
     \begin{align*}
         \mathbb{v}_1 & = \begin{pmatrix} i \\ \sqrt{2} - 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} i \\ - \sqrt{2} - 1 \end{pmatrix}
     \end{align*}
+    Para determinar la matriz $U$, podemos emplear el teorema \ref{Uorto_vectoresorto}. Notemos que los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$ son ortogonales, ya que
+    \begin{align*}
+        \langle \mathbb{v}_1, \mathbb{v}_2 \rangle & = (i)(-i) + (\sqrt{2} - 1)(- \sqrt{2} - 1) \\
+        & = - i^2 + (- 1 + \sqrt{2})(- 1 - \sqrt{2}) \\
+        & = 1 + 1 - 2 \\
+        & = 0
+    \end{align*}
+    Por lo tanto,
+    \begin{align*}
+        \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 & \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{v}_2 \|} \mathbb{v}_2 \\
+        & = \frac{1}{\sqrt{4 - 2\sqrt{2}}} \begin{pmatrix} i \\ \sqrt{2} - 1 \end{pmatrix} & & = \frac{1}{\sqrt{4 + 2\sqrt{2}}} \begin{pmatrix} i \\ - \sqrt{2} - 1 \end{pmatrix} \\
+        & = \begin{pmatrix*}[r]
+            \dfrac{i}{\sqrt{4 - 2\sqrt{2}}} \\[3.5mm]
+            \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}}
+        \end{pmatrix*} & & = \begin{pmatrix}
+            \dfrac{i}{\sqrt{4 + 2\sqrt{2}}} \\[3.5mm]
+            \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+        \end{pmatrix}
+    \end{align*}
+    Así, sea
+    $$U = \begin{bmatrix*}[r]
+        \dfrac{i}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{i}{\sqrt{4 + 2\sqrt{2}}} \\[3.5mm]
+        \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+    \end{bmatrix*}$$
+    entonces
+    $$U^* = \begin{bmatrix*}[r]
+        \dfrac{-i}{\sqrt{4 - 2\sqrt{2}}} &  \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} \\[3.5mm]
+        \dfrac{-i}{\sqrt{4 + 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+    \end{bmatrix*}$$
+    Observe que $U$, en efecto, es unitaria, pues
+    $$U^*U = \begin{bmatrix*}[r]
+        \dfrac{-i}{\sqrt{4 - 2\sqrt{2}}} &  \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} \\[3.5mm]
+        \dfrac{-i}{\sqrt{4 + 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+    \end{bmatrix*} \begin{bmatrix*}[r]
+        \dfrac{i}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{i}{\sqrt{4 + 2\sqrt{2}}} \\[3.5mm]
+        \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+    \end{bmatrix*} = \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}$$\newpage\noindent
+    Por lo tanto,
+    \begin{align*}
+        U^*AU & = \begin{bmatrix*}[r]
+            \dfrac{-i}{\sqrt{4 - 2\sqrt{2}}} &  \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} \\[3.5mm]
+            \dfrac{-i}{\sqrt{4 + 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            1 & i \\
+            -i & -1
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{i}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{i}{\sqrt{4 + 2\sqrt{2}}} \\[3.5mm]
+            \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            -\dfrac{\sqrt{4 + 2\sqrt{2}}}{2}i & \dfrac{\sqrt{4 - 2\sqrt{2}}}{2} \\[3.5mm]
+            \dfrac{\sqrt{4 - 2\sqrt{2}}}{2}i & \dfrac{\sqrt{4 + 2\sqrt{2}}}{2}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{i}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{i}{\sqrt{4 + 2\sqrt{2}}} \\[3.5mm]
+            \dfrac{\sqrt{2} - 1}{\sqrt{4 - 2\sqrt{2}}} & \dfrac{- \sqrt{2} - 1}{\sqrt{4 + 2\sqrt{2}}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            \sqrt{2} & 0 \\
+            0 & - \sqrt{2}
+        \end{bmatrix*}
+    \end{align*}
+    que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$.
 \end{example}
+
+\section{Formas bilineales y cuadráticas}
+
+La teoría de las formas cuadráticas tiene su origen en la geometría analítica, más precisamente, en la teoría de las curvas (y superficies) de segundo orden. Es bien sabido que la ecuación de una curva central de segundo orden en el plano, después de trasladar el origen de coordenadas rectangulares al centro de esta curva, tiene la forma
+\begin{equation}
+    Ax^2 + 2Bxy + Cy^2 = D \label{cuadratica1}
+\end{equation}
+Se sabe también que se puede efectuar una rotación de los ejes coordenados en un ángulo $\theta$, o sea, un cambio de las coordenadas $x$ e $y$, por las coordenadas $x_1$ e $y_1$ donde
+\begin{equation}
+    \begin{aligned}
+        x & = x_1 \cos \theta - y_1 \sen \theta \\
+        y & = x_1 \sen \theta + y_1 \cos \theta
+    \end{aligned} \label{cuadratica2}
+\end{equation}
+de modo que en las nuevas coordenadas la ecuación de la curva tome la forma “canónica”:
+\begin{equation}
+    A_1x_1^2 + C_1y_1^2 = D \label{cuadratica3}
+\end{equation}
+por consiguiente, en esta ecuación, el coeficiente del producto $x_1y_1$ de las indeterminadas es igual a cero. Evidentemente, la transformación de coordenadas \eqref{cuadratica2} se puede interpretar como una transformación lineal de las indeterminadas (véase el ejemplo \ref{tl:rotacion}), la cual, además, no es degenerada, puesto que el determinante de sus coeficientes es igual a la unidad. Esta transformación se aplica al primer miembro de la ecuación \eqref{cuadratica1}. Por lo tanto, se puede decir que mediante la transformación lineal no degenerada \eqref{cuadratica2}, el primer miembro de la ecuación \eqref{cuadratica1} se convierte en el primer miembro de la ecuación \eqref{cuadratica3}.
+
+
+Numerosas aplicaciones reclamaron la elaboración de una teoría análoga para el caso en que el número de las indeterminadas, en lugar de dos, sea igual a cualquier $n$, y los coeficientes sean, o bien números reales, o bien números complejos cualesquiera. Generalizando la expresión que figura en el primer miembro de la ecuación \eqref{cuadratica1}, llegamos al siguiente concepto.
 
 \section{El teorema de Cayley-Hamilton}
 
