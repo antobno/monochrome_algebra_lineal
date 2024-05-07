@@ -39,7 +39,7 @@ Para comprender plenamente la forma trigonométrica de un número complejo, es i
     \caption{Forma trigonométrica de un número complejo}
 \end{figure}
 
-Puesto que $\forall m \in \mathbb{Z}$
+Puesto que $\forall m \in \ZZ$
 $$\cos (2m\pi + \alpha ) = \cos (\alpha)$$
 y
 $$\sen (2m\pi + \alpha) = \sen (\alpha),$$
@@ -149,7 +149,7 @@ y luego\newpage
     Sean $z$, $w$ dos números complejos tal que en su forma trigonométrica estén dados por $z=r \left( \cos \theta +i \sen \theta \right)$ y $w=s \left( \cos \varphi +i \sen \varphi \right)$.
     \begin{itemize}
         \item Si $0 \leq \theta ,  \varphi <2 \pi$, entonces $z=w$ si y solo si $r=s$ y $\theta = \varphi$.
-        \item Si $\theta ,  \varphi$ no tienen restricciones, entonces $z=w$, si y solo si $r=s$ y $\theta = \varphi +2m \pi$ con $m \in \mathbb{Z}$.
+        \item Si $\theta ,  \varphi$ no tienen restricciones, entonces $z=w$, si y solo si $r=s$ y $\theta = \varphi +2m \pi$ con $m \in \ZZ$.
     \end{itemize}
 \end{observation}
 
@@ -209,7 +209,7 @@ $$z=\cos \varphi +i \sen \varphi$$
 entonces
 $$z^n=\cos \left( n \varphi \right)+i \sen \left( n\varphi \right).$$
 Pero $z^n=\left[ \cos \varphi +i \sen \varphi \right]^n$, donde se sigue la identidad conocida como fórmula de De Moivre:
-$$\left[ \cos \varphi +i \sen \varphi \right]^n= \cos \left( n\varphi \right) +i \sen \left( n \varphi \right),  \forall n \in \mathbb{N}.$$
+$$\left[ \cos \varphi +i \sen \varphi \right]^n= \cos \left( n\varphi \right) +i \sen \left( n \varphi \right),  \forall n \in \NN.$$
 
 Consideremos los complejos en forma trigonométrica
 $$z_1=|z_1| \left( \cos \varphi _1+i \sen \varphi _1 \right)$$
@@ -230,35 +230,35 @@ $$\frac{1}{\cos \varphi +i \sen \varphi} = \cos \left( - \varphi \right)+i \sen 
 es decir:
 $$\left( \cos \varphi +i \sen \varphi \right)^{-1}=\cos \left( - \varphi \right)+i \sen \left( -\varphi \right).$$
 
-Sin pérdida de generalidad, $\forall n \in \mathbb{N}$
+Sin pérdida de generalidad, $\forall n \in \NN$
 $$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\left[ \left( \cos \varphi +i \sen \varphi \right)^{-1} \right]^n,$$
 y por la fórmula de De Moivre, se tiene que
 $$\left( \cos \varphi +i \sen \varphi \right)^{-n}=\cos \left( -n \varphi \right) +i \sen \left( -n\varphi \right).$$
 
-En consecuencia, la fórmula de De Moivre también es válida para $\mathbb{Z}$. Es decir:
-$$\left( \cos \varphi +i \sen \varphi \right)^{m}=\cos \left( m \varphi \right) +i \sen \left( m \varphi \right),  \forall m \in \mathbb{Z},$$
+En consecuencia, la fórmula de De Moivre también es válida para $\ZZ$. Es decir:
+$$\left( \cos \varphi +i \sen \varphi \right)^{m}=\cos \left( m \varphi \right) +i \sen \left( m \varphi \right),  \forall m \in \ZZ,$$
 ya que si $m=0$, cada miembro de la identidad anterior tiene valor 1.
 
 \newpage
 
-Sea $z \in \CC$, con $z=r(\cos \theta +i \sen \theta )$ y sea $n \in \mathbb{N}$. Deseamos resolver $x^n=z$, es decir, deseamos encontrar los complejos que satisfagan $w^n=z$, a dichos números se les llama \textit{raíces de la ecuación}.
+Sea $z \in \CC$, con $z=r(\cos \theta +i \sen \theta )$ y sea $n \in \NN$. Deseamos resolver $x^n=z$, es decir, deseamos encontrar los complejos que satisfagan $w^n=z$, a dichos números se les llama \textit{raíces de la ecuación}.
 
 Sea $w \in \CC$ una raíz de la ecuación $x^n=z$. Expresemos a $w$ en forma trigonométrica, es decir, $w=s(\cos \varphi +i \sen \varphi )$. Entonces
 $$r( \cos \theta +i \sen \theta )=z=w^n=s^n\big( \cos (n \varphi )+i \sen (n \varphi ) \big).$$
 Nótese que son iguales si $0 \leq \varphi ,  \theta <2 \pi$, pero no conocemos a $n \varphi$. Luego
 \begin{align*}
     s^n &=r \\
-    n \varphi &=\theta +2k \pi,  k \in \mathbb{Z}
+    n \varphi &=\theta +2k \pi,  k \in \ZZ
 \end{align*}
 donde $s$ es la raíz $n$-ésima de $r$. En consecuencia
 \begin{align*}
     s &=\sqrt[n]{r} \\
-    \varphi &=\frac{\theta +2k \pi}{n},  k \in \mathbb{Z}
+    \varphi &=\frac{\theta +2k \pi}{n},  k \in \ZZ
 \end{align*}
-En consecuencia, para cada $k \in \mathbb{Z}$, sea
+En consecuencia, para cada $k \in \ZZ$, sea
 $$w_k=\sqrt[n]{r} \left( \cos \frac{\theta +2k\pi}{n} +i \sen \frac{\theta +2k\pi}{n} \right).$$
 
-Verifiquemos que las raíces se repiten, para lo cual hacemos uso del algoritmo de la división con $n$. Entonces existen $q,  l \in \mathbb{Z}$ tal que $k=nq+l$, con $0 \leq l <n$. Así pues
+Verifiquemos que las raíces se repiten, para lo cual hacemos uso del algoritmo de la división con $n$. Entonces existen $q, l \in \ZZ$ tal que $k=nq+l$, con $0 \leq l <n$. Así pues
 \begin{align*}
     \frac{\theta +2k\pi}{n} &=\frac{\theta +2(nq+l)\pi}{n} \\
     &=\frac{\theta +2nq\pi +2l\pi}{n} \\
@@ -268,7 +268,7 @@ Por lo tanto, $w_k=w_l$, y la ecuación $x^n=z$ tiene a lo más $n$ raíces $w_0
 
 Ahora verifiquemos que todas las raíces son distintas. Sean $l$, $k \in \left\{ 0,  1,  \dots,  n-1 \right\}$ tales que $l \neq k$. Si $w_k=w_l$, entonces
 \begin{align*}
-    \frac{\theta +2k\pi}{n} &= \frac{\theta +2l\pi}{n}+2m\pi,  m \in \mathbb{Z} \\
+    \frac{\theta +2k\pi}{n} &= \frac{\theta +2l\pi}{n}+2m\pi,  m \in \ZZ \\
     \theta +2k\pi &= \theta +2l\pi +2nm\pi \\
     2k\pi &=2l\pi +2nm\pi \\
     k &=l+nm \\

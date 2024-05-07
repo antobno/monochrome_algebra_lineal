@@ -1083,15 +1083,15 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
 \end{theorem}
 
 \begin{example}
-    Verifique que en $\RR[3]$ los vectores $\displaystyle \mathbb{v}_1 = \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*}$, $\displaystyle \mathbb{v}_2 = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$ y $\displaystyle \mathbb{v}_3 = \begin{pmatrix} 11 \\ -6 \\ 12 \end{pmatrix}$ son linealmente dependientes. \\
+    Verifique que en $\RR[3]$ los vectores $\displaystyle \mathbb{v}_1 = \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*}$, $\displaystyle \mathbb{v}_2 = \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$ y $\displaystyle \mathbb{v}_3 = \begin{pmatrix*}[r] 11 \\ -6 \\ 12 \end{pmatrix*}$ son linealmente dependientes. \\
     \solucion Hay que demostrar que existen $a_1$, $a_2$, $a_3 \in \RR$ no todos cero, tales que
     $$a_1\mathbb{v}_1 + a_2\mathbb{v}_2 + a_3\mathbb{v}_3 = \mathbb{0}$$
     esto es
     \begin{equation}
-        a_1 \cdot \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*} + a_2 \cdot \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix} + a_3 \cdot \begin{pmatrix} 11 \\ -6 \\ 12 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \label{ec22}
+        a_1 \cdot \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*} + a_2 \cdot \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix} + a_3 \cdot \begin{pmatrix*}[r] 11 \\ -6 \\ 12 \end{pmatrix*} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \label{ec22}
     \end{equation}
     Veamos que uno de los vectores se puede expresar como combinación lineal de los otros dos, es decir
-    $$\begin{pmatrix} 11 \\ -6 \\ 12 \end{pmatrix} = a_1 \cdot \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*} + a_2 \cdot \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$$
+    $$\begin{pmatrix*}[r] 11 \\ -6 \\ 12 \end{pmatrix*} = a_1 \cdot \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*} + a_2 \cdot \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}$$
     Con $a_1 = 2$, $a_2 = 3$ y $a_3 = -1$, de la ecuación \eqref{ec22}
     \begin{align*}
         2 \cdot \begin{pmatrix*}[r] 1 \\ -3 \\ 0 \end{pmatrix*} + 3 \cdot \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix} - 1 \cdot \begin{pmatrix*}[r] 11 \\ -6 \\ 12 \end{pmatrix*} & = \begin{pmatrix*}[r] 2 \\ -6 \\ 0 \end{pmatrix*} + \begin{pmatrix} 9 \\ 0 \\ 12 \end{pmatrix} + \begin{pmatrix*}[r] -11 \\ 6 \\ -12 \end{pmatrix*} \\

@@ -752,14 +752,14 @@ Del anterior ejemplo, se hereda el siguiente teorema
     Sea $A \in \mathcal{M}_{n \times n}(\RR)$. $A$ es invertible si y solo si $|A| \neq 0$. \\
     \demostracion
     \begin{enumerate}
-        \item[$\bm{\Rightarrow}$)] Supongamos que $A$ es no singular, entonces existen $E_1, \dots, E_r$ matrices elementales tales que
-        $$A=E_1 \cdots E_r.$$
+        \item[$\bm{\Rightarrow}$)] Supongamos que $A$ es no singular, entonces existen $E_1, E_2, \dots, E_r$ matrices elementales tales que
+        $$A=E_1 E_2 \cdots E_r.$$
         Entonces,
         \begin{align*}
-            \Det A & = \Det E_1 \cdots E_r \\
+            \Det A & = \Det (E_1 E_2 \cdots E_r) \\
             & = \Det \big(E_1 (E_2 \cdots E_r) \big) \\
-            & = \Det E_1  \Det (E_2 \cdots E_r) \\
-            & = \Det E_1 \cdots \Det E_r \neq 0.
+            & = \Det E_1 \Det (E_2 \cdots E_r) \\
+            & = \Det E_1 \Det E_2 \cdots \Det E_r \neq 0.
         \end{align*}
         Esto es, ya que si $E$ es una matriz elemental, entonces $\Det E \neq 0$. En efecto, sabemos que:
         \begin{enumerate}[label=\roman*)]
@@ -769,12 +769,12 @@ Del anterior ejemplo, se hereda el siguiente teorema
         \end{enumerate}
         \item[$\bm{\Leftarrow}$)] Supongamos que $\Det A \neq 0$. Si $A$ es singular, entonces $A$ es equivalente por renglones a $B$, donde $B$ está en forma escalonada reducida y $B \neq I_n$. Luego, $B$ tiene por lo menos un renglón cero, así que
         $$\Det B=0.$$
-        Como $A$ es equivalente por renglones a $B$, entonces existen $E_1, \dots, E_m$ matrices elementales tales que
-        $$E_m \cdots E_1 A=B.$$
+        Dado que $A$ es equivalente por renglones a $B$, se pueden encontrar matrices elementales $E_1, E_2, \dots, E_m$ tales que
+        $$E_m \cdots E_2 E_1 A = B.$$
         Así que
         \begin{align*}
-            \Det B & = \Det (E_m \cdots E_1 A) \\
-            & = \Det E_m \cdots \Det E  \Det A \neq 0,
+            \Det B & = \Det (E_m \cdots E_2 E_1 A) \\
+            & = \Det E_m \cdots \Det E_2 \Det E_1 \Det A \neq 0,
         \end{align*}
         lo cual no puede ser. Por tanto, $A$ es no singular.
     \end{enumerate}

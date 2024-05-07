@@ -1130,11 +1130,11 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
     que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$.
 \end{example}
 
-\section{Formas bilineales y cuadráticas}
+\section{Formas cuadráticas y secciones cónicas}
 
 La teoría de las formas cuadráticas tiene su origen en la geometría analítica, más precisamente, en la teoría de las curvas (y superficies) de segundo orden. Es bien sabido que la ecuación de una curva central de segundo orden en el plano, después de trasladar el origen de coordenadas rectangulares al centro de esta curva, tiene la forma
 \begin{equation}
-    Ax^2 + 2Bxy + Cy^2 = D \label{cuadratica1}
+    Ax^2 + Bxy + Cy^2 = D \label{cuadratica1}
 \end{equation}
 Se sabe también que se puede efectuar una rotación de los ejes coordenados en un ángulo $\theta$, o sea, un cambio de las coordenadas $x$ e $y$, por las coordenadas $x_1$ e $y_1$ donde
 \begin{equation}
@@ -1149,8 +1149,39 @@ de modo que en las nuevas coordenadas la ecuación de la curva tome la forma “
 \end{equation}
 por consiguiente, en esta ecuación, el coeficiente del producto $x_1y_1$ de las indeterminadas es igual a cero. Evidentemente, la transformación de coordenadas \eqref{cuadratica2} se puede interpretar como una transformación lineal de las indeterminadas (véase el ejemplo \ref{tl:rotacion}), la cual, además, no es degenerada, puesto que el determinante de sus coeficientes es igual a la unidad. Esta transformación se aplica al primer miembro de la ecuación \eqref{cuadratica1}. Por lo tanto, se puede decir que mediante la transformación lineal no degenerada \eqref{cuadratica2}, el primer miembro de la ecuación \eqref{cuadratica1} se convierte en el primer miembro de la ecuación \eqref{cuadratica3}.
 
+Numerosas aplicaciones reclamaron la elaboración de una teoría análoga para el caso en que el número de las indeterminadas, en lugar de dos, sea igual a cualquier $n$, y los coeficientes sean, o bien números reales, o bien números complejos cualesquiera. Sin embargo, para nuestros propósitos, nos limitaremos a considerar el caso de dos indeterminadas y coeficientes reales. Al aplicar esta restricción, alcanzamos el siguiente concepto.
 
-Numerosas aplicaciones reclamaron la elaboración de una teoría análoga para el caso en que el número de las indeterminadas, en lugar de dos, sea igual a cualquier $n$, y los coeficientes sean, o bien números reales, o bien números complejos cualesquiera. Generalizando la expresión que figura en el primer miembro de la ecuación \eqref{cuadratica1}, llegamos al siguiente concepto.
+\begin{definition}
+    Sean $A$, $B$, $C$, $D \in \RR$.
+    \begin{enumerate}[label=\roman*)]
+        \item Una ecuación cuadrática en dos variables sin términos lineales es una ecuación de la forma
+        $$Ax^2 + Bxy + Cy^2 = D$$
+        donde $|A| + |B| + |C| \neq 0$.\newpage
+        \item Una forma cuadrática en dos variables es una expresión de la forma
+        $$F(x, y) = Ax^2 + Bxy + Cy^2$$
+        donde $|A| + |B| + |C| \neq 0$.
+    \end{enumerate}
+\end{definition}
+
+Recordemos que las secciones cónicas, curvas obtenidas al intersectar un plano con un cono de doble nappes, son una clase especial de curvas que incluyen circunferencias, elipses, parábolas y hipérbolas. Estas curvas no solo son fascinantes por su belleza geométrica, sino que también desempeñan un papel fundamental en campos como la óptica, la mecánica celeste y la ingeniería. Una herramienta esencial para el estudio de formas cuadráticas es la matriz simétrica. Esta matriz, denotada como $G$, tiene la propiedad de que al multiplicarla por un vector $\mathbb{v}$ y luego tomar el producto punto con este mismo vector $\mathbb{v}$, obtenemos la expresión $G\mathbb{v} \bullet \mathbb{v}$. Esta matriz simétrica proporciona una representación compacta y eficiente de las formas cuadráticas, lo que facilita su análisis y manipulación en diversas aplicaciones.
+
+Por ejemplo, consideremos la matriz simétrica:
+$$G = \begin{bmatrix*}[r] 2 & -1 \\ -1 & 4 \end{bmatrix*}$$
+Esta matriz simétrica está asociada con la forma cuadrática
+$$F(x, y) = 2x^2 - 2xy + 4y^2$$
+Al multiplicarla dicha matriz por el vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
+$$G\mathbb{v} = \begin{pmatrix} 2x - y \\ -x + 4y \end{pmatrix}$$
+Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos la expresión
+$$G\mathbb{v} \bullet \mathbb{v} = 2x^2 - 2xy + 4y^2$$
+
+En general, esta matriz, denotada como $G$, está dada por
+$$G = \begin{bmatrix} A & \dfrac{B}{2} \\[2mm] \dfrac{B}{2} & C \end{bmatrix}$$
+donde $A$, $B$, y $C$ son números reales que representan los coeficientes de la forma cuadrática $Ax^2 + Bxy + Cy^2$. Al multiplicar esta matriz por un vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
+$$G\mathbb{v} = \begin{pmatrix} Ax + \dfrac{By}{2} \\[2mm] \dfrac{Bx}{2} + Cy \end{pmatrix}$$
+Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos la expresión
+$$G\mathbb{v} \bullet \mathbb{v} = Ax^2 + Bxy + Cy^2$$
+que corresponde a la forma cuadrática en cuestión.
+
 
 \section{El teorema de Cayley-Hamilton}
 
@@ -1207,11 +1238,11 @@ De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_
     \item Demuestre que los eigenvalores de $A^{2}$ son $\lambda_{1}^{2}, \lambda_{2}^{2}, \dots, \lambda_{k}^{2}$.
     \item Demuestre que los eigenvalores de $A^{m}$ son $\lambda_{1}^{m}, \lambda_{2}^{m}, \dots, \lambda_{k}^{m}$ para $m=1,2,3, \dots$
     \item Sea $\lambda$ un eigenvalor de $A$ con $\mathbb{v}$ como el eigenvector correspondiente. Sea $p(\lambda)=a_{0}+a_{1} \lambda+a_{2} \lambda^{2}+\cdots+a_{n} \lambda^{n}$. Defina la matriz $p(A)$ por $p(A)=a_{0} I_n+a_{1} A+a_{2} A^{2}$ $+\cdots+a_{n} A^{n}$. Demuestre que, en efecto, $p(A) \mathbb{v}=p(\lambda) \mathbb{v}$.
-    \item Utilizando el resultado del problema 37, demuestre que si $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$ son eigenvalores de $A$, entonces $p\left(\lambda_{1}\right), p\left(\lambda_{2}\right), \dots, p\left(\lambda_{k}\right)$ son vectores característicos de $p(A)$.
+    \item Utilizando el resultado del problema 35, demuestre que si $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$ son eigenvalores de $A$, entonces $p\left(\lambda_{1}\right), p\left(\lambda_{2}\right), \dots, p\left(\lambda_{k}\right)$ son vectores característicos de $p(A)$.
     \item Demuestre que si $A$ es una matriz diagonal, entonces los eigenvalores de $A$ son las componentes de la diagonal de $A$.
     \item Sea $A_{1}=\begin{bmatrix*}2 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{2}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{3}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$, $A_{4}=\begin{bmatrix*}2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 2\end{bmatrix*}$.
     Demuestre que para cada matriz $\lambda=2$ es un eigenvalor con multiplicidad algebraica $4$. En cada caso calcule la multiplicidad geométrica de $\lambda=2$.
-    \item Sea $A$ una matriz real de $n \times n$. Demuestre que si $\lambda_{1}$ es un eigenvalor complejo de $A$ con eigenvector $\mathbb{v}_{1}$, entonces $\overline{\lambda_{1}}$ es un eigenvalor de $A$ con eigenvector $\overline{\mathbb{v}_{1}}$.
+    \item Sea $A$ una matriz real de $n \times n$. Demuestre que si $\lambda$ es un eigenvalor complejo de $A$ con eigenvector $\mathbb{v}$, entonces $\overline{\lambda}$ es un eigenvalor de $A$ con eigenvector $\overline{\mathbb{v}}$.
     \item Una matriz de probabilidad es una matriz de $n \times n$ que tiene dos propiedades:
     \begin{enumerate}
         \item $a_{i j} \geq 0$ para toda $i$ y $j$.
