@@ -116,7 +116,7 @@ BoldItalicFont=Lato Italic
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{fit}
 \usetikzlibrary{3d}
-\usetikzlibrary{patterns,angles,quotes}
+\usetikzlibrary{patterns,angles,quotes,math}
 \RequirePackage{tikz-3dplot}
 \usetikzlibrary{snakes}
 

@@ -1134,7 +1134,7 @@ En esta sección se han probado resultados para matrices simétricas reales. Est
 
 La teoría de las formas cuadráticas tiene su origen en la geometría analítica, más precisamente, en la teoría de las curvas (y superficies) de segundo orden. Es bien sabido que la ecuación de una curva central de segundo orden en el plano, después de trasladar el origen de coordenadas rectangulares al centro de esta curva, tiene la forma
 \begin{equation}
-    Ax^2 + Bxy + Cy^2 = D \label{cuadratica1}
+    ax^2 + bxy + cy^2 = d \label{cuadratica1}
 \end{equation}
 Se sabe también que se puede efectuar una rotación de los ejes coordenados en un ángulo $\theta$, o sea, un cambio de las coordenadas $x$ e $y$, por las coordenadas $x_1$ e $y_1$ donde
 \begin{equation}
@@ -1145,42 +1145,227 @@ Se sabe también que se puede efectuar una rotación de los ejes coordenados en 
 \end{equation}
 de modo que en las nuevas coordenadas la ecuación de la curva tome la forma “canónica”:
 \begin{equation}
-    A_1x_1^2 + C_1y_1^2 = D \label{cuadratica3}
+    a_1x_1^2 + c_1y_1^2 = d \label{cuadratica3}
 \end{equation}
 por consiguiente, en esta ecuación, el coeficiente del producto $x_1y_1$ de las indeterminadas es igual a cero. Evidentemente, la transformación de coordenadas \eqref{cuadratica2} se puede interpretar como una transformación lineal de las indeterminadas (véase el ejemplo \ref{tl:rotacion}), la cual, además, no es degenerada, puesto que el determinante de sus coeficientes es igual a la unidad. Esta transformación se aplica al primer miembro de la ecuación \eqref{cuadratica1}. Por lo tanto, se puede decir que mediante la transformación lineal no degenerada \eqref{cuadratica2}, el primer miembro de la ecuación \eqref{cuadratica1} se convierte en el primer miembro de la ecuación \eqref{cuadratica3}.
 
 Numerosas aplicaciones reclamaron la elaboración de una teoría análoga para el caso en que el número de las indeterminadas, en lugar de dos, sea igual a cualquier $n$, y los coeficientes sean, o bien números reales, o bien números complejos cualesquiera. Sin embargo, para nuestros propósitos, nos limitaremos a considerar el caso de dos indeterminadas y coeficientes reales. Al aplicar esta restricción, alcanzamos el siguiente concepto.
 
 \begin{definition}
-    Sean $A$, $B$, $C$, $D \in \RR$.
+    Sean $a$, $b$, $c$, $d \in \RR$.
     \begin{enumerate}[label=\roman*)]
         \item Una ecuación cuadrática en dos variables sin términos lineales es una ecuación de la forma
-        $$Ax^2 + Bxy + Cy^2 = D$$
-        donde $|A| + |B| + |C| \neq 0$.\newpage
+        $$ax^2 + bxy + cy^2 = d$$
+        donde $|a| + |b| + |c| \neq 0$.\newpage
         \item Una forma cuadrática en dos variables es una expresión de la forma
-        $$F(x, y) = Ax^2 + Bxy + Cy^2$$
-        donde $|A| + |B| + |C| \neq 0$.
+        $$F(x, y) = ax^2 + bxy + cy^2$$
+        donde $|a| + |b| + |c| \neq 0$.
     \end{enumerate}
 \end{definition}
 
-Recordemos que las secciones cónicas, curvas obtenidas al intersectar un plano con un cono de doble nappes, son una clase especial de curvas que incluyen circunferencias, elipses, parábolas y hipérbolas. Estas curvas no solo son fascinantes por su belleza geométrica, sino que también desempeñan un papel fundamental en campos como la óptica, la mecánica celeste y la ingeniería. Una herramienta esencial para el estudio de formas cuadráticas es la matriz simétrica. Esta matriz, denotada como $G$, tiene la propiedad de que al multiplicarla por un vector $\mathbb{v}$ y luego tomar el producto punto con este mismo vector $\mathbb{v}$, obtenemos la expresión $G\mathbb{v} \bullet \mathbb{v}$. Esta matriz simétrica proporciona una representación compacta y eficiente de las formas cuadráticas, lo que facilita su análisis y manipulación en diversas aplicaciones.
+Recordemos que las secciones cónicas, curvas obtenidas al intersectar un plano con un cono de doble nappes, son una clase especial de curvas que incluyen circunferencias, elipses, parábolas y hipérbolas. Estas curvas no solo son fascinantes por su belleza geométrica, sino que también desempeñan un papel fundamental en campos como la óptica, la mecánica celeste y la ingeniería. Una herramienta esencial para el estudio de formas cuadráticas es la matriz simétrica. Esta matriz, denotada como $A$, tiene la propiedad de que al multiplicarla por un vector $\mathbb{v}$ y luego tomar el producto punto con este mismo vector $\mathbb{v}$, obtenemos la expresión $A\mathbb{v} \bullet \mathbb{v}$. Esta matriz simétrica proporciona una representación compacta y eficiente de las formas cuadráticas, lo que facilita su análisis y manipulación en diversas aplicaciones.
 
 Por ejemplo, consideremos la matriz simétrica:
-$$G = \begin{bmatrix*}[r] 2 & -1 \\ -1 & 4 \end{bmatrix*}$$
+$$A = \begin{bmatrix*}[r] 2 & -1 \\ -1 & 4 \end{bmatrix*}$$
 Esta matriz simétrica está asociada con la forma cuadrática
 $$F(x, y) = 2x^2 - 2xy + 4y^2$$
 Al multiplicarla dicha matriz por el vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
-$$G\mathbb{v} = \begin{pmatrix} 2x - y \\ -x + 4y \end{pmatrix}$$
+$$A\mathbb{v} = \begin{pmatrix} 2x - y \\ -x + 4y \end{pmatrix}$$
 Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos la expresión
-$$G\mathbb{v} \bullet \mathbb{v} = 2x^2 - 2xy + 4y^2$$
+$$A\mathbb{v} \bullet \mathbb{v} = 2x^2 - 2xy + 4y^2$$
 
-En general, esta matriz, denotada como $G$, está dada por
-$$G = \begin{bmatrix} A & \dfrac{B}{2} \\[2mm] \dfrac{B}{2} & C \end{bmatrix}$$
-donde $A$, $B$, y $C$ son números reales que representan los coeficientes de la forma cuadrática $Ax^2 + Bxy + Cy^2$. Al multiplicar esta matriz por un vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
-$$G\mathbb{v} = \begin{pmatrix} Ax + \dfrac{By}{2} \\[2mm] \dfrac{Bx}{2} + Cy \end{pmatrix}$$
+En general, esta matriz, denotada como $A$, está dada por
+$$A = \begin{bmatrix} a & \dfrac{b}{2} \\[1.5mm] \dfrac{b}{2} & c \end{bmatrix}$$
+donde $a$, $b$, y $c$ son números reales que representan los coeficientes de la forma cuadrática $ax^2 + bxy + cy^2$. Al multiplicar esta matriz por un vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
+$$A\mathbb{v} = \begin{pmatrix} ax + \dfrac{by}{2} \\[2mm] \dfrac{bx}{2} + cy \end{pmatrix}$$
 Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos la expresión
-$$G\mathbb{v} \bullet \mathbb{v} = Ax^2 + Bxy + Cy^2$$
-que corresponde a la forma cuadrática en cuestión.
+\begin{equation}
+    A\mathbb{v} \bullet \mathbb{v} = ax^2 + bxy + cy^2 = d \label{PRODLPRODIN}
+\end{equation}
+que corresponde a la forma cuadrática en cuestión. Dado que $A$ es simétrica, se deduce que es diagonalizable ortogonalmente según el teorema \ref{theorem_simetrica3}. Esto implica la existencia de una matriz $Q \in \mathcal{M}_{2 \times 2}(\RR)$ ortogonal tal que
+$$D = \operatorname{diag} \{ \lambda_1, \lambda_2 \} = Q^T A Q$$\newpage\noindent
+donde $\lambda_1$ y $\lambda_2$ son los eigenvalores de $A$. Puesto que $Q$ es ortogonal, es decir, $Q^T = Q^{-1}$, se sigue que
+$$D = Q^{-1}AQ$$
+Al multiplicar la ecuación anterior por la izquierda por $Q$, se sigue que
+$$QD = AQ$$
+Al multiplicar la ecuación anterior por la derecha por $Q^{-1}$, se llega a
+$$QDQ^{-1} = A$$
+y dado que $Q^{-1} = Q^T$, entonces
+\begin{equation}
+    QDQ^T = A \label{DEGAA}
+\end{equation}
+Sustituyendo \eqref{DEGAA} en \eqref{PRODLPRODIN}, obtenemos que
+\begin{align*}
+    d & = A\mathbb{v} \bullet \mathbb{v} \\
+    & = \left( QDQ^T \right) \mathbb{v} \bullet \mathbb{v} \\
+    & = QD \left( Q^T \mathbb{v} \right) \bullet \mathbb{v} \\
+    & = Q \left[ D \left( Q^T \mathbb{v} \right) \right] \bullet \mathbb{v} \\
+    & = D \left( Q^T \mathbb{v} \right) \bullet Q^T \mathbb{v} \\
+    & = D \left( Q^T \mathbb{v} \right) \bullet \left( Q^T \mathbb{v} \right) \\
+    & = D \mathbb{v}' \bullet \mathbb{v}'
+\end{align*}
+donde $\mathbb{v}' = \begin{pmatrix} x_1 \\ y_1 \end{pmatrix} = Q^T \mathbb{v}$. De esta forma,
+\begin{equation}
+    d = D \mathbb{v}' \bullet \mathbb{v}' \label{CUADSINXY}
+\end{equation}
+Así,
+\begin{align*}
+    d & = \begin{bmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        y_1 
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} \\
+    & = \begin{bmatrix}
+        \lambda_1 x_1 \\
+        \lambda_2 x_2
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} \\
+    & = \lambda_1 x_1^2 + \lambda_2 y_1^2
+\end{align*}
+Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma cuadrática que no contiene el término $x_1y_1$. Así, la ecuación \eqref{CUADSINXY} es una ecuación cuadrática en las nuevas variables $x_1$, $y_1$, sin el término $x_1y_1$.
+
+\begin{example}
+    Considere la ecuación cuadrática en dos variables
+    \begin{equation}
+        5x^2 - 2xy + 5y^2 = 4 \label{AJAKSIJSYWYUQHVVJQUJAJ}
+    \end{equation}
+    Por el procedimiento anterior, tenemos que expresar \eqref{AJAKSIJSYWYUQHVVJQUJAJ} en la forma
+    \begin{equation}
+        A\mathbb{v} \bullet \mathbb{v} = E \label{IAJAJAJAJAHAHHHJQJ}
+    \end{equation}
+    De esta forma,
+    $$\begin{bmatrix*}[r] 5 & -1 \\ -1 & 5 \end{bmatrix*} \begin{bmatrix} x \\ y \end{bmatrix} \bullet \begin{bmatrix} x \\ y \end{bmatrix} = 4$$
+    donde $A = \begin{bmatrix*}[r] 5 & -1 \\ -1 & 5 \end{bmatrix*}$ y $\mathbb{v} = \begin{bmatrix} x \\ y \end{bmatrix}$. Siguiendo el método expuesto en la página \pageref{metodo_eigen_2x2}, es fácil determinar los eigenvalores de $A$, los cuales están dados por $\lambda_1 = 6$ y $\lambda_2 = 4$, y utilizando las fórmulas del inciso (i), se obtiene que los eigenvectores de $A$ correspondientes a $\lambda_1$ y $\lambda_2$ están dados por
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r] -1 \\ -1 \end{pmatrix*}$$\newpage\noindent
+    Conforme al teorema \ref{theorem_simetrica2}, los eigenvectores obtenidos anteriormente son ortogonales. Para determinar la matriz $Q$, se aplica el teorema \ref{Qorto_vectoresorto}. Así,
+    \begin{align*}
+        \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 & \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{v}_2 \|} \mathbb{v}_2 \\
+        & = \frac{1}{\sqrt{2}} \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} & & = \frac{1}{\sqrt{2}} \begin{pmatrix*}[r] -1 \\ -1 \end{pmatrix*}
+    \end{align*}
+    Tomando $Q = \begin{bmatrix*}[r]
+        \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+        -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
+    \end{bmatrix*}$, entonces $Q^T = \begin{bmatrix*}[r]
+        \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+        -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
+    \end{bmatrix*}$. Por tanto,
+    \begin{align*}
+        Q^TAQ & = \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            5 & -1 \\
+            -1 & 5
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            3\sqrt{2} & -3\sqrt{2} \\
+            -2\sqrt{2} & -2\sqrt{2}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{2}} & - \dfrac{1}{\sqrt{2}} \\[3mm]
+            -\dfrac{1}{\sqrt{2}} & -\dfrac{1}{\sqrt{2}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            6 & 0 \\
+            0 & 4
+        \end{bmatrix}
+    \end{align*}
+    De este modo,
+    $$D = Q^T A Q$$
+    y en consecuencia,
+    $$QDQ^T = A$$
+    Al sustituir en \eqref{IAJAJAJAJAHAHHHJQJ}, se obtiene
+    \begin{align*}
+        4 & = QDQ^T \mathbb{v} \bullet \mathbb{v} \\
+        & = DQ^T\mathbb{v} \bullet Q^T\mathbb{v} \\
+        & = D\mathbb{v}' \bullet \mathbb{v}'
+    \end{align*}
+    donde $\mathbb{v}' = \begin{pmatrix} x_1 \\ y_1 \end{pmatrix} = Q^T \mathbb{v}$. Por lo tanto,\sideFigure[\label{ELLIPSEEX_1Y_1}]{
+    \begin{tikzpicture}
+		\draw[-stealth, thick] (-2.5,0) -- (2.5,0) node[below left] {$x$};
+        \draw[-stealth, thick] (0,-3) -- (0,3) node[below left] {$y$};
+        % definición de las variables
+        \begin{scope}[rotate=45]
+		    \tikzmath{
+			    % parámetros de la elipse
+			    \a = 7/4; \b = 7/6;
+			    \c = sqrt((\a)^2 - (\b)^2);
+			    % ec. de la elipse parametrizada
+			    function f(\x) {
+				    return \a*\b/sqrt((\a*sin(\x))^2 + (\b*cos(\x))^2);
+			    };
+		    };
+		    % def. de las coordenadas importantes
+		    \coordinate (C) at (0,0);
+		    \coordinate (F1) at (-\c,0);
+		    \coordinate (F2) at (+\c,0);
+		    \coordinate (A1) at (-\a,0);
+		    \coordinate (A2) at (+\a,0);
+		    \coordinate (B1) at (0,+\b);
+		    \coordinate (B2) at (0,-\b);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \node[anchor = base, below, rotate = 45] at (F1) {$F_1$};
+		    \node[anchor = base, below, rotate = 45] at (F2) {$F_2$};
+		    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		    % anotaciones			
+		    {[on background layer]
+		    \draw[gray!50] (A1) -- ++(0,-2.25);
+		    \draw[gray!50, shorten <= 5mm] (F1) -- ++(0,-1.75);
+		    \draw[gray!50]
+			    ([yshift = -2cm]A1)
+				    --node[black, fill = white, rotate = 45] {$a$}
+			    ([yshift = -2cm]C);
+		    \draw[gray!50]
+			    ([yshift = -1.5cm]F1)
+				    --node[black, fill = white, rotate = 45] {$c$}
+			    ([yshift = -1.5cm]C);
+		    \draw[gray!50]
+			    (B1) -- ++(-1.25*\a - 0.3,0)
+			    (-1.25*\a,0) --node[black, fill = white, rotate = 45] {$b$} ++(0,\b);	
+		    }
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % eje horizontal
+		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (-2.5,0) -- (2.5,0) node[below left, rotate = 45] {$x_1$};
+            % eje vertical
+		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (0,-3) -- (0,3) node[below left, rotate = 45] {$y_1$};
+            % elección de un punto arbitrario sobre la elipse
+		    \tikzmath{ \th = 30; }
+		    \coordinate (P) at (\th:{f(\th)});
+            \draw (F1) -- (P) -- (F2);
+		    % elipse
+		    \draw
+			    plot[domain = 0:360, samples = 120] (\x:{f(\x)});
+		    % puntos
+		    \foreach \p in {C,A1,A2,B1,B2,F1,F2,P}
+			    \fill (\p) circle (1.75pt);
+        \end{scope}
+    \end{tikzpicture}
+    }
+    $$\begin{bmatrix}
+        4 & 0 \\
+        0 & 6
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} = 4$$
+    lo que conduce a
+    $$4x_1^2 + 6y_1^2 = 4$$
+    o bien
+    $$\frac{x_1^2}{1^2} + \frac{y_1^2}{\left(\sqrt{\dfrac{2}{3}}\right)^2} = 1$$
+    que corresponde a una elipse con $a = 1$ y $\displaystyle b = \sqrt{\frac{2}{3}}$. Desde una perspectiva geométrica, se representa la figura \ref{ELLIPSEEX_1Y_1}.
+\end{example}
 
 
 \section{El teorema de Cayley-Hamilton}
