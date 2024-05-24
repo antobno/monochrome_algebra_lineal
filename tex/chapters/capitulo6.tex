@@ -1231,14 +1231,14 @@ Así,
 \end{align*}
 Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma cuadrática que no contiene el término $x_1y_1$. Así, la ecuación \eqref{CUADSINXY} es una ecuación cuadrática en las nuevas variables $x_1$, $y_1$, sin el término $x_1y_1$.
 
-\begin{example}
+\begin{example}\label{Example:elipse}
     Considere la ecuación cuadrática en dos variables
     \begin{equation}
         5x^2 - 2xy + 5y^2 = 4 \label{AJAKSIJSYWYUQHVVJQUJAJ}
     \end{equation}
     Por el procedimiento anterior, tenemos que expresar \eqref{AJAKSIJSYWYUQHVVJQUJAJ} en la forma
     \begin{equation}
-        A\mathbb{v} \bullet \mathbb{v} = E \label{IAJAJAJAJAHAHHHJQJ}
+        A\mathbb{v} \bullet \mathbb{v} = d \label{IAJAJAJAJAHAHHHJQJ}
     \end{equation}
     De esta forma,
     $$\begin{bmatrix*}[r] 5 & -1 \\ -1 & 5 \end{bmatrix*} \begin{bmatrix} x \\ y \end{bmatrix} \bullet \begin{bmatrix} x \\ y \end{bmatrix} = 4$$
@@ -1292,13 +1292,13 @@ Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma c
     donde $\mathbb{v}' = \begin{pmatrix} x_1 \\ y_1 \end{pmatrix} = Q^T \mathbb{v}$. Por lo tanto,\sideFigure[\label{ELLIPSEEX_1Y_1}]{
     \begin{tikzpicture}
 		\draw[-stealth, thick] (-2.5,0) -- (2.5,0) node[below left] {$x$};
-        \draw[-stealth, thick] (0,-3) -- (0,3) node[below left] {$y$};
+        \draw[-stealth, thick] (0,-2.5) -- (0,2.5) node[below left] {$y$};
         % definición de las variables
-        \begin{scope}[rotate=45]
+        \begin{scope}[rotate=-45]
 		    \tikzmath{
-			    % parámetros de la elipse
-			    \a = 7/4; \b = 7/6;
-			    \c = sqrt((\a)^2 - (\b)^2);
+			    % parámetros de la elipse (multiplicados por 1.75)
+			    \a = 7*sqrt(6)/12; \b = 7/4;
+			    \c = sqrt(abs((\a)^2 - (\b)^2));
 			    % ec. de la elipse parametrizada
 			    function f(\x) {
 				    return \a*\b/sqrt((\a*sin(\x))^2 + (\b*cos(\x))^2);
@@ -1312,31 +1312,36 @@ Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma c
 		    \coordinate (A2) at (+\a,0);
 		    \coordinate (B1) at (0,+\b);
 		    \coordinate (B2) at (0,-\b);
+            \coordinate (X) at (1,1);
+            \coordinate (X2) at (1,0);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            \node[anchor = base, below, rotate = 45] at (F1) {$F_1$};
-		    \node[anchor = base, below, rotate = 45] at (F2) {$F_2$};
+            \node[anchor = base, below, rotate = -45] at (F1) {$F_1$};
+		    \node[anchor = base, below, rotate = -45] at (F2) {$F_2$};
 		    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		    % anotaciones			
 		    {[on background layer]
-		    \draw[gray!50] (A1) -- ++(0,-2.25);
-		    \draw[gray!50, shorten <= 5mm] (F1) -- ++(0,-1.75);
+		    \draw[gray!50] (A2) -- ++(0,-2.25);
+		    \draw[gray!50, shorten <= 5mm] (F2) -- ++(0,-1.55);
 		    \draw[gray!50]
-			    ([yshift = -2cm]A1)
-				    --node[black, fill = white, rotate = 45] {$a$}
+			    ([yshift = -2cm]A2)
+				    --node[black, fill = white, rotate = -45] {$a$}
 			    ([yshift = -2cm]C);
 		    \draw[gray!50]
-			    ([yshift = -1.5cm]F1)
-				    --node[black, fill = white, rotate = 45] {$c$}
-			    ([yshift = -1.5cm]C);
+			    ([yshift = -1.3cm]F2)
+				    --node[black, fill = white, rotate = -45] {$c$}
+			    ([yshift = -1.3cm]C);
 		    \draw[gray!50]
-			    (B1) -- ++(-1.25*\a - 0.3,0)
-			    (-1.25*\a,0) --node[black, fill = white, rotate = 45] {$b$} ++(0,\b);	
+			    (B1) -- ++(-1.25*\a - 0.5,0)
+			    (-1.25*\a - 0.2,0) --node[black, fill = white, rotate = -45] {$b$} ++(0,\b);
 		    }
+            \pic[draw, -latex, angle eccentricity=1.5,
+            ] {angle = X--C--X2};
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % eje horizontal
-		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (-2.5,0) -- (2.5,0) node[below left, rotate = 45] {$x_1$};
+		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (-2.5,0) -- (2.5,0) node[below left, rotate = -45] {$x_1$};
             % eje vertical
-		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (0,-3) -- (0,3) node[below left, rotate = 45] {$y_1$};
+		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (0,-2.5) -- (0,2.5) node[below left, rotate = -45] {$y_1$};
+            \node[fill=white] at (0.5,-0.5) {$315^{\circ}$};
             % elección de un punto arbitrario sobre la elipse
 		    \tikzmath{ \th = 30; }
 		    \coordinate (P) at (\th:{f(\th)});
@@ -1351,8 +1356,8 @@ Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma c
     \end{tikzpicture}
     }
     $$\begin{bmatrix}
-        4 & 0 \\
-        0 & 6
+        6 & 0 \\
+        0 & 4
     \end{bmatrix} \begin{bmatrix}
         x_1 \\
         y_1
@@ -1361,12 +1366,837 @@ Por lo tanto, $d = D \mathbb{v}’ \bullet \mathbb{v}’$ representa una forma c
         y_1
     \end{bmatrix} = 4$$
     lo que conduce a
-    $$4x_1^2 + 6y_1^2 = 4$$
+    $$6x_1^2 + 4y_1^2 = 4$$
     o bien
-    $$\frac{x_1^2}{1^2} + \frac{y_1^2}{\left(\sqrt{\dfrac{2}{3}}\right)^2} = 1$$
-    que corresponde a una elipse con $a = 1$ y $\displaystyle b = \sqrt{\frac{2}{3}}$. Desde una perspectiva geométrica, se representa la figura \ref{ELLIPSEEX_1Y_1}.
+    $$\frac{x_1^2}{\left(\sqrt{\dfrac{2}{3}}\right)^2} + \frac{y_1^2}{1^2} = 1$$
+    que corresponde a una elipse con $\displaystyle a = \sqrt{\frac{2}{3}}$ y $b = 1$. Desde una perspectiva geométrica, se representa la figura \ref{ELLIPSEEX_1Y_1}.
 \end{example}
 
+\begin{example}
+    Grafique la curva
+    \begin{equation}
+        6x^2 + 5xy - 6y^2 = 7 \label{UYHDUYFHUEGFUYGEUGFUYGHTRHF}
+    \end{equation}
+    \solucion Análogo al ejercicio anterior, tenemos que expresar \eqref{UYHDUYFHUEGFUYGEUGFUYGHTRHF} en la forma
+    \begin{equation}
+        A\mathbb{v} \bullet \mathbb{v} = d \label{JHEFRFRGUJHRHGUHRUR}
+    \end{equation}
+    De esta forma,
+    $$\begin{bmatrix*}[r]
+        6 & \dfrac{5}{2} \\[2mm]
+        \dfrac{5}{2} & - 6
+    \end{bmatrix*} \begin{bmatrix}
+        x \\
+        y
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x \\
+        y
+    \end{bmatrix} = 7$$
+    siendo $A = \begin{bmatrix*}[r]
+        6 & \dfrac{5}{2} \\[2mm]
+        \dfrac{5}{2} & - 6
+    \end{bmatrix*}$ que es una matriz simétrica. Siguiendo el método expuesto en la página \pageref{metodo_eigen_2x2}, es fácil determinar los eigenvalores de $A$, los cuales están dados por $\lambda_1 = 13/2$ y $\lambda_2 = -13/2$, y utilizando las fórmulas del inciso (ii), se obtiene que los eigenvectores de $A$ correspondientes a $\lambda_1$ y $\lambda_2$ están dados por
+    $$\mathbb{v}_1 = \begin{pmatrix} \dfrac{5}{2} \\[3mm] \dfrac{1}{2} \end{pmatrix} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r] \dfrac{5}{2} \\[3mm] - \dfrac{25}{2} \end{pmatrix*}$$
+    Multiplicando por $2$ ambos vectores, obtenemos:
+    $$\mathbb{v}_1 = \begin{pmatrix} 5 \\ 1 \end{pmatrix} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r] 5 \\ - 25 \end{pmatrix*}$$
+    Conforme al teorema \ref{theorem_simetrica2}, los eigenvectores obtenidos anteriormente son ortogonales. Para determinar la matriz $Q$, se aplica el teorema \ref{Qorto_vectoresorto}. Así,
+    \begin{align*}
+        \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 & \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{v}_2 \|} \mathbb{v}_2 \\
+        & = \frac{1}{\sqrt{26}} \begin{pmatrix} 5 \\ 1 \end{pmatrix} & & = \frac{1}{5\sqrt{26}} \begin{pmatrix*}[r] 5 \\ -25 \end{pmatrix*}
+    \end{align*}
+    Así, $Q = \begin{bmatrix*}[r]
+        \dfrac{5}{\sqrt{26}} & \dfrac{1}{\sqrt{26}} \\[3mm]
+        \dfrac{1}{\sqrt{26}} & -\dfrac{5}{\sqrt{26}}
+    \end{bmatrix*}$, entonces $Q^T = \begin{bmatrix*}[r]
+        \dfrac{5}{\sqrt{26}} & \dfrac{1}{\sqrt{26}} \\[3mm]
+        \dfrac{1}{\sqrt{26}} & -\dfrac{5}{\sqrt{26}}
+    \end{bmatrix*}$. Por tanto
+    \begin{align*}
+        Q^TAQ & = \begin{bmatrix*}[r]
+            \dfrac{5}{\sqrt{26}} & \dfrac{1}{\sqrt{26}} \\[3mm]
+            \dfrac{1}{\sqrt{26}} & -\dfrac{5}{\sqrt{26}}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            6 & \dfrac{5}{2} \\[2mm]
+            \dfrac{5}{2} & - 6
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{5}{\sqrt{26}} & \dfrac{1}{\sqrt{26}} \\[3mm]
+            \dfrac{1}{\sqrt{26}} & -\dfrac{5}{\sqrt{26}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            \dfrac{5\sqrt{26}}{4} & \dfrac{\sqrt{26}}{4} \\[3mm]
+            - \dfrac{\sqrt{26}}{4} & \dfrac{5\sqrt{26}}{4}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            \dfrac{5}{\sqrt{26}} & \dfrac{1}{\sqrt{26}} \\[3mm]
+            \dfrac{1}{\sqrt{26}} & -\dfrac{5}{\sqrt{26}}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            \dfrac{13}{2} & \phantom{-} 0 \\[2mm]
+            0 & - \dfrac{13}{2}
+        \end{bmatrix}
+    \end{align*}
+    De este modo,
+    $$D = Q^T A Q$$
+    y en consecuencia,
+    $$QDQ^T = A$$
+    Al sustituir en \eqref{JHEFRFRGUJHRHGUHRUR}, se obtiene
+    \begin{align*}
+        7 & = QDQ^T \mathbb{v} \bullet \mathbb{v} \\
+        & = DQ^T\mathbb{v} \bullet Q^T\mathbb{v} \\
+        & = D\mathbb{v}' \bullet \mathbb{v}'
+    \end{align*}\newpage\noindent
+    donde $\mathbb{v}' = \begin{pmatrix} x_1 \\ y_1 \end{pmatrix} = Q^T \mathbb{v}$. Por lo tanto,\sideFigure[\label{HIPERBOLAAX_1Y_1}]{
+    \begin{tikzpicture}
+        \draw[-stealth, thick] (-2.5,0) -- (2.5,0) node[below left] {$x$};
+        \draw[-stealth, thick] (0,-2.5) -- (0,2.5) node[below left] {$y$};
+        \begin{scope}[rotate=22.6]
+            \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (-2.5,0) -- (2.5,0) node[below left, rotate = 22.6] {$x_1$};
+            % eje vertical
+		    \draw[-stealth, dash pattern=on 3pt off 3pt, thick] (0,-2.5) -- (0,2.5) node[below left, rotate = 22.6] {$y_1$};
+            % Hipérbola en dos trozos
+            \draw[domain=-1.2:1.2, smooth, variable=\x] plot ({14*cosh(\x)/13}, {14*sinh(\x)/13});
+            \draw[domain=-1.2:1.2, smooth, variable=\x] plot ({-14*cosh(\x)/13}, {14*sinh(\x)/13});
+            % Puntos importantes
+            \draw[gray!50, shorten <= 5mm] ({-sqrt(2*(14/13)^2)},0) -- ++(0,-1.75);
+            \draw[gray!50]
+			    ($({-sqrt(2*(14/13)^2)},0) + (0,-1.5)$)
+				    --node[black, fill = white, rotate = 22.6] {$c$}
+			    (0,-1.5);
+            \filldraw (0,0) circle (1.75pt);
+            \filldraw (-14/13,0) circle (1.75pt);
+            \filldraw (14/13,0) circle (1.75pt);
+            \filldraw ({-sqrt(2*(14/13)^2)},0) circle (1.75pt) node[below,rotate=22.6] {$F_1$};
+            \filldraw ({sqrt(2*(14/13)^2)},0) circle (1.75pt) node[below,rotate=22.6] {$F_2$};
+            \filldraw (1.5, 1.0441439) circle (1.75pt);
+            \draw ({sqrt(2*(14/13)^2)},0) -- (1.5, 1.0441439) -- ({-sqrt(2*(14/13)^2)},0);
+        \end{scope}
+    \end{tikzpicture}
+    }
+    $$\begin{bmatrix}
+        \dfrac{13}{2} & \phantom{-} 0 \\[2mm]
+        0 & - \dfrac{13}{2}
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        y_1
+    \end{bmatrix} = 7$$
+    lo que conduce a
+    $$\frac{13}{2} x_1^2 - \frac{13}{2} y_1^2 = 7$$
+    o bien
+    $$\frac{x_1^2}{\left(\sqrt{\dfrac{14}{13}}\right)^2} - \frac{y_1^2}{\left(\sqrt{\dfrac{14}{13}}\right)^2} = 1$$
+    que corresponde a una hipérbola con $\displaystyle a = \sqrt{\frac{14}{13}}$ y $\displaystyle b = \sqrt{\frac{14}{13}}$. Desde una perspectiva geométrica, se representa la figura \ref{HIPERBOLAAX_1Y_1}.
+\end{example}
+
+Observemos que, en general, $Q$ es una matriz de rotación dada por
+$$Q = \begin{bmatrix*}[r]
+    \cos \theta & - \sen \theta \\
+    \sen \theta & \cos \theta
+\end{bmatrix*}$$
+y con ayuda de los coeficientes de la ecuación cuadrática podemos determinar el ángulo $\theta$. Para probarlo, consideremos $Q = \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}$ una matriz ortogonal real. Al ser $Q$ real y ortogonal, entonces se sigue que
+\begin{align*}
+    1 & = \operatorname{det} QQ^{-1} \\
+    & = \operatorname{det} QQ^T \\
+    & = \operatorname{det} Q \operatorname{det} Q^T \\
+    & = \operatorname{det} Q \operatorname{det} Q \\
+    & = (\operatorname{det} Q)^2
+\end{align*}
+Entonces $\operatorname{det} Q = \pm 1$. Si $\operatorname{det} Q = - 1$, se pueden intercambiar los renglones de $Q$ para hacer el determinante de esta nueva $Q$ igual a $1$. De esta forma,
+$$\operatorname{det} Q = ad - bc = 1$$
+Por otro lado,
+$$Q^TQ = \begin{bmatrix}
+    a & c \\
+    b & d
+\end{bmatrix} \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix} = \begin{bmatrix}
+    a^2 + c^2 & ab + cd \\
+    ab + cd & b^2 + d^2
+\end{bmatrix} = \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+\end{bmatrix}$$
+Observemos que de todo lo anterior, obtenemos el siguiente sistema
+\begin{align}
+    a^2 + c^2 & = 1 \label{GENQROT1} \\
+    ab + cd & = 0 \label{GENQROT2} \\
+    b^2 + d^2 & = 1 \label{GENQROT3}
+\end{align}
+De la ecuación \eqref{GENQROT2}, podemos deducir que $ab = -cd$. Si $b \neq 0$, entonces podemos dividir ambos lados de la ecuación entre $b$ para obtener
+$$a = -\dfrac{cd}{b}$$
+Pero si $b = 0$, entonces $cd = 0$, y como $\operatorname{det} Q = ad - bc = 1$, esto implicaría que $a$ y $d$ son ambos $1$ o $-1$, pero como $a \geq 0$, ambos deben ser $1$. Si $b \neq 0$, entonces sustituyendo $a$ en la ecuación \eqref{GENQROT1}, obtenemos
+$$\left(-\frac{cd}{b}\right)^2 + c^2 = 1$$\newpage\noindent
+es decir,
+$$\frac{c^2d^2}{b^2} + c^2 = 1$$
+Multiplicando ambos lados por $b^2$ y reorganizando los términos, obtenemos
+$$c^2(d^2 + b^2) = b^2$$
+Pero sabemos que $d^2 + b^2 = 1$ por la ecuación \eqref{GENQROT3}, así que
+$$c^2 = b^2$$
+Esto significa que $c = \pm b$. Pero como $ab + cd = 0$, y $a$ y $d$ tienen el mismo signo (ya que su producto es positivo), $c$ y $b$ deben tener signos opuestos. Por lo tanto, $c = -b$.
+
+Al considerar la ecuación \eqref{GENQROT2}, obtenemos que $ab = -cd$. Si $b \neq 0$, podemos dividir ambos lados de esta ecuación entre $b$, obteniendo
+$$a = -\frac{c}{b}d$$
+Ahora, si sustituimos $c = -b$, la ecuación se convierte en
+$$a = \frac{b}{b}d$$
+Por lo tanto, $a = d$.
+
+Finalmente, como $a^2 + c^2 = 1$, podemos decir que $a = \cos \theta$ y $c = \sen \theta$ para algún $\theta \in [0, 2\pi)$. Por lo tanto,
+$$Q = \begin{bmatrix*}[r] \cos \theta & - \sen \theta \\ \sen \theta & \cos \theta \end{bmatrix*}$$
+Además,
+\begin{enumerate}[label=\roman*)]
+    \item Si $a \geq 0$ y $c > 0$, entonces $0 < \theta \leq \dfrac{\pi}{2}$ y $\theta = \cos^{-1} a$.
+    \item Si $a \geq 0$ y $c < 0$, entonces $\dfrac{3\pi}{2} \leq \theta < 2\pi$ y $\theta = 2\pi - \cos^{-1} a$.
+    \item Si $a \leq 0$ y $c > 0$, entonces $\dfrac{\pi}{2} \leq \theta < \pi$ y $\theta = \cos^{-1} a$.
+    \item Si $a \leq 0$ y $c < 0$, entonces $\pi < \theta \leq \dfrac{3\pi}{2}$ y $\theta = 2\pi - \cos^{-1} a$.
+    \item Si $a = 1$ y $c = 0$, entonces $\theta = \cos^{-1} (1) = \sen^{-1} (0) = 0$.
+    \item Si $a = -1$ y $c = 0$, entonces $\theta = \cos^{-1} (-1) = \pi$.
+\end{enumerate}
+
+\begin{example}
+    Si consideramos la matriz $Q$ obtenida en el ejemplo \ref{Example:elipse}, se tiene que
+    $$a = \frac{1}{\sqrt{2}} > 0 \quad \text{ y } \quad c = - \frac{1}{\sqrt{2}} < 0$$
+    Por lo tanto, utilizando el inciso ii) de lo mencionado anteriormente, se obtiene que
+    \begin{align*}
+        \theta & = 2\pi - \cos^{-1} a \\
+        & = 2\pi - \frac{\pi}{4} \\
+        & = \frac{7\pi}{4} \\
+        & = 315^{\circ}
+    \end{align*}
+    Por lo tanto, \eqref{AJAKSIJSYWYUQHVVJQUJAJ} es la ecuación de una elipse estándar rotada un ángulo de $315^{\circ}$ (o $45^{\circ}$ en el sentido de las manecillas del reloj), lo cual coincide exactamente con lo mostrado en la figura \ref{ELLIPSEEX_1Y_1}.
+\end{example}
+
+\newpage
+
+\begin{theorem}[Teorema de los ejes principales]
+    Dada la ecuación cuadrática
+    \begin{equation}
+        ax^2 + bxy + cy^2 = d \label{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU}
+    \end{equation}
+    en las variables $x$ e $y$. Entonces existe un único número $\theta \in [0, 2\pi]$ tal que la ecuación \eqref{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU} se puede escribir en la forma
+    $$\lambda_1 x_1^2 + \lambda_2 y_1^2 = d$$
+    donde $x_1$ y $x_2$ son los ejes obtenidos al rotar los ejes $x$ e $y$ un ángulo $\theta$ en sentido contrario al de las manecillas del reloj y $\lambda_1$ y $\lambda_2$ son los eigenvalores de la matriz $A = \begin{bmatrix}
+        a & \dfrac{b}{2} \\[2mm]
+        \dfrac{b}{2} & c
+    \end{bmatrix}$. Los ejes $x_1$ e $y_1$ se denominan \emph{ejes principales} de la gráfica de la ecuación cuadrática \eqref{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU}.
+\end{theorem}
+
+\begin{definition}
+    Una forma cuadrática en las variables $x_1$, $x_2$, $\dots$, $x_n$ es una expresión dada por
+    $$A\mathbb{x} \bullet \mathbb{x} = F(x_1, x_2, \dots, x_n)$$
+    siendo $A$ una matriz simétrica y $\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}$.
+\end{definition}
+
+\begin{example}
+    Grafique la ecuación
+    \begin{equation}
+        5x^2 + 8xy + 5y^2 + 4xz + 4yz + 2z^2 = 100 \label{KAJAJAJSJSJJSJSSJJHVVGQGG}
+    \end{equation}
+    \solucion Dada la ecuación cuadrática en tres variables \eqref{KAJAJAJSJSJJSJSSJJHVVGQGG}, queremos construir la matriz simétrica $A$ que representa los coeficientes de las variables. Para ello:
+    \begin{itemize}
+        \item Los elementos de la diagonal de $A$ corresponden a los coeficientes de los términos cuadráticos de las variables $x^2$, $y^2$ e $z^2$.
+        \item Los elementos fuera de la diagonal son el producto de las variables cruzadas dividido entre $2$.
+    \end{itemize}
+    Para este caso, la entrada $a_{12}$ corresponde al coeficiente de $xy$ en la ecuación original, que es $8/2 = 4$. La entrada $a_{13}$ corresponde al coeficiente de $xz$, que es $4/2 = 2$. Siguiendo este patrón, construimos la matriz $A$:
+    \begin{nscenter}
+        \begin{tikzpicture}
+            \node (A) at (0,0) {
+            $\begin{bmatrix}
+                5 & 4 & 2 \\
+                4 & 5 & 2 \\
+                2 & 2 & 2
+            \end{bmatrix}$
+            };
+            \node[yshift=5pt] (ya) at (A.north) {$y$};
+            \node[xshift=-16pt] at (ya) {$x$};
+            \node[xshift=16pt] at (ya) {$z$};
+            \node[xshift=-5pt] (yi) at (A.west) {$y$};
+            \node[yshift=12pt] at (yi) {$x$};
+            \node[yshift=-12pt] at (yi) {$z$};
+        \end{tikzpicture}
+    \end{nscenter}
+    Por lo tanto, podemos expresar la ecuación \eqref{KAJAJAJSJSJJSJSSJJHVVGQGG} como
+    $$\begin{bmatrix}
+        5 & 4 & 2 \\
+        4 & 5 & 2 \\
+        2 & 2 & 2
+    \end{bmatrix} \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix} = 100$$
+    o simplemente
+    $$A \mathbb{x} \bullet \mathbb{x} = 100$$
+    Ahora, calculemos los valores propios de $A$, de esta forma
+    \begin{align*}
+        \operatorname{det} (A - \lambda I_3) & = \begin{vmatrix}
+            5 - \lambda & 4 & 2 \\
+            4 & 5 - \lambda & 2 \\
+            2 & 2 & 2 - \lambda
+        \end{vmatrix} \\
+        & = - \lambda^3 + 12\lambda^2 - 21\lambda + 10
+    \end{align*}\newpage\noindent
+    Por lo tanto, los eigenvalores de $A$ son las raíces del polinomio
+    $$- \lambda^3 + 12\lambda^2 - 21\lambda + 10 = 0$$
+    pero observemos que la anterior expresión es igual a
+    $$-(\lambda - 1)(\lambda - 1)(\lambda - 10) = 0$$
+    Por lo que, $\lambda_1 = 1$, $\lambda_2 = 1$ y $\lambda_3 = 10$ son las raíces del polinomio característico. Ahora, calculemos los eigenvectores correspondientes a cada $\lambda$. Empecemos con $\lambda_3 = 10$, así obtenemos el siguiente sistema:
+    \begin{align*}
+        - 5a + 4b + 2c & = 0 \\
+        4a - 5b + 2c & = 0 \\
+        2a + 2b - 8c & = 0
+    \end{align*}
+    Si sumamos la primer y segunda ecuación, obtenemos que
+    $$-a - b + 4c = 0$$
+    y multiplicando por $-2$, se sigue que
+    $$2a + 2b - 8c = 0$$
+    que es justo la tercer ecuación. Así que solo basta resolver la primer y segunda ecuación. Para ello, podemos restar la segunda ecuación de la primera, obteniendo así
+    $$-9a + 9b = 0$$
+    Entonces $a = b$, y sustituyendo el valor de $b$ en la primer ecuación obtenemos que $-a + 2c = 0$, es decir, $c = \dfrac{1}{2}a$. Por lo tanto, si $a = 2$
+    $$\mathbb{v}_3 = \begin{pmatrix}
+        a \\
+        a \\[2mm]
+        \dfrac{1}{2}a
+    \end{pmatrix} = \begin{pmatrix}
+        2 \\
+        2 \\
+        1
+    \end{pmatrix}$$
+    Procediendo de manera análoga, para $\lambda_1 = 1$, obtenemos el siguiente sistema:
+    \begin{align*}
+        4a + 4b + 2c & = 0 \\
+        4a + 4b + 2c & = 0 \\
+        2a + 2b + c & = 0
+    \end{align*}
+    Observemos que en este caso solo basta resolver la tercer ecuación
+    $$2a + 2b + c = 0$$
+    Entonces $c = -2a - 2b$, por lo que
+    $$\mathbb{v}_1 = \begin{pmatrix}
+        a \\
+        b \\
+        -2a -2b
+    \end{pmatrix} = \begin{pmatrix}
+        \phantom{-} a \\
+        \phantom{-} 0 \\
+        -2a
+    \end{pmatrix} + \begin{pmatrix}
+        \phantom{-} 0 \\
+        \phantom{-} b \\
+        -2b
+    \end{pmatrix}$$
+    Por lo tanto,
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r]
+        1 \\
+        0 \\
+        -2
+    \end{pmatrix*} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r]
+        0 \\
+        1 \\
+        -2
+    \end{pmatrix*}$$
+    Observemos que en este caso, $\mathbb{v}_1$ y $\mathbb{v}_2$ no son ortogonales, pues la matriz $A$ tiene eigenvalores no distintos. Así que debemos aplicar el proceso de Gram-Schmid como sigue: Sea $\mathbb{v}_1 = \begin{pmatrix*}[r]
+        1 \\
+        0 \\
+        -2
+    \end{pmatrix*}$, entonces $\| \mathbb{v}_1 \| = \sqrt{5}$, por lo que
+    \begin{align*}
+        \hat{\mathbb{u}}_1 & = \frac{1}{\| \mathbb{v}_1 \|} \mathbb{v}_1 \\
+        & = \frac{1}{\sqrt{5}} \begin{pmatrix*}[r]
+            1 \\
+            0 \\
+            -2
+        \end{pmatrix*}
+    \end{align*}\newpage\noindent
+    Luego,
+    \begin{align*}
+        \mathbb{u}_2 & = \mathbb{v}_2 - (\mathbb{v}_1 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 \\
+        & = \begin{pmatrix*}[r]
+            0 \\
+            1 \\
+            -2
+        \end{pmatrix*} - \left[ \begin{pmatrix*}[r]
+            0 \\
+            1 \\
+            -2
+        \end{pmatrix*} \bullet \frac{1}{\sqrt{5}} \begin{pmatrix*}[r]
+            1 \\
+            0 \\
+            -2
+        \end{pmatrix*} \right] \frac{1}{\sqrt{5}} \begin{pmatrix*}[r]
+            1 \\
+            0 \\
+            -2
+        \end{pmatrix*} \\
+        & = \begin{pmatrix*}[r]
+            0 \\
+            1 \\
+            -2
+        \end{pmatrix*} - \frac{4}{5} \begin{pmatrix*}[r]
+            1 \\
+            0 \\
+            -2
+        \end{pmatrix*}
+    \end{align*}
+    Por lo tanto, $\mathbb{u}_2 = \dfrac{1}{5} \begin{pmatrix*}[r]
+        -4 \\
+        5 \\
+        -2
+    \end{pmatrix*}$. Entonces $\| \mathbb{u}_2 \| = \dfrac{3\sqrt{5}}{5}$, por lo que
+    \begin{align*}
+        \hat{\mathbb{u}}_2 & = \frac{1}{\| \mathbb{u}_2 \|} \mathbb{u}_2 \\
+        & = \frac{1}{3\sqrt{5}} \begin{pmatrix*}[r]
+            -4 \\
+            5 \\
+            -2
+        \end{pmatrix*}
+    \end{align*}
+    Observemos que $\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1 = 0$ y $\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2 = 0$, entonces basta normalizar el vector $\mathbb{v}_3$ como sigue
+    \begin{align*}
+        \hat{\mathbb{u}}_3 & = \frac{1}{\| \mathbb{v}_3 \|} \mathbb{v}_3 \\
+        & = \frac{1}{3} \begin{pmatrix}
+            2 \\
+            2 \\
+            1
+        \end{pmatrix}
+    \end{align*}
+    Para determinar la matriz $Q$, podemos emplear el teorema \ref{Qorto_vectoresorto}. Así, sea $Q = \begin{bmatrix}
+        \phantom{-} \dfrac{1}{\sqrt{5}} & - \dfrac{4}{3\sqrt{5}} & \dfrac{2}{3} \\[3mm]
+        \phantom{-} 0 & \phantom{-} \dfrac{5}{3\sqrt{5}} & \dfrac{2}{3} \\[3mm]
+        - \dfrac{2}{\sqrt{5}} & - \dfrac{2}{3\sqrt{5}} & \dfrac{1}{3}
+    \end{bmatrix}$, entonces $Q^T = \begin{bmatrix}
+        \phantom{-} \dfrac{1}{\sqrt{5}} & 0 & -\dfrac{2}{\sqrt{5}} \\[3mm]
+        -\dfrac{4}{3\sqrt{5}} & \dfrac{5}{3\sqrt{5}} & - \dfrac{2}{3\sqrt{5}} \\[3mm]
+        \phantom{-} \dfrac{2}{3} & \dfrac{2}{3} & \phantom{-} \dfrac{1}{3}
+    \end{bmatrix}$. Por lo tanto,
+    \begin{align*}
+        Q^T A Q & = \begin{bmatrix}
+            \phantom{-} \dfrac{1}{\sqrt{5}} & 0 & -\dfrac{2}{\sqrt{5}} \\[3mm]
+            -\dfrac{4}{3\sqrt{5}} & \dfrac{5}{3\sqrt{5}} & - \dfrac{2}{3\sqrt{5}} \\[3mm]
+            \phantom{-} \dfrac{2}{3} & \dfrac{2}{3} & \phantom{-} \dfrac{1}{3}
+        \end{bmatrix} \begin{bmatrix}
+            5 & 4 & 2 \\
+            4 & 5 & 2 \\
+            2 & 2 & 2
+        \end{bmatrix} \begin{bmatrix}
+            \phantom{-} \dfrac{1}{\sqrt{5}} & - \dfrac{4}{3\sqrt{5}} & \dfrac{2}{3} \\[3mm]
+            \phantom{-} 0 & \phantom{-} \dfrac{5}{3\sqrt{5}} & \dfrac{2}{3} \\[3mm]
+            - \dfrac{2}{\sqrt{5}} & - \dfrac{2}{3\sqrt{5}} & \dfrac{1}{3}
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            \phantom{-} \dfrac{\sqrt{5}}{5} & 0 & - \dfrac{2\sqrt{5}}{5} \\[3mm]
+            -\dfrac{4\sqrt{5}}{15} & \dfrac{\sqrt{5}}{3} & - \dfrac{2\sqrt{5}}{15} \\[3mm]
+            \phantom{-} \dfrac{20}{3} & \dfrac{20}{3} & \phantom{-} \dfrac{10}{3}
+        \end{bmatrix} \begin{bmatrix}
+            \dfrac{2}{3} & \phantom{-} \dfrac{1}{\sqrt{5}} & - \dfrac{4}{3\sqrt{5}} \\[3mm]
+            \dfrac{2}{3} & \phantom{-} 0 & \phantom{-} \dfrac{5}{3\sqrt{5}} \\[3mm]
+            \dfrac{1}{3} & - \dfrac{2}{\sqrt{5}} & - \dfrac{2}{3\sqrt{5}}
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 10
+        \end{bmatrix}
+    \end{align*}
+    Por lo tanto,
+    $$D = Q^T A Q$$
+    de donde se sigue que
+    $$QDQ^T = A$$\newpage\sideFigure[\label{ELLIPSX1Y1}]{\centering \begin{tikzpicture}
+    \pgfmathsetmacro{\p}{1.0}
+    \pgfmathsetmacro{\q}{0.5}
+        \begin{axis}[
+        xlabel = {$x$},
+        ylabel = {$y$},
+        zlabel = {$z$},
+        view = {60}{30},
+        domain = 0 : pi,
+        y domain = 0 : 2 * pi,
+        z buffer = sort,
+        unit vector ratio = 1 1,
+        hide axis,
+        width=9cm,
+        height=9cm,
+            xmin = -1,
+            xmax =  1,
+            ymin = -1,
+            ymax =  2,
+            zmin = -1,
+            zmax =  1.5,
+        colormap={}{
+            color=(gray) color=(gray)
+        },
+        declare function = {
+            xp(\x, \y) = sin(deg(\x)) * cos(deg(\y));
+            yp(\x, \y) = \p * sin(deg(\x)) * sin(deg(\y));
+            zp(\x, \y) = \q * cos(deg(\x));
+            },
+        ]
+            \addplot3[patch, fill = gray!20] ({xp(x, y)}, {yp(x, y)}, {zp(x, y)});
+            \draw[-stealth] (1, 0, 0) -- (2, 0, 0) node[right] {$x_1$};
+            \draw (-1.215, 0, 0) -- (-2, 0, 0);
+            \draw[-stealth] (0, \p + 0.05, 0) -- (0, 1.5, 0) node[right] {$y_1$};
+            \draw (0, -\p - 0.05, 0) -- (0, -2, 0);
+            \draw[-stealth] (0, 0, \q) -- (0, 0, 1.5) node[above] {$z_1$};
+            \draw (0, 0, -\q - 0.27) -- (0, 0, -1.5);
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \noindent Ahora bien, de la ecuación cuadrática \eqref{KAJAJAJSJSJJSJSSJJHVVGQGG}, tenemos que
+    \begin{align*}
+        100 & = A\mathbb{x} \bullet \mathbb{x} \\
+        & = QDQ^T \mathbb{x} \bullet \mathbb{x} \\
+        & = D \left( Q^T \mathbb{x} \right) \bullet \left( Q^T \mathbb{x} \right) \\
+        & = D \mathbb{x}' \bullet \mathbb{x}'
+    \end{align*}
+    donde $\mathbb{x}' = Q^T \mathbb{x}$. Por lo tanto
+    $$\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 10
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        y_1 \\
+        z_1
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        y_1 \\
+        z_1
+    \end{bmatrix} = 100$$
+    lo que conduce a
+    $$x_1^2 + y_1^2 + 10z_1^2 = 100$$
+    o bien
+    $$\frac{x_1^2}{10^2} + \frac{y_1^2}{10^2} + \frac{z_1^2}{\left( \sqrt{10} \right)^2} = 1$$
+    que corresponde a una elipsoide centrada en el origen como se muestra en la figura \ref{ELLIPSX1Y1}.
+\end{example}
+
+\section{Forma canónica de Jordan}
+
+Ya se ha visto que las matrices de $n \times n$ con $n$ eigenvectores linealmente independientes se pueden expresar en una forma especialmente sencilla por medio de una transformación de semejanza. Por suerte, como “la mayor parte” de los polinomios tienen raíces diferentes, “la mayor parte” de las matrices tendrán eigenvalores distintos. Sin embargo, las matrices que no son diagonalizables (es decir, que no tienen $n$ eigenvectores linealmente independientes) surgen en la práctica. En este caso, aún es posible demostrar que la matriz es semejante a otra, una matriz más sencilla, pero la nueva matriz no es diagonal y la matriz de transformación $C$ es más difícil de obtener.
+
+Para un análisis detallado de este caso, comenzaremos examinando un tipo de matrices definidas previamente, pero que no habían recibido suficiente atención hasta ahora: las matrices nilpotentes. Por ejemplo, si tomamos la matriz
+$$N_2 = \begin{bmatrix}
+    0 & 1 \\
+    0 & 0
+\end{bmatrix}$$
+y luego la multiplicamos por ella misma, obtenemos
+$$N_2^2 = \begin{bmatrix}
+    0 & 1 \\
+    0 & 0
+\end{bmatrix}\begin{bmatrix}
+    0 & 1 \\
+    0 & 0
+\end{bmatrix} = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0
+\end{bmatrix}$$
+Es decir, $N_2$ es una matriz nilpotente de índice de nilpotencia $2$. Si tomamos por ejemplo, la matriz
+$$N_3 = \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}$$
+y luego la multiplicamos por ella misma otras dos veces, obtenemos
+$$N_3^3 = \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix} = \begin{bmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+\end{bmatrix}$$\newpage\noindent
+En general, la matriz de tamaño $k \times k$, está definida como
+$$N_k = \begin{bmatrix}
+    0 & 1 & 0 & \cdots & 0 \\
+    0 & 0 & 1 & \cdots & 0 \\
+    \vdots & & & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & 1 \\
+    0 & 0 & 0 & \cdots & 0
+\end{bmatrix}$$
+Observemos que $N_k$ es la matriz con unos arriba de la diagonal principal y ceros en cualquier otra parte. Para un escalar dado $\lambda$ se define la matriz de bloques de Jordan, denotada por $B(\lambda)$, como
+$$B(\lambda) = \lambda I_k + N_k = \begin{bmatrix}
+    \lambda & 1 & 0 & \cdots & 0 & 0 \\
+    0 & \lambda & 1 & \cdots & 0 & 0 \\
+    \vdots & & & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & \cdots & \lambda & 1 \\
+    0 & 0 & 0 & \cdots & 0 & \lambda
+\end{bmatrix}$$
+Es decir, $B(\lambda)$ es la matriz de tamaño $k \times k$ con el escalar $\lambda$ en la diagonal, unos arriba de la diagonal y ceros en cualquier otra parte. Observemos además que se puede tener una matriz de bloques de Jordan de tamaño $1 \times 1$ y toma la forma: $B(\lambda) = \begin{bmatrix} \lambda \end{bmatrix}$, o simplemente $B(\lambda) = \lambda$.
+
+
+Por último, la matriz de Jordan, denotada por $J$, tiene la forma
+$$J = \begin{bmatrix}
+    B_1(\lambda_1) & 0 & \cdots & 0 \\
+    0 & B_2(\lambda_2) & \cdots & 0 \\
+    \vdots & & \ddots & \vdots \\
+    0 & 0 & \cdots & B_r(\lambda_r)
+\end{bmatrix}$$
+donde cada $B_j(\lambda_j)$ es una matriz de bloques de Jordan. Entonces una matriz de Jordan es una matriz que tiene en la diagonal matrices de bloques de Jordan y ceros en cualquier otra parte.
+
+\begin{example}
+    Los siguientes ejemplos son matrices de Jordan. Los bloques de Jordan se marcaron con lineas:
+    \begin{flushleft} % Es difícil controlar los entornos “enumerate” o “task” para este caso. Por lo que usaré una forma alternativa que se parezca a un entorno “task”
+        \quad\textbf{i)}\hspace{0.33em}\(
+        \settowidth{\dimen0}{$0$}
+        \settoheight{\dimen2}{$0$}
+        \setlength{\arraycolsep}{4pt}
+        \newcolumntype{C}{%
+            >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+            w{c}{\dimen0}
+        }
+        \renewcommand{\arraystretch}{0}
+        \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+        \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+        \left[\,\begin{array}{CCC}
+        \cline{1-2}
+        \|2 & \?1 & 0 \\
+        \|0 & \?2 & 0 \\
+        \cline{1-3}
+        0 & \?0 & \?4 \\
+        \cline{3-3}
+        \end{array}\,\right]
+        \)
+        \quad\textbf{ii)}\hspace{0.33em}\(
+        \settowidth{\dimen0}{$0$}
+        \settoheight{\dimen2}{$0$}
+        \setlength{\arraycolsep}{4pt}
+        \newcolumntype{C}{%
+            >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+            w{c}{\dimen0}
+        }
+        \renewcommand{\arraystretch}{0}
+        \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+        \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+        \left[\,\begin{array}{CCCCC}
+        \cline{1-1}
+        \| 3 & \| 0 & 0 & 0 & 0 \\
+        \cline{1-4}
+        0 & \|3 & 1 & \?0 & 0 \\
+        0 & \|0 & 3 & \?1 & 0 \\
+        0 & \|0 & 0 & \?3 & 0 \\
+        \cline{2-5}
+        0 & 0 & 0 & \?0 & \?7 \\
+        \cline{5-5}
+        \end{array}\,\right]
+        \)
+        \quad\textbf{iii)}\hspace{0.33em}\(
+        \settowidth{\dimen0}{$0$}
+        \settoheight{\dimen2}{$0$}
+        \setlength{\arraycolsep}{4pt}
+        \newcolumntype{C}{%
+            >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+            w{c}{\dimen0}
+        }
+        \renewcommand{\arraystretch}{0}
+        \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+        \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+        \left[\,\begin{array}{CCCCCCC}
+        \cline{1-2}
+        \|4 & \?1 & 0 & 0 & 0 & 0 & 0 \\
+        \|0 & \?4 & 0 & 0 & 0 & 0 & 0 \\
+        \cline{1-5}
+        0 & \?0 & 3 & 1 & \?0 & 0 & 0 \\
+        0 & \?0 & 0 & 3 & \?1 & 0 & 0 \\
+        0 & \?0 & 0 & 0 & \?3 & 0 & 0 \\
+        \cline{3-7}
+        0 & 0 & 0 & 0 & \?0 & 5 & \?1 \\
+        0 & 0 & 0 & 0 & \?0 & 0 & \?5 \\
+        \cline{6-7}
+        \end{array}\,\right]
+        \)
+    \end{flushleft}
+\end{example}
+
+\begin{example}
+    Las única matrices de Jordan de tamaño $2 \times 2$ son $\begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}$ y $\begin{bmatrix} \lambda_1 & 1 \\ 0 & \lambda_2 \end{bmatrix}$. En la primera matriz, los números $\lambda_1$ y $\lambda_2$ pueden ser iguales.
+\end{example}
+
+\begin{theorem}\label{FORMCANJORDAN}
+    Sea $A$ una matriz real o compleja de $n \times n$. Entonces existe una matriz $C$ compleja e invertible de $n \times n$ tal que
+    $$C^{-1} A C = J$$
+    donde $J$ es una matriz de Jordan cuyos elementos en la diagonal son los eigenvalores de $A$. Más aún, la matriz de Jordan $J$ es única, salvo el orden en que aparecen los bloques de Jordan.
+\end{theorem}
+
+\begin{observation}
+    La matriz $C$ del anterior teorema no necesita ser única.
+\end{observation}
+
+\newpage
+
+\begin{observation}
+    La última afirmación del teorema anterior significa, por ejemplo, que si $A$ es semejante a
+    \[
+    \settowidth{\dimen0}{$0$}
+    \settoheight{\dimen2}{$0$}
+    \setlength{\arraycolsep}{4pt}
+    \newcolumntype{C}{%
+        >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+        w{c}{\dimen0}
+    }
+    \renewcommand{\arraystretch}{0}
+    \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+    \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+    J_1 = \left[\,\begin{array}{CCCCCC}
+        \cline{1-2}
+        \|2 & \?1 & 0 & 0 & 0 & 0 \\
+        \|0 & \?2 & 0 & 0 & 0 & 0 \\
+        \cline{1-5}
+        0 & \?0 & 3 & 1 & \?0 & 0 \\
+        0 & \?0 & 0 & 3 & \?1 & 0 \\
+        0 & \?0 & 0 & 0 & \?3 & 0 \\
+        \cline{3-6}
+        0 & 0 & 0 & 0 & \?0 & \?4 \\
+        \cline{6-6}
+    \end{array}\,\right]
+    \]
+    entonces $A$ también es semejante a
+    \[
+    \settowidth{\dimen0}{$0$}
+    \settoheight{\dimen2}{$0$}
+    \setlength{\arraycolsep}{4pt}
+    \newcolumntype{C}{%
+        >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+        w{c}{\dimen0}
+    }
+    \renewcommand{\arraystretch}{0}
+    \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+    \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+    J_2 = \left[\,\begin{array}{CCCCCC}
+        \cline{1-3}
+        \|3 & 1 & \?0 & 0 & 0 & 0 \\
+        \|0 & 3 & \?1 & 0 & 0 & 0 \\
+        \|0 & 0 & \?3 & 0 & 0 & 0 \\
+        \cline{1-4}
+        0 & 0 & \?0 & \?4 & 0 & 0 \\
+        \cline{4-6}
+        0 & 0 & 0 & \?0 & 2 & \?1 \\
+        0 & 0 & 0 & \?0 & 0 & \?2 \\
+        \cline{5-6}
+    \end{array}\,\right] \quad \text{ y } \quad J_3 = \left[\,\begin{array}{CCCCCC}
+        \cline{1-1}
+        \|4 & \|0 & 0 & 0 & 0 & 0 \\
+        \cline{1-3}
+        0 & \|2 & \?1 & 0 & 0 & 0 \\
+        0 & \|0 & \?2 & 0 & 0 & 0 \\
+        \cline{2-6}
+        0 & 0 & \?0 & 3 & 1 & \?0 \\
+        0 & 0 & \?0 & 0 & 3 & \?1 \\
+        0 & 0 & \?0 & 0 & 0 & \?3 \\
+        \cline{4-6}
+    \end{array}\,\right]
+    \]
+    y a otras tres matrices de Jordan. Es decir, los bloques de Jordan reales permanecen iguales pero el orden en el que están escritos puede cambiar.
+\end{observation}
+
+\begin{definition}
+    La matriz $J$ en el teorema \ref{FORMCANJORDAN} se denomina la forma canónica de Jordan de $A$.
+\end{definition}
+
+Ahora se verá el procedimiento para calcular la forma canónica de Jordan de cualquier matriz de $2 \times 2$. Si $A$ tiene dos eigenvectores linealmente independientes, ya sabemos qué hacer. Por lo tanto, el único caso de interés ocurre cuando $A$ tiene solo un eigenvector de multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Es decir, se supone que $A$ tiene un único eigenvector independiente $\mathbb{v}_1$ correspondiente a $\lambda$. Esto es, cualquier vector que no es un múltiplo de $\mathbb{v}_1$ no es un eigenvector.
+
+\begin{theorem}
+    Sea $A$ una matriz de tamaño $2 \times 2$ que tiene como eigenvalor a $\lambda$ de multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Entonces existe un vector $\mathbb{v}_2$ que satisface la ecuación
+    $$(A - \lambda I_2)\mathbb{v}_2 = \mathbb{v}_1$$
+    Al vector $\mathbb{v}_2$ se le denomina vector generalizado de $A$ correspondiente al eigenvalor $\lambda$.
+\end{theorem}
+
+\begin{example}
+    Determinemos la forma canónica de Jordan de la siguiente matriz:
+    $$A = \begin{bmatrix*}[r]
+        3 & -2 \\
+        8 & -5
+    \end{bmatrix*}$$
+    Utilizando el método expuesto en la página \pageref{metodo_eigen_2x2}, se deduce que $\lambda = -1$ es un eigenvalor de multiplicidad algebraica $2$. Ahora, determinemos los valores propios. Así, sea $\mathbb{v}_1 = \begin{pmatrix} a \\ b \end{pmatrix}$ un vector propio de $A$ correspondiente a $\lambda = -1$, entonces obtenemos el siguiente sistema
+    \begin{align*}
+        4a - 2b & = 0 \\
+        8a - 4b & = 0
+    \end{align*}
+    por lo que $b = 2a$. En particular, si $a = 1$, el eigenvector está dado por
+    $$\mathbb{v}_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$$\newpage\noindent
+    Ahora, determinemos el vector propio generalizado $\mathbb{v}_2$ de la matriz $A$, correspondiente a $\lambda$. Esto es,
+    $$(A - \lambda I_2) \mathbb{v}_2 = \mathbb{v}_1$$
+    Sea $\mathbb{v}_2 = \begin{pmatrix} a' \\ b' \end{pmatrix}$, entonces sustituyendo en la anterior ecuación obtenemos
+    $$\begin{bmatrix*}[r]
+        4 & -2 \\
+        8 & -4
+    \end{bmatrix*} \begin{pmatrix}
+        a' \\
+        b'
+    \end{pmatrix} = \begin{pmatrix}
+        1 \\
+        2
+    \end{pmatrix}$$
+    del cual se obtiene el siguiente sistema
+    \begin{align*}
+        4a' - 2b' & = 1 \\
+        8a' - 4b' & = 2
+    \end{align*}
+    Observemos que son las ecuaciones son iguales, entonces basta resolver una para encontrar los valores de $a$ y $b$. Si $a' = 0$, entonces $b' = - \dfrac{1}{2}$. Por lo tanto
+    $$\mathbb{v}_2 = \begin{pmatrix}
+        \phantom{-} 0 \\[1.5mm]
+        -\dfrac{1}{2}
+    \end{pmatrix}$$
+    Ahora bien, sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$. Es decir,
+    \begin{align*}
+        C & = \begin{bmatrix}
+            \mathbb{v}_1 & \mathbb{v}_2
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            1 & \phantom{-} 0 \\[1.5mm]
+            2 & - \dfrac{1}{2}
+        \end{bmatrix}
+    \end{align*}
+    Ahora, determinemos $C^{-1}$ mediante la expresión \ref{Jjaksksksisid},
+    \begin{align*}
+        C^{-1} & = -2 \begin{bmatrix}
+            - \dfrac{1}{2} & 0 \\[1.5mm]
+            - 2 & 1
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            1 & 0 \\
+            4 & -2
+        \end{bmatrix*}
+    \end{align*}
+    De esta forma
+    \begin{align*}
+        C^{-1} A C & = \begin{bmatrix*}[r]
+            1 & 0 \\
+            4 & -2
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            3 & -2 \\
+            8 & -5
+        \end{bmatrix*} \begin{bmatrix}
+            1 & \phantom{-} 0 \\[1.5mm]
+            2 & -\dfrac{1}{2}
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            3 & -2 \\
+            -4 & 2
+        \end{bmatrix*} \begin{bmatrix}
+            1 & \phantom{-} 0 \\[1.5mm]
+            2 & -\dfrac{1}{2}
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            -1 & 1 \\
+            0 & -1
+        \end{bmatrix*}
+    \end{align*}
+    que corresponde a la forma canónica de Jordan de la matriz $A$.
+\end{example}
 
 \section{El teorema de Cayley-Hamilton}
 

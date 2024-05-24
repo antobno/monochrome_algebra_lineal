@@ -133,6 +133,11 @@ BoldItalicFont=Lato Italic
 
 \RequirePackage{lipsum} % Genera texto aleatorio, esto sirve para hacer pruebas a la plantilla
 
+% Un entorno para tener más “control” del espacio en un bloque de un párrafo
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
 
 %------------------------------------------------------------------------------
 %	 UNIDADES DE MEDIDAS Y DIMENSIONES PARA EL DOCUMENTO
