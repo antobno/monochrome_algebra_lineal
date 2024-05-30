@@ -1,4 +1,4 @@
-\chapter{FORMAS BILINEALES Y CUADRÁTICAS}\label{chapter:bilineal}
+\chapter{DIAGONALIZACIÓN Y FORMAS BILINEALES}\label{chapter:bilineal}
 %\startcontents
 \printchaptertableofcontents
 
@@ -765,7 +765,7 @@ Esto demuestra que $k\mathbb{v}$ también es un eigenvector de $A$ asociado al m
             0 & - i
         \end{bmatrix*}
     \end{align*}
-    que corresponde a la matriz diagonal $D$ formada por los eigenvectores de $A$.
+    que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$.
 \end{example}
 
 \section{Análisis de matrices simétricas y diagonalización ortogonal}\label{sec:matrices_sim_her_uni}
@@ -1920,13 +1920,15 @@ $$N_3^3 = \begin{bmatrix}
     0 & 0 & 0
 \end{bmatrix}$$\newpage\noindent
 En general, la matriz de tamaño $k \times k$, está definida como
-$$N_k = \begin{bmatrix}
-    0 & 1 & 0 & \cdots & 0 \\
-    0 & 0 & 1 & \cdots & 0 \\
-    \vdots & & & \ddots & \vdots \\
-    0 & 0 & 0 & \cdots & 1 \\
-    0 & 0 & 0 & \cdots & 0
-\end{bmatrix}$$
+\begin{equation}
+    N_k = \begin{bmatrix}
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        \vdots & & & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 1 \\
+        0 & 0 & 0 & \cdots & 0
+    \end{bmatrix} \label{JAJJAJAJAJAJHQHHQJQUUAUQUWUAUSISIUAJ}
+\end{equation}
 Observemos que $N_k$ es la matriz con unos arriba de la diagonal principal y ceros en cualquier otra parte. Para un escalar dado $\lambda$ se define la matriz de bloques de Jordan, denotada por $B(\lambda)$, como
 $$B(\lambda) = \lambda I_k + N_k = \begin{bmatrix}
     \lambda & 1 & 0 & \cdots & 0 & 0 \\
@@ -2111,7 +2113,7 @@ Ahora se verá el procedimiento para calcular la forma canónica de Jordan de cu
 \begin{theorem}
     Sea $A$ una matriz de tamaño $2 \times 2$ que tiene como eigenvalor a $\lambda$ de multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Entonces existe un vector $\mathbb{v}_2$ que satisface la ecuación
     $$(A - \lambda I_2)\mathbb{v}_2 = \mathbb{v}_1$$
-    Al vector $\mathbb{v}_2$ se le denomina vector generalizado de $A$ correspondiente al eigenvalor $\lambda$.
+    Al vector $\mathbb{v}_2$ se le denomina eigenvector generalizado de $A$ correspondiente al eigenvalor $\lambda$.
 \end{theorem}
 
 \begin{example}
@@ -2127,7 +2129,7 @@ Ahora se verá el procedimiento para calcular la forma canónica de Jordan de cu
     \end{align*}
     por lo que $b = 2a$. En particular, si $a = 1$, el eigenvector está dado por
     $$\mathbb{v}_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$$\newpage\noindent
-    Ahora, determinemos el vector propio generalizado $\mathbb{v}_2$ de la matriz $A$, correspondiente a $\lambda$. Esto es,
+    Ahora, determinemos el eigenvector generalizado $\mathbb{v}_2$ de la matriz $A$, correspondiente a $\lambda$. Esto es,
     $$(A - \lambda I_2) \mathbb{v}_2 = \mathbb{v}_1$$
     Sea $\mathbb{v}_2 = \begin{pmatrix} a' \\ b' \end{pmatrix}$, entonces sustituyendo en la anterior ecuación obtenemos
     $$\begin{bmatrix*}[r]
@@ -2198,7 +2200,560 @@ Ahora se verá el procedimiento para calcular la forma canónica de Jordan de cu
     que corresponde a la forma canónica de Jordan de la matriz $A$.
 \end{example}
 
+\begin{theorem}
+    Sea $A \in \mathcal{M}_{2 \times 2}(\RR)$ y $\lambda$ un eigenvalor de multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Entonces la forma canónica de Jordan de $A$ está dada por
+    $$J = \begin{bmatrix}
+        \lambda & 1 \\
+        0 & \lambda
+    \end{bmatrix}$$
+    \demostracion Sea $\mathbb{v}_1$ el eigenvector de $A$ correspondiente a $\lambda$. Sea $\mathbb{v}_2$ el eigenvector generalizado de $A$, esto es
+    \begin{equation}
+        (A - \lambda I_2)\mathbb{v}_2 = \mathbb{v}_1 \label{JHHDEFDHFUDFGUYGFYUGFGFE}
+    \end{equation}
+    Sea
+    $$C = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix}$$
+    Al multiplicar por $A$ la anterior expresión, obtenemos que
+    \begin{align*}
+        AC & = A \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix} A\mathbb{v}_1 & A\mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix} \lambda \mathbb{v}_1 & A\mathbb{v}_2 \end{bmatrix}
+    \end{align*}
+    Por lo tanto
+    \begin{equation}
+        AC = \begin{bmatrix} \lambda \mathbb{v}_1 & A\mathbb{v}_2 \end{bmatrix} \label{HSHYUDHHSJJSHFJHJFGDGFDH}
+    \end{equation}
+    De la expresión \eqref{JHHDEFDHFUDFGUYGFYUGFGFE}, obtenemos que
+    $$A\mathbb{v}_2 - \lambda I_2\mathbb{v}_2 = \mathbb{v}_1$$
+    es decir,
+    $$A\mathbb{v}_2 = \mathbb{v}_1 + \lambda \mathbb{v}_2$$
+    y sustituyendo en \eqref{HSHYUDHHSJJSHFJHJFGDGFDH}, se sigue que
+    \begin{align*}
+        AC & = \begin{bmatrix} \lambda \mathbb{v}_1 & \mathbb{v}_1 + \lambda \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix} \\
+        & = C \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix}
+    \end{align*}
+    Por lo tanto
+    $$J = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix} = C^{-1} A C$$
+    que corresponde a la forma canónica de Jordan de $A$.
+\end{theorem}
+
+Aunque no se demostrará este hecho, siempre es posible determinar el número de unos arriba de la diagonal en la forma canónica de Jordan de una matriz $A$ de $n \times n$. Sean $\lambda_1$, $\lambda_2$, $\dots$, $\lambda_k$ eigenvalores (distintos) de $A$ con $r_1$, $r_2$, $\dots$, $r_k$ sus respectivas multiplicidades algebraicas y $s_1$, $s_2$, $\dots$, $s_k$ sus respectivas multiplicidades geométricas. Entonces el número de unos arriba de la diagonal en la forma canónica de Jordan de una matriz $A$ de $n \times n$ está dado por
+$$(r_1 - s_1) + (r_2 - s_2) + \cdots + (r_k - s_k) = \sum_{i = 1}^{k} r_i - \sum_{i = 1}^{k} s_i = n - \sum_{i = 1}^{k} s_i$$
+
+\begin{example}
+    Sea $(\lambda - 3)^3(\lambda - 4)$ el polinomio característico de $A$. Determinemos las posibles formas canónicas de Jordan de $A$. Observemos que la ecuación característica de $A$ tiene como raíces a $\lambda_1 = 3$ (de multiplicidad algebraica $3$) y a $\lambda_2 = 4$ (de multiplicidad algebraica $1$). La multiplicidad de $\lambda_1$ puede ser $s = 1$, $2$, $3$. Para $\lambda_2$, solo tenemos un caso y es $s = 1$. Notemos que en este caso $A$ es de tamaño $4 \times 4$, por lo que su forma canónica de Jordan es también de tamaño $4 \times 4$. Así, para $\lambda_1 = 3$, si $s = 1$, entonces el número de unos arriba de la diagonal está dado por $r - s = 3 - 1 = 2$ y obtendríamos
+    \[
+    \settowidth{\dimen0}{$0$}
+    \settoheight{\dimen2}{$0$}
+    \setlength{\arraycolsep}{4pt}
+    \newcolumntype{C}{%
+        >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+        w{c}{\dimen0}
+    }
+    \renewcommand{\arraystretch}{0}
+    \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+    \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+    J_1 = \left[\,\begin{array}{CCCC}
+        \cline{1-3}
+        \|3 & 1 & \?0 & 0 \\
+        \|0 & 3 & \?1 & 0 \\
+        \|0 & 0 & \?3 & 0 \\
+        \cline{1-4}
+        0 & 0 & \?0 & \?4 \\
+        \cline{4-4}
+    \end{array}\,\right]
+    \]\newpage\noindent
+    Para $\lambda_1 = 3$, si $s = 2$, entonces el número de unos arriba de la diagonal está dado por $r - s = 2 - 1 = 1$ y obtendríamos
+    \[
+    \settowidth{\dimen0}{$0$}
+    \settoheight{\dimen2}{$0$}
+    \setlength{\arraycolsep}{4pt}
+    \newcolumntype{C}{%
+        >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+        w{c}{\dimen0}
+    }
+    \renewcommand{\arraystretch}{0}
+    \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+    \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+    J_2 = \left[\,\begin{array}{CCCC}
+        \cline{1-2}
+        \|3 & \?1 & 0 & 0 \\
+        \|0 & \?3 & 0 & 0 \\
+        \cline{1-3}
+        0 & \?0 & \?3 & 0 \\
+        \cline{3-4}
+        0 & 0 & \?0 & \?4 \\
+        \cline{4-4}
+    \end{array}\,\right]
+    \]
+    Por último, para $\lambda_1 = 3$, si $s = 1$, entonces el número de unos arriba de la diagonal está dado por $r - s = 1 - 1 = 0$ y obtendríamos
+    \[
+    \settowidth{\dimen0}{$0$}
+    \settoheight{\dimen2}{$0$}
+    \setlength{\arraycolsep}{4pt}
+    \newcolumntype{C}{%
+        >{\vrule width 0pt height \dimexpr\dimen2+\arraycolsep\relax depth \arraycolsep}
+        w{c}{\dimen0}
+    }
+    \renewcommand{\arraystretch}{0}
+    \newcommand{\?}[1]{\multicolumn{1}{c|}{#1}}
+    \renewcommand{\|}[1]{\multicolumn{1}{|c}{#1}}
+    J_3 = \left[\,\begin{array}{CCCC}
+        \cline{1-1}
+        \|3 & \|0 & 0 & 0 \\
+        \cline{1-2}
+        0 & \|3 & \|0 & 0 \\
+        \cline{2-3}
+        0 & 0 & \|3 & \|0 \\
+        \cline{3-4}
+        0 & 0 & 0 & \multicolumn{1}{|c|}{4} \\
+        \cline{4-4}
+    \end{array}\,\right]
+    \]
+\end{example}
+
+\begin{example}
+    La diagonalización es un método muy útil en el cálculo de potencias altas de una matriz. Si una matriz $A$ es diagonalizable, podemos encontrar una matriz $C$ invertible tal que
+    $$C^{-1}AC = D$$
+    donde $D$ es una matriz diagonal. Las entradas de la diagonal de $D$ son los eigenvalores de $A$, y las columnas de $C$ son los eigenvectores correspondientes. Una vez que tenemos $D$, calcular por ejemplo, $A^{10}$, se vuelve mucho más sencillo. Dado que $A = CDC^{-1}$, entonces $A^{10} = CD^{10}C^{-1}$. Y dado que $D$ es una matriz diagonal, $D^{10}$ es simplemente la matriz que tiene las potencias $10$ de los elementos de la diagonal de $D$. Por lo tanto, el proceso de diagonalización nos permite calcular $A^{10}$ de manera eficiente, evitando la necesidad de multiplicar la matriz $A$ por sí misma $10$ veces. Esto es especialmente útil cuando estamos trabajando con matrices grandes. Para ilustrar lo anteriormente dicho, tomemos la matriz
+    $$A = \begin{bmatrix*}[r]
+        3 & - 1 \\
+        - 2 & 4
+    \end{bmatrix*}$$
+    e imaginemos que queremos encontrar $A^{10}$. Primero, calculamos los eigenvalores y los eigenvectores correspondientes. Usando el método expuesto en la página \pageref{metodo_eigen_2x2}, se deduce que $\lambda_1 = 5$ y $\lambda_2 = 2$ son los eigenvalores de $A$. Además, usando las formulas del inciso (ii) se obtiene que
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r]
+        -1 \\
+        2
+    \end{pmatrix*} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r]
+        -1 \\
+        -1
+    \end{pmatrix*}$$
+    Ahora bien, sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$. Es decir,
+    \begin{align*}
+        C & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix*}[r] -1 & -1 \\ 2 & -1 \end{bmatrix*}
+    \end{align*}
+    Determinemos $C^{-1}$ mediante la expresión \ref{Jjaksksksisid},
+    \begin{align*}
+        C^{-1} & = \frac{1}{3} \begin{bmatrix*}[r]
+            -1 & 1 \\
+            -2 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            -\dfrac{1}{3} & \dfrac{1}{3} \\[2mm]
+            -\dfrac{2}{3} & -\dfrac{1}{3}
+        \end{bmatrix*}
+    \end{align*}
+    Así, obtenemos
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix*}[r]
+            -\dfrac{1}{3} & \dfrac{1}{3} \\[2mm]
+            -\dfrac{2}{3} & -\dfrac{1}{3}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            3 & - 1 \\
+            -2 & 4
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            -1 & -1 \\
+            2 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            -\dfrac{5}{3} & \dfrac{5}{3} \\[2mm]
+            -\dfrac{4}{3} & -\dfrac{2}{3}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            -1 & -1 \\
+            2 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            5 & 0 \\
+            0 & 2
+        \end{bmatrix}
+    \end{align*}
+    que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$. Observemos que
+    $$D^{10} = \begin{bmatrix}
+        5^{10} & 0 \\
+        0 & 2^{10}
+    \end{bmatrix}$$
+    y sabemos que
+    $$A^{10} = CD^{10}C^{-1}$$
+    Entones se sigue que
+    \begin{align*}
+        A^{10} & = \begin{bmatrix*}[r]
+            -1 & -1 \\
+            2 & -1
+        \end{bmatrix*} \begin{bmatrix}
+            5^{10} & 0 \\
+            0 & 2^{10}
+        \end{bmatrix} \begin{bmatrix*}[r]
+            -\dfrac{1}{3} & \dfrac{1}{3} \\[2mm]
+            -\dfrac{2}{3} & -\dfrac{1}{3}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}
+            -5^{10} & -2^{10} \\
+            \phantom{-} 2 \cdot 5^{10} & -2^{10}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            -\dfrac{1}{3} & \dfrac{1}{3} \\[2mm]
+            -\dfrac{2}{3} & -\dfrac{1}{3}
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            \dfrac{1}{3} \left( 5^{10} + 2^{11} \right) & \dfrac{1}{3} \left( -5^{10} + 2^{10} \right) \\[2mm]
+            \dfrac{1}{3} \left( - 2 \cdot 5^{10} + 2^{11} \right) & \dfrac{1}{3} \left( 2 \cdot 5^{10} + 2^{10} \right)
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            3 \, 255 \, 891 & - 3 \, 254 \, 867 \\
+            - 6 \, 509 \, 734 & 6 \, 510 \, 758
+        \end{bmatrix*}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Consideremos la matriz
+    $$A = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix}$$
+    Deseamos calcular $A^n$. Para esto, primero calculemos varias potencias de esta matriz como sigue:
+    $$A^2 = AA = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix} \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 2 \\
+        1 & 1
+    \end{bmatrix}$$
+    A continuación,
+    $$A^3 = AA^2 = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix}\begin{bmatrix}
+        1 & 2 \\
+        1 & 1
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 2 \\
+        2 & 3
+    \end{bmatrix}$$
+    Prosigamos con,
+    $$A^4 = AA^3 = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix}\begin{bmatrix}
+        1 & 2 \\
+        2 & 3
+    \end{bmatrix} = \begin{bmatrix}
+        2 & 3 \\
+        3 & 5
+    \end{bmatrix}$$
+    Luego
+    $$A^5 = AA^4 = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix}\begin{bmatrix}
+        2 & 3 \\
+        3 & 5
+    \end{bmatrix} = \begin{bmatrix}
+        3 & 5 \\
+        5 & 8
+    \end{bmatrix}$$
+    Finalmente,
+    $$A^6 = AA^5 = \begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix}\begin{bmatrix}
+        3 & 5 \\
+        5 & 8
+    \end{bmatrix} = \begin{bmatrix}
+        5 & 8 \\
+        8 & 13
+    \end{bmatrix}$$\newpage\noindent
+    Al realizar estos cálculos, se destacan dos aspectos importantes. En primer lugar, este proceso resulta sumamente tedioso. Calcular las potencias de una matriz mediante la multiplicación repetida es ineficiente desde el punto de vista computacional, especialmente para matrices de gran tamaño. La perspectiva de encontrar, por ejemplo, $A^{100}$ es verdaderamente desalentadora, incluso contando con la ayuda de una computadora. En segundo lugar, los términos en el lado de nuestra matriz parecen seguir la secuencia de Fibonacci: $1$, $1$, $2$, $3$, $5$, $8$, $13$, $\dots$. Esto no es una coincidencia. Existe una razón fundamental detrás de este patrón. Veamos cómo actúa esta matriz sobre un vector arbitrario para entender mejor este fenómeno:
+    $$\begin{bmatrix}
+        0 & 1 \\
+        1 & 1
+    \end{bmatrix} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = \begin{bmatrix}
+        b \\
+        a + b
+    \end{bmatrix}$$
+    Así, el segundo componente del vector de entrada, $b$, se convierte en el primer componente del vector de salida, y el segundo componente del vector de salida se convierte en la suma de $a$ y $b$. Por ejemplo, pensemos en aplicar este proceso repetidamente a un vector dado, es decir
+    $$\begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} \to \begin{bmatrix}
+        b \\
+        a + b
+    \end{bmatrix}$$
+    entonces obtenemos:
+    $$\begin{bmatrix}
+        1 \\
+        1
+    \end{bmatrix} \to \begin{bmatrix}
+        1 \\
+        2
+    \end{bmatrix} \to \begin{bmatrix}
+        2 \\
+        3
+    \end{bmatrix} \to \begin{bmatrix}
+        3 \\
+        5
+    \end{bmatrix} \to \begin{bmatrix}
+        5 \\
+        8
+    \end{bmatrix} \to \begin{bmatrix}
+        8 \\
+        13
+    \end{bmatrix} \to \cdots$$
+    Este proceso iterativo captura perfectamente la definición de la secuencia de Fibonacci: cada término es la suma de los dos términos anteriores. Así que, dado que multiplicar la matriz $A^n$ por un vector corresponde a pasar por este proceso $n$ veces, descubrir cómo representar $A^n$ puede llevarnos a una fórmula explícita para el término $n$-ésimo de Fibonacci. Tal vez no sea tan obvio que se pueda obtener una fórmula clara para $A^n$, pero observemos que podemos aplicar el mismo método que en el ejemplo anterior. Usando el método expuesto en la página \pageref{metodo_eigen_2x2}, se deduce que
+    $$\lambda_1 = \frac{1 + \sqrt{5}}{2} \quad \text{ y } \quad \lambda_2 = \frac{1 - \sqrt{5}}{2}$$
+    son los eigenvalores de $A$. Además, usando las formulas del inciso (i) se obtiene que
+    \begin{align*}
+        \mathbb{v}_1 & = \begin{pmatrix} \dfrac{1 + \sqrt{5}}{2} - 1 \\[3mm] 1 \end{pmatrix} & \mathbb{v}_2 & = \begin{pmatrix} \dfrac{1 - \sqrt{5}}{2} - 1 \\[3mm] 1 \end{pmatrix} \\
+        & = \begin{pmatrix} \dfrac{\sqrt{5} - 1}{2} \\[3mm] 1 \end{pmatrix} & & = \begin{pmatrix} -\dfrac{1 + \sqrt{5}}{2} \\[3mm] \phantom{-} 1 \end{pmatrix}
+    \end{align*}
+    Ahora bien, sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$. Es decir,
+    \begin{align*}
+        C & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix} \dfrac{\sqrt{5} - 1}{2} & -\dfrac{1 + \sqrt{5}}{2} \\[3mm] 1 & \phantom{-} 1 \end{bmatrix}
+    \end{align*}
+    Determinemos $C^{-1}$ mediante la expresión \ref{Jjaksksksisid},
+    $$C^{-1} = \frac{1}{\sqrt{5}} \begin{bmatrix*}[r]
+        1 & \dfrac{1 + \sqrt{5}}{2} \\[3mm]
+        -1 & \dfrac{\sqrt{5} - 1}{2}
+    \end{bmatrix*} = \begin{bmatrix*}[r]
+        \dfrac{1}{\sqrt{5}} & \dfrac{1 + \sqrt{5}}{2\sqrt{5}} \\[3mm]
+        -\dfrac{1}{\sqrt{5}} & \dfrac{\sqrt{5} - 1}{2\sqrt{5}}
+    \end{bmatrix*}$$\newpage\noindent
+    Así, obtenemos
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix*}[r]
+            \dfrac{1}{\sqrt{5}} & \dfrac{1 + \sqrt{5}}{2\sqrt{5}} \\[3mm]
+            -\dfrac{1}{\sqrt{5}} & \dfrac{\sqrt{5} - 1}{2\sqrt{5}}
+        \end{bmatrix*} \begin{bmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{bmatrix} \begin{bmatrix}
+            \dfrac{\sqrt{5} - 1}{2} & -\dfrac{1 + \sqrt{5}}{2} \\[3mm]
+            1 & \phantom{-} 1
+        \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            \dfrac{\sqrt{5} + 5}{10} & \dfrac{3\sqrt{5} + 5}{10} \\[3mm]
+            \dfrac{5 - \sqrt{5}}{10} & \dfrac{5 - 3\sqrt{5}}{10}
+        \end{bmatrix*} \begin{bmatrix}
+            \dfrac{\sqrt{5} - 1}{2} & -\dfrac{1 + \sqrt{5}}{2} \\[3mm]
+            1 & \phantom{-} 1
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            \dfrac{1 + \sqrt{5}}{2} & 0 \\[2mm]
+            0 & \dfrac{1 - \sqrt{5}}{2}
+        \end{bmatrix}
+    \end{align*}
+    que corresponde a la matriz diagonal $D$ formada por los eigenvalores de $A$. Observemos que
+    $$D^n = \begin{bmatrix}
+        \left( \dfrac{1 + \sqrt{5}}{2} \right)^n & 0 \\[2mm]
+        0 & \left( \dfrac{1 - \sqrt{5}}{2} \right)^n
+    \end{bmatrix} = \begin{bmatrix}
+        \lambda_1^n & 0 \\
+        0 & \lambda_2^n
+    \end{bmatrix}$$
+    y sabemos que
+    $$A^n = CD^nC^{-1}$$
+    Entonces se sigue que
+    $$A^n = \begin{bmatrix} \dfrac{\sqrt{5} - 1}{2} & -\dfrac{1 + \sqrt{5}}{2} \\[3mm] 1 & \phantom{-} 1 \end{bmatrix} \begin{bmatrix} \lambda_1^n & 0 \\ 0 & \lambda_2^n \end{bmatrix} \begin{bmatrix*}[r] \dfrac{1}{\sqrt{5}} & \dfrac{1 + \sqrt{5}}{2\sqrt{5}} \\[3mm] -\dfrac{1}{\sqrt{5}} & \dfrac{\sqrt{5} - 1}{2\sqrt{5}} \end{bmatrix*}$$
+    pero podemos reescribir la anterior expresión. Observemos que
+    $$\lambda_1 \lambda_2 = \left( \frac{1 + \sqrt{5}}{2} \right) \left( \frac{1 - \sqrt{5}}{2} \right) = -1$$
+    Entonces,
+    \begin{align*}
+        A^n & = \frac{1}{\sqrt{5}} \begin{bmatrix}
+            -\lambda_2 & -\lambda_1 \\
+            \phantom{-} 1 & \phantom{-} 1
+        \end{bmatrix} \begin{bmatrix}
+            \lambda_1^n & 0 \\
+            0 & \lambda_2^n
+        \end{bmatrix} \begin{bmatrix*}[r]
+            1 & \lambda_1 \\
+            -1 & -\lambda_2
+        \end{bmatrix*} \\
+        & = \frac{1}{\sqrt{5}} \begin{bmatrix}
+            -\lambda_1^n\lambda_2 & -\lambda_1\lambda_2^n \\
+            \phantom{-} \lambda_1^n & \phantom{-} \lambda_2^n
+        \end{bmatrix} \begin{bmatrix*}[r]
+            1 & \lambda_1 \\
+            -1 & -\lambda_2
+        \end{bmatrix*} \\
+        & = \frac{1}{\sqrt{5}} \begin{bmatrix}
+            -\lambda_1^n\lambda_2 + \lambda_1\lambda_2^n & -\lambda_1^{n+1}\lambda_2 + \lambda_1\lambda_2^{n+1} \\[1.5mm]
+            \phantom{-} \lambda_1^n - \lambda_2^n & \phantom{-} \lambda_1^{n+1} - \lambda_2^{n+1}
+        \end{bmatrix} \\
+        & = \frac{1}{\sqrt{5}} \begin{bmatrix}
+            \lambda_1^{n-1} - \lambda_2^{n-1} & \lambda_1^n - \lambda_2^n \\[1.5mm]
+            \lambda_1^n - \lambda_2^n & \lambda_1^{n+1} - \lambda_2^{n+1}
+        \end{bmatrix}
+    \end{align*}
+    Si comparamos esto con los primeros cálculos que hicimos para $A^n$ al principio, esto nos da una fórmula muy llamativa. El $n$-ésimo número de Fibonacci tiene como fórmula:
+    $$F_n = \frac{\lambda_1^n - \lambda_2^n}{\sqrt{5}} = \frac{1}{\sqrt{5}} \left[ \left( \frac{1 + \sqrt{5}}{2} \right)^n - \left( \frac{1 - \sqrt{5}}{2} \right)^n \right]$$
+    Ni siquiera es obvio que esta expresión deba dar una expresión racional, y mucho menos los números de Fibonacci.
+\end{example}
+
+\newpage
+
 \section{El teorema de Cayley-Hamilton}
+
+El teorema de Cayley-Hamilton es un resultado fundamental en álgebra lineal que establece una relación profunda entre una matriz cuadrada y su polinomio característico. Este teorema permite simplificar muchos cálculos y tiene aplicaciones significativas en diversas áreas, como la teoría de control y la resolución de sistemas de ecuaciones diferenciales.
+
+En esencia, el teorema nos dice que una matriz cuadrada satisface su propio polinomio característico, proporcionando una herramienta poderosa para analizar y manipular matrices. A continuación, enunciaremos y demostraremos este importante teorema, pero antes de hacerlo, revisaremos algunas definiciones y conceptos clave que son necesarios para comprender y demostrar este teorema.
+
+\begin{definition}
+    Sean $P_0$, $P_1$, $\dots$, $P_m$ matrices de tamaño $n \times n$ con coeficientes reales o complejos. Entonces la expresión
+    $$p(x) = P_0 + P_1x + P_2x^2 + \cdots + P_mx^m$$
+    se llama polinomio con coeficientes matriciales.
+\end{definition}
+
+\begin{definition}
+    Sea $p$ un polinomio con coeficientes matriciales
+    $$p(x) = P_0 + P_1x + P_2x^2 + \cdots + P_mx^m$$
+    y sea $A$ una matriz de tamaño $n \times n$ con coeficientes reales o complejos. Entonces se define respectivamente el valor derecho y el valor izquierdo del polinomio $p$ en la matriz $A$ como:
+    \begin{align*}
+        p_{\operatorname{der}}(A) & = P_0 + P_1A + P_2A^2 + \cdots + P_mA^m \\
+        p_{\operatorname{izq}}(A) & = P_0 + AP_1 + A^2P_2 + \cdots + A^mP_m
+    \end{align*}
+    En vez de $p_{\operatorname{der}}(A)$, escribiremos simplemente $p(A)$.
+\end{definition}
+
+\begin{example}
+    Polinomios con coeficientes matriciales no cumplen algunas de las propiedades de los polinomios con coeficientes  numéricos. Mostremos un ejemplo de polinomios $p$, $q$ con coeficientes matriciales tales que
+    $$(pq)(A) \neq p(A)q(A)$$
+    Sean
+    $$p(x) = \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}x \qquad \text{ y } \qquad q(x) = \begin{bmatrix}
+        0 & 1 \\
+        0 & 0
+    \end{bmatrix}$$
+    dos polinomios con coeficientes matriciales. Entonces
+    $$(pq)(x) = \begin{bmatrix}
+        0 & 1 \\
+        0 & 0
+    \end{bmatrix}x$$
+    Si consideramos $A = \begin{bmatrix}
+        0 & 0 \\
+        1 & 0
+    \end{bmatrix}$, obtenemos que
+    $$(pq)(A) = \begin{bmatrix}
+        1 & 0 \\
+        0 & 0
+    \end{bmatrix} \qquad \text{ y } \qquad p(A)q(A) = \begin{bmatrix}
+        0 & 0 \\
+        0 & 1
+    \end{bmatrix}$$
+\end{example}
+
+\begin{lemma}
+    Sean $p$ y $q$ dos polinomios con coeficientes matriciales
+    $$p(x) = \sum_{i=0}^m P_ix^i \qquad \text{ y } \qquad q(x) = \sum_{j=0}^s Q_jx^j$$
+    donde $P_i$, $Q_j$, $A$ son matrices de tamaño $n \times n$ con coeficientes reales o complejos. Si $A$ conmuta con todos los coeficientes del polinomio $q$, es decir,
+    $$Q_j A = AQ_j, \forall j = 0, 1, \dots, s$$\newpage\noindent
+    entonces
+    $$(pq)(A) = p(A)q(A)$$
+\end{lemma}
+
+\begin{theorem}[Teorema de Cayley-Hamilton]
+    Toda matriz cuadrada satisface su propia ecuación característica. Es decir, si $p(\lambda) = 0$ es la ecuación característica de $A$, entonces $p(A) = \mathbb{0}$. \\
+    \demostracion Sabemos por el teorema \ref{propi:adjuntoid} que para toda matriz cuadrada $B$, se tiene que
+    $$B \operatorname{adj}(B) = \operatorname{det}(B) I_n$$
+    donde $\operatorname{adj}(B)$ es la matriz adjunta clásica de $B$. Al aplicar este resultado a la matriz $A - \lambda I_n$, obtenemos que
+    $$(A - \lambda I_n) \operatorname{adj}(A - \lambda I_n) = \operatorname{det}(A - \lambda I_n) I_n = p(\lambda) I_n$$
+    Sean
+    $$f(\lambda) = \operatorname{adj}(A - \lambda I_n) \qquad \text{ y } \qquad g(\lambda) = A - \lambda I_n$$
+    Estas expresiones son matrices con entradas polinomiales, las vamos a tratar como polinomiales con coeficientes matriciales. Notemos que los coeficientes de $g$ son $I_n$ y $A$, y estas matrices conmutan con $A$. Por el lema anterior, se sigue que
+    \begin{align*}
+        p(A) & = f(A)g(A) \\
+        & = f(A) (A - AI_n) \\
+        & = \mathbb{0}
+    \end{align*}
+\end{theorem}
+
+\begin{example}
+    Consideremos la matriz
+    $$A = \begin{bmatrix}
+        5 & 2 \\
+        7 & 1
+    \end{bmatrix}$$
+    Es fácil deducir que la ecuación característica de $A$ está dada por
+    $$p(\lambda) = \lambda^2 - 6\lambda - 9 = 0$$
+    Entonces
+    \begin{align*}
+        p(A) & = A^2 - 6A - 9I_2 \\
+        & = \begin{bmatrix}
+            39 & 12 \\
+            42 & 15
+        \end{bmatrix} + \begin{bmatrix}
+            -30 & -12 \\
+            -42 & -6
+        \end{bmatrix} + \begin{bmatrix*}[r]
+            -9 & 0 \\
+            0 & -9
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            0 & 0 \\
+            0 & 0
+        \end{bmatrix}
+    \end{align*}
+\end{example}
+
+\section{Formas bilineales}
+
+Anteriormente hemos discutido las formas cuadráticas, que son un caso especial de las formas bilineales. Ahora, nos adentraremos en el estudio de las formas bilineales, una clase de funciones que toman dos variables definidas en un espacio vectorial y devuelven un escalar. Estas funciones aparecen en el análisis de temas tan diversos como la geometría y el cálculo multivariable. Analizaremos las propiedades básicas de las formas bilineales, con un énfasis particular en las formas bilineales simétricas, y exploraremos algunas de sus aplicaciones en superficies cuadráticas y en el cálculo multivariable.
+
+\begin{definition}
+    Sean $V$ y $W$ dos espacios vectoriales sobre un campo $K$, entonces la transformación lineal $B: V \times W \longrightarrow K$ se llama bilineal si satisface las siguientes propiedades:
+    \begin{enumerate}[label=\roman*)]
+        \item Para todo $\mathbb{v}_1$, $\mathbb{v}_2 \in V$ y $\mathbb{w} \in W$,
+        $$B(\mathbb{v}_1 + \mathbb{v}_2, \mathbb{w}) = B(\mathbb{v}_1, \mathbb{w}) + B(\mathbb{v}_2, \mathbb{w})$$\newpage
+        \item Para todo $\mathbb{v} \in V$ y $\mathbb{w}_1$, $\mathbb{w}_2 \in W$,
+        $$B(\mathbb{v}, \mathbb{w}_1 + \mathbb{w}_2) = B(\mathbb{v}, \mathbb{w}_1) + B(\mathbb{v}, \mathbb{w}_2)$$
+        \item Para todo $\mathbb{v} \in V$, $\mathbb{w} \in W$ y $c \in K$,
+        $$B(c\mathbb{v}, \mathbb{w}) = cB(\mathbb{v}, \mathbb{w}) = B(\mathbb{v}, c\mathbb{w})$$
+    \end{enumerate}
+    Si además $V = W$, entonces la transformación $B$ se denomina forma bilineal.
+\end{definition}
+
+\begin{example}
+    Sea $V = W = \RR[n]$, entonces la expresión
+    \begin{equation}
+        B(\mathbb{v}_1, \mathbb{v}_2) = A\mathbb{v}_1 \bullet \mathbb{v}_2 \label{FOCUBILI}
+    \end{equation}
+    donde $A \in \mathcal{M}_{n \times n}(\RR)$ conforma una forma bilineal. Para probarlo, debemos demostrar que cumplen las tres propiedades de la anterior definición. Así
+    \begin{enumerate}[label=\roman*)]
+        \item Para todo $\mathbb{x}_1$, $\mathbb{x}_2 \in \RR[n]$ e $\mathbb{y} \in \RR[n]$,
+        \begin{align*}
+            B(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) & = A(\mathbb{x}_1 + \mathbb{x}_2) \bullet \mathbb{y} \\
+            & = (A\mathbb{x}_1 + A\mathbb{x}_2) \bullet \mathbb{y} \\
+            & = A\mathbb{x}_1 \bullet \mathbb{y} + A\mathbb{x}_2 \bullet \mathbb{y} \\
+            & = B(\mathbb{x}_1, \mathbb{y}) + B(\mathbb{x}_2, \mathbb{y})
+        \end{align*}
+        Por lo tanto, $B(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) = B(\mathbb{x}_1, \mathbb{y}) + B(\mathbb{x}_2, \mathbb{y})$.
+        \item Para todo $\mathbb{y} \in \RR[n]$ e $\mathbb{x}_1$, $\mathbb{y}_2 \in \RR[n]$,
+        \begin{align*}
+            B(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) & = A\mathbb{x} \bullet (\mathbb{y}_1 + \mathbb{y}_2) \\
+            & = A\mathbb{x} \bullet \mathbb{y}_1 + A\mathbb{x} \bullet \mathbb{y}_2 \\
+            & = B(\mathbb{x}, \mathbb{y}_1) + B(\mathbb{x}, \mathbb{y}_2)
+        \end{align*}
+        Por lo tanto, $B(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) = B(\mathbb{x}, \mathbb{y}_1) + B(\mathbb{x}, \mathbb{y}_2)$.
+        \item Para todo $\mathbb{x}$, $\mathbb{y} \in \RR[n]$ y $c \in \RR$,
+        \begin{align*}
+            B(c\mathbb{x}, \mathbb{y}) & = A(c\mathbb{x}) \bullet \mathbb{y} \\
+            & = cA\mathbb{x} \bullet \mathbb{y} \\
+            & = cB(\mathbb{x}, \mathbb{y}) \\
+            & = A\mathbb{x} \bullet (c\mathbb{y}) \\
+            & = B(\mathbb{x}, c\mathbb{y})
+        \end{align*}
+        Por lo tanto, $B(c\mathbb{x}, \mathbb{y}) = cB(\mathbb{x}, \mathbb{y}) = B(\mathbb{x}, c\mathbb{y})$.
+    \end{enumerate}
+    Ya que la expresión \eqref{FOCUBILI} cumple las tres propiedades, entonces es bilineal. Más aún, al ser $V = W$, se sigue que dicha expresión es una forma bilineal.
+\end{example}
 
 \newpage
 
@@ -2302,4 +2857,125 @@ De los problemas 44 al 53 encuentre la matriz ortogonal $Q$ que diagonaliza la m
     \item Encuentre una matriz unitaria $U$ tal que $U^* A U$ es diagonal, donde $A=\begin{bmatrix*}0 & 3-2 i \\ 3+2 i & 0\end{bmatrix*}$.
     \item Haga lo mismo que en el problema anterior para $A=\begin{bmatrix*}-2 & -3+2 i \\ -3-4 i & 2\end{bmatrix*}$.
     \item Demuestre que el determinante de una matriz hermitiana es real.
+\end{enumerate}
+
+\newpage\noindent
+Del problema 66 al 83 escriba la ecuación cuadrática en la forma $A \mathbb{v} \bullet \mathbb{v}=d$ (donde $A$ es una matriz simétrica) y elimine el término $x y$ rotando los ejes un ángulo $\theta$. Escriba la ecuación en términos de las nuevas variables e identifique la sección cónica obtenida.
+\begin{tasks}[
+    style=enumerate,
+    label-offset = 3mm,
+    start=66,
+    %label-width = 13.97498pt,
+    ](2)
+    \task $4 x^{2}-2 x y+4 y^{2}=25$
+    \task $3 x^{2}-2 x y-5=0$
+    \task $4 x^{2}+4 x y+y^{2}=9$
+    \task $-x^{2}-6 \sqrt{3} x y+5 y^{2}=8$
+    \task $4 x^{2}+4 x y-y^{2}=9$
+    \task $x y=1$
+    \task $2 x^{2}-4 \sqrt{3} x y+6 y^{2}=10$
+    \task $x y=a$, con $a>0$
+    \task $4 x^{2}+2 x y+3 y^{2}+2=0$
+    \task $4 x^{2}-8 \sqrt{3} x y-4 y^{2}=1$
+    \task $x^{2}+4 x y+4 y^{2}-6=0$
+    \task $-x^{2}+2 x y-y^{2}=0$
+    \task $\displaystyle\frac{24 x^{2}}{5}-\frac{24 x y}{5}+\frac{31 y^{2}}{5}=1$
+    \task $x^{2}-2 x y+3 y^{2}=5$
+    \task $3 x^{2}-6 x y+5 y^{2}=36$
+    \task $\displaystyle\frac{2 x^{2}}{25}-\frac{72 x y}{25}+\frac{23 y^{2}}{25}=1$
+    \task $x^{2}+x y+y^{2}=5$
+    \task $6 x^{2}+5 x y-6 y^{2}+7=0$
+\end{tasks}
+\begin{enumerate}[start=84]
+    \item ¿Cuáles son las formas posibles de la gráfica de $a x^{2}+b x y+c y^{2}=0$?
+\end{enumerate}
+De los problemas 85 al 88 escriba la forma cuadrática en términos de las nuevas variables $x^{\prime}$, $y^{\prime}$ y $z^{\prime}$ de manera que no estén presentes los términos de productos cruzados ($x y$, $x z$, $y z$).
+\begin{enumerate}[resume]
+    \item $x^{2}-2 x y+y^{2}-2 x z-2 y z+z^{2}$
+    \item $\displaystyle\frac{27 x^{2}}{16}-\frac{7 \sqrt{3} x y}{8}-\frac{9 x z}{4}+\frac{41 y^{2}}{16}-\frac{3 \sqrt{3} y z}{4}-\frac{z^{2}}{4}=1$
+    \item $x^{2}+x y+y^{2}+3 x z+z^{2}$
+    \item $3 x^{2}+4 x y+2 y^{2}+4 x z+4 z^{2}$
+\end{enumerate}
+De los problemas 89 al 91 encuentre una matriz simétrica $A$ tal que la forma cuadrática se pueda escribir en la forma $A \mathbb{x} \bullet \mathbb{x}$.
+\begin{enumerate}[resume]
+    \item $x_{1}^{2}+2 x_{1} x_{2}+x_{2}^{2}+4 x_{1} x_{3}+6 x_{2} x_{3}+3 x_{3}^{2}+7 x_{1} x_{4}-2 x_{2} x_{4}+x_{4}^{2}$
+    \item $x_{1}^{2}-3 x_{2}^{2}+9 x_{3}^{2}-7 x_{4}^{2}+3 x_{1} x_{3}-2 x_{2} x_{3}+4 x_{1} x_{4}$
+    \item $3 x_{1}^{2}-7 x_{1} x_{2}-2 x_{2}^{2}+x_{1} x_{3}-x_{2} x_{3}+3 x_{3}^{2}-2 x_{1} x_{4}+x_{2} x_{4}-4 x_{3} x_{4}-6 x_{4}^{2}+3 x_{1} x_{5}-5 x_{3} x_{5}+x_{4} x_{5}-x_{5}^{2}$
+    \item Suponga que para algún valor de $d$ diferente de cero, la gráfica de $a x^{2}+b x y+c y^{2}=d$ es una hipérbola. Demuestre que la gráfica es una hipérbola para cualquier otro valor de $d$ diferente de cero.
+    \item Demuestre que si $a \neq c$, el término $x y$ en la ecuación cuadrática \eqref{cuadratica1} se elimina rotando un ángulo $\theta$, si $\theta$ está dado por $\displaystyle\cot 2 \theta=\frac{a-c}{b}$.
+    \item Demuestre que si $a=c$ en el problema anterior, entonces el término $x y$ se elimina rotando un ángulo $\displaystyle\pm \frac{\pi}{4}$.
+    \item Suponga que una rotación convierte a
+    $$a x^{2}+b x y+c y^{2}$$
+    en $$a^{\prime}\left(x^{\prime}\right)^{2}+b^{\prime}\left(x y^{\prime}\right)+c^{\prime}\left(y^{\prime}\right)^{2}$$
+    Demuestre que:
+    \begin{enumerate}
+        \item $a+c=a^{\prime}+c^{\prime}$
+        \item $b^{2}-4 a c=\left(b^{\prime}\right)^{2}-4 a^{\prime} c^{\prime}$
+    \end{enumerate}\newpage
+    \item Se dice que una forma cuadrática $F(\mathbb{x})=F\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ es positiva definida si $F(\mathbb{x})>0$ para toda $\mathbb{x} \in \RR[n]$ y $F(\mathbb{x})=0$ si y sólo si $\mathbb{x} = \mathbb{0}$. Demuestre que $F$ es positiva definida si y positiva definida sólo si la matriz simétrica $A$ asociada a $F$ tiene valores característicos positivos.
+    \item Se dice que una forma cuadrática $F(\mathbb{x})$ es positiva semidefinida si $F(\mathbb{x}) \geq 0$ para todo $\mathbb{x} \in$ $\RR[n]$. Demuestre que $F$ es positiva semidefinida si y sólo si los valores característicos de la matriz simétrica asociada a $F$ son todos no negativos.
+\end{enumerate}
+Las definiciones de formas cuadráticas negativa definida y negativa semidefinida son las definiciones en los problemas 96 y 97 sustituyendo $>0$ por $<0$ y $\geq 0$ por $\leq 0$, respectivamente. Una forma cuadrática es indefinida si no es de los tipos anteriores. De los problemas 98 al 109 determine si la forma cuadrática dada es positiva definida, positiva semidefinida, negativa definida, negativa semidefinida o indefinida.
+\begin{multienumerate}
+    \setcounter{multienumi}{97}
+    \mitemxxx{$3 x^{2}+2 y^{2}$}{$4 x^{2}-10 x y^{2}+2 y^{2}$}{$-3 x^{2}-3 y^{2}$}
+    \mitemxxx{$3 x^{2}-2 y^{2}$}{$9 x^{2}+1-10 y^{2}$}{$x^{2}+2 x y+2 y^{2}$}
+    \mitemxxx{$x^{2}-2 x y+2 y^{2}$}{$10 x y-5 y^{2}$}{$-x^{2}+4 x y-3 y^{2}$}
+    \mitemxxx{$-2 x^{2}+x y-2 y^{2}$}{$-3 x^{2}-2 x y-y^{2}$}{$-x^2 + 8xy - 2y^2$}
+\end{multienumerate}
+\begin{enumerate}[start=110]
+    \item Sea $A$ la representación matricial simétrica de la ecuación cuadrática \eqref{cuadratica1} con $d \neq 0$. Sean $\lambda_{1}$ y $\lambda_{2}$ los valores característicos de $A$. Demuestre que \eqref{cuadratica1} es la ecuación de
+    \begin{enumerate}
+        \item una hipérbola si $\lambda_{1} \lambda_{2}<0$ y
+        \item un círculo, elipse o sección cónica degenerada si $\lambda_{1}$ y $\lambda_{2}>0$.
+    \end{enumerate}
+\end{enumerate}
+De los problemas 111 al 128 determine si la matriz dada es una matriz de Jordan.
+\begin{multienumerate}
+    \setcounter{multienumi}{110}
+    \mitemxxxx{$\begin{bmatrix*}3 & 4 \\ 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & 1 \\ 0 & -6\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 \\ 0 & 0\end{bmatrix*}$}{$\begin{bmatrix*}3 & 0 \\ 0 & 3\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}1 & 2 \\ 0 & 1\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}[r]-3 & 1 & 0 \\ 0 & -3 & 0 \\ 1 & 0 & 1\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}3 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}3 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}1 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 2 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}1 & 0 & 0 & 0 & 0 \\ 0 & 2 & 1 & 0 & 0 \\ 0 & 0 & 2 & 1 & 0 \\ 0 & 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 2 & 0 & 0 \\ 0 & 0 & 1 & 2 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1\end{bmatrix*}$}{$\begin{bmatrix*}2 & 0 & 0 & 0 & 0 \\ 0 & 3 & 1 & 0 & 0 \\ 0 & 0 & 3 & 0 & 0 \\ 0 & 0 & 0 & 5 & 1 \\ 0 & 0 & 0 & 0 & 5\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}a & 0 & 0 & 0 & 0 \\ 0 & b & 0 & 0 & 0 \\ 0 & 0 & c & 0 & 0 \\ 0 & 0 & 0 & d & 0 \\ 0 & 0 & 0 & 0 & e\end{bmatrix*}$}{$\begin{bmatrix*}a & 1 & 0 & 0 & 0 \\ 0 & a & 0 & 0 & 0 \\ 0 & 0 & c & 1 & 0 \\ 0 & 0 & 0 & c & 1 \\ 0 & 0 & 0 & 0 & c\end{bmatrix*}$}
+\end{multienumerate}
+
+\newpage\noindent
+De los problemas 129 al 132 encuentre una matriz invertible $C$ que transforme la matriz de $2 \times 2$ a su forma canónica de Jordan.
+\begin{multienumerate}
+    \setcounter{multienumi}{128}
+    \mitemxxxx{$\begin{bmatrix*}6 & 1 \\ 0 & 6\end{bmatrix*}$}{$\begin{bmatrix*}[r]-12 & 7 \\ -7 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]-10 & -7 \\ 7 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]4 & -1 \\ 1 & 2\end{bmatrix*}$}
+\end{multienumerate}
+\begin{enumerate}[start=133]
+    \item Sea $A$ una matriz de $3 \times 3$. Suponga que $\lambda$ es un valor característico de $A$ con multiplicidad algebraica $3$ y multiplicidad geométrica $1$ y sea $\mathbb{v}_{1}$ el vector característico correspondiente.
+    \begin{enumerate}
+        \item Demuestre que existe una solución, $\mathbb{v}_{2}$, al sistema $(A-\lambda I) \mathbb{v}_{2}=\mathbb{v}_{1}$ tal que $\mathbb{v}_{1}$ y $\mathbb{v}_{2}$ son linealmente independientes.
+        \item Con $\mathbb{v}_{2}$ definido en el inciso a), demuestre que existe una solución, $\mathbb{v}_{3}$, al sistema $(A-\lambda I) \mathbb{v}_{3}=\mathbb{v}_{2}$ tal que $\mathbb{v}_{1}, \mathbb{v}_{2}$ y $\mathbb{v}_{3}$ son linealmente independientes.
+        \item Demuestre que si $C$ es una matriz cuyas columnas son $\mathbb{v}_{1}, \mathbb{v}_{2}$ y $\mathbb{v}_{3}$, entonces
+        $$C^{-1} A C=\begin{bmatrix*}
+            \lambda & 1 & 0 \\
+            0 & \lambda & 1 \\
+            0 & 0 & \lambda
+        \end{bmatrix*}$$
+    \end{enumerate}
+\end{enumerate}
+De los problemas 134 al 136 aplique el procedimiento descrito en el problema anterior para reducir la matriz dada mediante una transformación de semejanza a su forma canónica de Jordan.
+\begin{enumerate}[start=134]
+    \item $A=\begin{bmatrix*}[r]-4 & -3 & -1 \\ 11 & 9 & 3 \\ -29 & -25 & -8\end{bmatrix*}$
+    \item Haga lo mismo para $A=\begin{bmatrix*}[r]-1 & -2 & -1 \\ -1 & -1 & -1 \\ 2 & 3 & 2\end{bmatrix*}$.
+    \item Haga lo mismo para $A=\begin{bmatrix*}[r]-1 & -18 & -7 \\ 1 & -13 & -4 \\ -1 & 25 & 8\end{bmatrix*}$.
+    \item Una matriz $A$ de $n \times n$ es nilpotente si existe un entero $k$ tal que $A^{k}=0$. Si $k$ es el entero más pequeño de este tipo, entonces $k$ se denomina índice de nilpotencia de $A$. Demuestre que si $k$ es el índice de nilpotencia de $A$ y si $m \geq k$, entonces $A^{m}=0$.
+    \item Sea $N_{k}$ la matriz definida por la ecuación \eqref{JAJJAJAJAJAJHQHHQJQUUAUQUWUAUSISIUAJ}. Demuestre que $N_{k}$ es nilpotente con índice de nilpotencia $k$.
+    \item Escriba todas las matrices de Jordan de $4 \times 4$ posibles.
+\end{enumerate}
+De los problemas 140 al 148 está dado el polinomio característico de una matriz $A$. Escriba todas las posibles formas canónicas de Jordan de $A$.
+\begin{multienumerate}
+    \setcounter{multienumi}{139}
+    \mitemxxx {$(\lambda+3)^{2}(\lambda+1)$}{$(\lambda-1)^{3}(\lambda+1)^{2}$}{$(\lambda-3)^{3}(\lambda+4)$}
+    \mitemxxx{$(\lambda-3)^{4}$}{$(\lambda-4)^{3}(\lambda+3)^{2}$}{$(\lambda-6)(\lambda+7)^{4}$}
+    \mitemxxx{$(\lambda-2)(\lambda+2)^{5}$}{$(\lambda+7)^{5}$}{$(\lambda-1)^{2}(\lambda+4)^{3}$}
+\end{multienumerate}
+\begin{enumerate}[start=149]
+    \item Usando la forma canónica de Jordan, demuestre que para cualquier matriz $A$ de $n \times n$, $\operatorname{det} A=\lambda_{1} \lambda_{2} \cdots \lambda_{n}$, donde $\lambda_{1}, \lambda_{2}, \dots, \lambda_{n}$ son los valores característicos de $A$.
 \end{enumerate}

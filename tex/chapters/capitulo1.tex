@@ -871,7 +871,7 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
 \begin{definition}
     Sea $V$ un espacio vectorial sobre $K$ y sean $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ vectores en $V$ y $a_1$, $a_2$, $\dots$, $a_n \in K$, entonces a la expresión
     $$a_1 \mathbb{v}_1 + a_2 \mathbb{v}_2 + \cdots + a_n \mathbb{v}_n$$
-    se le llama \textbf{combinación lineal} de los vectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$.
+    se le llama combinación lineal de los vectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$.
 \end{definition}
 
 \begin{example}
@@ -1043,12 +1043,12 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
     \end{figure}
 \end{example}
 
-\section{Dependencia e independencia lineal}
+\section{Conjuntos linealmente independientes}
 
 \begin{definition}
-    Sea $V$ un espacio vectorial sobre $K$ y sean $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ vectores en $V$. Se dice que los vectores $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ son linealmente dependientes (l.d), si existen $a_1$, $a_2$, $\dots$, $a_n \in K$ no todos $0$ tales que
+    Sea $V$ un espacio vectorial sobre $K$. Un subconjunto $S$ del espacio vectorial $V$ se llama linealmente dependiente si existen vectores distintos $\mathbb{v}_1$, $\mathbb{v}_2$, $\dots$, $\mathbb{v}_n$ en $S$ y $a_1$, $a_2$, $\dots$, $a_n$ en $K$ no todos $0$ tales que
     $$a_1 \mathbb{v}_1 + a_2 \mathbb{v}_2 + \cdots + a_n \mathbb{v}_n = \mathbb{0}$$
-    En caso contrario, se les llama linealmente independientes (l.i).
+    En este caso también decimos que los vectores de $S$ son linealmente dependientes. En caso contrario, decimos que los vectores son linealmente independientes y por tanto, $S$ también es linealmente independiente.
 \end{definition}
 
 \begin{example}
@@ -1331,7 +1331,7 @@ En geometría analítica, $\RR[3]$ se utiliza para representar figuras geométri
         attach title to upper={\ },
         sharp corners,
         title = Algunas observaciones:,
-        fonttitle=\fontencoding{T1}\fontfamily{phv}\selectfont\bfseries\LARGE,
+        fonttitle=\sffamily\bfseries\LARGE,
         fontupper=\normalsize
     ]
         \begin{tikzpicture}[remember picture,overlay] \filldraw[gray!20] (current page.south west) rectangle ($(current page.south east) + (0,3)$); \end{tikzpicture}
@@ -1430,36 +1430,21 @@ De los problemas 53 al 60 describa el espacio generado por los vectores.
     \item En el problema anterior suponga que $\mathbb{v}_{1}$ y $\mathbb{v}_{2}$ no son paralelos. Demuestre que $H= \Gen \left\{\mathbb{v}_{1}, \mathbb{v}_{2}\right\}$ es un plano que pasa por el origen. ¿Cuál es la ecuación del plano?
 \end{enumerate}
 De los problemas 68 al 89 determine si el conjunto de vectores dado es linealmente dependiente o independiente.
-\begin{tasks}[
-    start=68,
-    style=enumerate,
-    item-indent = 0.9cm,
-    label-offset = 3mm,
-    %label-width = 13.97498pt,
-    ](2)
-    \task $\begin{pmatrix*}[r]9 \\ -8\end{pmatrix*},\begin{pmatrix*}[r]-11 \\ -3\end{pmatrix*}$
-    \task $\begin{pmatrix*}1 \\ 2\end{pmatrix*},\begin{pmatrix*}-1 \\ -3\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]2 \\ -1 \\ 4\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -2 \\ 7\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]-6 \\ 1\end{pmatrix*},\begin{pmatrix*}[r]12 \\ -2\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]2 \\ -1 \\ 4\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -2 \\ 8\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]-2 \\ 3\end{pmatrix*},\begin{pmatrix*}4 \\ 7\end{pmatrix*}$
-    \task $\begin{pmatrix*}1 \\ 0 \\ 0\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 1\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]-10 \\ -6\end{pmatrix*},\begin{pmatrix*}[r]10 \\ -6\end{pmatrix*},\begin{pmatrix*}5 \\ 9\end{pmatrix*}$
-    \task $\begin{pmatrix*}1 \\ 0 \\ 1\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 1\end{pmatrix*},\begin{pmatrix*}1 \\ 1 \\ 0\end{pmatrix*}$
-    \task $\begin{pmatrix*}1 \\ 0 \\ 1\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 0\end{pmatrix*},\begin{pmatrix*}0 \\ 0 \\ 1\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]8 \\ -7 \\ -8\end{pmatrix*},\begin{pmatrix*}[r]-11 \\ -12 \\ -7\end{pmatrix*},\begin{pmatrix*}[r]12 \\ -3 \\ 7\end{pmatrix*}$
-    \task $\begin{pmatrix*}1 \\ 2 \\ 3\end{pmatrix*},\begin{pmatrix*}[r]-1 \\ 1 \\ -1\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -1 \\ 1\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]-3 \\ 4 \\ 2\end{pmatrix*},\begin{pmatrix*}[r]7 \\ -1 \\ 3\end{pmatrix*},\begin{pmatrix*}1 \\ 1 \\ 8\end{pmatrix*}$
-    \task $\begin{pmatrix*}[r]-1 \\ 0 \\ 11\end{pmatrix*},\begin{pmatrix*}[r]7 \\ -20 \\ -29\end{pmatrix*},\begin{pmatrix*}[r]1 \\ -5 \\ 1\end{pmatrix*}$
-    \task En $P_{2}$: $1-x, x$
-    \task En $P_{2}$: $-x, x^{2}-2 x, 3 x+5 x^{2}$
-    \task*(2) En $P_2$: $-3-2 x-11 x^{2},-39-6 x-3 x^{2},-12-9 x^{2}, 20-4 x+5 x^{2}$
-    \task*(2) En $P_{4}$: $x-1,(x-1)(x-2),(x-1)(x-2)(x-3), x^{4}$
-    \task En $P_{2}$: $x, x^{2}-x, x^{3}-x$
-    \task En $C[0,1]$: $e^{x}, e^{-x}$
-    \task En $C[0,1]$: $\sen x, \cos x$
-    \task En $C[0,1]$: $x, \sqrt{x}, \sqrt[3]{x}$
-\end{tasks}
+\begin{multienumerate}\setcounter{multienumi}{67}
+    \mitemxx{$\begin{pmatrix*}[r]9 \\ -8\end{pmatrix*},\begin{pmatrix*}[r]-11 \\ -3\end{pmatrix*}$}{$\begin{pmatrix*}1 \\ 2\end{pmatrix*},\begin{pmatrix*}-1 \\ -3\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}[r]2 \\ -1 \\ 4\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -2 \\ 7\end{pmatrix*}$}{$\begin{pmatrix*}[r]-6 \\ 1\end{pmatrix*},\begin{pmatrix*}[r]12 \\ -2\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}[r]2 \\ -1 \\ 4\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -2 \\ 8\end{pmatrix*}$}{$\begin{pmatrix*}[r]-2 \\ 3\end{pmatrix*},\begin{pmatrix*}4 \\ 7\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}1 \\ 0 \\ 0\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 1\end{pmatrix*}$}{$\begin{pmatrix*}[r]-10 \\ -6\end{pmatrix*},\begin{pmatrix*}[r]10 \\ -6\end{pmatrix*},\begin{pmatrix*}5 \\ 9\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}1 \\ 0 \\ 1\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 1\end{pmatrix*},\begin{pmatrix*}1 \\ 1 \\ 0\end{pmatrix*}$}{$\begin{pmatrix*}1 \\ 0 \\ 1\end{pmatrix*},\begin{pmatrix*}0 \\ 1 \\ 0\end{pmatrix*},\begin{pmatrix*}0 \\ 0 \\ 1\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}[r]8 \\ -7 \\ -8\end{pmatrix*},\begin{pmatrix*}[r]-11 \\ -12 \\ -7\end{pmatrix*},\begin{pmatrix*}[r]12 \\ -3 \\ 7\end{pmatrix*}$}{$\begin{pmatrix*}1 \\ 2 \\ 3\end{pmatrix*},\begin{pmatrix*}[r]-1 \\ 1 \\ -1\end{pmatrix*},\begin{pmatrix*}[r]4 \\ -1 \\ 1\end{pmatrix*}$}
+    \mitemxx{$\begin{pmatrix*}[r]-3 \\ 4 \\ 2\end{pmatrix*},\begin{pmatrix*}[r]7 \\ -1 \\ 3\end{pmatrix*},\begin{pmatrix*}1 \\ 1 \\ 8\end{pmatrix*}$}{$\begin{pmatrix*}[r]-1 \\ 0 \\ 11\end{pmatrix*},\begin{pmatrix*}[r]7 \\ -20 \\ -29\end{pmatrix*},\begin{pmatrix*}[r]1 \\ -5 \\ 1\end{pmatrix*}$}
+    \mitemxx{En $P_{2}$: $1-x, x$}{En $P_{2}$: $-x, x^{2}-2 x, 3 x+5 x^{2}$}
+    \mitemx{En $P_2$: $-3-2 x-11 x^{2},-39-6 x-3 x^{2},-12-9 x^{2}, 20-4 x+5 x^{2}$}
+    \newpage
+    \mitemx{En $P_{4}$: $x-1,(x-1)(x-2),(x-1)(x-2)(x-3), x^{4}$}
+    \mitemxx{En $P_{2}$: $x, x^{2}-x, x^{3}-x$}{En $C[0,1]$: $e^{x}, e^{-x}$}
+    \mitemxx{En $C[0,1]$: $\sen x, \cos x$}{En $C[0,1]$: $x, \sqrt{x}, \sqrt[3]{x}$}
+\end{multienumerate}
 \begin{enumerate}[start=90]
     \item Determine una condición sobre los números $a, b, c$ y $d$ tal que los vectores $\begin{pmatrix*}a \\ b\end{pmatrix*}$ y $\begin{pmatrix*}c \\ d\end{pmatrix*}$ sean linealmente dependientes.
     \item Encuentre una condición sobre los números $a_{i j}$ tal que los vectores $\begin{pmatrix*}a_{11} \\ a_{21} \\ a_{31}\end{pmatrix*},\begin{pmatrix*}a_{12} \\ a_{22} \\ a_{32}\end{pmatrix*}$ y $\begin{pmatrix*}a_{13} \\ a_{23} \\ a_{33}\end{pmatrix*}$ sean linealmente independientes.
@@ -1468,7 +1453,7 @@ De los problemas 68 al 89 determine si el conjunto de vectores dado es linealmen
     \item ¿Para qué valor(es) de $\alpha$ serán linealmente dependientes los vectores $\begin{pmatrix*}3 \\ 2 \\ 1\end{pmatrix*},\begin{pmatrix*}-2 \\ -1 \\ -1\end{pmatrix*},\begin{pmatrix*}\alpha \\ 5 \\ 2\end{pmatrix*}$?
     \item ¿Para qué valor(es) de $\alpha$ y $\beta$ serán linealmente independientes los vectores $\begin{pmatrix*}3 \\ 2 \\ 1\end{pmatrix*},\begin{pmatrix*}[r]-2 \\ -1 \\ \beta\end{pmatrix*},\begin{pmatrix*}\alpha \\ 5 \\ 2\end{pmatrix*}$?
     \item Demuestre que si los vectores $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{n}$ son linealmente dependientes en $\RR[m]$, con $m<n$, y si $\mathbb{v}_{n+1}$ es cualquier otro vector en $\RR[m]$, entonces el conjunto $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{n}, \mathbb{v}_{n+1}$ es linealmente dependiente.
-    \item Demuestre que si $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{n}(n \geq 2)$ son linealmente independientes, entonces también lo son $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{k}$, donde $k<n$.
+    \item Demuestre que si $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{n}$ ($n \geq 2$) son linealmente independientes, entonces también lo son $\mathbb{v}_{1}, \mathbb{v}_{2}, \dots, \mathbb{v}_{k}$, donde $k<n$.
     \item Demuestre que cualesquiera cuatro polinomios en $P_{2}$ son linealmente dependientes.
     \item Demuestre que dos polinomios no pueden generar a $P_{2}$.
     \item Demuestre que cualesquiera $n+2$ polinomios en $P_{n}$ son linealmente dependientes.

@@ -78,6 +78,7 @@ BoldItalicFont=Lato Italic
 \RequirePackage{caption}
 \RequirePackage[inline]{enumitem}
 \RequirePackage{tasks}
+\RequirePackage{multienum} %.sty
 \RequirePackage{etoolbox}
 \RequirePackage{fancyhdr}
 \RequirePackage{floatrow}
