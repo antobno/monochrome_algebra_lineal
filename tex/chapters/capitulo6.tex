@@ -1,4 +1,4 @@
-\chapter{DIAGONALIZACIÓN Y FORMAS BILINEALES}\label{chapter:bilineal}
+\chapter{DIAGONALIZACIÓN Y FORMAS CUADRÁTICAS}\label{chapter:bilineal}
 %\startcontents
 \printchaptertableofcontents
 
@@ -19,9 +19,9 @@ Hemos visto la definición de un eigenvalor y eigenvector, pero ¿cómo podemos 
 $$A \mathbb{v} - \lambda \mathbb{v} = \mathbb{0}$$
 
 \infoBulle{Los eigenvalores y eigenvectores son comúnmente conocidos como valores y vectores propios, respectivamente, o valores y vectores característicos. El término alemán \emph{eigen} significa “propio”.}
-\infoBulle{La definición \ref{def:eigenvalor} es válida incluso si $A$ tiene componentes complejas. Sin embargo, dado que las matrices que estamos considerando principalmente tienen componentes reales, la definición es adecuada para nuestros propósitos.}
 
 \newpage
+\infoBulle{La definición \ref{def:eigenvalor} es válida incluso si $A$ tiene componentes complejas. Sin embargo, dado que las matrices que estamos considerando principalmente tienen componentes reales, la definición es adecuada para nuestros propósitos.}
 \infoBulle{Como se mostrará más adelante, incluso una matriz con elementos reales puede poseer eigenvalores y eigenvectores complejos. Por esta razón, en la definición \ref{def:eigenvalor}, se especifica que el eigenvector tiene entradas complejas, es decir, $\mathbb{v} \in \CC[n]$. Aunque no se abordarán exhaustivamente muchos aspectos relacionados con los números complejos en esta obra, se incluye una exposición básica de los conceptos indispensables en el \hyperref[chap:numeros-complejos]{Apéndice B}.}
 
 \noindent o bien,
@@ -1175,7 +1175,9 @@ Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatr
 $$A\mathbb{v} \bullet \mathbb{v} = 2x^2 - 2xy + 4y^2$$
 
 En general, esta matriz, denotada como $A$, está dada por
-$$A = \begin{bmatrix} a & \dfrac{b}{2} \\[1.5mm] \dfrac{b}{2} & c \end{bmatrix}$$
+\begin{equation}
+    A = \begin{bmatrix} a & \dfrac{b}{2} \\[1.5mm] \dfrac{b}{2} & c \end{bmatrix} \label{AMATSIM}
+\end{equation}
 donde $a$, $b$, y $c$ son números reales que representan los coeficientes de la forma cuadrática $ax^2 + bxy + cy^2$. Al multiplicar esta matriz por un vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos el vector
 $$A\mathbb{v} = \begin{pmatrix} ax + \dfrac{by}{2} \\[2mm] \dfrac{bx}{2} + cy \end{pmatrix}$$
 Luego, al tomar el producto punto con el mismo vector $\mathbb{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, obtenemos la expresión
@@ -1571,31 +1573,24 @@ Además,
 
 \newpage
 
-\begin{theorem}[Teorema de los ejes principales]
-    Dada la ecuación cuadrática
-    \begin{equation}
-        ax^2 + bxy + cy^2 = d \label{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU}
-    \end{equation}
-    en las variables $x$ e $y$. Entonces existe un único número $\theta \in [0, 2\pi]$ tal que la ecuación \eqref{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU} se puede escribir en la forma
-    $$\lambda_1 x_1^2 + \lambda_2 y_1^2 = d$$
-    donde $x_1$ y $x_2$ son los ejes obtenidos al rotar los ejes $x$ e $y$ un ángulo $\theta$ en sentido contrario al de las manecillas del reloj y $\lambda_1$ y $\lambda_2$ son los eigenvalores de la matriz $A = \begin{bmatrix}
-        a & \dfrac{b}{2} \\[2mm]
-        \dfrac{b}{2} & c
-    \end{bmatrix}$. Los ejes $x_1$ e $y_1$ se denominan \emph{ejes principales} de la gráfica de la ecuación cuadrática \eqref{HSGDGSHFGJHSHFJGDJHSFGJHDGJFGSDJU}.
-\end{theorem}
-
 \begin{definition}
     Una forma cuadrática en las variables $x_1$, $x_2$, $\dots$, $x_n$ es una expresión dada por
     $$A\mathbb{x} \bullet \mathbb{x} = F(x_1, x_2, \dots, x_n)$$
     siendo $A$ una matriz simétrica y $\mathbb{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}$.
 \end{definition}
 
-\begin{example}
+\begin{theorem}[Teorema de los ejes principales]\label{theo:ejes_principales}
+    Si $A$ es una matriz simétrica de $n \times n$, entonces existe una matriz ortogonal que transforma la forma cuadrática $A\mathbb{x} \bullet \mathbb{x}$ en una forma cuadrática $D\mathbb{x}' \bullet \mathbb{x}'$ sin términos de productos cruzados. Específicamente, si $Q$ diagonaliza ortogonalmente a $A$, entonces al hacer el cambio de variable $\mathbb{x}' = Q \mathbb{x}$ en la forma cuadrática $A\mathbb{x} \bullet \mathbb{x}$ se obtiene la forma cuadrática
+    $$A\mathbb{x} \bullet \mathbb{x} = D\mathbb{x}' \bullet \mathbb{x}' = \lambda_1 x_1^2 + \lambda_2 x_2^2 + \cdots + \lambda_n x_n^2$$
+    donde $D$ es la matriz diagonal formada por los eigenvalores $\lambda_1, \lambda_2, \ldots, \lambda_n$ de $A$ correspondientes a los eigenvectores que forman las columnas de $Q$.
+\end{theorem}
+
+\begin{example}\label{Example:forcuatvaria}
     Grafique la ecuación
     \begin{equation}
         5x^2 + 8xy + 5y^2 + 4xz + 4yz + 2z^2 = 100 \label{KAJAJAJSJSJJSJSSJJHVVGQGG}
     \end{equation}
-    \solucion Dada la ecuación cuadrática en tres variables \eqref{KAJAJAJSJSJJSJSSJJHVVGQGG}, queremos construir la matriz simétrica $A$ que representa los coeficientes de las variables. Para ello:
+    \solucion Observemos que, si la ecuación cuadrática fuera de dos variables, la matriz $A$ estaría dada por la expresión \eqref{AMATSIM}. Sin embargo, dado que la ecuación cuadrática es de tres variables, deseamos construir la matriz simétrica $A$ que representa los coeficientes de las variables. Para ello:
     \begin{itemize}
         \item Los elementos de la diagonal de $A$ corresponden a los coeficientes de los términos cuadráticos de las variables $x^2$, $y^2$ e $z^2$.
         \item Los elementos fuera de la diagonal son el producto de las variables cruzadas dividido entre $2$.
@@ -2708,19 +2703,19 @@ En esencia, el teorema nos dice que una matriz cuadrada satisface su propio poli
 Anteriormente hemos discutido las formas cuadráticas, que son un caso especial de las formas bilineales. Ahora, nos adentraremos en el estudio de las formas bilineales, una clase de funciones que toman dos variables definidas en un espacio vectorial y devuelven un escalar. Estas funciones aparecen en el análisis de temas tan diversos como la geometría y el cálculo multivariable. Analizaremos las propiedades básicas de las formas bilineales, con un énfasis particular en las formas bilineales simétricas, y exploraremos algunas de sus aplicaciones en superficies cuadráticas y en el cálculo multivariable.
 
 \begin{definition}
-    Sean $V$ y $W$ dos espacios vectoriales sobre un campo $K$, entonces la transformación lineal $B: V \times W \longrightarrow K$ se llama bilineal si satisface las siguientes propiedades:
+    Sean $V$ y $W$ dos espacios vectoriales sobre un campo $K$, entonces la transformación $B: V \times W \longrightarrow K$ se llama bilineal si satisface las siguientes propiedades:
     \begin{enumerate}[label=\roman*)]
         \item Para todo $\mathbb{v}_1$, $\mathbb{v}_2 \in V$ y $\mathbb{w} \in W$,
         $$B(\mathbb{v}_1 + \mathbb{v}_2, \mathbb{w}) = B(\mathbb{v}_1, \mathbb{w}) + B(\mathbb{v}_2, \mathbb{w})$$\newpage
-        \item Para todo $\mathbb{v} \in V$ y $\mathbb{w}_1$, $\mathbb{w}_2 \in W$,
+        \item Para todo $\mathbb{v} \in V$ y $\mathbb{w}_1$, $\mathbb{w}_2 \in W$,\infoBulle{Observe que un producto interno en un espacio vectorial es una forma bilineal si el campo subyacente es real, pero no si el campo subyacente es complejo.}
         $$B(\mathbb{v}, \mathbb{w}_1 + \mathbb{w}_2) = B(\mathbb{v}, \mathbb{w}_1) + B(\mathbb{v}, \mathbb{w}_2)$$
         \item Para todo $\mathbb{v} \in V$, $\mathbb{w} \in W$ y $c \in K$,
         $$B(c\mathbb{v}, \mathbb{w}) = cB(\mathbb{v}, \mathbb{w}) = B(\mathbb{v}, c\mathbb{w})$$
     \end{enumerate}
-    Si además $V = W$, entonces la transformación $B$ se denomina forma bilineal.
+    Si además $V = W$, entonces la transformación $B$ se denomina forma bilineal. Denotamos el conjunto de todas las formas bilineales en $V$ por $\mathcal{B}(V)$.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{example:bil_1}
     Sea $V = W = \RR[n]$, entonces la expresión
     \begin{equation}
         B(\mathbb{v}_1, \mathbb{v}_2) = A\mathbb{v}_1 \bullet \mathbb{v}_2 \label{FOCUBILI}
@@ -2754,6 +2749,381 @@ Anteriormente hemos discutido las formas cuadráticas, que son un caso especial 
     \end{enumerate}
     Ya que la expresión \eqref{FOCUBILI} cumple las tres propiedades, entonces es bilineal. Más aún, al ser $V = W$, se sigue que dicha expresión es una forma bilineal.
 \end{example}
+
+\begin{example}\label{example:bil_2}
+    Sea $H: \RR[2] \times \RR[2] \longrightarrow \RR$ definida como
+    $$H(\mathbb{x}, \mathbb{y}) = 2a_1b_1 + 3a_1b_2 + 4a_2b_1 - a_2b_2, \quad \text{ con } \mathbb{x} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}, \mathbb{y} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}$$
+    Podríamos comprobar directamente que $H$ es una forma bilineal sobre $\RR$. Sin embargo, obsérvese que si
+    $$A = \begin{bmatrix*}[r]
+        2 & 3 \\
+        4 & -1
+    \end{bmatrix*}$$
+    entonces
+    $$A\mathbb{x} \bullet \mathbb{y} = 2a_1b_1 + 3a_1b_2 + 4a_2b_1 - a_2b_2 = H(\mathbb{x}, \mathbb{y})$$
+    La bilinealidad de $H$ se deriva directamente del ejemplo anterior.
+\end{example}
+
+\newpage
+
+\begin{definition}
+    Sea $V$ un espacio vectorial. Sean $H_1$, $H_2$ formas bilineales en $V$ y sea $a$ un escalar. Definimos la suma, denotado por $H_1 + H_2$, como
+    $$(H_1 + H_2)(\mathbb{x}, \mathbb{y}) = H_1(\mathbb{x}, \mathbb{y}) + H_2(\mathbb{x}, \mathbb{y})$$
+    Y definimos el producto por un escalar, denotado por $aH_1$, como
+    $$(aH_1)(\mathbb{x}, \mathbb{y}) = a \big( H_1(\mathbb{x}, \mathbb{y}) \big)$$
+\end{definition}
+
+\begin{theorem}
+    Para cualquier espacio vectorial $V$, la suma de dos formas bilineales y el producto de una forma bilineal por un escalar son nuevamente formas bilineales en $V$. Además, $\mathcal{B}(V)$ es un espacio vectorial con respecto a estas operaciones. \\
+    \demostracion Se deja como ejercicio al lector.
+\end{theorem}
+
+\begin{definition}
+    Sea $V$ un espacio vectorial. Sea $S = \{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n \}$ una base de dicho espacio vectorial y sea $H \in \mathcal{B}(V)$. Podemos asociar $H$ a una matriz $A$ de tamaño $n \times n$ cuyas entradas en la fila $i$ y la columna $j$ están definidas por
+    $$a_{ij} = H(\mathbb{v}_i, \mathbb{v}_j), \quad \text{ para } i, j = 1, 2, \dots, n$$
+    La matriz $A$ anterior se llama representación matricial de $H$ con respecto a la base $S$ y se denota por $\psi_S(H)$.
+\end{definition}
+
+\begin{example}
+    Consideremos la forma bilineal $H$ del ejemplo \ref{example:bil_2} y sea
+    $$S = \left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \right\} \quad \text{ y } \quad A = \psi_S(H)$$
+    Calculemos los valores de las entradas de la matriz $A$ como sigue:
+    \begin{align*}
+        a_{11} & = H \left( \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) & a_{12} & = H \left( \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \right) \\
+        & = 2 + 3 + 4 - 1 = 8 & & = 2 - 3 + 4 + 1 = 4 \\
+        & \\
+        a_{21} & = H \left( \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) & a_{22} & = H \left( \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*}, \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \right) \\
+        & = 2 + 3 - 4 + 1 = 2 & & = 2 - 3 - 4 - 1 = -6
+    \end{align*}
+    Entonces, la matriz $A$ está dada por
+    $$A = \psi_S(H) = \begin{bmatrix*}[r] 8 & 4 \\ 2 & -6 \end{bmatrix*}$$
+    que corresponde a la representación matricial de $H$ con respecto a la base $S$. Si $R$ es la base canónica para $\RR[2]$, el lector puede verificar que
+    $$\psi_R(H) = \begin{bmatrix*}[r]
+        2 & 3 \\
+        4 & -1
+    \end{bmatrix*}$$
+\end{example}
+
+\begin{theorem}
+    Sea $V$ un espacio vectorial de dimensión finita $n$ sobre un campo $K$ y sea $S = \{ \mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n \}$ una base de dicho espacio vectorial. Entonces $\psi_S: \mathcal{B}(V) \longrightarrow \mathcal{M}_{n \times n}(K)$ es un isomorfismo.
+\end{theorem}
+
+\begin{corollary}
+    Sea $V$ un espacio vectorial de dimensión finita $n$ sobre un campo $K$. Entonces $\dim \big( \mathcal{B}(V) \big) = n^2$.
+\end{corollary}
+
+\begin{corollary}
+    Sea $K$ un campo, $n$ un entero positivo, y $S$ una base para $K^n$. Entonces para cualquier $H \in \mathcal{B}(K^n)$, entonces existe una única matriz $A \in \mathcal{M}_{n \times n}(K)$, denotada por $A = \psi_S(H)$, tal que
+    $$H(\mathbb{x}, \mathbb{y}) = \mathbb{x}^t A \mathbb{y}, \text{ para todo } \mathbb{x}, \mathbb{y} \in K^n$$
+\end{corollary}
+
+\newpage
+
+\begin{definition}
+    Sea $H$ una forma bilineal en un espacio vectorial $V$.
+    \begin{enumerate}[label=\roman*)]
+        \item Decimos que $H$ es simétrica si $H(\mathbb{x}, \mathbb{y}) = H(\mathbb{y}, \mathbb{x})$, $\forall \mathbb{x}$, $\mathbb{y} \in V$.
+        \item Decimos que $H$ es antisimétrica si $H(\mathbb{x}, \mathbb{y}) = - H(\mathbb{y}, \mathbb{x})$, $\forall \mathbb{x}$, $\mathbb{y} \in V$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Sea $H$ una forma bilineal en un espacio vectorial de dimensión finita y sea $S$ una base para dicho espacio vectorial. Entonces $H$ es simétrica si y solo si $\psi_S(H)$ es simétrica. \\
+    \demostracion Se deja como ejercicio al lector.
+\end{theorem}
+
+%\begin{definition}
+    %Una forma bilineal $H$ en un espacio vectorial $V$ de dimensión finita se llama diagonalizable si existe una base $S$ para $V$ tal que $\psi_S(H)$ es una matriz simétrica.
+%\end{definition}
+
+\begin{definition}
+    Sea $V$ un espacio vectorial sobre un campo $K$. Una función $Q: V \longrightarrow K$ se llama forma cuadrática si existe una forma bilineal simétrica $H \in \mathcal{B}(V)$ tal que
+    $$Q(\mathbb{x}) = H(\mathbb{x}, \mathbb{x}), \quad \text{ para todo } \mathbb{x} \in V$$
+\end{definition}
+
+\begin{observation}
+    La expresión $A\mathbb{v}_1 \bullet \mathbb{v}_2$ representa una forma bilineal, tal como se demostró en el ejemplo \ref{example:bil_1}. Cuando $A$ es una matriz simétrica y $\mathbb{v}_1 = \mathbb{v}_2 = \mathbb{x}$, dicha expresión se transforma en una forma cuadrática. Además, es útil notar que esta forma cuadrática puede escribirse de las siguientes maneras equivalentes:
+    $$A\mathbb{x} \bullet \mathbb{x} = \mathbb{x} \bullet A\mathbb{x} = \mathbb{x}^t A\mathbb{x}$$
+    Cada una de estas expresiones subraya diferentes propiedades algebraicas de las formas cuadráticas y puede ser útil en distintos contextos de análisis matemático.
+\end{observation}
+
+\begin{example}
+    Consideremos
+    $$A = \begin{bmatrix}
+        5 & 4 & 2 \\
+        4 & 5 & 2 \\
+        2 & 2 & 2
+    \end{bmatrix} \quad \text{ y } \quad \mathbb{x} = \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}$$
+    Observamos que $A$ es una matriz simétrica. Por lo tanto, obtenemos que
+    \begin{align*}
+        A\mathbb{x} \bullet \mathbb{x} & = \begin{bmatrix}
+            5 & 4 & 2 \\
+            4 & 5 & 2 \\
+            2 & 2 & 2
+        \end{bmatrix} \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} \bullet \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} \\
+        & = 5x^2 + 8xy + 5y^2 + 4xz + 4yz + 2z^2
+    \end{align*}
+    que corresponde a la forma cuadrática del ejemplo \ref{Example:forcuatvaria}.
+\end{example}
+
+\begin{definition}
+    Si se considera $\langle \, , \rangle \in \RR$, entonces diremos que $\langle \, , \rangle$ es un producto escalar.
+\end{definition}
+
+\begin{definition}\label{def:def_posi}
+    Sea $V$ un espacio vectorial sobre $\RR$ y $\langle \, , \rangle$ un producto escalar. Se dice que $\langle \, , \rangle$ es definido positivo si
+    \begin{enumerate}[label=\roman*)]
+        \item $\langle \mathbb{v}, \mathbb{v} \rangle \geq 0$, y
+        \item $\langle \mathbb{v}, \mathbb{v} \rangle > 0$ si $\mathbb{v} \neq \mathbb{0}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Consideremos el espacio vectorial $C[0,  1]$, es decir, el conjunto de funciones $f:[0,  1] \longrightarrow \RR$ continuas. Entonces
+    \begin{equation}
+        \langle f, g \rangle = \int_0^1 f(t) g(t) dt \label{prodesca1}
+    \end{equation}
+    es definido positivo. \\
+    \solucion Para probar que la anterior expresión es definido positivo, debemos demostrar que cumple las dos propiedades de la anterior definición.\newpage
+    \begin{enumerate}[label=\roman*)]
+        \item Sea $f \in C[0, 1]$, entonces
+        \begin{align*}
+            \langle f, f \rangle & = \int_0^1 f(t) f(t) dt \\
+            & = \int_0^1 f^2(t) dt \geq 0
+        \end{align*}
+        \item Para demostrar que $\langle f, f \rangle > 0$ siempre que $f(t)$ no sea la función cero, consideremos las funciones continuas. Primero, si existe un $t_0 \in [0, 1]$ tal que $f^2(t_0) > 0$, definamos $\delta = \dfrac{f^2(t_0)}{2}$. Según la definición de límite, podemos encontrar un $\varepsilon > 0$ tal que
+        $$\left| f^2(t) - f^2(t_0) \right| < \delta \quad \text{cuando} \quad |t - t_0| < \varepsilon$$
+        De esto se deduce que
+        $$f^2(t) - f^2(t_0) > -\delta = - \frac{f^2(t_0)}{2} \quad \text{si} \quad |t - t_0| < \varepsilon$$
+        Reordenando, encontramos que
+        $$f^2(t) > \frac{f^2(t_0)}{2} \quad \text{para} \quad |t - t_0| < \varepsilon$$
+        En consecuencia, se tiene que
+        \begin{align*}
+            \langle f, f \rangle & = \int_0^1 f^2(t) dt \\
+            & \geq \int_{t_0 - \varepsilon}^{t_0 + \varepsilon} f^2(t) dt \\
+            & \geq \int_{t_0 - \varepsilon}^{t_0 + \varepsilon} \frac{f^2(t_0)}{2} dt \\
+            & = \varepsilon f^2(t_0) > 0
+        \end{align*}
+        Por lo tanto, si $f(t)$ no es la función cero, entonces $\langle f, f \rangle > 0$.
+    \end{enumerate}
+    Ya que la expresión \eqref{prodesca1} cumple las dos propiedades de la definición \ref{def:def_posi}, podemos afirmar que es definido positivo.
+\end{example}
+
+\begin{definition}
+    Sea $F(\mathbb{x})=F\left(x_{1}, x_{2}, \dots, x_{n}\right)$ una forma cuadrática.
+    \begin{enumerate}[label=\roman*)]
+        \item Se dice que $F$ es positiva definida si $F(\mathbb{x})>0$ para $\mathbb{x} \neq \mathbb{0}$.
+        \item Se dice que $F$ es negativa definida si $F(\mathbb{x})<0$ para $\mathbb{x} \neq \mathbb{0}$.
+        \item Se dice que $F$ es indefinida si tiene valores tanto positivos como negativos.
+    \end{enumerate}
+\end{definition}
+
+Las tres clasificaciones en la definición anterior no agotan todas las posibilidades. Por ejemplo, una forma cuadrática para la cual $A\mathbb{x} \bullet \mathbb{x} \geq 0$ si $\mathbb{x} \neq \mathbb{0}$ se denomina semidefinida positiva, y una para la cual $A\mathbb{x} \bullet \mathbb{x} \leq 0$ si $\mathbb{x} \neq \mathbb{0}$ se denomina semidefinida negativa. Toda forma definida positiva es semidefinida positiva, pero no viceversa, y toda forma definida negativa es semidefinida negativa, pero no viceversa.
+
+
+El siguiente teorema, proporciona una forma de usar los eigenvalores para determinar si una matriz $A$ y su forma cuadrática asociada $A\mathbb{x} \bullet \mathbb{x}$ son positivas definidas, negativas definidas o indefinidas.
+
+\begin{theorem}
+    Sea $F(\mathbb{x})=F\left(x_{1}, x_{2}, \dots, x_{n}\right)$ una forma cuadrática.
+    \begin{enumerate}[label=\roman*)]
+        \item Se dice que $F$ es positiva definida si y solo si la matriz simétrica $A$ asociada a $F$ tiene eigenvalores positivos.\newpage
+        \item Se dice que $F$ es negativa definida si y solo si la matriz simétrica $A$ asociada a $F$ tiene eigenvalores negativos.
+        \item Se dice que $F$ es indefinida si y solo si la matriz simétrica $A$ asociada a $F$ tiene al menos un eigenvalor positivo y al menos un eigenvalor negativo.
+    \end{enumerate}
+    \demostracion
+    \begin{enumerate}[label=\roman*)]
+        \item Se deduce del teorema de los ejes principales (teorema \ref{theo:ejes_principales}) que hay un cambio de variable $\mathbb{x}' = Q\mathbb{x}$ para el que
+        \begin{equation}
+            A\mathbb{x} \bullet \mathbb{x} = D\mathbb{x}' \bullet \mathbb{x}' = \lambda_1 x_1^2 + \lambda_2 x_2^2 + \cdots + \lambda_n x_n^2 \label{UAJAJJAJJQJQJJAAJJAVCCXZDDG}
+        \end{equation}
+        donde $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de $A$. Además, de la invertibilidad de $Q$ se deduce que $\mathbb{x}' \neq \mathbb{0}$ si y solo si $\mathbb{x} \neq \mathbb{0}$, entonces los valores de $A\mathbb{x} \bullet \mathbb{x}$ para $\mathbb{x} \neq \mathbb{0}$ son los mismos que los valores de $D\mathbb{x}' \bullet \mathbb{x}'$ para $\mathbb{x}' \neq \mathbb{0}$. Por lo tanto, de \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} se deduce que $A\mathbb{x} \bullet \mathbb{x} > 0$ para $\mathbb{x} \neq \mathbb{0}$ si y solo si todos los $\lambda_i$ en esa ecuación son positivos.
+        \item Análogo al inciso anterior, de \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} se deduce que $A\mathbb{x} \bullet \mathbb{x} < 0$ para $\mathbb{x} \neq \mathbb{0}$ si y solo si todos los $\lambda_i$ en esa ecuación son negativos.
+        \item Supongamos que $A$ tiene al menos un eigenvalor positivo y al menos un eigenvalor negativo, y para ser específico, supongamos que $\lambda_1 > 0$ y $\lambda_2 < 0$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG}. Entonces
+        $$A\mathbb{x} \bullet \mathbb{x} > 0 \quad \text{ si } \quad y_1 = 1 \text{ y todos los demás } \lambda \text{ son cero}$$
+        y
+        $$A\mathbb{x} \bullet \mathbb{x} < 0 \quad \text{ si } \quad y_2 = 1 \text{ y todos los demás } \lambda \text{ son cero}$$
+        lo que demuestra que $A\mathbb{x} \bullet \mathbb{x}$ es indefinido. Inversamente, si $A\mathbb{x} \bullet \mathbb{x} > 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' > 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser positivo. De modo análogo, si $A\mathbb{x} \bullet \mathbb{x} < 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' < 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser negativo, lo que completa la prueba.
+    \end{enumerate}
+\end{theorem}
+
+Ajustando la demostración del teorema anterior apropiadamente, se puede demostrar que $A\mathbb{x} \bullet \mathbb{x}$ es semidefinida positiva si y solo si todos los eigenvalores de $A$ son no negativos y es semidefinida negativa si y solo si todos los eigenvalores de $A$ son no positivos.
+
+\begin{example}
+    Por lo general, no es posible saber a partir de los signos de las entradas en una matriz simétrica $A$ si esa matriz es positiva definitiva, negativa definida o indefinida. Por ejemplo, las entradas de la matriz
+    $$A = \begin{bmatrix}
+        3 & 1 & 1 \\
+        1 & 0 & 2 \\
+        1 & 2 & 0
+    \end{bmatrix}$$
+    son no negativos, pero la matriz es indefinida ya que sus valores propios son $\lambda = 1, 4, -2$ (verificar). Para ver esto de otra manera, escribamos la forma cuadrática como
+    $$A\mathbb{x} \bullet \mathbb{x} = \begin{bmatrix}
+        3 & 1 & 1 \\
+        1 & 0 & 2 \\
+        1 & 2 & 0
+    \end{bmatrix} \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{bmatrix} \bullet \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{bmatrix} = 3x_1^2 + 2x_1x_2 + 2x_1x_3 + 4x_2x_3$$
+    Ahora podemos ver, por ejemplo, que
+    $$A\mathbb{x} \bullet \mathbb{x} = 4 \quad \text{ para } \quad x_1 = 0, x_2 = 1, x_3 = 1$$
+    y
+    $$A\mathbb{x} \bullet \mathbb{x} = -4 \quad \text{ para } \quad x_1 = 0, x_2 = 1, x_3 = -1$$
+\end{example}
+
+\newpage
+
+\section{Ecuaciones diferenciales}
+
+%Muchas leyes de la física, la química, la biología, la ingeniería y la economía se describen en términos de “ecuaciones diferenciales”, es decir, ecuaciones que involucran funciones y sus derivadas. En esta sección ilustraremos una forma en la que la diagonalización de la matriz se puede utilizar para resolver sistemas de ecuaciones diferenciales. El cálculo es un requisito previo para esta sección.
+
+
+Recordemos del cálculo que una ecuación diferencial es una ecuación que involucra funciones desconocidas y sus derivadas. El orden de una ecuación diferencial es el orden de la derivada de mayor grado que contiene. Las ecuaciones diferenciales más simples son las ecuaciones de primer orden de la forma
+\begin{equation}
+    x'(t) = ax(t) \label{EDO1}
+\end{equation}
+donde $x(t)$ es una función diferenciable desconocida que debe determinarse, $x'(t)$ es su derivada, y $a$ es una constante. Como ocurre con la mayoría de las ecuaciones diferenciales, esta ecuación tiene infinitas soluciones; estas son funciones de la forma
+\begin{equation}
+    x(t) = ce^{ax} \label{EDO2}
+\end{equation}
+donde $c$ es una constante arbitraria. Que toda función de esta forma sea una solución de \eqref{EDO1} se deduce del siguiente cálculo:
+$$x'(t) = cae^{ax} = ax(t)$$
+y que estas sean las únicas soluciones se demuestra en los ejercicios. En consecuencia, llamamos a \eqref{EDO2} la solución general de \eqref{EDO1}. Por ejemplo, la solución general de la ecuación diferencial $x'(t) = 5t$ es
+\begin{equation}
+   x(t) = ce^{5t} \label{EDO3}
+\end{equation}
+A menudo, un problema físico que lleva a una ecuación diferencial impone algunas condiciones que nos permiten aislar una solución particular de la solución general. Por ejemplo, si requerimos que la solución \eqref{EDO3} de la ecuación $x'(t) = 5t$ satisfaga la condición adicional
+\begin{equation}
+    x(0) = 6 \label{EDO4}
+\end{equation}
+(es decir, $x(0) = 6$ cuando $t = 0$), entonces al sustituir estos valores en \eqref{EDO3}, obtenemos $6 = ce^0 = c$, de lo cual concluimos que
+$$x(t) = 6e^{5t}$$
+es la única solución de $x'(t) = 5t$ que satisface \eqref{EDO4}. Una condición como \eqref{EDO4}, que especifica el valor de la solución general en un punto, se llama una condición inicial, y el problema de resolver una ecuación diferencial sujeta a una condición inicial se llama un problema de valor inicial.
+
+En esta sección nos ocuparemos de resolver sistemas de ecuaciones diferenciales de la forma
+\begin{equation}
+    \begin{aligned}
+        x_1'(t) & = a_{11} x_1(t) + a_{12} x_2(t) + \cdots + a_{1n} x_n(t) \\
+        x_2'(t) & = a_{21} x_1(t) + a_{22} x_2(t) + \cdots + a_{2n} x_n(t) \\
+        & \vdots \\
+        x_n'(t) & = a_{n1} x_1(t) + a_{n2} x_2(t) + \cdots + a_{nn} x_n(t)
+    \end{aligned} \label{EDO5}
+\end{equation}
+donde $x_1(t), x_2(t), \dots, x_n(t)$ son funciones que deben determinarse, y los $a_{ij}$ son constantes. El sistema \eqref{EDO5} se denomina sistema de ecuaciones diferenciales lineales de primer orden de $n \times n$. En notación matricial, \eqref{EDO5} puede escribirse como
+$$\begin{bmatrix}
+    x_1'(t) \\
+    x_2'(t) \\
+    \vdots \\
+    x_n'(t)
+\end{bmatrix} = \begin{bmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix} \begin{bmatrix}
+    x_1(t) \\
+    x_2(t) \\
+    \vdots \\
+    x_n(t)
+\end{bmatrix}$$
+
+\newpage\noindent
+o más brevemente como
+\begin{equation}
+    \mathbb{x}'(t) = A\mathbb{x}(t) \label{EDO6}
+\end{equation}
+donde $\mathbb{x}(t)$ se denomina función vectorial. La notación $\mathbb{x}'(t)$ denota el vector obtenido al diferenciar cada componente de $\mathbb{x}(t)$.
+
+Observemos que la ecuación \eqref{EDO6} es casi idéntica a la ecuación \eqref{EDO1}. La única diferencia es que ahora se tiene una función vectorial y una matriz mientras que antes se tenía una función “escalar” y un número (matriz de $1 \times 1$). Para resolver la ecuación \eqref{EDO6} se puede esperar que la solución tenga la forma $e^{At}$. Pero ¿qué significa $e^{At}$? Se responderá a esta pregunta en seguida. Primero, recordemos la expansión en serie de Taylor en torno al punto $t = 0$ de la función $e^t$:
+$$e^t = 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!} + \frac{t^4}{4!} + \cdots$$
+Esta serie converge para todo número real $t$. Entonces para cualquier número real $a$
+$$e^{at} = 1 + at + \frac{(at)^2}{2!} + \frac{(at)^3}{3!} + \frac{(at)^4}{4!} + \cdots$$
+
+\begin{definition}
+    Sea $A$ una matriz de $n \times n$ con elementos reales (o complejos). Entonces $e^A$ es una matriz
+    \begin{equation}
+        e^A = I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \frac{A^4}{4!} + \cdots = \sum_{k=0}^{\infty} \frac{A^k}{k!} \label{exp_A}
+    \end{equation}
+\end{definition}
+
+\begin{example}
+    Sea $A = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}$, entonces
+    $$A^2 = \begin{bmatrix} \lambda_1^2 & 0 \\ 0 & \lambda_2^2 \end{bmatrix}, A^3 = \begin{bmatrix} \lambda_1^3 & 0 \\ 0 & \lambda_2^3 \end{bmatrix}, A^4 = \begin{bmatrix} \lambda_1^4 & 0 \\ 0 & \lambda_2^4 \end{bmatrix}, \dots, A^m = \begin{bmatrix} \lambda_1^m & 0 \\ 0 & \lambda_2^m \end{bmatrix}$$
+    Aplicando la fórmula \eqref{exp_A}, se sigue que
+    \begin{align*}
+        e^{At} & = I_2 + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \frac{(At)^4}{4!} + \cdots \\
+        & = I_2 + At + \frac{A^2t^2}{2!} + \frac{A^3t^3}{3!} + \frac{A^4t^4}{4!} + \cdots \\
+        & = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} + \begin{bmatrix} \lambda_1 t & 0 \\ 0 & \lambda_2 t \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda_1^2 t^2}{2!} & 0 \\[2mm] 0 & \dfrac{\lambda_2^2 t^2}{2!} \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda_1^3 t^3}{3!} & 0 \\[2mm] 0 & \dfrac{\lambda_2^3 t^3}{3!} \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda_1^4 t^4}{4!} & 0 \\[2mm] 0 & \dfrac{\lambda_2^4 t^4}{4!} \end{bmatrix} + \cdots \\
+        \\
+        & = \begin{bmatrix} 1 + \lambda_1 t + \dfrac{\lambda_1^2 t^2}{2!} + \dfrac{\lambda_1^3 t^3}{3!} + \dfrac{\lambda_1^4 t^4}{4!} + \cdots & 0 \\[2mm] 0 & 1 + \lambda_2 t + \dfrac{\lambda_2^2 t^2}{2!} + \dfrac{\lambda_2^3 t^3}{3!} + \dfrac{\lambda_2^4 t^4}{4!} + \cdots \end{bmatrix} \\
+        & = \begin{bmatrix} 1 + \lambda_1 t + \dfrac{(\lambda_1 t)^2}{2!} + \dfrac{(\lambda_1 t)^3}{3!} + \dfrac{(\lambda_1 t)^4}{4!} + \cdots & 0 \\[2mm] 0 & 1 + \lambda_2 t + \dfrac{(\lambda_2 t)^2}{2!} + \dfrac{(\lambda_2 t)^3}{3!} + \dfrac{(\lambda_2 t)^4}{4!} + \cdots \end{bmatrix} \\
+        & = \begin{bmatrix} e^{\lambda_1 t} & 0 \\ 0 & e^{\lambda_2 t} \end{bmatrix}
+    \end{align*} 
+\end{example}
+
+Como lo ilustra el ejemplo anterior, es sencillo calcular $e^{At}$ si $A$ es una matriz diagonal. Se deduce de este ejemplo que si $D = \operatorname{diag} \{ \lambda_1, \lambda_2, \dots, \lambda_n \}$, entonces
+$$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \right\}$$
+
+\newpage
+
+\begin{example}
+    Ahora, consideremos $A = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix}$, entonces
+    $$A^2 = \begin{bmatrix} \lambda^2 & 2\lambda \\ 0 & \lambda^2 \end{bmatrix}, A^3 = \begin{bmatrix} \lambda^3 & 3\lambda^2 \\ 0 & \lambda^3 \end{bmatrix}, A^4 = \begin{bmatrix} \lambda^4 & 4\lambda^3 \\ 0 & \lambda^4 \end{bmatrix}, \dots, A^m = \begin{bmatrix} \lambda^m & m\lambda^{m - 1} \\ 0 & \lambda^m \end{bmatrix}$$
+    Aplicando la fórmula \eqref{exp_A}, se sigue que
+    \begin{align*}
+        e^{At} & = I_2 + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \frac{(At)^4}{4!} + \cdots \\
+        & = I_2 + At + \frac{A^2t^2}{2!} + \frac{A^3t^3}{3!} + \frac{A^4t^4}{4!} + \cdots \\
+        & = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} + \begin{bmatrix} \lambda t & t \\ 0 & \lambda t \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda^2 t^2}{2!} & \dfrac{t^2 2\lambda}{2!} \\[3mm] 0 & \dfrac{\lambda^2 t^2}{2!} \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda^3 t^3}{3!} & \dfrac{t^3 3\lambda^2}{3!} \\[3mm] 0 & \dfrac{\lambda^3 t^3}{3!} \end{bmatrix} + \begin{bmatrix} \dfrac{\lambda^4 t^4}{4!} & \dfrac{t^4 4\lambda^3}{4!} \\[3mm] 0 & \dfrac{\lambda^4 t^4}{4!} \end{bmatrix} + \cdots \\
+        \\
+        & = \begin{bmatrix} 1 + \lambda t + \dfrac{\lambda^2 t^2}{2!} + \dfrac{\lambda^3 t^3}{3!} + \dfrac{\lambda^4 t^4}{4!} + \cdots & t + \dfrac{\lambda t^2}{1!} + \dfrac{\lambda^2 t^3}{2!} + \dfrac{\lambda^3 t^4}{3!} \dfrac{\lambda^4 t^5}{4!} + \cdots \\[3mm] 0 & 1 + \lambda t + \dfrac{\lambda^2 t^2}{2!} + \dfrac{\lambda^3 t^3}{3!} + \dfrac{\lambda^4 t^4}{4!} + \cdots \end{bmatrix} \\
+        & = \begin{bmatrix} 1 + \lambda t + \dfrac{(\lambda t)^2}{2!} + \dfrac{(\lambda t)^3}{3!} + \dfrac{(\lambda t)^4}{4!} + \cdots & t\left( 1 + \lambda t + \dfrac{(\lambda t)^2}{2!} + \dfrac{(\lambda t)^3}{3!} \dfrac{(\lambda t)^4}{4!} + \cdots \right) \\[3mm] 0 & 1 + \lambda t + \dfrac{(\lambda t)^2}{2!} + \dfrac{(\lambda t)^3}{3!} + \dfrac{(\lambda t)^4}{4!} + \cdots \end{bmatrix} \\
+        & = \begin{bmatrix} e^{\lambda t} & te^{\lambda t} \\ 0 & e^{\lambda t} \end{bmatrix}
+    \end{align*}
+\end{example}
+
+\begin{theorem}
+    Dado el sistema de ecuaciones diferenciales lineales de primer orden expresado por \eqref{EDO6}. La solución a este sistema está dado por
+    $$\mathbb{x}(t) = e^{At} \mathbb{c}$$
+    donde $\mathbb{c}$ es un vector de $n \times 1$ con entradas constantes. Más aún, la solución de \eqref{EDO6} satisface que $\mathbb{x}(0) = \mathbb{c}$. \\
+    \demostracion Recordemos $\mathbb{x}(t)$ se denomina función vectorial y la notación $\mathbb{x}'(t)$ denota el vector obtenido al diferenciar cada componente de $\mathbb{x}(t)$. Es decir,
+    $$\mathbb{x}'(t) = \frac{d}{dt} \mathbb{x}(t) = \frac{d}{dt} e^{At} \mathbb{c}$$
+    De esta forma, tenemos que
+    \begin{align*}
+        \mathbb{x}'(t) & = \frac{d}{dt} \left( I_n + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \frac{(At)^4}{4!} + \cdots \right) \mathbb{c} \\
+        & = \left( A + \frac{2t}{2!} A^2 + \frac{3t^2}{3!}A^3 + + \frac{4t^3}{4!}A^4 + \cdots \right) \mathbb{c} \\
+        & = \left( A + tA^2 + \frac{t^2}{2!}A^3 + \frac{t^3}{3!}A^4 + \cdots \right) \mathbb{c} \\
+        & = A \left( I_n + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \cdots \right) \mathbb{c} \\
+        & = Ae^{At} \mathbb{c} \\
+        & = A \mathbb{x}(t)
+    \end{align*}
+    Por último, como
+    $$\mathbb{x}(0) = e^{A \cdot 0} = I_n$$
+    entonces
+    $$\mathbb{x}(0) = e^{A \cdot 0} \mathbb{c} = I_n \mathbb{c} = \mathbb{c}$$
+\end{theorem}
+
+\newpage
+
+\begin{theorem}
+    Sea $A$ una matriz de $n \times n$ y sea $J$ la forma canónica de Jordan de la matriz $A$. Entonces
+    $$e^{At} = Ce^{Jt}C^{-1}$$
+    siendo $C$ una matriz de $n \times n$ e invertible.
+\end{theorem}
 
 \newpage
 
