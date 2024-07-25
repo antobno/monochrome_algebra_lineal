@@ -2703,49 +2703,49 @@ En esencia, el teorema nos dice que una matriz cuadrada satisface su propio poli
 Anteriormente hemos discutido las formas cuadráticas, que son un caso especial de las formas bilineales. Ahora, nos adentraremos en el estudio de las formas bilineales, una clase de funciones que toman dos variables definidas en un espacio vectorial y devuelven un escalar. Estas funciones aparecen en el análisis de temas tan diversos como la geometría y el cálculo multivariable. Analizaremos las propiedades básicas de las formas bilineales, con un énfasis particular en las formas bilineales simétricas, y exploraremos algunas de sus aplicaciones en superficies cuadráticas y en el cálculo multivariable.
 
 \begin{definition}
-    Sean $V$ y $W$ dos espacios vectoriales sobre un campo $K$, entonces la transformación $B: V \times W \longrightarrow K$ se llama bilineal si satisface las siguientes propiedades:
+    Sean $V$ y $W$ dos espacios vectoriales sobre un campo $K$, entonces la transformación $H: V \times W \longrightarrow K$ se llama bilineal si satisface las siguientes propiedades:
     \begin{enumerate}[label=\roman*)]
         \item Para todo $\mathbb{v}_1$, $\mathbb{v}_2 \in V$ y $\mathbb{w} \in W$,
-        $$B(\mathbb{v}_1 + \mathbb{v}_2, \mathbb{w}) = B(\mathbb{v}_1, \mathbb{w}) + B(\mathbb{v}_2, \mathbb{w})$$\newpage
+        $$H(\mathbb{v}_1 + \mathbb{v}_2, \mathbb{w}) = H(\mathbb{v}_1, \mathbb{w}) + H(\mathbb{v}_2, \mathbb{w})$$\newpage
         \item Para todo $\mathbb{v} \in V$ y $\mathbb{w}_1$, $\mathbb{w}_2 \in W$,\infoBulle{Observe que un producto interno en un espacio vectorial es una forma bilineal si el campo subyacente es real, pero no si el campo subyacente es complejo.}
-        $$B(\mathbb{v}, \mathbb{w}_1 + \mathbb{w}_2) = B(\mathbb{v}, \mathbb{w}_1) + B(\mathbb{v}, \mathbb{w}_2)$$
+        $$H(\mathbb{v}, \mathbb{w}_1 + \mathbb{w}_2) = H(\mathbb{v}, \mathbb{w}_1) + H(\mathbb{v}, \mathbb{w}_2)$$
         \item Para todo $\mathbb{v} \in V$, $\mathbb{w} \in W$ y $c \in K$,
-        $$B(c\mathbb{v}, \mathbb{w}) = cB(\mathbb{v}, \mathbb{w}) = B(\mathbb{v}, c\mathbb{w})$$
+        $$H(c\mathbb{v}, \mathbb{w}) = cH(\mathbb{v}, \mathbb{w}) = H(\mathbb{v}, c\mathbb{w})$$
     \end{enumerate}
-    Si además $V = W$, entonces la transformación $B$ se denomina forma bilineal. Denotamos el conjunto de todas las formas bilineales en $V$ por $\mathcal{B}(V)$.
+    Si además $V = W$, entonces la transformación $H$ se denomina forma bilineal. Denotamos el conjunto de todas las formas bilineales en $V$ por $\mathcal{B}(V)$.
 \end{definition}
 
 \begin{example}\label{example:bil_1}
     Sea $V = W = \RR[n]$, entonces la expresión
     \begin{equation}
-        B(\mathbb{v}_1, \mathbb{v}_2) = A\mathbb{v}_1 \bullet \mathbb{v}_2 \label{FOCUBILI}
+        H(\mathbb{v}_1, \mathbb{v}_2) = A\mathbb{v}_1 \bullet \mathbb{v}_2 \label{FOCUBILI}
     \end{equation}
     donde $A \in \mathcal{M}_{n \times n}(\RR)$ conforma una forma bilineal. Para probarlo, debemos demostrar que cumplen las tres propiedades de la anterior definición. Así
     \begin{enumerate}[label=\roman*)]
         \item Para todo $\mathbb{x}_1$, $\mathbb{x}_2 \in \RR[n]$ e $\mathbb{y} \in \RR[n]$,
         \begin{align*}
-            B(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) & = A(\mathbb{x}_1 + \mathbb{x}_2) \bullet \mathbb{y} \\
+            H(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) & = A(\mathbb{x}_1 + \mathbb{x}_2) \bullet \mathbb{y} \\
             & = (A\mathbb{x}_1 + A\mathbb{x}_2) \bullet \mathbb{y} \\
             & = A\mathbb{x}_1 \bullet \mathbb{y} + A\mathbb{x}_2 \bullet \mathbb{y} \\
-            & = B(\mathbb{x}_1, \mathbb{y}) + B(\mathbb{x}_2, \mathbb{y})
+            & = H(\mathbb{x}_1, \mathbb{y}) + H(\mathbb{x}_2, \mathbb{y})
         \end{align*}
-        Por lo tanto, $B(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) = B(\mathbb{x}_1, \mathbb{y}) + B(\mathbb{x}_2, \mathbb{y})$.
+        Por lo tanto, $H(\mathbb{x}_1 + \mathbb{x}_2, \mathbb{y}) = H(\mathbb{x}_1, \mathbb{y}) + H(\mathbb{x}_2, \mathbb{y})$.
         \item Para todo $\mathbb{y} \in \RR[n]$ e $\mathbb{x}_1$, $\mathbb{y}_2 \in \RR[n]$,
         \begin{align*}
-            B(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) & = A\mathbb{x} \bullet (\mathbb{y}_1 + \mathbb{y}_2) \\
+            H(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) & = A\mathbb{x} \bullet (\mathbb{y}_1 + \mathbb{y}_2) \\
             & = A\mathbb{x} \bullet \mathbb{y}_1 + A\mathbb{x} \bullet \mathbb{y}_2 \\
-            & = B(\mathbb{x}, \mathbb{y}_1) + B(\mathbb{x}, \mathbb{y}_2)
+            & = H(\mathbb{x}, \mathbb{y}_1) + H(\mathbb{x}, \mathbb{y}_2)
         \end{align*}
-        Por lo tanto, $B(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) = B(\mathbb{x}, \mathbb{y}_1) + B(\mathbb{x}, \mathbb{y}_2)$.
+        Por lo tanto, $H(\mathbb{x}, \mathbb{y}_1 + \mathbb{y}_2) = H(\mathbb{x}, \mathbb{y}_1) + H(\mathbb{x}, \mathbb{y}_2)$.
         \item Para todo $\mathbb{x}$, $\mathbb{y} \in \RR[n]$ y $c \in \RR$,
         \begin{align*}
-            B(c\mathbb{x}, \mathbb{y}) & = A(c\mathbb{x}) \bullet \mathbb{y} \\
+            H(c\mathbb{x}, \mathbb{y}) & = A(c\mathbb{x}) \bullet \mathbb{y} \\
             & = cA\mathbb{x} \bullet \mathbb{y} \\
-            & = cB(\mathbb{x}, \mathbb{y}) \\
+            & = cH(\mathbb{x}, \mathbb{y}) \\
             & = A\mathbb{x} \bullet (c\mathbb{y}) \\
-            & = B(\mathbb{x}, c\mathbb{y})
+            & = H(\mathbb{x}, c\mathbb{y})
         \end{align*}
-        Por lo tanto, $B(c\mathbb{x}, \mathbb{y}) = cB(\mathbb{x}, \mathbb{y}) = B(\mathbb{x}, c\mathbb{y})$.
+        Por lo tanto, $H(c\mathbb{x}, \mathbb{y}) = cH(\mathbb{x}, \mathbb{y}) = H(\mathbb{x}, c\mathbb{y})$.
     \end{enumerate}
     Ya que la expresión \eqref{FOCUBILI} cumple las tres propiedades, entonces es bilineal. Más aún, al ser $V = W$, se sigue que dicha expresión es una forma bilineal.
 \end{example}
@@ -2934,7 +2934,7 @@ Las tres clasificaciones en la definición anterior no agotan todas las posibili
 
 El siguiente teorema, proporciona una forma de usar los eigenvalores para determinar si una matriz $A$ y su forma cuadrática asociada $A\mathbb{x} \bullet \mathbb{x}$ son positivas definidas, negativas definidas o indefinidas.
 
-\begin{theorem}
+\begin{theorem}\label{theo:dpdnispsn}
     Sea $F(\mathbb{x})=F\left(x_{1}, x_{2}, \dots, x_{n}\right)$ una forma cuadrática.
     \begin{enumerate}[label=\roman*)]
         \item Se dice que $F$ es positiva definida si y solo si la matriz simétrica $A$ asociada a $F$ tiene eigenvalores positivos.\newpage
@@ -2950,10 +2950,10 @@ El siguiente teorema, proporciona una forma de usar los eigenvalores para determ
         donde $\lambda_1, \lambda_2, \dots, \lambda_n$ son los eigenvalores de $A$. Además, de la invertibilidad de $Q$ se deduce que $\mathbb{x}' \neq \mathbb{0}$ si y solo si $\mathbb{x} \neq \mathbb{0}$, entonces los valores de $A\mathbb{x} \bullet \mathbb{x}$ para $\mathbb{x} \neq \mathbb{0}$ son los mismos que los valores de $D\mathbb{x}' \bullet \mathbb{x}'$ para $\mathbb{x}' \neq \mathbb{0}$. Por lo tanto, de \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} se deduce que $A\mathbb{x} \bullet \mathbb{x} > 0$ para $\mathbb{x} \neq \mathbb{0}$ si y solo si todos los $\lambda_i$ en esa ecuación son positivos.
         \item Análogo al inciso anterior, de \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} se deduce que $A\mathbb{x} \bullet \mathbb{x} < 0$ para $\mathbb{x} \neq \mathbb{0}$ si y solo si todos los $\lambda_i$ en esa ecuación son negativos.
         \item Supongamos que $A$ tiene al menos un eigenvalor positivo y al menos un eigenvalor negativo, y para ser específico, supongamos que $\lambda_1 > 0$ y $\lambda_2 < 0$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG}. Entonces
-        $$A\mathbb{x} \bullet \mathbb{x} > 0 \quad \text{ si } \quad y_1 = 1 \text{ y todos los demás } \lambda \text{ son cero}$$
+        $$A\mathbb{x} \bullet \mathbb{x} > 0 \quad \text{ si } \quad x_1 = 1 \text{ y todos los demás } x \text{ son cero}$$
         y
-        $$A\mathbb{x} \bullet \mathbb{x} < 0 \quad \text{ si } \quad y_2 = 1 \text{ y todos los demás } \lambda \text{ son cero}$$
-        lo que demuestra que $A\mathbb{x} \bullet \mathbb{x}$ es indefinido. Inversamente, si $A\mathbb{x} \bullet \mathbb{x} > 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' > 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser positivo. De modo análogo, si $A\mathbb{x} \bullet \mathbb{x} < 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' < 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser negativo, lo que completa la prueba.
+        $$A\mathbb{x} \bullet \mathbb{x} < 0 \quad \text{ si } \quad x_2 = 1 \text{ y todos los demás } x \text{ son cero}$$
+        lo que demuestra que $A\mathbb{x} \bullet \mathbb{x}$ es indefinido. Inversamente, si $A\mathbb{x} \bullet \mathbb{x} > 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' > 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser positivo. Recíprocamente, si $A\mathbb{x} \bullet \mathbb{x} < 0$ para algún $\mathbb{x}$, entonces $D\mathbb{x}' \bullet \mathbb{x}' < 0$ para algún $\mathbb{x}'$, por lo que al menos uno de los $\lambda$ en \eqref{UAJAJJAJJQJQJJAAJJAVCCXZDDG} debe ser negativo, lo que completa la prueba.
     \end{enumerate}
 \end{theorem}
 
@@ -2988,7 +2988,7 @@ Ajustando la demostración del teorema anterior apropiadamente, se puede demostr
 
 \newpage
 
-\section{Ecuaciones diferenciales}
+\section{Una aplicación: Ecuaciones diferenciales}
 
 %Muchas leyes de la física, la química, la biología, la ingeniería y la economía se describen en términos de “ecuaciones diferenciales”, es decir, ecuaciones que involucran funciones y sus derivadas. En esta sección ilustraremos una forma en la que la diagonalización de la matriz se puede utilizar para resolver sistemas de ecuaciones diferenciales. El cálculo es un requisito previo para esta sección.
 
@@ -3003,7 +3003,7 @@ donde $x(t)$ es una función diferenciable desconocida que debe determinarse, $x
 \end{equation}
 donde $c$ es una constante arbitraria. Que toda función de esta forma sea una solución de \eqref{EDO1} se deduce del siguiente cálculo:
 $$x'(t) = cae^{ax} = ax(t)$$
-y que estas sean las únicas soluciones se demuestra en los ejercicios. En consecuencia, llamamos a \eqref{EDO2} la solución general de \eqref{EDO1}. Por ejemplo, la solución general de la ecuación diferencial $x'(t) = 5t$ es
+y que estas sean las únicas soluciones se se deja como ejercicio al lector. En consecuencia, llamamos a \eqref{EDO2} la solución general de \eqref{EDO1}. Por ejemplo, la solución general de la ecuación diferencial $x'(t) = 5t$ es
 \begin{equation}
    x(t) = ce^{5t} \label{EDO3}
 \end{equation}
@@ -3061,7 +3061,7 @@ $$e^{at} = 1 + at + \frac{(at)^2}{2!} + \frac{(at)^3}{3!} + \frac{(at)^4}{4!} + 
     \end{equation}
 \end{definition}
 
-\begin{example}
+\begin{example}\label{exam:eAt}
     Sea $A = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}$, entonces
     $$A^2 = \begin{bmatrix} \lambda_1^2 & 0 \\ 0 & \lambda_2^2 \end{bmatrix}, A^3 = \begin{bmatrix} \lambda_1^3 & 0 \\ 0 & \lambda_2^3 \end{bmatrix}, A^4 = \begin{bmatrix} \lambda_1^4 & 0 \\ 0 & \lambda_2^4 \end{bmatrix}, \dots, A^m = \begin{bmatrix} \lambda_1^m & 0 \\ 0 & \lambda_2^m \end{bmatrix}$$
     Aplicando la fórmula \eqref{exp_A}, se sigue que
@@ -3081,7 +3081,7 @@ $$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \rig
 
 \newpage
 
-\begin{example}
+\begin{example}\label{exam:eAt1}
     Ahora, consideremos $A = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix}$, entonces
     $$A^2 = \begin{bmatrix} \lambda^2 & 2\lambda \\ 0 & \lambda^2 \end{bmatrix}, A^3 = \begin{bmatrix} \lambda^3 & 3\lambda^2 \\ 0 & \lambda^3 \end{bmatrix}, A^4 = \begin{bmatrix} \lambda^4 & 4\lambda^3 \\ 0 & \lambda^4 \end{bmatrix}, \dots, A^m = \begin{bmatrix} \lambda^m & m\lambda^{m - 1} \\ 0 & \lambda^m \end{bmatrix}$$
     Aplicando la fórmula \eqref{exp_A}, se sigue que
@@ -3096,7 +3096,7 @@ $$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \rig
     \end{align*}
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{theo:sol_edo}
     Dado el sistema de ecuaciones diferenciales lineales de primer orden expresado por \eqref{EDO6}. La solución a este sistema está dado por
     $$\mathbb{x}(t) = e^{At} \mathbb{c}$$
     donde $\mathbb{c}$ es un vector de $n \times 1$ con entradas constantes. Más aún, la solución de \eqref{EDO6} satisface que $\mathbb{x}(0) = \mathbb{c}$. \\
@@ -3112,7 +3112,7 @@ $$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \rig
         & = A \mathbb{x}(t)
     \end{align*}
     Por último, como
-    $$\mathbb{x}(0) = e^{A \cdot 0} = I_n$$
+    $$e^{A \cdot 0} = I_n$$
     entonces
     $$\mathbb{x}(0) = e^{A \cdot 0} \mathbb{c} = I_n \mathbb{c} = \mathbb{c}$$
 \end{theorem}
@@ -3122,8 +3122,408 @@ $$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \rig
 \begin{theorem}
     Sea $A$ una matriz de $n \times n$ y sea $J$ la forma canónica de Jordan de la matriz $A$. Entonces
     $$e^{At} = Ce^{Jt}C^{-1}$$
-    siendo $C$ una matriz de $n \times n$ e invertible.
+    siendo $C$ una matriz de $n \times n$ e invertible. \\
+    \demostracion Del teorema \ref{FORMCANJORDAN}, se tiene que
+    $$A = CJC^{-1}$$
+    y se deduce que
+    $$A^n = CJ^nC^{-1}$$
+    De esta forma, se sigue que
+    \begin{align*}
+        e^{At} & = I_n + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \frac{(At)^4}{4!} + \cdots \\
+        & = I_n + At + \frac{A^2t^2}{2!} + \frac{A^3t^3}{3!} + \frac{A^4t^4}{4!} + \cdots \\
+        & = CI_nC^{-1} + CJC^{-1} t + \frac{CJ^2C^{-1} t^2}{2!} + \frac{CJ^3C^{-1} t^3}{3!} + \frac{CJ^4C^{-1} t^4}{4!} + \cdots \\
+        & = C \left[ I_n + Jt + \frac{(Jt)^2}{2!} + \frac{(Jt)^3}{3!} + \frac{(Jt)^4}{4!} + \cdots \right] C^{-1} \\
+        & = C e^{Jt} C^{-1}
+    \end{align*}
 \end{theorem}
+
+\begin{example}\label{exam:PRIEEDO1}
+    Se considera el siguiente sistema en el que la especie $1$ es la presa y la especie $2$ el depredador:
+    \begin{equation}
+        \begin{aligned}
+            x'_1(t) & = 2x_1(t) - x_2(t) \\
+            x'_2(t) & = x_1(t) + 4x_2(t)
+        \end{aligned} \label{exam:SELEDO1}
+    \end{equation}
+    Encuentre las poblaciones de las dos especies para $t > 0$ si las poblaciones iniciales son $x_1(0) = 500$ y $x_2(0) = 100$. \\
+    \solucion Podemos expresar el sistema en su forma matricial, de la siguiente manera:
+    $$\mathbb{x}'(t) = A\mathbb{x}(t)$$
+    donde
+    $$\mathbb{x}'(t) = \begin{bmatrix} x'_1(t) \\ x'_2(t) \end{bmatrix} \quad A = \begin{bmatrix*}[r] 2 & -1 \\ 1 & 4 \end{bmatrix*} \quad \text{ y } \quad \mathbb{x}(t) = \begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix}$$
+    De acuerdo con el teorema \ref{theo:sol_edo}, la solución del sistema \eqref{exam:SELEDO1} está dada por
+    $$\mathbb{x}(t) = e^{At} \mathbb{c}$$
+    y por el teorema anterior,
+    $$\mathbb{x}(t) = Ce^{Jt}C^{-1} \mathbb{c}$$
+    donde $J$ es la forma canónica de Jordan de la matriz $A$ y $C$ es una matriz invertible tal que $C^{-1}AC = J$. Siguiendo el método descrito en la página \pageref{metodo_eigen_2x2}, encontramos que $\lambda = 3$ es el único valor propio de la matriz $A$, es decir, $\lambda$ es un valor propio con multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Utilizando la fórmula del inciso (i), el eigenvector correspondiente a $\lambda = 3$ está dado por
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r] -1 \\ 1 \end{pmatrix*}$$
+    Dado que solo tenemos un eigenvector, debemos determinar el segundo eigenvector generalizado $\mathbb{v}_2$ que satisfaga
+    $$(A - \lambda I_2)\mathbb{v}_2 = \mathbb{v}_1$$
+    es decir,
+    $$\begin{bmatrix*}[r]
+        -1 & -1 \\
+        1 & 1
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = \begin{bmatrix*}[r]
+        -1 \\
+        1
+    \end{bmatrix*}$$\newpage\noindent
+    lo que nos conduce al siguiente sistema
+    \begin{align*}
+        -a - b & = -1 \\
+        a + b & = 1
+    \end{align*}
+    Observemos que ambas ecuaciones son equivalentes, por lo que proponemos la solución $a = 1$ y $b = 0$, obteniendo así
+    $$\mathbb{v}_2 = \begin{pmatrix*} 1 \\ 0 \end{pmatrix*}$$
+    Consideremos ahora la matriz $C$ formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$. Así,
+    \begin{align*}
+        C & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \\
+        & = \begin{bmatrix*}[r]
+            -1 & 1 \\
+            1 & 0
+        \end{bmatrix*}
+    \end{align*}
+    Usando la expresión \ref{theorem:USJSJSSSJKSIIS}, tenemos que
+    \begin{align*}
+        C^{-1} & = \frac{1}{-1} \begin{bmatrix*}[r]
+            0 & -1 \\
+            -1 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{bmatrix}
+    \end{align*}
+    Así, obtenemos
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{bmatrix} \begin{bmatrix*}[r]
+            2 & -1 \\
+            1 & 4
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            -1 & 1 \\
+            1 & 0
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            1 & 4 \\
+            3 & 3
+        \end{bmatrix} \begin{bmatrix*}[r]
+            -1 & 1 \\
+            1 & 0
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            3 & 1 \\
+            0 & 3
+        \end{bmatrix}
+    \end{align*}
+    que corresponde a la forma canónica de Jordan de la matriz $A$. Del ejemplo \ref{exam:eAt1}, se deduce que
+    $$e^{Jt} = \begin{bmatrix}
+        e^{3t} & te^{3t} \\
+        0 & e^{3t}
+    \end{bmatrix}$$
+    De esta forma, la solución al sistema es
+    \begin{align*}
+        \mathbb{x}(t) & = \begin{bmatrix*}[r]
+            -1 & 1 \\
+            1 & 0
+        \end{bmatrix*} \begin{bmatrix}
+            e^{3t} & te^{3t} \\
+            0 & e^{3t}
+        \end{bmatrix} \begin{bmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{bmatrix} \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            -e^{3t} & -te^{3t} + e^{3t} \\
+            e^{3t} & te^{3t}
+        \end{bmatrix} \begin{bmatrix}
+            0 & 1 \\
+            1 & 1
+        \end{bmatrix} \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            -te^{3t} + e^{3t} & -te^{3t} \\
+            te^{3t} & e^{3t} + te^{3t}
+        \end{bmatrix} \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            c_1 (1 - t)e^{3t} - c_2 te^{3t} \\[1.1mm]
+            c_1 t e^{3t} + c_2 (1 + t)e^{3t}
+        \end{bmatrix}
+    \end{align*}
+    Considerando las condiciones iniciales $x_1(0) = 500$ y $x_2(0) = 100$, tenemos
+    \begin{align*}
+        x_1(t) & = 500(1 - t)e^{3t} - 100te^{3t} \\
+        x_2(t) & = 500te^{3t} + 100(1 + t)e^{3t}
+    \end{align*}
+    La solución para la población de la presa $x_1(t)$ está dada por:
+    $$x_1(t) = 500(1 - t)e^{3t} - 100te^{3t}$$
+    o bien
+    $$x_1(t) = e^{3t} (500 - 600t)$$
+    Para determinar el tiempo en que la población de la presa \(x_1(t)\) se reduce a cero, buscamos el valor de \(t\) tal que
+    $$x_1(t) = 0$$\newpage\noindent
+    Esto implica
+    $$e^{3t} (500 - 600t) = 0$$
+    La función $e^{3t}$ nunca es cero para ningún valor finito de $t$. Por lo tanto, debemos encontrar el valor de $t$ que haga cero la expresión:
+    $$500 - 600t = 0$$
+    El tiempo $t = \dfrac{5}{6}$ años es el punto en el cual la población de la presa se reduce a cero. En términos de meses, $\dfrac{5}{6}$ años es igual a
+    $$\frac{5}{6} \times 12 = 10 \text{ meses}$$
+\end{example}
+
+En general, si consideremos a $J$ como la forma canónica de Jordan de la matriz $A$ y $C$ una matriz invertible:
+$$e^{At} = Ce^{Jt}C^{-1}$$
+entonces
+\begin{align*}
+    e^{At} & = \begin{bmatrix} \mathbb{v}_1 & \mathbb{v}_2 \end{bmatrix} \begin{bmatrix} e^{\lambda t} & te^{\lambda t} \\ 0 & e^{\lambda t} \end{bmatrix} C^{-1} \\
+    & = \begin{bmatrix} \mathbb{v}_1 e^{\lambda t} & (t\mathbb{v}_1 + \mathbb{v}_2)e^{\lambda t} \end{bmatrix} C^{-1}
+\end{align*}
+Sustituyendo en la solución general del sistema, $\mathbb{x}(t) = e^{At} \mathbb{c}$, se sigue que
+\begin{align*}
+    \mathbb{x}(t) & = \begin{bmatrix} \mathbb{v}_1 e^{\lambda t} & (t\mathbb{v}_1 + \mathbb{v}_2)e^{\lambda t} \end{bmatrix} C^{-1} \mathbb{c} \\
+    & = \begin{bmatrix} \mathbb{v}_1 e^{\lambda t} & (t\mathbb{v}_1 + \mathbb{v}_2)e^{\lambda t} \end{bmatrix} \begin{bmatrix} \tilde{c}_1 \\ \tilde{c}_2 \end{bmatrix}
+\end{align*}
+Por lo tanto, la solución del sistema puede expresarse como:
+$$\mathbb{x}(t) = \tilde{c}_1 \mathbb{v}_1 e^{\lambda t} + \tilde{c}_2(t\mathbb{v}_1 + \mathbb{v}_2)e^{\lambda t}$$
+
+\begin{example}
+    Resuelva el siguiente sistema
+    \begin{align*}
+        x'_1(t) & = 2x_1(t) - 3x_2(t) \\
+        x'_2(t) & = - x_1(t) + 4x_2(t)
+    \end{align*}
+    \solucion Podemos expresar el sistema en su forma matricial, de la siguiente manera:
+    $$\mathbb{x}'(t) = A\mathbb{x}(t)$$
+    donde
+    $$\mathbb{x}'(t) = \begin{bmatrix} x'_1(t) \\ x'_2(t) \end{bmatrix} \quad A = \begin{bmatrix*}[r] 2 & -3 \\ -1 & 4 \end{bmatrix*} \quad \text{ y } \quad \mathbb{x}(t) = \begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix}$$
+    De acuerdo con el teorema \ref{theo:sol_edo}, la solución del sistema \eqref{exam:SELEDO1} está dada por
+    $$\mathbb{x}(t) = e^{At} \mathbb{c}$$
+    y por el teorema anterior,
+    $$\mathbb{x}(t) = Ce^{Jt}C^{-1} \mathbb{c}$$
+    donde $J$ es la forma canónica de Jordan de la matriz $A$ y $C$ es una matriz invertible tal que $C^{-1}AC = J$. Análogo al ejercicio anterior, usando el método descrito en la página \pageref{metodo_eigen_2x2}, encontramos que $\lambda_1 = 5$ y $\lambda_2 = 1$ son los eigenvalores de la matriz $A$. Utilizando las fórmulas del inciso (ii), los eigenvalores correspondientes a $\lambda_1$ y $\lambda_2$ están dados por
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r] -3 \\ -1 \end{pmatrix*}$$\newpage\noindent
+    Sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$:
+    $$C = \begin{bmatrix*}[r]
+        1 & -3 \\
+        -1 & -1
+    \end{bmatrix*}$$
+    Sea $C^{-1} \mathbb{c} = \begin{bmatrix} \tilde{c}_1 \\ \tilde{c}_2 \end{bmatrix}$, entonces podemos dejar expresada la solución como
+    $$\mathbb{x}(t) = \tilde{c}_1 \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} e^t + \tilde{c}_2 \begin{pmatrix*} -3 \\ -1 \end{pmatrix*} e^{5t}$$
+    o bien
+    \begin{align*}
+        x_1(t) & = \tilde{c}_1 e^t - 3\tilde{c}_2 e^{3t} \\
+        x_2(t) & = -\tilde{c}_1 e^t - \tilde{c}_2 e^{5t}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Resuelva el siguiente sistema:
+    \begin{align*}
+        x'_1(t) & = x_1(t) + x_2(t) \\
+        x'_2(t) & = - x_1(t) + x_2(t)
+    \end{align*}
+    \solucion Análogo a los ejemplos anteriores, podemos expresar el sistema en su forma matricial, de la siguiente manera:
+    $$\mathbb{x}'(t) = A\mathbb{x}(t)$$
+    donde
+    $$\mathbb{x}'(t) = \begin{bmatrix} x'_1(t) \\ x'_2(t) \end{bmatrix} \quad A = \begin{bmatrix*}[r] 1 & 1 \\ -1 & 1 \end{bmatrix*} \quad \text{ y } \quad \mathbb{x}(t) = \begin{bmatrix} x_1(t) \\ x_2(t) \end{bmatrix}$$
+    Con ayuda del método expuesto en la página \pageref{metodo_eigen_2x2}, es fácil saber que
+    $$\lambda = 1 + i \quad \text{ y } \quad \overline{\lambda} = 1 - i$$
+    son los eigenvalores de $A$ y usando las expresiones del inciso (ii), tenemos
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r] i \\ -1 \end{pmatrix*} \quad \text{ y } \quad \mathbb{v}_2 = \begin{pmatrix*}[r] - i \\ -1 \end{pmatrix*}$$
+    que corresponden a los eigenvectores respectivos a $\lambda_1$ y $\lambda_2$.
+    Sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$:
+    $$C = \begin{bmatrix*}[r] i & -i \\ -1 & -1 \end{bmatrix*}$$
+    Usando la expresión \ref{theorem:USJSJSSSJKSIIS}, tenemos que
+    $$C^{-1} = \begin{bmatrix*}[r]
+        -\dfrac{i}{2} & -\dfrac{1}{2} \\[2mm]
+        \dfrac{i}{2} & -\dfrac{1}{2}
+    \end{bmatrix*}$$
+    De esta forma,
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix*}[r]
+            -\dfrac{i}{2} & -\dfrac{1}{2} \\[3mm]
+            \dfrac{i}{2} & -\dfrac{1}{2}
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            1 & 1 \\
+            -1 & 1
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            i & -i \\
+            -1 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            \dfrac{1}{2} - \dfrac{1}{2}i & -\dfrac{1}{2} - \dfrac{1}{2}i \\[3mm]
+            \dfrac{1}{2} + \dfrac{1}{2}i & -\dfrac{1}{2} + \dfrac{1}{2}i
+        \end{bmatrix} \begin{bmatrix*}[r]
+            i & -i \\
+            -1 & -1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix}
+            1 + i & 0 \\
+            0 & 1 - i
+        \end{bmatrix}
+    \end{align*}
+    que corresponde a la forma canónica de Jordan de la matriz $A$. Del ejemplo \ref{exam:eAt}, se deduce que
+    $$e^{Jt} = \begin{bmatrix}
+        e^{(1 + i)t} & 0 \\
+        0 & e^{(1 - i)t}
+    \end{bmatrix}$$\newpage\noindent
+    Ahora, por la identidad de Euler (vea el \hyperref[chap:numeros-complejos]{Apéndice B}), $e^{it} = \cos t + i \sen t$, tenemos que
+    $$e^{(1 + i)t} = e^t e^i = e^t(\cos t + i \sen t)$$
+    y
+    $$e^{(1 - i)t} = e^t e^{-i} = e^t(\cos t - i \sen t)$$
+    Entonces
+    $$e^{Jt} = \begin{bmatrix}
+        e^t(\cos t + i \sen t) & 0 \\
+        0 & e^t(\cos t - i \sen t)
+    \end{bmatrix}$$
+    de donde se sigue que
+    \begin{align*}
+        e^{At} & = \begin{bmatrix*}[r]
+            i & -i \\
+            -1 & -1
+        \end{bmatrix*} \begin{bmatrix}
+            e^t(\cos t + i \sen t) & 0 \\
+            0 & e^t(\cos t - i \sen t)
+        \end{bmatrix} \begin{bmatrix*}[r]
+            -\dfrac{i}{2} & -\dfrac{1}{2} \\[3mm]
+            \dfrac{i}{2} & -\dfrac{1}{2}
+        \end{bmatrix*} \\
+        & = \frac{1}{2} e^t \begin{bmatrix}
+            i( \cos t + i\sen t) & -i(\cos t - i\sen t) \\
+            -\cos t - i\sen t) & -\cos t + i\sen t)
+        \end{bmatrix} \begin{bmatrix*}[r]
+            -i & -1 \\
+            i & -1
+        \end{bmatrix*} \\
+        & = \frac{1}{2} e^t \begin{bmatrix}
+            \phantom{-} 2\cos t & 2\sen t \\
+            - 2\sen t & 2\cos t
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            \phantom{-} e^t \cos t & e^t \sen t \\
+            - e^t \sen t & e^t \cos t
+        \end{bmatrix}
+    \end{align*}
+    Por lo tanto, la solución al sistema está dada por
+    \begin{align*}
+        \mathbb{x}(t) & = \begin{bmatrix}
+            \phantom{-} e^t \cos t & e^t \sen t \\
+            - e^t \sen t & e^t \cos t
+        \end{bmatrix} \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix} \\
+        & = \begin{bmatrix}
+            \phantom{-} c_1e^t \cos t + c_2e^t \sen t \\
+            -c_1e^t \sen t + c_2e^t \cos t
+        \end{bmatrix}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Resuelva la siguiente ecuación diferencial
+    $$x''(t) + 6x'(t) + 9x(t) = 0$$
+    \solucion Sean
+    \begin{align*}
+        x_1(t) & = x(t) \\
+        x_2(t) & = x'_1(t) = x'(t) \\
+        x_3(t) & = x'_2(t) = x''(t)
+    \end{align*}
+    Observemos que podemos formar un sistema lineal a partir del cambio de variable anterior. De esta forma, tenemos que
+    \begin{align*}
+        x''(t) & = - 9x(t) - 6x'(t) \\
+        & = - 9x_1(t) - 6x_2(t)
+    \end{align*}
+    Entonces el sistema está dado por
+    $$\begin{bmatrix}
+        x'_1(t) \\
+        x'_2(t)
+    \end{bmatrix} = \begin{bmatrix}
+        x_2(t) \\
+        - 9x_1(t) - 6x_2(t)
+    \end{bmatrix}$$
+    o bien
+    $$\begin{bmatrix}
+        x'_1(t) \\
+        x'_2(t)
+    \end{bmatrix} = \begin{bmatrix*}[r]
+        0 & 1 \\
+        - 9  & - 6
+    \end{bmatrix*} \begin{bmatrix}
+        x_1(t) \\
+        x_2(t)
+    \end{bmatrix}$$
+    Siguiendo el método descrito en la página \pageref{metodo_eigen_2x2}, encontramos que $\lambda = -3$ es el único valor propio de la matriz $A$, es decir, $\lambda$ es un valor propio con multiplicidad algebraica $2$ y multiplicidad geométrica $1$. Utilizando la fórmula del inciso (ii), el eigenvector correspondiente a $\lambda = 3$ está dado por
+    $$\mathbb{v}_1 = \begin{pmatrix*}[r]
+        1 \\
+        -3
+    \end{pmatrix*}$$\newpage\noindent
+    Dado que solo tenemos un eigenvector, debemos determinar el segundo eigenvector generalizado $\mathbb{v}_2$ que satisfaga
+    $$(A - \lambda I_2)\mathbb{v}_2 = \mathbb{v}_1$$
+    es decir,
+    $$\begin{bmatrix*}[r]
+        3 & 1 \\
+        -9 & -3
+    \end{bmatrix*} \begin{bmatrix}
+        a \\
+        b
+    \end{bmatrix} = \begin{bmatrix*}[r]
+        1 \\
+        -3
+    \end{bmatrix*}$$
+    lo que nos conduce al siguiente sistema
+    \begin{align*}
+        3a + b & = 1 \\
+        -9a - 3b & = -3
+    \end{align*}
+    Observemos que ambas ecuaciones son equivalentes, por lo que proponemos la solución $a = 0$ y $b = 1$, obteniendo así
+    $$\mathbb{v}_2 = \begin{pmatrix*} 0 \\ 1 \end{pmatrix*}$$
+    Sea $C$ la matriz formada por los vectores $\mathbb{v}_1$ y $\mathbb{v}_2$:
+    $$C = \begin{bmatrix*}[r] 1 & 0 \\ -3 & 1 \end{bmatrix*}$$
+    Usando la expresión \ref{theorem:USJSJSSSJKSIIS}, tenemos que
+    $$C^{-1} = \begin{bmatrix} 1 & 0 \\ 3 & 1 \end{bmatrix}$$
+    De esta forma,
+    \begin{align*}
+        C^{-1}AC & = \begin{bmatrix} 1 & 0 \\ 3 & 1 \end{bmatrix} \begin{bmatrix*}[r]
+            0 & 1 \\
+            -9 & -6
+        \end{bmatrix*} \begin{bmatrix*}[r] 1 & 0 \\ -3 & 1 \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            0 & 1 \\
+            -9 & -3
+        \end{bmatrix*} \begin{bmatrix*}[r]
+            1 & 0 \\
+            -3 & 1
+        \end{bmatrix*} \\
+        & = \begin{bmatrix*}[r]
+            -3 & 1 \\
+            0 & -3
+        \end{bmatrix*}
+    \end{align*}
+    que corresponde a la forma canónica de Jordan de la matriz $A$. Del ejemplo \ref{exam:eAt1}, se deduce que
+    $$e^{Jt} = \begin{bmatrix}
+        e^{-3t} & te^{-3t} \\
+        0 & e^{-3t}
+    \end{bmatrix}$$
+    De esta forma, la solución al sistema es
+    $$\mathbb{x} = C \begin{bmatrix}
+        e^{-3t} & te^{-3t} \\
+        0 & e^{-3t}
+    \end{bmatrix} C^{-1} \mathbb{c}$$
+    o bien,
+    $$\mathbb{x} = c_1 \begin{pmatrix*}[r] 1 \\ -3 \end{pmatrix*} e^{-3t} + c_2 \left[ t\begin{pmatrix*}[r] 1 \\ -3 \end{pmatrix*} + \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right] e^{-3t}$$
+    Por lo tanto, la solución al problema inicial está dada por
+    $$x(t) = c_1e^{-3t} + tc_2e^{-3t}$$
+\end{example}
 
 \newpage
 
@@ -3131,46 +3531,27 @@ $$e^{Dt} = \left\{ e^{\lambda_1 t}, e^{\lambda_2 t}, \dots, e^{\lambda_n t} \rig
 
 \noindent
 De los problemas 1 al 27 calcule los eigenvalores y los espacios característicos de la matriz dada. Si la multiplicidad algebraica de un eigenvalor es mayor que $1$, calcule su multiplicidad geométrica.
-\begin{tasks}[
-    style=enumerate,
-    label-offset = 3mm,
-    %label-width = 13.97498pt,
-    ](2)
-    \task $\begin{bmatrix*}[r]-81 & 16 \\ -420 & 83\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-2 & -2 \\ -5 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-12 & 7 \\ -7 & 2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]23 & 12 \\ -42 & -22\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]2 & -1 \\ 5 & -2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-3 & 0 \\ 0 & -3\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-62 & -20 \\ 192 & 62\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]3 & 2 \\ -5 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-3 & 2 \\ 0 & -3\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-10 & -71 & -19 \\ 3 & 34 & 9 \\ -1 & -61 & -16\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}5 & 4 & 2 \\ 4 & 5 & 2 \\ 2 & 2 & 2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]13 & 3 & 1 \\ -56 & -13 & -4 \\ -14 & -3 & -2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -3 & 3\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & 2 & 2 \\ 0 & 2 & 1 \\ -1 & 2 & 2\end{bmatrix*}$
-    %\task $\begin{bmatrix*}[r]260 & 0 & \\ -1 & 0 & 1 \\ -1 & -2 & 3\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-2 & 5 & 0 \\ 5 & -2 & 0 \\ 0 & 0 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]7 & -2 & -4 \\ 3 & 0 & -2 \\ 6 & -2 & -3\end{bmatrix*}$
-    %\task $\begin{bmatrix*}[r]-662 & 5 & \\ 0 & 3 & 0 \\ -10 & 0 & 9\end{bmatrix*}$
-    \task $\begin{bmatrix*}1 & 2 & 4 \\ 0 & 2 & 3 \\ 0 & 0 & 5\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]4 & 6 & 6 \\ 1 & 3 & 2 \\ -1 & -5 & -2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]18 & 42 & 26 & -10 \\ 22 & 70 & 37 & -17 \\ -20 & -60 & -31 & 15 \\ 62 & 186 & 104 & -44\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]4 & 1 & 0 & 1 \\ 2 & 3 & 0 & 1 \\ -2 & 1 & 2 & -3 \\ 2 & -1 & 0 & 5\end{bmatrix*}$
-    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & 0 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b \neq 0$
-    \task $\begin{bmatrix*}a & 0 & 0 & 0 \\ 0 & a & b & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$
-    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & d \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c d \neq 0$
-    \task $\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c \neq 0$
-    \task $\begin{bmatrix*}3 & 1 & 0 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 1 \\ 0 & 0 & 0 & 4\end{bmatrix*}$
-\end{tasks}
+\begin{multienumerate}
+    \mitemxx{$\begin{bmatrix*}[r]-81 & 16 \\ -420 & 83\end{bmatrix*}$}{$\begin{bmatrix*}[r]-2 & -2 \\ -5 & 1\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]-12 & 7 \\ -7 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]23 & 12 \\ -42 & -22\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]2 & -1 \\ 5 & -2\end{bmatrix*}$}{$\begin{bmatrix*}[r]-3 & 0 \\ 0 & -3\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]-62 & -20 \\ 192 & 62\end{bmatrix*}$}{$\begin{bmatrix*}[r]3 & 2 \\ -5 & 1\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]-3 & 2 \\ 0 & -3\end{bmatrix*}$}{$\begin{bmatrix*}[r]-10 & -71 & -19 \\ 3 & 34 & 9 \\ -1 & -61 & -16\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$}{$\begin{bmatrix*}5 & 4 & 2 \\ 4 & 5 & 2 \\ 2 & 2 & 2\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]13 & 3 & 1 \\ -56 & -13 & -4 \\ -14 & -3 & -2\end{bmatrix*}$}{$\begin{bmatrix*}[r]0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -3 & 3\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]1 & 2 & 2 \\ 0 & 2 & 1 \\ -1 & 2 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]-2 & 5 & 0 \\ 5 & -2 & 0 \\ 0 & 0 & 1\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]7 & -2 & -4 \\ 3 & 0 & -2 \\ 6 & -2 & -3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 2 & 4 \\ 0 & 2 & 3 \\ 0 & 0 & 5\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]4 & 6 & 6 \\ 1 & 3 & 2 \\ -1 & -5 & -2\end{bmatrix*}$}{$\begin{bmatrix*}[r]18 & 42 & 26 & -10 \\ 22 & 70 & 37 & -17 \\ -20 & -60 & -31 & 15 \\ 62 & 186 & 104 & -44\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]4 & 1 & 0 & 1 \\ 2 & 3 & 0 & 1 \\ -2 & 1 & 2 & -3 \\ 2 & -1 & 0 & 5\end{bmatrix*}$}{$\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & 0 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b \neq 0$}
+    \mitemxx{$\begin{bmatrix*}a & 0 & 0 & 0 \\ 0 & a & b & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$}{$\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & d \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c d \neq 0$}
+    \mitemxx{$\begin{bmatrix*}a & b & 0 & 0 \\ 0 & a & c & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a\end{bmatrix*}$, $b c \neq 0$}{$\begin{bmatrix*}3 & 1 & 0 & 0 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 1 \\ 0 & 0 & 0 & 4\end{bmatrix*}$}
+\end{multienumerate}\vspace{-0.5cm}
 \begin{enumerate}[start=27]
     \item Demuestre que para cualesquiera $a$, $b \in \RR$, la matriz $A=\begin{bmatrix*}[r]a & b \\ -b & a\end{bmatrix*}$ tiene eigenvalores $a \pm i b$.
-\end{enumerate}
-De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.
+\end{enumerate}\newpage\noindent
+De los problemas 28 al 34 suponga que la matriz $A$ tiene como eigenvalores a $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.
 \begin{enumerate}[resume]
-    \item Demuestre que los eigenvalores de $A^{T}$ son $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.\newpage
+    \item Demuestre que los eigenvalores de $A^{T}$ son $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k}$.
     \item Demuestre que los eigenvalores de $\alpha A$ son $\alpha \lambda_{1}, \alpha \lambda_{2}, \dots, \alpha \lambda_{k}$.
     \item Demuestre que $A^{-1}$ existe si y sólo si $\lambda_{1}, \lambda_{2}, \dots, \lambda_{k} \neq 0$.
     \item Si $A^{-1}$ existe, demuestre que los eigenvalores de $A^{-1}$ están dados por $\dfrac{1}{\lambda_{1}}, \dfrac{1}{\lambda_{2}}, \dots, \dfrac{1}{\lambda_{k}}$.
@@ -3191,35 +3572,57 @@ De los problemas 28 al 34 suponga que la matriz $A$ tiene eigenvalores $\lambda_
     Demuestre que $1$ es un eigenvalor de toda matriz de probabilidad.
     \item Sea $A=\begin{bmatrix*}a & b \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Suponga que $b \neq 0$. Sea $m$ una raíz (real o compleja) de la ecuación
     $$b m^{2}+(a-d) m-c=0$$
-    Demuestre que $a+b m$ es un eigenvalor de $A$ con eigenvector correspondiente $\mathbb{v}=\begin{pmatrix*}1 \\ m\end{pmatrix*}$. Esto proporciona un método sencillo para calcular los valores y vectores característicos de las matrices de $2 \times 2$.
-    \item Sea $A=\begin{bmatrix*}[r]a & 0 \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Demuestre que $d$ es un eigenvalor de $A$ con eigenvector correspondiente $\begin{pmatrix*}1 \\ 0\end{pmatrix*}$.\newpage
+    Demuestre que $a+b m$ es un eigenvalor de $A$ con eigenvector correspondiente $\mathbb{v}=\begin{pmatrix*}1 \\ m\end{pmatrix*}$. Esto proporciona un método sencillo para calcular los valores y vectores característicos de las matrices de $2 \times 2$.\newpage
+    \item Sea $A=\begin{bmatrix*}[r]a & 0 \\ c & d\end{bmatrix*}$ una matriz de $2 \times 2$. Demuestre que $d$ es un eigenvalor de $A$ con eigenvector correspondiente $\begin{pmatrix*}1 \\ 0\end{pmatrix*}$.
     \item Sea $A=\begin{bmatrix*}[r]\alpha & \beta \\ -\beta & \alpha\end{bmatrix*}$, donde $\alpha, \beta \in \RR$. Encuentre los eigenvalores de la matriz $B=A^{T} A$.
 \end{enumerate}
-De los problemas 44 al 53 encuentre la matriz ortogonal $Q$ que diagonaliza la matriz simétrica dada. Después verifique que $Q^{T} A Q=D$, una matriz diagonal cuyas componentes diagonales son los eigenvalores de $A$.
-\begin{tasks}[
-    style=enumerate,
-    label-offset = 3mm,
-    start=44,
-    %label-width = 13.97498pt,
-    ](2)
-    %\task $\begin{bmatrix*}3 & 2 \\ 2 & 3\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]3 & 4 \\ 4 & -3\end{bmatrix*}$
-    \task $\begin{bmatrix*}2 & 1 \\ 1 & 2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-4 & 2 \\ 2 & 5\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 \\ -1 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]20 & 16 & -4 \\ 16 & 32 & 16 \\ -4 & 16 & 20\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]-1 & 2 & 2 \\ 2 & -1 & 2 \\ 2 & 2 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$
-    \task $\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$
-\end{tasks}
-\begin{enumerate}[start=54]
+De los problemas 44 al 61 determine si la matriz dada $A$ es diagonalizable. De ser así, encuentre una matriz $C$ tal que $C^{-1} A C=D$. Verifique que $A C=C D$ y que los elementos distintos de cero de $D$ sean los valores característicos de $A$.
+\begin{multienumerate}
+    \setcounter{multienumi}{43}
+    \mitemxxx{$\begin{bmatrix*}[r]-3 & 10 \\ 0 & -5\end{bmatrix*}$}{$\begin{bmatrix*}[r]-2 & -2 \\ -5 & 1\end{bmatrix*}$}{$\begin{bmatrix*}[r]3 & -1 \\ -2 & 4\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r]24 & 4 \\ -105 & -17\end{bmatrix*}$}{$\begin{bmatrix*}[r]2 & -1 \\ 5 & -2\end{bmatrix*}$}{$\begin{bmatrix*}[r]3 & -5 \\ 1 & -1\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r]-76 & 15 \\ -400 & 79\end{bmatrix*}$}{$\begin{bmatrix*}[r]3 & 2 \\ -5 & 1\end{bmatrix*}$}{$\begin{bmatrix}0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & 0\end{bmatrix}$}
+    \mitemxxx{$\begin{bmatrix*}[r]-25 & -5 & 11 \\ -32 & -16 & 16 \\ -90 & -30 & 42\end{bmatrix*}$}{$\begin{bmatrix}2 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix}$}{$\begin{bmatrix*}[r]1 & 1 & -2 \\ -1 & 2 & 1 \\ 0 & 1 & -1\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]92 & 48 & 21 \\ -378 & -202 & -90 \\ 468 & 252 & 113\end{bmatrix*}$}{$\begin{bmatrix*}[r]4 & 6 & 6 \\ 1 & 3 & 2 \\ -1 & -5 & -2\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]0 & -15 & -6 \\ -1 & -2 & -2 \\ 3 & 15 & 9\end{bmatrix*}$}{$\begin{bmatrix*}[r]-2 & -2 & 0 & 0 \\ -5 & 1 & 0 & 0 \\ 0 & 0 & 2 & -1 \\ 0 & 0 & 5 & -2\end{bmatrix*}$}
+    \mitemxx{$\begin{bmatrix*}[r]4 & 1 & 0 & 1 \\ 2 & 3 & 0 & 1 \\ -2 & 1 & 2 & -3 \\ 2 & -1 & 0 & 5\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & 0 & 0 & 1 \\ 0 & -1 & 0 & 1 \\ 1 & 0 & 3 & 1 \\ 0 & 0 & 1 & 0\end{bmatrix*}$}
+\end{multienumerate}
+\begin{enumerate}[start=62]
+    \item Demuestre que si $A$ es semejante a $B$ y $B$ es semejante a $C$, entonces $A$ es semejante a $C$.
+    \item Si $A$ es semejante a $B$, demuestre que $A^{n}$ es semejante a $B^{n}$ para cualquier entero positivo $n$.
+    \item Si $A$ es semejante a $B$, demuestre que $\rho(A)=\rho(B)$ y $\nu(A)=\nu(B)$.
+    \item Sea $D=\begin{bmatrix*}[r]1 & 0 \\ 0 & -1\end{bmatrix*}$. Calcule $D^{20}$.
+    \item Si $A$ es semejante a $B$, demuestre que $\operatorname{det} A=\operatorname{det} B$.
+    \item Suponga que $C^{-1} A C=D$. Demuestre que para cualquier número entero $n$, $A^{n}=C D^{n} C^{-1}$. Esto proporciona una forma sencilla para calcular las potencias de una matriz diagonalizable.
+    \item Sea $A=\begin{bmatrix*}[r]3 & -4 \\ 2 & -3\end{bmatrix*}$. Calcule $A^{20}$.
+    \item Sea $A$ una matriz de $n \times n$ cuya ecuación característica es $(\lambda-c)^{n}=0$. Demuestre que $A$ es diagonalizable si y solo si $A=c I_n$.\newpage
+    \item Use el resultado del problema 67 para calcular $A^{10}$, si $A=\begin{bmatrix}3 & 2 & 4 \\ 2 & 0 & 2 \\ 4 & 2 & 3\end{bmatrix}$.
+    \item Sean $A$ y $B$ dos matrices reales de $n \times n$ con eigenvalores distintos. Demuestre que $A B=B A$ si y solo si $A$ y $B$ tienen los mismos eigenvectores.
+    \item Si $A$ es diagonalizable, demuestre que $\operatorname{det} A=\lambda_{1} \lambda_{2} \cdots \lambda_{n}$, donde $\lambda_{1}, \lambda_{2}, \dots, \lambda_{n}$ son los eigenvalores de $A$.
+\end{enumerate}
+De los problemas 73 al 76 encuentre una matriz $C$ tal que $C^{-1} A C$ sea una matriz diagonal.
+\begin{multienumerate}
+    \setcounter{multienumi}{72}
+    \mitemxx{$\begin{bmatrix*}[r]102 & -11 & 56 \\ 38 & -49 & 75 \\ 83 & 123 & -67\end{bmatrix*}$}{$\begin{bmatrix*}[r]-0.031 & 0.082 & 0.095 \\ -0.046 & 0.067 & -0.081 \\ 0.055 & -0.077 & 0.038\end{bmatrix*}$}
+\end{multienumerate}
+\begin{enumerate}[start=75]
+    \item $\begin{bmatrix*}[r]-1.1580 & -1.4552 & -0.5665 & 0.9062 \\ -1.1330 & 1.7844 & -0.1436 & 0.2862 \\ -0.1425 & -0.4950 & 0.5790 & 0.4108 \\ -2.0709 & -0.5040 & 0.3862 & 1.0882\end{bmatrix*}$
+    \item $\begin{bmatrix*}[r]0.6680 & -0.8506 & 0.7499 & -1.0967 \\ 0.4985 & 0.9487 & -0.5700 & -0.4564 \\ 0.0258 & 0.5021 & -1.5949 & 0.6408 \\ 0.4097 & -0.2898 & -1.4470 & -0.8646\end{bmatrix*}$
+\end{enumerate}
+De los problemas 77 al 88 encuentre la matriz ortogonal $Q$ que diagonaliza la matriz simétrica dada. Después verifique que $Q^{T} A Q=D$, una matriz diagonal cuyas componentes diagonales son los eigenvalores de $A$.
+\begin{multienumerate}
+    \setcounter{multienumi}{76}
+    \mitemxxx{$\begin{bmatrix*}3 & 2 \\ 2 & 3\end{bmatrix*}$}{$\begin{bmatrix*}[r]3 & 4 \\ 4 & -3\end{bmatrix*}$}{$\begin{bmatrix*}2 & 1 \\ 1 & 2\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r]-4 & 2 \\ 2 & 5\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & -1 \\ -1 & 1\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r]20 & 16 & -4 \\ 16 & 32 & 16 \\ -4 & 16 & 20\end{bmatrix*}$}{$\begin{bmatrix*}[r]-1 & 2 & 2 \\ 2 & -1 & 2 \\ 2 & 2 & 1\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & -1 & 0 & 0 \\ -1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & 0 & 0 & 1 \\ 0 & -1 & 0 & 1 \\ 1 & 0 & 3 & 1 \\ 0 & 0 & 1 & 0\end{bmatrix*}$}
+\end{multienumerate}
+\begin{enumerate}[start=89]
     \item Sea $Q$ una matriz ortogonal simétrica. Demuestre que si $\lambda$ es un eigenvalor de $Q$, entonces $\lambda= \pm 1$.
     \item La matriz $A$ es ortogonalmente semejante a la matriz $B$ si existe una matriz ortogonal $Q$ tal que $B=Q^{T} A Q$. Suponga que $A$ es ortogonalmente semejante a $B$ y que $B$ es ortogonalmente semejante a $C$. Demuestre que $A$ es ortogonalmente semejante a $C$.
     \item Demuestre que si $Q=\begin{bmatrix*}a & b \\ c & d\end{bmatrix*}$ es ortogonal, entonces $b= \pm c$.
     \item Suponga que $A$ es una matriz simétrica real para la que todos sus eigenvalores son cero. Demuestre que $A$ es la matriz cero.
-    \item Demuestre que si una matriz real $A$ de $2 \times 2$ tiene eigenvectores ortogonales, entonces $A$ es simétrica.
+    \item Demuestre que si una matriz real $A$ de $2 \times 2$ tiene eigenvectores ortogonales, entonces $A$ es simétrica.\newpage
     \item Sea $A$ una matriz real antisimétrica. Demuestre que todo eigenvalor de $A$ es de la forma $i \alpha$, donde $\alpha \in \RR$ e $i=\sqrt{-1}$. Es decir, demuestre que todo eigenvalor de $A$ es un número imaginario.
     \item Demuestre que los eigenvalores de una matriz hermitiana compleja de $n \times n$ son reales.
     \item Si $A$ es una matriz hermitiana de $n \times n$, demuestre que los eigenvectores correspondientes a eigenvalores distintos son ortogonales.
@@ -3228,48 +3631,33 @@ De los problemas 44 al 53 encuentre la matriz ortogonal $Q$ que diagonaliza la m
     \item Haga lo mismo que en el problema anterior para $A=\begin{bmatrix*}-2 & -3+2 i \\ -3-4 i & 2\end{bmatrix*}$.
     \item Demuestre que el determinante de una matriz hermitiana es real.
 \end{enumerate}
-
-\newpage\noindent
-Del problema 66 al 83 escriba la ecuación cuadrática en la forma $A \mathbb{v} \bullet \mathbb{v}=d$ (donde $A$ es una matriz simétrica) y elimine el término $x y$ rotando los ejes un ángulo $\theta$. Escriba la ecuación en términos de las nuevas variables e identifique la sección cónica obtenida.
-\begin{tasks}[
-    style=enumerate,
-    label-offset = 3mm,
-    start=66,
-    %label-width = 13.97498pt,
-    ](2)
-    \task $4 x^{2}-2 x y+4 y^{2}=25$
-    \task $3 x^{2}-2 x y-5=0$
-    \task $4 x^{2}+4 x y+y^{2}=9$
-    \task $-x^{2}-6 \sqrt{3} x y+5 y^{2}=8$
-    \task $4 x^{2}+4 x y-y^{2}=9$
-    \task $x y=1$
-    \task $2 x^{2}-4 \sqrt{3} x y+6 y^{2}=10$
-    \task $x y=a$, con $a>0$
-    \task $4 x^{2}+2 x y+3 y^{2}+2=0$
-    \task $4 x^{2}-8 \sqrt{3} x y-4 y^{2}=1$
-    \task $x^{2}+4 x y+4 y^{2}-6=0$
-    \task $-x^{2}+2 x y-y^{2}=0$
-    \task $\displaystyle\frac{24 x^{2}}{5}-\frac{24 x y}{5}+\frac{31 y^{2}}{5}=1$
-    \task $x^{2}-2 x y+3 y^{2}=5$
-    \task $3 x^{2}-6 x y+5 y^{2}=36$
-    \task $\displaystyle\frac{2 x^{2}}{25}-\frac{72 x y}{25}+\frac{23 y^{2}}{25}=1$
-    \task $x^{2}+x y+y^{2}=5$
-    \task $6 x^{2}+5 x y-6 y^{2}+7=0$
-\end{tasks}
-\begin{enumerate}[start=84]
+Del problema 101 al 118 escriba la ecuación cuadrática en la forma $A \mathbb{v} \bullet \mathbb{v}=d$ (donde $A$ es una matriz simétrica) y elimine el término $x y$ rotando los ejes un ángulo $\theta$. Escriba la ecuación en términos de las nuevas variables e identifique la sección cónica obtenida.
+\begin{multienumerate}
+    \setcounter{multienumi}{100}
+    \mitemxx{$4 x^{2}-2 x y+4 y^{2}=25$}{$3 x^{2}-2 x y-5=0$}
+    \mitemxx{$4 x^{2}+4 x y+y^{2}=9$}{$-x^{2}-6 \sqrt{3} x y+5 y^{2}=8$}
+    \mitemxx{$4 x^{2}+4 x y-y^{2}=9$}{$x y=1$}
+    \mitemxx{$2 x^{2}-4 \sqrt{3} x y+6 y^{2}=10$}{$x y=a$, con $a>0$}
+    \mitemxx{$4 x^{2}+2 x y+3 y^{2}+2=0$}{$4 x^{2}-8 \sqrt{3} x y-4 y^{2}=1$}
+    \mitemxx{$x^{2}+4 x y+4 y^{2}-6=0$}{$-x^{2}+2 x y-y^{2}=0$}
+    \mitemxx{$\displaystyle\frac{24 x^{2}}{5}-\frac{24 x y}{5}+\frac{31 y^{2}}{5}=1$}{$x^{2}-2 x y+3 y^{2}=5$}
+    \mitemxx{$3 x^{2}-6 x y+5 y^{2}=36$}{$\displaystyle\frac{2 x^{2}}{25}-\frac{72 x y}{25}+\frac{23 y^{2}}{25}=1$}
+    \mitemxx{$x^{2}+x y+y^{2}=5$}{$6 x^{2}+5 x y-6 y^{2}+7=0$}
+\end{multienumerate}
+\begin{enumerate}[start=119]
     \item ¿Cuáles son las formas posibles de la gráfica de $a x^{2}+b x y+c y^{2}=0$?
 \end{enumerate}
-De los problemas 85 al 88 escriba la forma cuadrática en términos de las nuevas variables $x^{\prime}$, $y^{\prime}$ y $z^{\prime}$ de manera que no estén presentes los términos de productos cruzados ($x y$, $x z$, $y z$).
+De los problemas 120 al 123 escriba la forma cuadrática en términos de las nuevas variables $x^{\prime}$, $y^{\prime}$ y $z^{\prime}$ de manera que no estén presentes los términos de productos cruzados ($x y$, $x z$, $y z$).
 \begin{enumerate}[resume]
     \item $x^{2}-2 x y+y^{2}-2 x z-2 y z+z^{2}$
     \item $\displaystyle\frac{27 x^{2}}{16}-\frac{7 \sqrt{3} x y}{8}-\frac{9 x z}{4}+\frac{41 y^{2}}{16}-\frac{3 \sqrt{3} y z}{4}-\frac{z^{2}}{4}=1$
     \item $x^{2}+x y+y^{2}+3 x z+z^{2}$
     \item $3 x^{2}+4 x y+2 y^{2}+4 x z+4 z^{2}$
 \end{enumerate}
-De los problemas 89 al 91 encuentre una matriz simétrica $A$ tal que la forma cuadrática se pueda escribir en la forma $A \mathbb{x} \bullet \mathbb{x}$.
+De los problemas 124 al 126 encuentre una matriz simétrica $A$ tal que la forma cuadrática se pueda escribir en la forma $A \mathbb{x} \bullet \mathbb{x}$.
 \begin{enumerate}[resume]
     \item $x_{1}^{2}+2 x_{1} x_{2}+x_{2}^{2}+4 x_{1} x_{3}+6 x_{2} x_{3}+3 x_{3}^{2}+7 x_{1} x_{4}-2 x_{2} x_{4}+x_{4}^{2}$
-    \item $x_{1}^{2}-3 x_{2}^{2}+9 x_{3}^{2}-7 x_{4}^{2}+3 x_{1} x_{3}-2 x_{2} x_{3}+4 x_{1} x_{4}$
+    \item $x_{1}^{2}-3 x_{2}^{2}+9 x_{3}^{2}-7 x_{4}^{2}+3 x_{1} x_{3}-2 x_{2} x_{3}+4 x_{1} x_{4}$\newpage
     \item $3 x_{1}^{2}-7 x_{1} x_{2}-2 x_{2}^{2}+x_{1} x_{3}-x_{2} x_{3}+3 x_{3}^{2}-2 x_{1} x_{4}+x_{2} x_{4}-4 x_{3} x_{4}-6 x_{4}^{2}+3 x_{1} x_{5}-5 x_{3} x_{5}+x_{4} x_{5}-x_{5}^{2}$
     \item Suponga que para algún valor de $d$ diferente de cero, la gráfica de $a x^{2}+b x y+c y^{2}=d$ es una hipérbola. Demuestre que la gráfica es una hipérbola para cualquier otro valor de $d$ diferente de cero.
     \item Demuestre que si $a \neq c$, el término $x y$ en la ecuación cuadrática \eqref{cuadratica1} se elimina rotando un ángulo $\theta$, si $\theta$ está dado por $\displaystyle\cot 2 \theta=\frac{a-c}{b}$.
@@ -3281,43 +3669,39 @@ De los problemas 89 al 91 encuentre una matriz simétrica $A$ tal que la forma c
     \begin{enumerate}
         \item $a+c=a^{\prime}+c^{\prime}$
         \item $b^{2}-4 a c=\left(b^{\prime}\right)^{2}-4 a^{\prime} c^{\prime}$
-    \end{enumerate}\newpage
-    \item Se dice que una forma cuadrática $F(\mathbb{x})=F\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ es positiva definida si $F(\mathbb{x})>0$ para toda $\mathbb{x} \in \RR[n]$ y $F(\mathbb{x})=0$ si y sólo si $\mathbb{x} = \mathbb{0}$. Demuestre que $F$ es positiva definida si y positiva definida sólo si la matriz simétrica $A$ asociada a $F$ tiene valores característicos positivos.
-    \item Se dice que una forma cuadrática $F(\mathbb{x})$ es positiva semidefinida si $F(\mathbb{x}) \geq 0$ para todo $\mathbb{x} \in$ $\RR[n]$. Demuestre que $F$ es positiva semidefinida si y sólo si los valores característicos de la matriz simétrica asociada a $F$ son todos no negativos.
+    \end{enumerate}
 \end{enumerate}
-Las definiciones de formas cuadráticas negativa definida y negativa semidefinida son las definiciones en los problemas 96 y 97 sustituyendo $>0$ por $<0$ y $\geq 0$ por $\leq 0$, respectivamente. Una forma cuadrática es indefinida si no es de los tipos anteriores. De los problemas 98 al 109 determine si la forma cuadrática dada es positiva definida, positiva semidefinida, negativa definida, negativa semidefinida o indefinida.
+De los problemas 131 al 142 determine, utilizando el teorema \ref{theo:dpdnispsn}, si la forma cuadrática dada es positiva definida, positiva semidefinida, negativa definida, negativa semidefinida o indefinida.
 \begin{multienumerate}
-    \setcounter{multienumi}{97}
+    \setcounter{multienumi}{130}
     \mitemxxx{$3 x^{2}+2 y^{2}$}{$4 x^{2}-10 x y^{2}+2 y^{2}$}{$-3 x^{2}-3 y^{2}$}
     \mitemxxx{$3 x^{2}-2 y^{2}$}{$9 x^{2}+1-10 y^{2}$}{$x^{2}+2 x y+2 y^{2}$}
     \mitemxxx{$x^{2}-2 x y+2 y^{2}$}{$10 x y-5 y^{2}$}{$-x^{2}+4 x y-3 y^{2}$}
     \mitemxxx{$-2 x^{2}+x y-2 y^{2}$}{$-3 x^{2}-2 x y-y^{2}$}{$-x^2 + 8xy - 2y^2$}
 \end{multienumerate}
-\begin{enumerate}[start=110]
+\begin{enumerate}[start=143]
     \item Sea $A$ la representación matricial simétrica de la ecuación cuadrática \eqref{cuadratica1} con $d \neq 0$. Sean $\lambda_{1}$ y $\lambda_{2}$ los valores característicos de $A$. Demuestre que \eqref{cuadratica1} es la ecuación de
     \begin{enumerate}
         \item una hipérbola si $\lambda_{1} \lambda_{2}<0$ y
         \item un círculo, elipse o sección cónica degenerada si $\lambda_{1}$ y $\lambda_{2}>0$.
     \end{enumerate}
 \end{enumerate}
-De los problemas 111 al 128 determine si la matriz dada es una matriz de Jordan.
+De los problemas 144 al 161 determine si la matriz dada es una matriz de Jordan.
 \begin{multienumerate}
-    \setcounter{multienumi}{110}
+    \setcounter{multienumi}{143}
     \mitemxxxx{$\begin{bmatrix*}3 & 4 \\ 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}[r]1 & 1 \\ 0 & -6\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 \\ 0 & 0\end{bmatrix*}$}{$\begin{bmatrix*}3 & 0 \\ 0 & 3\end{bmatrix*}$}
     \mitemxxx{$\begin{bmatrix*}1 & 2 \\ 0 & 1\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}[r]-3 & 1 & 0 \\ 0 & -3 & 0 \\ 1 & 0 & 1\end{bmatrix*}$}
     \mitemxxx{$\begin{bmatrix*}3 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}3 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix*}$}
-    \mitemxxx{$\begin{bmatrix*}1 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 2 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}1 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3\end{bmatrix*}$}{$\begin{bmatrix*}1 & 2 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix*}$}\newpage
     \mitemxxx{$\begin{bmatrix*}1 & 0 & 0 & 0 & 0 \\ 0 & 2 & 1 & 0 & 0 \\ 0 & 0 & 2 & 1 & 0 \\ 0 & 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 & 2\end{bmatrix*}$}{$\begin{bmatrix*}1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 2 & 0 & 0 \\ 0 & 0 & 1 & 2 & 0 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1\end{bmatrix*}$}{$\begin{bmatrix*}2 & 0 & 0 & 0 & 0 \\ 0 & 3 & 1 & 0 & 0 \\ 0 & 0 & 3 & 0 & 0 \\ 0 & 0 & 0 & 5 & 1 \\ 0 & 0 & 0 & 0 & 5\end{bmatrix*}$}
     \mitemxx{$\begin{bmatrix*}a & 0 & 0 & 0 & 0 \\ 0 & b & 0 & 0 & 0 \\ 0 & 0 & c & 0 & 0 \\ 0 & 0 & 0 & d & 0 \\ 0 & 0 & 0 & 0 & e\end{bmatrix*}$}{$\begin{bmatrix*}a & 1 & 0 & 0 & 0 \\ 0 & a & 0 & 0 & 0 \\ 0 & 0 & c & 1 & 0 \\ 0 & 0 & 0 & c & 1 \\ 0 & 0 & 0 & 0 & c\end{bmatrix*}$}
 \end{multienumerate}
-
-\newpage\noindent
-De los problemas 129 al 132 encuentre una matriz invertible $C$ que transforme la matriz de $2 \times 2$ a su forma canónica de Jordan.
+De los problemas 162 al 165 encuentre una matriz invertible $C$ que transforme la matriz de $2 \times 2$ a su forma canónica de Jordan.
 \begin{multienumerate}
-    \setcounter{multienumi}{128}
+    \setcounter{multienumi}{161}
     \mitemxxxx{$\begin{bmatrix*}6 & 1 \\ 0 & 6\end{bmatrix*}$}{$\begin{bmatrix*}[r]-12 & 7 \\ -7 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]-10 & -7 \\ 7 & 2\end{bmatrix*}$}{$\begin{bmatrix*}[r]4 & -1 \\ 1 & 2\end{bmatrix*}$}
 \end{multienumerate}
-\begin{enumerate}[start=133]
+\begin{enumerate}[start=166]
     \item Sea $A$ una matriz de $3 \times 3$. Suponga que $\lambda$ es un valor característico de $A$ con multiplicidad algebraica $3$ y multiplicidad geométrica $1$ y sea $\mathbb{v}_{1}$ el vector característico correspondiente.
     \begin{enumerate}
         \item Demuestre que existe una solución, $\mathbb{v}_{2}$, al sistema $(A-\lambda I) \mathbb{v}_{2}=\mathbb{v}_{1}$ tal que $\mathbb{v}_{1}$ y $\mathbb{v}_{2}$ son linealmente independientes.
@@ -3330,22 +3714,186 @@ De los problemas 129 al 132 encuentre una matriz invertible $C$ que transforme l
         \end{bmatrix*}$$
     \end{enumerate}
 \end{enumerate}
-De los problemas 134 al 136 aplique el procedimiento descrito en el problema anterior para reducir la matriz dada mediante una transformación de semejanza a su forma canónica de Jordan.
-\begin{enumerate}[start=134]
+De los problemas 167 al 169 aplique el procedimiento descrito en el problema anterior para reducir la matriz dada mediante una transformación de semejanza a su forma canónica de Jordan.
+\begin{enumerate}[start=167]
     \item $A=\begin{bmatrix*}[r]-4 & -3 & -1 \\ 11 & 9 & 3 \\ -29 & -25 & -8\end{bmatrix*}$
     \item Haga lo mismo para $A=\begin{bmatrix*}[r]-1 & -2 & -1 \\ -1 & -1 & -1 \\ 2 & 3 & 2\end{bmatrix*}$.
     \item Haga lo mismo para $A=\begin{bmatrix*}[r]-1 & -18 & -7 \\ 1 & -13 & -4 \\ -1 & 25 & 8\end{bmatrix*}$.
-    \item Una matriz $A$ de $n \times n$ es nilpotente si existe un entero $k$ tal que $A^{k}=0$. Si $k$ es el entero más pequeño de este tipo, entonces $k$ se denomina índice de nilpotencia de $A$. Demuestre que si $k$ es el índice de nilpotencia de $A$ y si $m \geq k$, entonces $A^{m}=0$.
+    \item Una matriz $A$ de $n \times n$ es nilpotente si existe un entero $k$ tal que $A^{k}=\mathbb{0}$. Si $k$ es el entero más pequeño de este tipo, entonces $k$ se denomina índice de nilpotencia de $A$. Demuestre que si $k$ es el índice de nilpotencia de $A$ y si $m \geq k$, entonces $A^{m}=\mathbb{0}$.
     \item Sea $N_{k}$ la matriz definida por la ecuación \eqref{JAJJAJAJAJAJHQHHQJQUUAUQUWUAUSISIUAJ}. Demuestre que $N_{k}$ es nilpotente con índice de nilpotencia $k$.
     \item Escriba todas las matrices de Jordan de $4 \times 4$ posibles.
 \end{enumerate}
-De los problemas 140 al 148 está dado el polinomio característico de una matriz $A$. Escriba todas las posibles formas canónicas de Jordan de $A$.
+De los problemas 173 al 181 está dado el polinomio característico de una matriz $A$. Escriba todas las posibles formas canónicas de Jordan de $A$.\newpage
 \begin{multienumerate}
-    \setcounter{multienumi}{139}
+    \setcounter{multienumi}{172}
     \mitemxxx {$(\lambda+3)^{2}(\lambda+1)$}{$(\lambda-1)^{3}(\lambda+1)^{2}$}{$(\lambda-3)^{3}(\lambda+4)$}
     \mitemxxx{$(\lambda-3)^{4}$}{$(\lambda-4)^{3}(\lambda+3)^{2}$}{$(\lambda-6)(\lambda+7)^{4}$}
     \mitemxxx{$(\lambda-2)(\lambda+2)^{5}$}{$(\lambda+7)^{5}$}{$(\lambda-1)^{2}(\lambda+4)^{3}$}
 \end{multienumerate}
-\begin{enumerate}[start=149]
+\begin{enumerate}[start=182]
     \item Usando la forma canónica de Jordan, demuestre que para cualquier matriz $A$ de $n \times n$, $\operatorname{det} A=\lambda_{1} \lambda_{2} \cdots \lambda_{n}$, donde $\lambda_{1}, \lambda_{2}, \dots, \lambda_{n}$ son los valores característicos de $A$.
+\end{enumerate}
+De los problemas 183 al 191:
+\begin{enumerate}[label=\alph*)]
+    \item Encuentre la ecuación característica $p(\lambda) = 0$ de la matriz dada.
+    \item Verifique que $p(A) = \mathbb{0}$.
+    \item Utilice el inciso anterior para calcular $A^{-1}$.
+\end{enumerate}
+\begin{multienumerate}
+    \setcounter{multienumi}{182}
+    \mitemxxx{$\begin{bmatrix*}[r] 9 & 8 \\ 3 & -8 \end{bmatrix*}$}{$\begin{bmatrix*}[r] -2 & -2 \\ -5 & 1 \end{bmatrix*}$}{$\begin{bmatrix*}[r] 2 & -1 \\ 6 & -2 \end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r] 7 & -8 & 7 \\ 1 & 4 & -7 \\ 7 & -3 & 1 \end{bmatrix*}$}{$\begin{bmatrix*}[r] 1 & 2 & 2 \\ 0 & 2 & 1 \\ 1 & 2 & 2 \end{bmatrix*}$}{$\begin{bmatrix*}[r] 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -3 & 3 \end{bmatrix*}$}
+    \mitemxxx{$\begin{bmatrix*}[r] -4 & 6 & -8 \\ -10 & 4 & 8 \\ -8 & 3 & -4 \end{bmatrix*}$}{$\begin{bmatrix*}[r] 2 & -1 & 0 \\ 4 & 1 & 6 \\ 1 & 5 & 3 \end{bmatrix*}$}{$\begin{bmatrix*}[r] 1 & 0 & 1 & 0 \\ 2 & -1 & 0 & 2 \\ -1 & 0 & 0 & 1 \\ 4 & 1 & -1 & 0 \end{bmatrix*}$}
+\end{multienumerate}\vspace{-0.25cm}
+Del problema 192 al 197 diga cuáles afirmaciones son verdaderas o falsas.
+\begin{enumerate}[start=192]
+    \item Cada forma cuadrática es una forma bilineal.
+    \item La representación matricial de una forma bilineal simétrica es una matriz simétrica.
+    \item La suma de dos formas bilineales simétricas vuelve a ser una forma bilineal simétrica.
+    \item Dos matrices simétricas con el mismo polinomio característico son representaciones matriciales de la misma forma bilineal.
+    \item Existe una forma bilineal $H$ tal que $H(\mathbb{x}, \mathbb{y}) \neq 0$ para todo $\mathbb{x}$, $\mathbb{y}$.
+    \item Sea $H$ una forma bilineal en un espacio vectorial $V$ de dimensión finita con $\operatorname{dim}(V) > 1$. Para cualquier $\mathbb{x} \in V$, existe $\mathbb{y} \in V$ tal que $\mathbb{y} \neq \mathbb{0}$, pero $H(\mathbb{x}, \mathbb{y}) = 0$.
+\end{enumerate}
+Del problema 198 al 203 determine cuáles de las siguiente expresiones son formas bilineales. Justifica tus respuestas.
+\begin{enumerate}[resume]
+    \item Sea $V = C[0, 1]$ el espacio de funciones continuas de valor real en el intervalo cerrado $[0, 1]$. Para $f$, $g \in V$, definimos
+    $$H(f, g) = \int_{0}^{1} f(t)g(t) dt$$
+    \item Sea $V$ un espacio vectorial sobre $K$ y sea $G \in \mathcal{B}(V)$ no cero. Defina $H: V \times V \longrightarrow K$ como
+    $$H(\mathbb{x}, \mathbb{y}) = [G(\mathbb{x}, \mathbb{y})]^2, \quad \forall \mathbb{x}, \mathbb{y} \in V$$
+    \item Defina $H: \RR \times \RR \longrightarrow \RR$ dada por $H(t_1, t_2) = t_1 + 2t_2$.\newpage
+    \item Considere los vectores $\mathbb{x}$, $\mathbb{y} \in \RR[2]$ y sea $H:\RR[2] \times \RR[2] \longrightarrow \RR$ definida como $H(\mathbb{x}, \mathbb{y}) = \operatorname{det}(\mathbb{x}, \mathbb{y})$, el determinante de la matriz de $2 \times 2$ formada por los vectores columna $\mathbb{x}$ e $\mathbb{y}$.
+    \item Considere $V$ un espacio vectorial real con producto interno, y sea $H: V \times V \longrightarrow \RR$ definida como $H(\mathbb{x}, \mathbb{y}) = \langle \mathbb{x}, \mathbb{y} \rangle$ para $\mathbb{x}$, $\mathbb{y} \in V$.
+    \item Considere $V$ un espacio vectorial complejo con producto interno, y sea $H: V \times V \longrightarrow \CC$ definida como $H(\mathbb{x}, \mathbb{y}) = \langle \mathbb{x}, \mathbb{y} \rangle$ para $\mathbb{x}$, $\mathbb{y} \in V$.
+\end{enumerate}
+Del problema 204 al 209 verifique que cada una de las expresiones dadas sea una forma bilineal. Luego calcule su representación matricial con respecto a la base dada $S$.
+\begin{enumerate}[resume]
+    \item Sea $H:\RR[3] \times \RR[3] \longrightarrow \RR$ donde
+    $$H\left( \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}, \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} \right) = a_1b_1 - 2a_1b_2 + a_2b_1 - a_3b_3$$
+    y $S = \left\{ \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix*}[r] 1 \\ 0 \\ -1 \end{pmatrix*}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \right\}$.
+    \item Sea $H: \mathcal{M}_{2 \times 2}(\RR) \times \mathcal{M}_{2 \times 2}(\RR) \longrightarrow \RR$ donde
+    $$H(A, B) = \operatorname{Tr}(A) \cdot \operatorname{Tr}(B)$$
+    y $S = \left\{ \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \right\}$.
+    \item Sea $H:\RR[3] \times \RR[3] \longrightarrow \RR$ donde
+    $$H(\mathbb{x}, \mathbb{y}) = \mathbb{x}^t A\mathbb{y}$$
+    con $A = \begin{bmatrix} 0 & 1 & 2 \\ 1 & 0 & 1 \\ 2 & 1 & 0 \end{bmatrix}$ y $S = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}$.
+    \item Sea $H:\RR[3] \times \RR[3] \longrightarrow \RR$ donde
+    $$H(\mathbb{x}, \mathbb{y}) = \mathbb{x}^t A\mathbb{y} + \operatorname{det}(A)$$
+    con $A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 1 & 4 \\ 3 & 4 & 1 \end{bmatrix}$ y $S = \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}$.
+    \item Sea $H:\RR[2] \times \RR[2] \longrightarrow \RR$ donde
+    $$H(\mathbb{x}, \mathbb{y}) = \operatorname{det}(\mathbb{x}\mathbb{y}^t + A)$$
+    con $A = \begin{bmatrix} 1 & 2 \\ 2 & 1 \end{bmatrix}$ y $S = \left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix*}[r] 1 \\ -1 \end{pmatrix*} \right\}$.
+    \item Sea $H:\RR[3] \times \RR[3] \longrightarrow \RR$ donde
+    $$H(\mathbb{x}, \mathbb{y}) = \operatorname{Tr}(\mathbb{x}\mathbb{y}^tA)$$
+    con $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$ y $S = \left\{ \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix*}[r] 1 \\ -1 \\ 0 \end{pmatrix*}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}$.
+    \item Sea $\mathbb{x}^tA\mathbb{x}$ una forma cuadrática en las variables $x_1$, $x_2$, $\dots$, $x_n$ y sea $T:\RR[n] \longrightarrow \RR$ dada por $T\mathbb{x} = \mathbb{x}^tA\mathbb{x}$.
+    \begin{enumerate}
+        \item Demuestra que $T(\mathbb{x} + \mathbb{y}) = T\mathbb{x} + 2\mathbb{x}^tA\mathbb{y} + T\mathbb{y}$.
+        \item Demuestra que $T(c\mathbb{x}) = c^2 T\mathbb{x}$.
+    \end{enumerate}\newpage
+    \item Expresa la forma cuadrática $(c_1x_1 + c_2x_2 + \cdots + c_nx_n)^2$ como $\mathbb{x}^tA\mathbb{x}$ donde $A$ es una matriz simétrica.
+    \item En estadística, las cantidades
+    $$\overline{x} = \frac{1}{n} (x_1 + x_2 + \cdots + x_n)$$
+    y
+    $$s_x^2 = \frac{1}{n - 1} [(x_1 - \overline{x})^2 + (x_2 - \overline{x})^2 + \cdots + (x_n - \overline{x})^2 ]$$
+    son llamadas respectivamente la media de la muestra y la varianza de la muestra de $\mathbb{x} = (x_1, x_2, \dots, x_n)$.
+    \begin{enumerate}
+        \item Expresa la forma cuadrática $s_x^2$ como $\mathbb{x}^tA\mathbb{x}$ donde $A$ es una matriz simétrica.
+        \item ¿Es $s_x^2$ una forma cuadrática positiva definida?
+    \end{enumerate}
+    \item Encuentra todos los valores de $k$ para que la forma cuadrática sea definida positiva.
+    \begin{enumerate}
+        \item $5x_1^2 + x_2^2 + kx_3^2 + 4x_1x_2 - 2x_1x_3 - 2x_2x_3$
+        \item $3x_1^2 + x_2^2 + 2x_3^2 - 2x_1x_3 + 2kx_2x_3$
+    \end{enumerate}
+\end{enumerate}
+En los problemas 214 al 226 encuentre la matriz solución principal $e^{A t}$ del sistema $\mathbb{x}^{\prime}(t) = A \mathbb{x}(t)$.
+\begin{multienumerate}
+    \setcounter{multienumi}{213}
+    \mitemxxx{$A = \begin{bmatrix*}[r]13 & 3 \\ -36 & -8\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]-2 & -2 \\ -5 & 1\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]3 & -1 \\ -2 & 4\end{bmatrix*}$}
+    \mitemxxx{$A = \begin{bmatrix*}[r]5 & -2 \\ 40 & -13\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]2 & -1 \\ 5 & -2\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]3 & -5 \\ 1 & -1\end{bmatrix*}$}
+    \mitemxxx{$A = \begin{bmatrix*}[r]3 & 0 \\ 3 & 0\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]-10 & -7 \\ 7 & 4\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]-2 & 1 \\ 5 & 2\end{bmatrix*}$}
+    \mitemxx{$A = \begin{bmatrix*}[r]-15 & 6 & 3 \\ -87 & 34 & 15 \\ 94 & -36 & -14\end{bmatrix*}$}{$A = \begin{bmatrix*}[r]1 & 1 & -2 \\ -1 & 2 & 1 \\ 0 & 1 & -1\end{bmatrix*}$}
+    \mitemxx{$A = \begin{bmatrix*}0 & 1 & 0 \\ 0 & 0 & 1 \\ 4 & 6 & 4\end{bmatrix*}$}{$A = \begin{bmatrix*}\phantom{-}\dfrac{7}{5} & -\dfrac{8}{5} & \phantom{-}\dfrac{3}{5} \\[3mm] \phantom{-}\dfrac{3}{5} & \phantom{-}\dfrac{18}{5} & -\dfrac{3}{5} \\[3mm] -2 & -2 & \phantom{-}4\end{bmatrix*}$}
+\end{multienumerate}
+\begin{enumerate}[start=227]
+    \item En el ejemplo 8.7.3 demuestre que si el vector inicial $\mathbb{x}(0)=\begin{pmatrix} a \\ 2 a \end{pmatrix}$, donde $a$ es una constante, entonces ambas poblaciones crecen a una tasa proporcional a $e^{t}$.
+    \item En el ejemplo 8.7.3 demuestre que si $x_{2}(0)>2 x_{1}(0)$, entonces la primera población quedará eliminada.
+    \item En el ejemplo \ref{exam:PRIEEDO1} demuestre que la primera población se extinguirá en $\alpha$ años, donde $\displaystyle\alpha=\frac{x_{1}(0)}{x_{1}(0)+x_{2}(0)}$.
+    \item En una planta desalinizadora hay dos tanques de agua. Suponga que\sugeBulle{Escriba la información como un sistema de $2 \times 2$ y sean $x_{1}(t)$ y $x_{2}(t)$ la cantidad de sal en cada tanque.}el tanque $1$ contiene $1 \, 000$ litros de salmuera que tienen disueltos $1 \, 000$ kilogramos de sal y el tanque $2$ contiene $100$ litros de agua pura. Suponga que fluye agua al tanque $1$ a una tasa de $20$ litros por minuto y la mezcla fluye del tanque $1$ al tanque $2$ a una tasa de $30$ litros por minuto. Del tanque $2$ se bombean $10$ litros de regreso al $1$ (estableciendo retroalimentación) mientras que $20$ litros se desperdician. Encuentre la cantidad de sal en ambos tanques en el tiempo $t$.\newpage
+    \item Una comunidad de $n$ individuos está expuesta a una enfermedad infecciosa. En el tiempo $t$, la comunidad se divide en grupos: el grupo $1$ con población $x_{1}(t)$ es el grupo susceptible; el grupo $2$ con una población de $x_{2}(t)$ es el grupo de individuos infectados en circulación, y el grupo $3$, con población de $x_{3}(t)$, consiste en aquellos que están aislados, muertos o inmunes. Es razonable suponer que inicialmente $x_{2}(t)$ y $x_{3}(t)$ son pequeños en comparación con $x_{1}(t)$. Sean $\alpha$ y $\beta$ constantes positivas; $\alpha$ denota la tasa a la que los individuos susceptibles se infectan y $\beta$ la tasa a la que los individuos infectados pasan al grupo $3$. Un buen modelo para la dispersión de la enfermedad está dado por el sistema
+    \begin{align*}
+        x_{1}^{\prime}(t) & = -\alpha x_{1}(0) x_{2} \\
+        x_{2}^{\prime}(t) & = \alpha x_{1}(0) x_{2}-\beta x_{2} \\
+        x_{3}^{\prime}(t) & = \beta x_{2}
+    \end{align*}
+    \begin{enumerate}
+        \item Escriba este sistema en la forma $\mathbb{x}^{\prime}=A \mathbb{x}$ y encuentre la solución en términos de $x_{1}(0)$, $x_{2}(0)$ y $x_{3}(0)$. Observe que
+        $$x_{1}(0)+x_{2}(0)+x_{3}(0)=n$$
+        \item Demuestre que si $\alpha x(0) < \beta$, entonces la enfermedad no producirá una epidemia.
+        \item ¿Qué pasará si $\alpha x(0) > \beta$?
+    \end{enumerate}
+    \item Considere la ecuación diferencial de segundo orden
+    $$y^{\prime \prime}(t)+a y^{\prime}(t)+b y(t)=0$$
+    \begin{enumerate}
+        \item Haciendo $x_{1}(t)=y(t)$ y $x_{2}(t)=y^{\prime}(t)$, escriba las ecuaciones anteriores como un sistema de primer orden en la forma de la ecuación \eqref{EDO6}, donde $A$ es una matriz de $2 \times 2$.
+        \item Demuestre que la ecuación característica de $A$ es $\lambda^{2}+a \lambda+b=0$.
+    \end{enumerate}
+\end{enumerate}
+En los problemas 233 al 238 use el resultado del problema 232 para resolver la ecuación dada.
+\begin{enumerate}[resume]
+    \item $x^{\prime \prime}+5 x^{\prime}+6 x=0$; $x(0)=1$, $x^{\prime}(0)=0$
+    \item $x^{\prime \prime}+x^{\prime}-20 x=0$; $x(0)=3$, $x^{\prime}(0)=2$
+    \item $x^{\prime \prime}+3 x^{\prime}=0$; $ x(0)=3$, $x^{\prime}(0)=2$
+    \item $4 x^{\prime \prime}-x=0$; $x(0)=1$, $x^{\prime}(0)=-2$
+    \item $x^{\prime \prime}+4 x=0$; $x(0)=0$, $x^{\prime}(0)=1$
+    \item $x^{\prime \prime}-3 x^{\prime}-10 x=0$; $x(0)=3$, $x^{\prime}(0)=2$
+    \item Sea $N_{3} = \begin{bmatrix}0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix}$. Demuestre que $N_{3}^{3}$ es la matriz cero.
+    \item Demuestre que $e^{N_{3} t} = \begin{bmatrix}1 & t & \dfrac{t^{2}}{2} \\[2mm] 0 & 1 & t \\ 0 & 0 & 1\end{bmatrix}$.
+    \item Sea $J=\begin{bmatrix}\lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda\end{bmatrix}$. Demuestre que $e^{J t}=e^{\lambda t} \begin{bmatrix}1 & t & \dfrac{t^{2}}{2} \\[2mm] 0 & 1 & t \\ 0 & 0 & 1\end{bmatrix}$. \sugeBulle{Recuerde que
+    $$J t=\lambda I t+N_{3} t$$
+    Utilice el hecho de que $e^{A+B}=e^{A} e^{B}$ si $A B=B A$.} \newpage
+    \item Usando el resultado del problema 241, calcule $e^{A t}$, donde $A = \begin{bmatrix*}[r]-2 & 1 & 0 \\ -2 & 1 & -1 \\ -1 & 1 & -1\end{bmatrix*}$.
+    \item Calcule $e^{A t}$, donde $A = \begin{bmatrix*}[r]-1 & -18 & -7 \\ 1 & -13 & -4 \\ -1 & 25 & 8\end{bmatrix*}$.
+    \item Calcule $e^{J t}$, donde $J = \begin{bmatrix} \lambda & 1 & 0 & 0 \\ 0 & \lambda & 1 & 0 \\ 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & \lambda \end{bmatrix}$.
+    \item Calcule $e^{A t}$, donde $A = \begin{bmatrix} 2 & 1 & 0 & 0 \\ 0 & 2 & 1 & 0 \\ 0 & 0 & 3 & 1 \\ 0 & 0 & 0 & 3 \end{bmatrix}$.
+    \item Considere un sistema de ecuaciones diferenciales
+    \begin{align*}
+        y'_1(t) & = a_{11}y_1(t) + a_{12}y_2(t) \\
+        y'_2(t) & = a_{21}y_1(t) + a_{22}y_2(t)
+    \end{align*}
+    o simplemente,
+    $$\mathbb{y}'(t) = A\mathbb{y}(t)$$
+    donde $A$ es una matriz $2 \times 2$. ¿Qué valores de $a_{11}$, $a_{12}$, $a_{21}$, $a_{22}$ hacen que las soluciones de componentes $y_1(t)$, $y_2(t)$ tienden a cero cuando $t$ tiende a infinito? En particular, ¿qué debe ser cierto sobre el determinante y la traza de $A$ para que esto suceda?
+    \item El circuito eléctrico ilustrado en la figura \ref{CIRCUILRC} se denomina \emph{circuito LRC paralelo}. Este circuito consta de una resistencia con valor de $R$ ohmios ($\Omega$), un inductor con una inductancia de $L$ henrios ($\mathrm{H}$), y un condensador con una capacidad de $C$ faradios ($\mathrm{F}$).
+    \begin{figure}[h!]
+        \centering
+        \begin{circuitikz}[american,cute inductors][americanvoltages]
+            \draw[-{Stealth[scale=1.5]}] (0,0) -- (0,1.25) -- (1,1.25);
+            \draw (0.5,1.25) -- (2,1.25);
+            \draw (4,1.25) -- (6,1.25) -- (6,0);
+            \draw (2,1.25) to[pC,invert,l=$C$] (4,1.25);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \draw[-{Stealth[scale=1.5]}] (0,0) -- (1,0);
+            \draw (0.5,0) -- (2,0);
+            \draw (4,0) -- (6,0);
+            \draw (2,0) to[R,l=$R$] (4,0);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \draw[-{Stealth[scale=1.5]}] (0,0) -- (0,-1.25) -- (1,-1.25);
+            \draw (0.5,-1.25) -- (2,-1.25);
+            \draw (4,-1.25) -- (6,-1.25) -- (6,0);
+            \draw (2,-1.25) to[L,invert,l=$L$] (4,-1.25);
+            \filldraw (0,0) circle (2pt);
+            \filldraw (6,0) circle (2pt);
+        \end{circuitikz}
+        \caption{Circuito LRC paralelo}
+        \label{CIRCUILRC}
+    \end{figure}
+    
+    En el análisis de circuitos eléctricos se demuestra que, en el instante $t$, la corriente $i_L$ que fluye a través del inductor y el voltaje $v_C$ aplicado al condensador son soluciones del sistema
+    $$\begin{bmatrix} i'_L(t) \\[1.5mm] v'_C(t) \end{bmatrix} = \begin{bmatrix} \phantom{-}0 & \phantom{-}\dfrac{1}{L} \\[2.5mm] -\dfrac{1}{C} & -\dfrac{1}{RC} \end{bmatrix} \begin{bmatrix} i_L(t) \\[1.5mm] v_C(t) \end{bmatrix}$$
+    \begin{enumerate}
+        \item Encuentre la solución general de este sistema en el caso en el que $R = 1$ ohmio, $L = 1$ henrio y $C = 0.5$ faradios.
+        \item Determine los valores de $i_L(t)$ y $v_C(t)$ sujetos a las condiciones iniciales $i_L(0) = 2$ amperios y $v_C(0) = 1$ voltio.
+        \item ¿Qué se puede decir sobre la corriente y el voltaje en la parte (b) a “largo plazo” (es decir, cuando $t$ tiende a infinito)?
+    \end{enumerate}
 \end{enumerate}

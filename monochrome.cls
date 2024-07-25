@@ -50,6 +50,22 @@ ItalicFont=Lato Light Italic,
 BoldItalicFont=Lato Italic
 ]
 
+\newfontfamily\Montserrat[Path=fonts/]{Montserrat-SemiBold.otf}
+
+\newfontfamily\cabin[Path=fonts/, Extension = .otf,
+   UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+BoldItalicFont = *-BoldItalic,]{Cabin}
+
+\newfontfamily\sansa[Path=fonts/, Extension = .ttf,
+   UprightFont = *_Regular,
+      BoldFont = *_Bold,
+    ItalicFont = *_Italic,
+BoldItalicFont = *_Bold_Italic,]{Sansation}
+
+\newfontfamily\rodondo[Path=fonts/, BoldFont = *,]{Rodondo.otf}
+
 
 %------------------------------------------------------------------------------
 %	TODOS LOS PAQUETES NECESARIOS PARA EL CORRECTO FUNCIONAMIENTO DEL DOCUMENTO
@@ -84,6 +100,8 @@ BoldItalicFont=Lato Italic
 \RequirePackage{floatrow}
 \RequirePackage{graphicx}
 \RequirePackage{subfig}
+\RequirePackage{makecell}
+\RequirePackage{nicematrix}
 \RequirePackage[section]{placeins} % Evita que los flotadores lleguen a las secciones transversales
 \RequirePackage{marginnote} % Provides options for margin notes
 \RequirePackage{marginfix} % Proporciona opciones para notas al margen
@@ -103,6 +121,7 @@ BoldItalicFont=Lato Italic
 \RequirePackage{emptypage} % Este paquete elimina encabezados y pies de página en páginas vacías entre capítulos. Importante para prólogos, introducción, etc.
 \RequirePackage{pdfpages}
 
+\RequirePackage{circuitikz,siunitx}
 \RequirePackage{tikz}
 \usetikzlibrary{shapes}
 \usetikzlibrary{positioning}
@@ -113,6 +132,7 @@ BoldItalicFont=Lato Italic
 \usetikzlibrary{calc}
 \usetikzlibrary{intersections}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.markings}
 \usetikzlibrary{matrix}
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{fit}
@@ -156,6 +176,11 @@ BoldItalicFont=Lato Italic
 \newlength{\wholeWidth}
 \setlength{\wholeWidth}{\textwidth}
 \addtolength{\wholeWidth}{\wholeMargin}
+
+\newlength\outermarginwidth
+\setlength\outermarginwidth{1.5cm}
+\newlength\covershift
+\setlength\covershift{5cm}
 
 \geometry{
     %showframe,
@@ -487,6 +512,14 @@ BoldItalicFont=Lato Italic
     }\,\,\,}
 }}
 
+\newcommand{\sugeBulle}[1]{
+\marginElement{\justify
+\textcolor{black}{\vrule width 3pt}\colorbox{white}{
+    \parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{\vspace{1mm}\textbf{\textcolor{black}{\fontfamily{lmr}\selectfont\large i}\qquad\small Sugerencia}\\[1.5mm]
+    #1
+    }\,\,\,}
+}}
+
 %----------------------------------------------------------------------------------------
 %	FLOTADORES: FIGURAS, TABLAS, LISTADOS Y LEYENDAS
 %----------------------------------------------------------------------------------------
@@ -522,6 +555,22 @@ BoldItalicFont=Lato Italic
 \DeclareFloatSeparators{marginparsep}{\hspace\marginparsep}
 
 \floatsetup[figure]{
+    %precode=twoparskip,
+    margins=hangright,
+    floatwidth=\textwidth,
+    font={normalsize},
+    capposition=beside,
+    captionskip=0mm,
+    capbesideposition={top,right},
+    capbesidewidth=sidefil,
+    capbesidesep=marginparsep,%
+    footposition=caption,
+    footskip=0.5\baselineskip,
+    footfont={small},
+	%postcode=twoparskip,
+}
+
+\floatsetup[table]{
     %precode=twoparskip,
     margins=hangright,
     floatwidth=\textwidth,
@@ -651,7 +700,7 @@ BoldItalicFont=Lato Italic
         \fill[black!90] ($(current page.west)+(0,-2.5)$) -- (current page.south west) -- ($(current page.south)+(2,0)$) -- cycle;
         \fill[black!60] (current page.south west) -- ($(current page.south)+(2,0)$) -- (E) -- cycle;
         \node[right,inner sep=0pt] at ($(current page.west)+(2,8)$) {\color{white}\scalebox{20}{\bfseries\@Roman\c@part}};
-        \node[right] at ($(current page.west)+(2,0.75)$) {\parbox[t][][t]{15cm}{\strut\raggedright\color{white}\fontsize{56}{56}\bfseries#2}};
+        \node[right] at ($(current page.west)+(2,0.75)$) {\parbox[t][][t]{15cm}{\strut\raggedright\renewcommand\baselinestretch{1.2}\selectfont\color{white}\fontsize{56}{56}\bfseries#2}};
     \end{tikzpicture}};
 \end{tikzpicture}}%
 \@endpart}
