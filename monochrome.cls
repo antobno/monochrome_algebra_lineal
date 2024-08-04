@@ -123,6 +123,7 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 
 \RequirePackage{circuitikz,siunitx}
 \RequirePackage{tikz}
+\RequirePackage{ifthen}
 \usetikzlibrary{shapes}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes.geometric}
@@ -785,7 +786,7 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 \DeclareMathOperator{\Adj}{adj} % adjunta
 \DeclareMathOperator{\Nuc}{Nu} % Nucleo de t.l
 \newcommand{\matrizmn}{\mathcal{M}_{m\times n} (\RR)} % conjunto de matrices
-\DeclareMathOperator{\proy}{proy} 
+\DeclareMathOperator{\proy}{proy}
 
 \newcommand{\REN}[1][]{\ensuremath{\ifstrempty{#1}{\widetilde{\mathcal{R}}}{\widetilde{\mathcal{R}}_{#1}}}}
 \newcommand{\COL}[1][]{\ensuremath{\ifstrempty{#1}{\widetilde{\mathcal{C}}}{\widetilde{\mathcal{C}}_{#1}}}}

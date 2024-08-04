@@ -1111,7 +1111,13 @@ La figura \ref{fig:examgrafos2} muestra diagramas que representan tres ejemplos 
         ] (O) circle (\radius);
         \draw[
             decoration={
-                markings, mark=at position 0.51 with {\arrow[>={Stealth[scale=1.25]}]{>}}
+                markings, mark=at position 0.45 with {\arrow[>={Stealth[scale=1.25]}]{<}}
+            },
+            postaction={decorate}
+        ] (O) circle (\radius);
+        \draw[
+            decoration={
+                markings, mark=at position 0.55 with {\arrow[>={Stealth[scale=1.25]}]{>}}
             },
             postaction={decorate}
         ] (O) circle (\radius);
@@ -1179,9 +1185,283 @@ $$M = \begin{bmatrix}
 \end{bmatrix}$$
 determina el grafo dirigido en la figura \ref{fig:matvergraf}.
 
-\begin{example}
-    Cierta familia está compuesta por una madre, un padre, una hija y dos hijos. Los miembros de la familia tienen influencia o poder entre ellos de la siguiente manera: la madre puede influir en la hija y el hijo mayor; el padre puede influir en los dos hijos; la hija puede influir en el padre; el hijo mayor puede influir en el hijo menor; y el hijo menor puede influir en la madre. Podemos modelar este patrón de influencia familiar con un grafo dirigido cuyos vértices son los cinco miembros de la familia. Si el miembro de la familia $A$ influye en el miembro de la familia $B$, escribimos $A \rightarrow B$. La Figura 10.5.4 es el grafo dirigido resultante, donde hemos utilizado designaciones obvias para los cinco miembros de la familia. La matriz de vértices de este grafo dirigido es
+\begin{example}\label{exam:graf1}
+    \sideFigure[\label{fig:grapfam}]{\centering
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (D) {};
+        \coordinate[above right=2cm and 2cm of D] (OS) {};
+        \coordinate[right=4cm of D] (F) {};
+        \coordinate[above=4cm of F] (YS) {};
+        \coordinate[left=4cm of YS] (M) {};
+        \draw (D) rectangle (YS);
+        \draw (M) -- (F);
+        \draw (OS) -- (YS);
+        %%%%% PUNTOS %%%%%
+        \filldraw (D) circle (1.75pt) node[left] {$H$};
+        \filldraw (F) circle (1.75pt) node[right] {$P$};
+        \filldraw (YS) circle (1.75pt) node[right] {$B$};
+        \filldraw (M) circle (1.75pt) node[left] {$M$};
+        \filldraw (OS) circle (1.75pt) node[below left] {$A$};
+        %%%%% FLECHAS %%%%%
+        \draw[-{Stealth[scale=1.25]}] (D) -- ($(D)!.5!(F)$);
+        \draw[-{Stealth[scale=1.25]}] (M) -- ($(M)!.5!(D)$);
+        \draw[-{Stealth[scale=1.25]}] (M) -- ($(M)!.5!(OS)$);
+        \draw[-{Stealth[scale=1.25]}] (F) -- ($(F)!.5!(OS)$);
+        \draw[-{Stealth[scale=1.25]}] (OS) -- ($(OS)!.5!(YS)$);
+        \draw[-{Stealth[scale=1.25]}] (YS) -- ($(YS)!.5!(M)$);
+        \draw[-{Stealth[scale=1.25]}] (F) -- ($(F)!.5!(YS)$);
+    \end{tikzpicture}
+    }
+    Una familia está compuesta por una madre ($M$), un padre ($P$), una hija ($H$) y dos hijos, el mayor ($A$) y el menor ($B$). Los miembros de esta familia tienen diversas formas de influencia o poder entre ellos. La madre ($M$) puede influir en la hija ($H$) y también en el hijo mayor ($A$). El padre ($P$) tiene la capacidad de influir en ambos hijos, es decir, en el mayor ($A$) y en el menor ($B$). Por otro lado, la hija ($H$) puede influir en el padre ($P$), estableciendo así\newpage
+    \sideFigure[\label{fig:ajedreztab}]{\includegraphics[width=\linewidth]{Images/Capitulo8/Chess.pdf}}
+    \sideFigure[\label{fig:ajedreztab2}]{\centering
+    \begin{tikzpicture}
+        \def\n{3}
+        \def\m{3}
+        \def\s{1.25cm}
+        \draw grid[step=\s] (\n*\s, \m*\s);
+        \foreach[evaluate] \x in {1,...,\n} {
+            \foreach[evaluate={
+                \zt = int(\x + \n*min(\y-1,\m+\y));
+                \zb = int(\x + (\n-2)*min(\y-1,\m+\y)+3);
+                }] \y in {1,...,\m} {
+                \node[font=\large] at ({\s*(0.5+(\x-1))},{\s*(\m+0.5-\y)}) {$\ifthenelse{\y>3}{\ifthenelse{\x>3}{\zb}}{\zt}$};
+                }
+            };
+    \end{tikzpicture}
+    }
+    \sideFigure[\label{fig:ajedreztab3}]{\centering
+    \begin{tikzpicture}[font=\small]
+        \def\dist{1.75cm}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[right=\dist of P1] (P2) {};
+        \coordinate[right=\dist of P2] (P3) {};
+        \coordinate[below=\dist of P3] (P6) {};
+        \coordinate[left=\dist of P6] (P5) {};
+        \coordinate[left=\dist of P5] (P4) {};
+        \coordinate[below=\dist of P4] (P7) {};
+        \coordinate[right=\dist of P7] (P8) {};
+        \coordinate[right=\dist of P8] (P9) {};
+        %%%%% FLECHAS %%%%%
+        \draw (P1) -- (P8) -- (P3) -- (P4) -- (P9) -- (P2) -- (P7) -- (P6) -- (P1);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P1)!.1!(P8)$) -- ($(P1)!.9!(P8)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P8)!.1!(P3)$) -- ($(P8)!.9!(P3)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P3)!.1!(P4)$) -- ($(P3)!.9!(P4)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P4)!.1!(P9)$) -- ($(P4)!.9!(P9)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P9)!.1!(P2)$) -- ($(P9)!.9!(P2)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P2)!.1!(P7)$) -- ($(P2)!.9!(P7)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P7)!.1!(P6)$) -- ($(P7)!.9!(P6)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P6)!.1!(P1)$) -- ($(P6)!.9!(P1)$);
+        %%%%% PUNTOS %%%%%
+        \filldraw (P1) circle (1.75pt) node[above,minimum height=2em] {$1$};
+        \filldraw (P2) circle (1.75pt) node[above,minimum height=2em] {$2$};
+        \filldraw (P3) circle (1.75pt) node[above,minimum height=2em] {$3$};
+        \filldraw (P4) circle (1.75pt) node[left,minimum width=2em] {$4$};
+        \filldraw (P5) circle (1.75pt) node[above,minimum height=2em] {$5$};
+        \filldraw (P6) circle (1.75pt) node[right,minimum width=2em] {$6$};
+        \filldraw (P7) circle (1.75pt) node[below,minimum height=2em] {$7$};
+        \filldraw (P8) circle (1.75pt) node[below,minimum height=2em] {$8$};
+        \filldraw (P9) circle (1.75pt) node[below,minimum height=2em] {$9$};
+    \end{tikzpicture}
+    }
+    \sideFigure[\label{fig:ajedreztab4}]{\centering
+    \begin{tikzpicture}[font=\small, every node/.style={minimum size=2em}]
+        \def\radius{2}
+        %%%%% COORDENADAS %%%%%%
+        \coordinate (O) {};
+        \coordinate (P4) at ($(O) +(0*180:\radius)$) {};
+        \coordinate (P3) at ($(O) +(0.25*180:\radius)$) {};
+        \coordinate (P8) at ($(O) +(0.5*180:\radius)$) {};
+        \coordinate (P1) at ($(O) +(0.75*180:\radius)$) {};
+        \coordinate (P6) at ($(O) +(1*180:\radius)$) {};
+        \coordinate (P7) at ($(O) +(1.25*180:\radius)$) {};
+        \coordinate (P2) at ($(O) +(1.5*180:\radius)$) {};
+        \coordinate (P9) at ($(O) +(1.75*180:\radius)$) {};
+        %%%%% FLECHAS %%%%%
+        \foreach \i in {0,1,2,...,7} {
+        \draw[
+            decoration={
+                markings, mark=at position 0.0375+0.125*\i with {\arrow[>={Stealth[scale=1.25]}]{<}}
+            },
+            postaction={decorate}
+        ] (O) circle (\radius);
+        \draw[
+            decoration={
+                markings, mark=at position 0.1+0.125*\i with {\arrow[>={Stealth[scale=1.25]}]{>}}
+            },
+            postaction={decorate}
+        ] (O) circle (\radius);
+        }
+        %%%%% PUNTOS %%%%%
+        \filldraw (O) circle (1.75pt) node[above] {$5$};
+        \filldraw (P4) circle (1.75pt) node[right] {$4$};
+        \filldraw (P3) circle (1.75pt) node[right,yshift=0.1cm] {$3$};
+        \filldraw (P8) circle (1.75pt) node[above] {$8$};
+        \filldraw (P1) circle (1.75pt) node[left,yshift=0.1cm] {$1$};
+        \filldraw (P6) circle (1.75pt) node[left,yshift=-0.1cm] {$6$};
+        \filldraw (P7) circle (1.75pt) node[left,yshift=-0.1cm] {$7$};
+        \filldraw (P2) circle (1.75pt) node[below] {$2$};
+        \filldraw (P9) circle (1.75pt) node[right,yshift=-0.1cm] {$9$};
+    \end{tikzpicture}
+    }
+    \noindent una dinámica única. Además, el hijo mayor ($A$) tiene la capacidad de influir en el hijo menor ($B$). Finalmente, el hijo menor ($B$) puede ejercer influencia sobre la madre ($M$). Podemos modelar este patrón de influencia familiar con un grafo dirigido cuyos vértices son los cinco miembros de la familia. Si el miembro de la familia $A$ influye en el miembro de la familia $B$, escribimos $A \rightarrow B$. La figura \ref{fig:grapfam} es el grafo dirigido resultante, donde hemos utilizado las anteriores designaciones para los cinco miembros de la familia. La matriz de vértices de este grafo dirigido es\\
+    \begin{nscenter}
+        \begin{tikzpicture}
+            \node (A) at (0,0) {$\begin{bmatrix} 0 & 0 & 1 & 1 & 0 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 & 0 \end{bmatrix}$};
+            \node[black!90!white, xshift=-1cm, yshift=0.1cm] at (A.north) {$M$};
+            \node[black!90!white, xshift=-0.5cm, yshift=0.1cm] at (A.north) {$P$};
+            \node[black!90!white, yshift=0.1cm] at (A.north) {$H$};
+            \node[black!90!white, xshift=0.5cm, yshift=0.1cm] at (A.north) {$A$};
+            \node[black!90!white, xshift=1cm, yshift=0.1cm] at (A.north) {$B$};
+            \node[black!90!white, yshift=0.85cm, xshift=-0.1cm] at (A.west) {$M$};
+            \node[black!90!white, yshift=0.47cm, xshift=-0.1cm] at (A.west) {$P$};
+            \node[black!90!white, yshift=0.05cm, xshift=-0.1cm] at (A.west) {$H$};
+            \node[black!90!white, yshift=-0.35cm, xshift=-0.1cm] at (A.west) {$A$};
+            \node[black!90!white, yshift=-0.8cm, xshift=-0.1cm] at (A.west) {$B$};
+        \end{tikzpicture}
+    \end{nscenter}
 \end{example}
+
+\begin{example}
+    En ajedrez, el caballo se mueve en un patrón en forma de “L” sobre el tablero. Para el tablero en la figura \ref{fig:ajedreztab}, puede moverse horizontalmente dos casillas y luego verticalmente una casilla, o puede moverse verticalmente dos casillas y luego horizontalmente una casilla. Así, desde la casilla central en la figura, el caballo puede moverse a cualquiera de las ocho casillas sombreadas marcadas. Supongamos que el caballo está restringido a las nueve casillas numeradas en la figura \ref{fig:ajedreztab2}. Si con $i \to j$ se quiere decir que el caballo puede moverse de la casilla $i$ a la casilla $j$, el grafo dirigido en la figura \ref{fig:ajedreztab3} ilustra todos los movimientos posibles que el caballo puede realizar entre estas nueve casillas. En la figura \ref{fig:ajedreztab4} hemos “desenredado” la figura \ref{fig:ajedreztab3} para hacer más claro el patrón de movimientos posibles. La matriz de vértices de este grafo dirigido es
+    $$M = \begin{bmatrix}
+        0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 
+    \end{bmatrix}$$
+\end{example}
+
+En el ejemplo \ref{exam:graf1}, el padre no puede influir directamente a la madre; es decir, $P \to M$ no es cierto. Sin embargo, puede influir en el hijo menor, quien a su vez puede influir en la madre. Esto se escribe como $P \to B \to M$ y se denomina una conexión de $2$ pasos de $P$ a $M$. De manera similar, $M \to H$ es una conexión de $1$ paso, mientras que $P \to A \to B \to M$ es una conexión de $3$ pasos, y así sucesivamente.
+
+Consideremos ahora una técnica para determinar el número de todas las posibles conexiones de $r$ pasos ($r = 1, 2, \dots$) desde un vértice $P_i$ hasta otro vértice $P_j$ en un grafo dirigido arbitrario (esto incluye el caso en que $P_i$ y $P_j$ sean el mismo vértice). El número de conexiones de $1$ paso desde $P_i$ hasta $P_j$ es simplemente $m_{ij}$. Es decir, hay cero o una conexión de $1$ paso desde $P_i$ hasta $P_j$, dependiendo de si $m_{ij}$ es cero o uno. Para el número de conexiones de $2$ pasos, consideramos el cuadrado de la matriz de vértices. Si designamos $m_{ij}^{(2)}$ como el elemento $(i, j)$-ésimo de $M^2$, tenemos que
+\begin{equation}
+    m_{ij}^{(2)} = m_{i1}m_{ij} + m_{i2}m_{2j} + \cdots + m_{in}m_{nj} \label{eq:grafos1}
+\end{equation}
+Ahora bien, si $m_{i1} = m_{1j} = 1$, hay una conexión de $2$ pasos $P_i \to P_1 \to P_j$ desde $P_i$ hasta $P_j$. Sin embargo, si $m_{i1}$ o $m_{1j}$ es cero, dicha conexión de $2$ pasos no es posible. Por lo tanto, $P_i \to P_1 \to P_j$ es una conexión de $2$ pasos solo si $m_{i1}m_{1j} = 1$. De manera similar, para cualquier $k = 1, 2, \dots, n$, $P_i \to P_k \to P_j$ es una conexión de $2$ pasos desde $P_i$ hasta $P_j$ solo si el término $m_{ik}m_{kj}$ en el lado derecho de \eqref{eq:grafos1} es uno; de lo contrario, el término es cero. Así, el lado derecho de \eqref{eq:grafos1} representa el número total de conexiones de $2$ pasos desde $P_i$ hasta $P_j$.
+
+Un razonamiento similar se puede aplicar para encontrar el número de conexiones de $3$, $4$, $\dots$, $r$ pasos desde $P_i$ hasta $P_j$. En general, obtenemos el siguiente resultado.
+
+\begin{theorem}\label{theo:rconexiones}
+    Sea $M$ la matriz de vértices de un grafo dirigido y sea $m^{(r)}_{ij}$ el elemento $(i, j)$-ésimo de $M^r$. Entonces, $m^{(r)}_{ij}$ es igual al número de conexiones de $r$ pasos desde $P_i$ hasta $P_j$.
+\end{theorem}
+
+\begin{example}
+    \sideFigure[\label{fig:examgrafoss3}]{\centering
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=3cm and 3cm of P1] (P2) {};
+        \coordinate[below right=3.1cm and 1.4cm of P2] (P3) {};
+        \coordinate[below left=2.5cm and 2.9cm of P3] (P4) {};
+        %%%%% PUNTOS %%%%%
+        \filldraw (P1) circle (1.75pt) node[left] {$P_1$};
+        \filldraw (P2) circle (1.75pt) node[above] {$P_2$};
+        \filldraw (P3) circle (1.75pt) node[right] {$P_3$};
+        \filldraw (P4) circle (1.75pt) node[below] {$P_4$};
+        %%%%% FLECHAS %%%%%
+        \draw (P1) -- (P2) -- (P3) -- (P4);
+        \draw[name path=P1--P3] (P1) -- (P3);
+        \draw[name path=P2--P4] (P2) -- (P4);
+        \path[name intersections={of=P1--P3 and P2--P4,by=P}];
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P1)!.25!(P2)$) -- ($(P1)!.75!(P2)$);
+        \draw[-{Stealth[scale=1.25]}] (P2) -- ($(P2)!.5!(P3)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P3)!.25!(P4)$) -- ($(P3)!.75!(P4)$);
+        \draw[-{Stealth[scale=1.25]}] (P) -- ($(P)!.5!(P1)$);
+        \draw[-{Stealth[scale=1.25]}] (P) -- ($(P)!.5!(P2)$);
+        \draw[-{Stealth[scale=1.25]}] (P) -- ($(P)!.5!(P3)$);
+    \end{tikzpicture}
+    }
+    La figura \ref{fig:examgrafoss3} es el mapa de rutas de una pequeña aerolínea que opera en las cuatro ciudades $P_1$, $P_2$, $P_3$, y $P_4$. Como un grafo dirigido, su matriz de vértices es
+    $$M = \begin{bmatrix}
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 1 & 0
+    \end{bmatrix}$$
+    y además, tenemos que
+    $$M^2 = \begin{bmatrix}
+        2 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1 \\
+        0 & 2 & 2 & 0 \\
+        2 & 0 & 1 & 1
+    \end{bmatrix} \quad \text{ y } \quad M^3 = \begin{bmatrix}
+        1 & 3 & 3 & 1 \\
+        2 & 2 & 3 & 1 \\
+        4 & 0 & 2 & 2 \\
+        1 & 3 & 3 & 1
+    \end{bmatrix}$$
+    Si estamos interesados en las conexiones de la ciudad $P_4$ a la ciudad $P_3$, podemos usar el teorema \ref{theo:rconexiones} para encontrar su número. Dado que $m_{43} = 1$, hay una conexión de un paso; dado que $m_{43}^{(2)} = 1$, hay una conexión de dos pasos; y dado que $m_{43}^{(3)} = 3$, hay tres conexiones de tres pasos. Para verificar esto, en la figura \ref{fig:examgrafoss3} encontramos que
+    \begin{align*}
+        \text{Conexiones de un paso de } P_4 \text{ a } P_3:& & P_4 &\to P_3 \\
+        \text{Conexiones de dos pasos de } P_4 \text{ a } P_3:& & P_4 &\to P_2 \to P_3 \\
+        \text{Conexiones de tres pasos de } P_4 \text{ a } P_3:& & P_4 &\to P_3 \to P_4 \to P_3 \\
+        & & P_4 &\to P_2 \to P_1 \to P_3 \\
+        & & P_4 &\to P_3 \to P_1 \to P_3
+    \end{align*}
+\end{example}
+
+\subsection*{Cliques}
+
+En lenguaje cotidiano, una "clique" es un grupo de personas muy unido (usualmente de tres personas o más) que tiende a comunicarse entre sí y no tiene espacio para los extraños. En la teoría de grafos, este concepto se define de manera más precisa.
+
+\begin{definition}
+    Un subconjunto de un grafo dirigido se llama “clique” si cumple con las siguientes tres condiciones:
+    \begin{enumerate}[label=\roman*)]
+        \item El subconjunto contiene al menos tres vértices.
+        \item Para cada par de vértices $P_i$ y $P_j$ en el subconjunto, se cumplen tanto $P_i \rightarrow P_j$ como $P_j \rightarrow P_i$.
+        \item El subconjunto es lo más grande posible; es decir, no es posible agregar otro vértice al subconjunto y seguir cumpliendo la condición (ii).
+    \end{enumerate}
+\end{definition}
+
+\newpage\noindent
+Esta definición implica que una clique es un subconjunto máximo de vértices que están en perfecta “comunicación” entre sí. Por ejemplo, si los vértices representan ciudades y $P_i \rightarrow P_j$ indica que hay un vuelo directo entre la ciudad $P_i$ y la ciudad $P_j$, entonces dentro de una clique, cada par de ciudades tiene un vuelo directo en ambas direcciones.
+
+\begin{definition}
+    \sideFigure[\label{fig:examgrafoss3}]{\centering
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=2cm and 1.25cm of P1] (P2) {};
+        \coordinate[above left=2cm and 1.25cm of P2] (P3) {};
+        \coordinate[below right=2cm and 3.5cm of P3] (P4) {};
+        \coordinate[above left=4cm and 2cm of P4] (P5) {};
+        \coordinate[below right=2cm and 2.5cm of P5] (P6) {};
+        \coordinate[below left=3.5cm and 1.5cm of P6] (P7) {};
+        %%%%% PUNTOS %%%%%
+        \filldraw (P1) circle (1.75pt) node[below] {$P_1$};
+        \filldraw (P2) circle (1.75pt) node[right,yshift=-0.2cm] {$P_2$};
+        \filldraw (P3) circle (1.75pt) node[left] {$P_3$};
+        \filldraw (P4) circle (1.75pt) node[right] {$P_4$};
+        \filldraw (P5) circle (1.75pt) node[above] {$P_5$};
+        \filldraw (P6) circle (1.75pt) node[right] {$P_6$};
+        \filldraw (P7) circle (1.75pt) node[right] {$P_7$};
+        %%%%% FLECHAS %%%%%
+        \draw (P1) -- (P2) -- (P3) -- (P1) -- (P4) -- (P2) -- (P1) -- (P4) -- (P3) -- (P5) -- (P6) -- (P3) -- (P5) -- (P6) -- (P4) -- (P7);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P1)!.25!(P3)$) -- ($(P1)!.75!(P3)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P1)!.25!(P2)$) -- ($(P1)!.75!(P2)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P1)!.25!(P4)$) -- ($(P1)!.75!(P4)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P2)!.25!(P4)$) -- ($(P2)!.75!(P4)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P3)!.25!(P4)$) -- ($(P3)!.75!(P4)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P2)!.25!(P3)$) -- ($(P2)!.75!(P3)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P3)!.25!(P6)$) -- ($(P3)!.75!(P6)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P4)!.25!(P6)$) -- ($(P4)!.75!(P6)$);
+        \draw[{Stealth[scale=1.25]}-{Stealth[scale=1.25]}] ($(P7)!.25!(P4)$) -- ($(P7)!.75!(P4)$);
+        \draw[-{Stealth[scale=1.25]}] (P3) -- ($(P3)!.5!(P5)$);
+        \draw[-{Stealth[scale=1.25]}] (P5) -- ($(P5)!.5!(P6)$);
+    \end{tikzpicture}
+    }
+    El grafo dirigido ilustrado en la figura \ref{fig:examgrafoss3} (que podría representar el mapa de rutas de una aerolínea) tiene dos cliques:
+    $$\{P_1, P_2, P_3, P_4\} \quad \text{ y } \quad \{P_3, P_4, P_6\}$$
+    Este ejemplo muestra que un grafo dirigido puede contener varios cliques y que un vértice puede pertenecer a más de un clique simultáneamente.
+\end{definition}
 
 %\section{Juegos de estrategia}
 

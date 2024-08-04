@@ -351,20 +351,61 @@ Sin embargo, en algunas demostraciones por inducción conviene emplear el siguie
 
 \section{El principio de buen orden}
 
-\noindent\textbf{Principio del Buen Orden:} Si $A$ es un subconjunto no vacío de los números naturales, entonces $A$ posee primer elemento (o mínimo), es decir, existe $a \in A$ tal que $a \geq b$, $\forall b \in A$.
+\noindent\textbf{Principio de Buen Orden:} Si $A$ es un subconjunto no vacío de los números naturales, entonces existe $a \in A$ tal que $a \leq x$, $\forall x \in A$, es decir, $A$ tiene elemento mínimo, que es $a$. Al elemento mínimo de $A$, también llamado primer elemento de $A$, se le denota por $\min A$, es decir, $a = \min A$.
 
-\begin{definition}
-    Para toda $n \in \NN$, definimos a $S(n)=n+1$ como el sucesor de $n$.
-\end{definition}
+\begin{example}
+    Consideremos el conjunto $A = \{5, 10, 15, 20, 25, 30\}$ que es un subconjunto no vacío de los números naturales. De acuerdo con el Principio de Buen Orden, debe existir un elemento mínimo en este conjunto. En este caso, ese elemento es $5$, ya que es menor o igual a todos los demás elementos en el conjunto. Por lo tanto, podemos decir que
+    $$a = \min A = 5$$
+\end{example}
 
-\begin{definition}
-    Para toda $n \in \NN$ tal que $n \geq 1$, definimos el antecesor de $n$ como $n-1$.
-\end{definition}
+\begin{example}
+    Todo número natural puede ser representado como una suma de unos. \\
+    \demostracion Queremos demostrar que para cualquier número natural $n$, se puede escribir:
+    $$n = \underbrace{1 + 1 + \cdots + 1}_{n \text{ veces}}$$
+    Consideremos el conjunto $A$ de todos los números naturales que no pueden ser escritos como una suma de unos. Es decir:
+    $$A = \{ n \in \NN \mid n \text{ no puede ser escrito como una suma de unos} \}$$
+    Según el Principio de Buen Orden, si $A$ no es vacío, entonces debe tener un elemento mínimo. Sea $m$ el elemento mínimo de $A$. Por definición, $m$ no puede ser escrito como una suma de unos. Ahora, consideremos $m - 1$. Si $m - 1 = 0$, entonces $m = 1$. Sin embargo, $1$ puede ser escrito como una suma de un único $1$, es decir, $1 = 1$. Esto es una contradicción porque asumimos que $m$ no puede ser escrito como una suma de unos. Si $m - 1$ es un número natural positivo, entonces $m - 1$ debe ser escribible como una suma de unos, ya que $m$ es el mínimo elemento de $A$ y $m - 1 < m$. Supongamos entonces que $m - 1$ puede ser escrito como
+    $$m - 1 = 1 + 1 + \cdots + 1 \quad \text{ con } m - 1 \text{ unos}$$
+    Al agregar un $1$ más a esta suma, obtenemos
+    $$m = (1 + 1 + \cdots + 1) + 1 \quad \text{ con } m \text{ unos}$$
+    Esto demuestra que $m$ puede ser escrito como una suma de unos, lo cual es una contradicción porque $m$ se suponía que no podía ser escrito como una suma de unos. Dado que suponer que $A$ no es vacío nos lleva a una contradicción, debemos concluir que $A$ es vacío. Esto significa que no existe ningún número natural que no pueda ser escrito como una suma de unos. Por lo tanto, hemos demostrado que cualquier número natural $n$ puede ser representado como una suma de unos.
+\end{example}
+
+\begin{example}
+    Todo número natural mayor que $1$ puede ser descompuesto en un producto de números primos. \\
+    \demostracion Supongamos que existe un conjunto $B$ de números naturales mayores que $1$ que no pueden ser descompuestos en un producto de números primos. Si $B \neq \emptyset$, entonces tiene un elemento mínimo $n$. Si $n$ es primo, es un producto de un solo número primo, contradiciendo la suposición de que $n$ no puede ser descompuesto en un producto de números primos. Por lo tanto, $n$ no puede ser primo y debe ser compuesto. Entonces, existen $a$ y $b$ tales que $1 < a, b < n$ y $n = a \cdot b$. Como $a, b < n$ y $n$ es el mínimo elemento de $B$, $a$ y $b$ no pueden pertenecer a $B$ y pueden ser descompuestos en un producto de números primos. Entonces, $n$ puede ser expresado como
+    $$n = a \cdot b = (p_1 \cdot p_2 \cdots p_k) \cdot (q_1 \cdot q_2 \cdots q_m)$$
+    donde $a = p_1 \cdot p_2 \cdots p_k$ y $b = q_1 \cdot q_2 \cdots q_m$ son productos de números primos. Esto contradice la suposición de que $n$ no puede ser descompuesto en un producto de números primos, por lo que $B = \emptyset$. En otras palabras, no existe ningún número natural mayor que $1$ que no pueda ser descompuesto en un producto de números primos. Por lo tanto, hemos demostrado que todo número natural mayor que $1$ puede ser descompuesto en un producto de números primos, utilizando el Principio del Buen Orden.
+\end{example}
+
+\begin{example}
+    Todo número natural mayor que $1$ tiene un divisor primo. \\
+    \demostracion Supongamos, para llegar a una contradicción, que existe un número natural mayor que $1$ que no tiene un divisor primo. Sea
+    $$A = \{ n \in \NN \mid n > 1 \text{ y } n \text{ no tiene un divisor primo} \}$$
+    Queremos demostrar que este conjunto es vacío utilizando el Principio de Buen Orden. Supongamos que $A$ no es vacío. Entonces, por el Principio de Buen Orden, $A$ tiene un elemento mínimo. Sea $n$ el elemento mínimo de $A$. Esto significa que $n$ no tiene un divisor primo. Si $n$ es primo, entonces $n$ tiene un divisor primo: sí mismo. Esto contradeciría la suposición de que $n$ no tiene un divisor primo. Por lo tanto, $n$ no puede ser un número primo. En consecuencia, $n$ debe ser compuesto, lo que significa que se puede expresar como un producto de dos números naturales menores que $n$. Es decir, existen $a$ y $b$ tales que $n = a \cdot b$ donde $1 < a, b < n$ Dado que $a$ y $b$ son menores que $n$ y $n$ es el mínimo elemento de $A$, los números $a$ y $b$ no pueden pertenecer a $A$. Esto implica que tanto $a$ como $b$ tienen un divisor primo. Sea $p$ un divisor primo de $a$ o $b$. Entonces $p$ también es un divisor de $n = a \cdot b$, lo que contradice la suposición de que $n$ no tiene un divisor primo. Dado que nuestra suposición de que $A$ no es vacío nos lleva a una contradicción, debemos concluir que $A$ es vacío. En otras palabras, no existe ningún número natural mayor que $1$ que no tenga un divisor primo. Por lo tanto, hemos demostrado que todo número natural mayor que $1$ tiene un divisor primo, utilizando el Principio de Buen Orden.
+\end{example}
 
 \begin{theorem}
     El Principio de Buen Orden es equivalente al Principio de Inducción. \\
-    \demostracion Se deja como ejercicio al lector.
+    \demostracion
+    \begin{enumerate}
+        \item[$\Rightarrow$)] El Principio de Buen Orden implica el Principio de Inducción: Supongamos que existe $M \subset \NN$ tal que
+        \begin{enumerate}[label=\roman*)]
+            \item $1 \in M$,
+            \item $k \in M \Longrightarrow k + 1 \in M$.
+        \end{enumerate}
+        Supongamos que $M \neq \NN$. Sea $M^C = \NN - M$ el complemento de $M$. Como $M \neq \NN$, entonces $M^C \neq \emptyset$, por tanto existe $a \in M^C$ tal que $a \leq x$, $\forall x \in M^C$. Como $1 \in M$, entonces $1 \notin M^C$, así que $a \neq 1$, por tanto existe $k \in \NN$ tal que $k + 1 = a$, entonces $k \notin M^C$ y por tanto $k \in M$, de donde se sigue, aplicando (ii), que $k + 1 = a \in M$, lo cual es una contradicción, pues $a \in M^C$ y $M \cap M^C = \emptyset$. Por tanto, si $M \subset \NN$ y se cumplen (i) y (ii), se debe cumplir que $M = \NN$.
+        \item[$\Leftarrow$)] El Principio de Inducción implica el Principio de Buen Orden: Sea $A \subset \NN$ con $A \neq \emptyset$. Supongamos que $A$ no tiene elemento mínimo, es decir, supongamos que $\forall k \in A$, existe $x \in A$ tal que $x < k$. Consideremos a $B = \{ y \in \NN \mid y < x, \forall x \in A \}$. Ya que $x \nless x$, $\forall x \in A$, entonces $B \cap A = \emptyset$. Demostremos ahora, aplicando el Principio de Inducción Matemática, que $B = \NN$. Por como se define, es claro que $B \subset \NN$.\newpage
+        \begin{enumerate}[label=\roman*)]
+            \item Afirmamos que $1 \in B$. Esto ya que $1 \leq n$, $\forall n \in \NN$, entonces $1 \leq x$, $\forall x \in A$. Además $1 \notin A$, ya que si $1 \in A$, entonces $1 = \min A$, lo que contradice la suposición de que $A$ no tiene elemento mínimo. Por tanto, $1 < x$, $\forall x \in A$, y en consecuencia $1 \in B$.
+            \item Supongamos que $n \in B$, es decir, supongamos que $n < x$, $\forall x \in A$.
+            \item Probaremos a partir de (ii) que $n + 1 \in B$. Si $n \in B$ entonces $n < x$, $\forall x \in A$, por tanto $n + 1 \leq x$, $\forall x \in A$, y por tanto $n + 1 \in B$.
+        \end{enumerate}
+        Por (i), (ii) y (iii), $B = \NN$. Como $A \subset \NN = B$ y $B \cap A = \emptyset$, entonces $A = \emptyset$, lo cual contradice que $A \neq \emptyset$. En consecuencia, si $A \subset \NN$ y $A \neq \emptyset$, entonces $A$ debe tener elemento mínimo.
+    \end{enumerate}
 \end{theorem}
+
+Al utilizar el Principio de Buen Orden, se pueden abordar problemas complejos al enfocarse en el elemento más pequeño de un conjunto, lo cual a menudo conduce a contradicciones que invalidan suposiciones erróneas. 
 
 \section{Más ejemplos de inducción}
 
@@ -503,6 +544,418 @@ Sin embargo, en algunas demostraciones por inducción conviene emplear el siguie
 
 \newpage
 
+\begin{example}
+    Sea
+    $$A = \begin{bmatrix}
+        1 & 0 & 1 \\
+        0 & 0 & 0 \\
+        1 & 0 & 1
+    \end{bmatrix}$$
+    Encuentre $A^n$ para toda $n \in \NN$. \\
+    \solucion Deseamos calcular $A^n$. Para esto, primero calculemos varias potencias de esta matriz como sigue:
+    \begin{align*}
+        A^2 & = \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1
+        \end{bmatrix} \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            2 & 0 & 2 \\
+            0 & 0 & 0 \\
+            2 & 0 & 2
+        \end{bmatrix} \\
+        A^3 & = \begin{bmatrix}
+            2 & 0 & 2 \\
+            0 & 0 & 0 \\
+            2 & 0 & 2
+        \end{bmatrix} \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            4 & 0 & 4 \\
+            0 & 0 & 0 \\
+            4 & 0 & 4
+        \end{bmatrix} \\
+        A^4 & = \begin{bmatrix}
+            4 & 0 & 4 \\
+            0 & 0 & 0 \\
+            4 & 0 & 4
+        \end{bmatrix} \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            8 & 0 & 8 \\
+            0 & 0 & 0 \\
+            8 & 0 & 8
+        \end{bmatrix} \\
+        A^5 & = \begin{bmatrix}
+            8 & 0 & 8 \\
+            0 & 0 & 0 \\
+            8 & 0 & 8
+        \end{bmatrix} \begin{bmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+            16 & 0 & 16 \\
+            0 & 0 & 0 \\
+            16 & 0 & 16
+        \end{bmatrix}
+    \end{align*}
+    Observemos que existe un patrón, así que proponemos
+    $$A^n = \begin{bmatrix}
+        2^{n-1} & 0 & 2^{n-1} \\
+        0 & 0 & 0 \\
+        2^{n-1} & 0 & 2^{n-1}
+    \end{bmatrix}$$
+    Probemosla por medio de inducción sobre $n$.
+    \begin{enumerate}[label=\roman*.]
+        \item Para $n = 1$ es evidente que se cumple.
+        \item Supongamos que la hipótesis se cumple para $n = k$, es decir,
+        $$A^k = \begin{bmatrix}
+            2^{k-1} & 0 & 2^{k-1} \\
+            0 & 0 & 0 \\
+            2^{k-1} & 0 & 2^{k-1}
+        \end{bmatrix}$$
+        \item A partir de (ii), probemos que se cumple para $n = k + 1$, es decir,
+        $$A^{k+1} = \begin{bmatrix}
+            2^k & 0 & 2^k \\
+            0 & 0 & 0 \\
+            2^k & 0 & 2^k
+        \end{bmatrix}$$
+        En efecto, se tiene
+        \begin{align*}
+            A^{k+1} & = A^k A \\
+            & = \begin{bmatrix}
+                2^{k-1} & 0 & 2^{k-1} \\
+                0 & 0 & 0 \\
+                2^{k-1} & 0 & 2^{k-1}
+            \end{bmatrix} \begin{bmatrix}
+                1 & 0 & 1 \\
+                0 & 0 & 0 \\
+                1 & 0 & 1
+            \end{bmatrix} \\
+            & = \begin{bmatrix}
+                2^{k-1} + 2^{k-1} & 0 & 2^{k-1} + 2^{k-1} \\
+                0 & 0 & 0 \\
+                2^{k-1} + 2^{k-1} & 0 & 2^{k-1} + 2^{k-1}
+            \end{bmatrix} \\
+            & = \begin{bmatrix}
+                2^k & 0 & 2^k \\
+                0 & 0 & 0 \\
+                2^k & 0 & 2^k
+            \end{bmatrix}
+        \end{align*}
+    \end{enumerate}
+    Por lo tanto, se cumple que
+    $$A^n = \begin{bmatrix}
+        2^{n-1} & 0 & 2^{n-1} \\
+        0 & 0 & 0 \\
+        2^{n-1} & 0 & 2^{n-1}
+    \end{bmatrix}, \forall n \in \NN .$$
+\end{example}
+
+\newpage
+
+\begin{example}
+    Sea $a \in \RR$ y sea
+    $$A = \begin{bmatrix}
+        a & 1 \\
+        0 & a
+    \end{bmatrix}$$
+    Encuentre $A^n$ para toda $n \in \NN$. \\
+    \solucion Deseamos calcular $A^n$. Para esto, primero calculemos varias potencias de esta matriz como sigue:
+    \begin{align*}
+        A^2 & = \begin{bmatrix}
+            a & 1 \\
+            0 & a
+        \end{bmatrix} \begin{bmatrix}
+            a & 1 \\
+            0 & a
+        \end{bmatrix} = \begin{bmatrix}
+            a^2 & 2a \\
+            0 & a^2
+        \end{bmatrix} \\
+        A^3 & = \begin{bmatrix}
+            a^2 & 2a \\
+            0 & a^2
+        \end{bmatrix} \begin{bmatrix}
+            a & 1 \\
+            0 & a
+        \end{bmatrix} = \begin{bmatrix}
+            a^3 & 3a^2 \\
+            0 & a^3
+        \end{bmatrix} \\
+        A^4 & = \begin{bmatrix}
+            a^3 & 3a^2 \\
+            0 & a^3
+        \end{bmatrix} \begin{bmatrix}
+            a & 1 \\
+            0 & a
+        \end{bmatrix} = \begin{bmatrix}
+            a^4 & 4a^3 \\
+            0 & a^4
+        \end{bmatrix} \\
+        A^5 & = \begin{bmatrix}
+            a^4 & 4a^3 \\
+            0 & a^4
+        \end{bmatrix} \begin{bmatrix}
+            a & 1 \\
+            0 & a
+        \end{bmatrix} = \begin{bmatrix}
+            a^5 & 5a^4 \\
+            0 & a^5
+        \end{bmatrix}
+    \end{align*}
+    Observemos que existe un patrón, así que proponemos
+    $$A^n = \begin{bmatrix}
+        a^n & na^{n-1} \\
+        0 & a^n
+    \end{bmatrix}$$
+    Probemosla por medio de inducción sobre $n$.
+    \begin{enumerate}[label=\roman*.]
+        \item Para $n = 1$ es evidente que se cumple.
+        \item Supongamos que la hipótesis se cumple para $n = k$, es decir,
+        $$A^k = \begin{bmatrix}
+            a^k & ka^{k-1} \\
+            0 & a^k
+        \end{bmatrix}$$
+        \item A partir de (ii), probemos que se cumple para $n = k + 1$, es decir,
+        $$A^{k+1} = \begin{bmatrix}
+            a^{k+1} & (k+1)a^k \\
+            0 & a^{k+1}
+        \end{bmatrix}$$
+        En efecto, se tiene
+        \begin{align*}
+            A^{k+1} & = A^k A \\
+            & = \begin{bmatrix}
+                a^k & ka^{k-1} \\
+                0 & a^k
+            \end{bmatrix} \begin{bmatrix}
+                a & 1 \\
+                0 & a
+            \end{bmatrix} \\
+            & = \begin{bmatrix}
+                a^{k+1} & a^k + ka^k \\
+                0 & a^{k+1}
+            \end{bmatrix} \\
+            & = \begin{bmatrix}
+                a^{k+1} & (k+1)a^k \\
+                0 & a^{k+1}
+            \end{bmatrix}
+        \end{align*}
+    \end{enumerate}
+    Por lo tanto, se cumple que
+    $$A^n = \begin{bmatrix}
+        a^n & na^{n-1} \\
+        0 & a^n
+    \end{bmatrix}, \forall n \in \NN .$$
+\end{example}
+
+\begin{example}
+    Demuestra la siguiente igualdad usando inducción:
+    $$\begin{vmatrix}
+        1 + x^2 & x & 0 & \cdots & 0 & 0 \\
+        x & 1 + x^2 & x & \cdots & 0 & 0 \\
+        0 & x & 1 + x^2 & \ddots & 0 & 0 \\
+        \vdots & & & \ddots & & \\
+        0 & 0 & 0 & \ddots & 1 + x^2 & x \\
+        0 & 0 & 0 & \cdots & x & 1 + x^2
+    \end{vmatrix} = 1 + x^2 + x^4 + \cdots + x^{2n}$$
+    \demostracion Para $n = 1$, la matriz es simplemente
+    $$A_1 = \begin{bmatrix} 1 + x^2 \end{bmatrix}$$\newpage\noindent
+    y el determinante de $A_1$ es
+    $$D_1 = 1 + x^2$$
+    que coincide con la fórmula $1 + x^2$. Para $n = 2$, la matriz es
+    $$A_2 = \begin{bmatrix}
+        1 + x^2 & x \\
+        x & 1 + x^2
+    \end{bmatrix}$$
+    y el determinante de $A_2$ es
+    $$D_2 = (1 + x^2)(1 + x^2) - x^2 = 1 + 2x^2 + x^4 - x^2 = 1 + x^2 + x^4$$
+    que coincide con la fórmula $1 + x^2 + x^4$. Supongamos que para algún $k \geq 2$, el determinante de $A_k$ es
+    $$D_k = 1 + x^2 + x^4 + \cdots + x^{2k}$$
+    Debemos demostrar, a partir de lo anterior, que
+    $$D_{k+1} = 1 + x^2 + x^4 + \cdots + x^{2(k+1)}$$
+    La matriz $A_{k+1}$ es
+    $$A_{k+1} = \begin{bmatrix}
+        1 + x^2 & x & 0 & \cdots & 0 & 0 \\
+        x & 1 + x^2 & x & \cdots & 0 & 0 \\
+        0 & x & 1 + x^2 & \ddots & 0 & 0 \\
+        \vdots & & & \ddots & & \\
+        0 & 0 & 0 & \ddots & 1 + x^2 & x \\
+        0 & 0 & 0 & \cdots & x & 1 + x^2
+    \end{bmatrix}$$
+    El determinante de $A_{k+1}$ se puede calcular expandiendo por la primera fila
+    $$D_{k+1} = (1 + x^2)D_k - x^2 D_{k-1}$$
+    Por la hipótesis de inducción, sabemos que
+    $$D_k = 1 + x^2 + x^4 + \cdots + x^{2k} \quad \text{ y } \quad D_{k-1} = 1 + x^2 + x^4 + \cdots + x^{2(k-1)}$$
+    Entonces
+    \begin{align*}
+        D_{k+1} & = (1 + x^2)(1 + x^2 + x^4 + \cdots + x^{2k}) - x^2(1 + x^2 + x^4 + \cdots + x^{2(k-1)}) \\
+        & = 1 + x^2 + x^4 + \cdots + x^{2k} + x^2 + x^4 + \cdots + x^{2(k+1)} - x^2 - x^4 - \cdots - x^{2k} \\
+        & = 1 + x^2 + x^4 + \cdots + x^{2(k+1)}
+    \end{align*}
+    Por lo tanto, para toda $n \in \NN$, se cumple que
+    $$\begin{vmatrix}
+        1 + x^2 & x & 0 & \cdots & 0 & 0 \\
+        x & 1 + x^2 & x & \cdots & 0 & 0 \\
+        0 & x & 1 + x^2 & \ddots & 0 & 0 \\
+        \vdots & & & \ddots & & \\
+        0 & 0 & 0 & \ddots & 1 + x^2 & x \\
+        0 & 0 & 0 & \cdots & x & 1 + x^2
+    \end{vmatrix} = 1 + x^2 + x^4 + \cdots + x^{2n}$$
+\end{example}
+
+\begin{example}
+    La sucesión numérica $1$, $2$, $3$, $5$, $8$, $13$, $21$, $\dots$, se denomina sucesión de Fibonacci. Demostrar que el $n$-ésimo término de la sucesión mencionada es igual al determinante de orden $n$:
+    $$A_n = \begin{bmatrix}
+        \phantom{-}1 & \phantom{-}1 & 0 & 0 & \cdots & \phantom{-}0 & 0 \\
+        -1 & \phantom{-}1 & 1 & 0 & \cdots & \phantom{-}0 & 0 \\
+        \phantom{-}0 & -1 & 1 & 1 & \ddots & \phantom{-}0 & 0 \\
+        \phantom{-}\vdots & & & & \ddots & & \\
+        \phantom{-}0 & \phantom{-}0 & 0 & 0 & \cdots & -1 & 1
+    \end{bmatrix}$$\newpage
+    \demostracion Para $n = 1$, la matriz es simplemente
+    $$A_1 = \begin{bmatrix} 1 \end{bmatrix}$$
+    El determinante de $A_1$ es $1$, que es el primer término de la serie de Fibonacci.
+    Para $n = 2$, la matriz es:
+    $$A_2 = \begin{bmatrix*}[r]
+        1 & 1 \\
+        -1 & 1
+    \end{bmatrix*}$$
+    El determinante de $A_2$ es
+    $$\det(A_2) = (1)(1) - (-1)(1) = 1 + 1 = 2$$
+    que es el segundo término de la sucesión de Fibonacci. Sea $F_k$ el $k$-ésimo término de la sucesión de Fibonacci. Supongamos que para algún $k \geq 2$, el determinante de $A_k$ es el $k$-ésimo término de la sucesión de Fibonacci, es decir
+    $$\det(A_k) = F_k$$
+    Debemos demostrar, a partir de lo anterior, que
+    $$\det(A_{k+1}) = F_{k+1}$$
+    La matriz $A_{k+1}$ es
+    $$A_{k+1} = \begin{bmatrix}
+        \phantom{-}1 & \phantom{-}1 & 0 & 0 & \cdots & \phantom{-}0 & 0 \\
+        -1 & \phantom{-}1 & 1 & 0 & \cdots & \phantom{-}0 & 0 \\
+        \phantom{-}0 & -1 & 1 & 1 & \ddots & \phantom{-}0 & 0 \\
+        \phantom{-}\vdots & & & & \ddots & & \\
+        \phantom{-}0 & \phantom{-}0 & 0 & 0 & \cdots & -1 & 1
+    \end{bmatrix}$$
+    El determinante de $A_{k+1}$ se puede calcular expandiendo por la primera fila, es decir,
+    $$\det(A_{k+1}) = 1 \cdot \det(A_k) - 1 \cdot \det(A_{k-1})$$
+    Por la hipótesis de inducción, sabemos que
+    $$\det(A_k) = F_k \quad \text{ y } \quad \det(A_{k-1}) = F_{k-1}$$
+    Entonces
+    $$\det(A_{k+1}) = F_k - (-F_{k-1}) = F_k + F_{k-1}$$
+    Por la definición de la sucesión de Fibonacci, sabemos que
+    $$F_{k+1} = F_k + F_{k-1}$$
+    Por lo tanto
+    $$\det(A_{k+1}) = F_{k+1}$$
+    Por lo tanto, el $n$-ésimo término de la sucesión mencionada es igual al determinante de orden $n$:
+    $$A_n = \begin{bmatrix}
+        \phantom{-}1 & \phantom{-}1 & 0 & 0 & \cdots & \phantom{-}0 & 0 \\
+        -1 & \phantom{-}1 & 1 & 0 & \cdots & \phantom{-}0 & 0 \\
+        \phantom{-}0 & -1 & 1 & 1 & \ddots & \phantom{-}0 & 0 \\
+        \phantom{-}\vdots & & & & \ddots & & \\
+        \phantom{-}0 & \phantom{-}0 & 0 & 0 & \cdots & -1 & 1
+    \end{bmatrix}$$
+\end{example}
+
+\begin{example}
+    Demuestra la siguiente igualdad usando inducción:
+    $$\begin{vmatrix}
+        \cos \alpha & 1 & 0 & 0 & \cdots & 0 & 0 \\
+        1 & 2 \cos \alpha & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 2 \cos \alpha & 1 & \ddots & 0 & 0 \\
+        \vdots & & & & \ddots & & \\
+        0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos \alpha
+    \end{vmatrix} = \cos n \alpha$$\newpage
+    \demostracion Para $n = 1$, la matriz es simplemente
+    $$A_1 = \begin{bmatrix} \cos \alpha \end{bmatrix}$$
+    y el determinante de $A_1$ es
+    $$D_1 = \cos \alpha$$
+    que coincide con la fórmula $\cos 1 \alpha $. Para $n = 2$, la matriz es
+    $$A_2 = \begin{bmatrix}
+        \cos \alpha & 1 \\
+        1 & 2 \cos \alpha
+    \end{bmatrix}$$
+    y el determinante de $A_2$ es
+    $$D_2 = (\cos \alpha)(2 \cos \alpha) - (1)(1) = 2 \cos^2 \alpha - 1 = \cos(2 \alpha)$$
+    usando la identidad trigonométrica $\cos(2 \alpha) = 2 \cos^2 \alpha - 1$. Supongamos que para algún $k \geq 2$, el determinante de $A_k$ es
+    $$D_k = \cos k \alpha$$
+    Debemos demostrar que
+    $$D_{k+1} = \cos \big((k+1) \alpha \big)$$
+    La matriz $A_{k+1}$ es
+    $$A_{k+1} = \begin{bmatrix}
+        \cos \alpha & 1 & 0 & 0 & \cdots & 0 & 0 \\
+        1 & 2 \cos \alpha & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 2 \cos \alpha & 1 & \ddots & 0 & 0 \\
+        \vdots & & & & \ddots & & \\
+        0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos \alpha
+    \end{bmatrix}$$
+    El determinante de $A_{k+1}$ se puede calcular expandiendo por la primera fila
+    $$D_{k+1} = (\cos \alpha) D_k - D_{k-1}$$
+    Por la hipótesis de inducción, sabemos que
+    $$D_k = \cos(k \alpha) \quad \text{ y } \quad D_{k-1} = \cos \big((k-1) \alpha \big)$$
+    Entonces
+    $$D_{k+1} = (\cos \alpha) \cos(k \alpha) - \cos \big((k-1) \alpha \big)$$
+    Usando la identidad trigonométrica
+    $$\cos \big((k+1) \alpha \big) = 2 \cos(\alpha) \cos(k \alpha) - \cos \big((k-1) \alpha \big)$$
+    y la identidad de recurrencia de Chebyshev
+    $$T_{n+1}(\cos \alpha) = 2 \cos \alpha T_n(\cos \alpha) - T_{n-1}(\cos \alpha)$$
+    donde $T_n(x)$ son los polinomios de Chebyshev de primer tipo. Observemos que
+    $$T_n(\cos \alpha) = \cos(n \alpha)$$
+    Entonces, usando esta identidad
+    $$T_{k+1}(\cos \alpha) = 2 \cos \alpha T_k(\cos \alpha) - T_{k-1}(\cos \alpha)$$
+    Aplicando esto a nuestra situación, tenemos
+    $$D_{k+1} = 2 \cos \alpha \cos(k \alpha) - \cos((k-1) \alpha)$$
+    lo cual es equivalente a
+    $$D_{k+1} = \cos((k+1) \alpha)$$\newpage\noindent
+    Por lo tanto, para toda $n \in \NN$, se cumple que
+    $$\begin{vmatrix}
+        \cos \alpha & 1 & 0 & 0 & \cdots & 0 & 0 \\
+        1 & 2 \cos \alpha & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 2 \cos \alpha & 1 & \ddots & 0 & 0 \\
+        \vdots & & & & \ddots & & \\
+        0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos \alpha
+    \end{vmatrix} = \cos n \alpha$$
+\end{example}
+
+\begin{example}
+    Entre las muchas sucesiones de números interesantes que se encuentran en las matemáticas discretas y la combinatoria, se encuentran los números armónicos $H_1$, $H_2$, $H_3$, $\dots$, donde
+    \begin{align*}
+        H_1 & = 1 \\
+        H_2 & = 1 + \frac{1}{2} \\
+        H_3 & = 1 + \frac{1}{2} + \frac{1}{3} \\
+        & \vdots \\
+        H_n & = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}
+    \end{align*}
+    La siguiente propiedad de los números armónicos nos ofrece una oportunidad más para aplicar inducción: Para toda $n \in \NN$,
+    $$\sum_{j=1}^{n} H_j = (n + 1)H_n - n$$
+    \demostracion Para $n = 1$, tenemos que
+    $$\sum_{j=1}^{k} H_j = H_1 = 1$$
+    y
+    $$(1 + 1)H_1 - 1 = 2 \cdot 1 - 1 = 1$$
+    Por lo tanto, la propiedad se cumple para $n = 1$. Supongamos que la propiedad se cumple para algún $k \geq 1$, es decir
+    $$\sum_{j=1}^{k} H_j = (k + 1)H_k - k$$
+    Debemos demostrar que la propiedad se cumple para $k + 1$, es decir
+    $$\sum_{j=1}^{k+1} H_j = (k + 2)H_{k+1} - (k + 1)$$
+    Entonces
+    \begin{align*}
+        \sum_{j=1}^{k+1} H_j & = \sum_{j=1}^{k} H_j + H_{k+1} \\
+        & = [(k + 1)H_k - k] + H_{k+1} \\
+        & = (k + 1) \left( H_{k+1} - \frac{1}{k+1} \right) - k + H_{k+1} \\
+        & = (k + 2) H_{k+1} - 1 - k \\
+        & = (k + 2) H_{k+1} - (k + 1)
+    \end{align*}
+    Por lo tanto, para toda $n \in \NN$,
+    $$\sum_{j=1}^{n} H_j = (n + 1)H_n - n$$
+\end{example}
+
+\newpage
+
 \section{Ejercicios}
 
 \begin{enumerate}
@@ -540,16 +993,23 @@ Sin embargo, en algunas demostraciones por inducción conviene emplear el siguie
     \item Demuestre que el número $S_n$ de permutaciones de $n$ elementos está dado por
     $$S_n=n!.$$
     \item Demuestre que si $a \neq b$, entonces el siguiente determinante de $n \times n$ se cumple:
-    $$
-    \begin{vmatrix}
+    $$\begin{vmatrix}
         a+b & ab & 0 & \cdots & 0 & 0 \\
         1 & a+b & ab & \cdots & 0 & 0 \\
         0 & 1 & a+b & \ddots & 0 & 0 \\
         \vdots & & & \ddots & \\
         0 & 0 & 0 & \ddots & a+b & ab \\
         0 & 0 & 0 & \cdots & 1 & a+b
-    \end{vmatrix} = \frac{a^{n+1}-b^{n+1}}{a-b}.
-    $$
+    \end{vmatrix} = \frac{a^{n+1}-b^{n+1}}{a-b}.$$
+    \item Demuestra la siguiente igualdad
+    $$\begin{vmatrix}
+        2 \cos \alpha & 1 & 0 & 0 & \cdots & 0 & 0 \\
+        1 & 2 \cos \alpha & 1 & 0 & \cdots & 0 & 0 \\
+        0 & 1 & 2 \cos \alpha & 1 & \ddots & 0 & 0 \\
+        \vdots & & & & \ddots & & \\
+        0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos \alpha
+    \end{vmatrix} = \frac{\sen n\alpha}{\sen \alpha}$$
+    donde el determinante es de orden $n - 1$.
     \item Probar la identidad
     $$\cos (\varphi) \cos (2\varphi) \cos (4\varphi) \cdots \cos \left( 2^n \varphi \right)=\frac{\sen \left( 2^{n+1} \varphi \right)}{2^{n+1} \sen (\varphi)}.$$
     \item Probar que
