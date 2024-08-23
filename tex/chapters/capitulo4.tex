@@ -348,6 +348,8 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
     A la transformación lineal dada por $I \mathbb{u} = \mathbb{u}$, $\forall \mathbb{u} \in V$ siendo $I:V \longrightarrow V$, se le llama transformación identidad.
 \end{definition}
 
+\newpage
+
 \begin{example}
     Sea $T: \RR[n] \longrightarrow \RR[m]$ definida como
     $$T\mathbb{x} = A\mathbb{x}$$
@@ -812,7 +814,7 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
 
 \section{Representación matricial de una transformación lineal}
 
-\begin{theorem}
+\begin{theorem}\label{matrix_representationtl}
     Sea $T: \RR[n] \longrightarrow \RR[m]$ una transformación lineal, entonces existe una única matriz $A_T \in \matrizmn$ tal que
     $$T\mathbb{x} = A_T\mathbb{x}, \; \forall \mathbb{x} \in \RR[n]$$
     A la matriz $A_T$, se le llama la representación matricial de la transformación lineal $T$. \\
@@ -1064,7 +1066,7 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
 \section{Isomorfismos}
 
 \begin{definition}
-    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $T$ es uno a uno (o inyectiva) si
+    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $T$ es uno a uno si\infoBulle{Una transformación uno a uno se llama también inyectiva.}
     $$T\mathbb{u} = T\mathbb{v} \Longrightarrow \mathbb{u} = \mathbb{v}$$
     siendo $\mathbb{u}$, $\mathbb{v} \in V$. Equivalentemente, $T$ es uno a uno si
     $$T\mathbb{u} \neq T\mathbb{v} \Longrightarrow \mathbb{u} \neq \mathbb{v}$$
@@ -1112,7 +1114,7 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
 \end{theorem}
 
 \begin{example}
-    Verifique que la transformación lineal $T:\RR[2] \longrightarrow \RR[2]$, definida como
+    Verifique que la transformación lineal $T:\RR[2] \longrightarrow \RR[2]$, definida como sigue
     $$T \begin{pmatrix}
         x \\
         y
@@ -1121,7 +1123,7 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
         x - y
     \end{pmatrix}$$
     es uno a uno. \newpage
-    \solucion Por definición,
+    \solucion Para determinar si $T$ es uno a uno, utilizaremos el teorema anterior. Por definición,
     \begin{align*}
         \Nuc(T) & = \left\{ \begin{pmatrix}
             x \\
@@ -1142,28 +1144,23 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
         \end{pmatrix} = \begin{pmatrix}
             0 \\
             0
-        \end{pmatrix} \right\} \\
-        & = \left\{ \begin{pmatrix}
-            x \\
-            y
-        \end{pmatrix} \in \RR[2] \mid x + y = 0,  x - y = 0 \right\} \\
-        & = \left\{ \begin{pmatrix}
-            x \\
-            y
-        \end{pmatrix} \in \RR[2] \mid -x = x,  y = x \right\} \\
-        & = \left\{ \begin{pmatrix}
-            x \\
-            y
-        \end{pmatrix} \in \RR[2] \mid x = 0,  y = 0 \right\}
+        \end{pmatrix} \right\}
     \end{align*}
-    Por tanto, $\displaystyle \Nuc(T) = \left\{ \begin{pmatrix}
+    lo cual, implica resolver el siguiente sistema
+    \begin{align*}
+        x + y & = 0 \\
+        x - y & = 0
+    \end{align*}
+    donde la única solución es
+    $$x = 0 \quad \text{ e } \quad y = 0$$
+    Por lo tanto, $\displaystyle \Nuc(T) = \left\{ \begin{pmatrix}
         0 \\
         0
-    \end{pmatrix} \right\}$, y por el teorema anterior, $T$ es uno a uno.
+    \end{pmatrix} \right\}$, y dado el teorema anterior, $T$ es uno a uno.
 \end{example}
 
 \begin{example}
-    Verifique que la transformación lineal $T:\RR[2] \longrightarrow \RR[2]$, definida como
+    Verifique que la transformación lineal $T:\RR[2] \longrightarrow \RR[2]$, definida como sigue
     $$T \begin{pmatrix}
         x \\
         y
@@ -1172,7 +1169,7 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
         x + y
     \end{pmatrix}$$
     no es uno a uno. \\
-    \solucion Por definición,
+    \solucion Para determinar que $T$ no es uno a uno, utilizaremos el teorema anterior. Por definición,
     \begin{align*}
         \Nuc(T) & = \left\{ \begin{pmatrix}
             x \\
@@ -1189,97 +1186,240 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
             y
         \end{pmatrix} \in \RR[2] \mid \begin{pmatrix}
             x + y \\
-            y + y
+            x + y
         \end{pmatrix} = \begin{pmatrix}
             0 \\
             0
-        \end{pmatrix} \right\} \\
-        & = \left\{ \begin{pmatrix}
-            x \\
-            y
-        \end{pmatrix} \in \RR[2] \mid x + y = 0,  x + y = 0 \right\} \\
-        & = \left\{ \begin{pmatrix}
-            x \\
-            y
-        \end{pmatrix} \in \RR[2] \mid y = - x \right\} \\
-        & = \left\{ \begin{pmatrix*}[r]
-            x \\
-            -x
-        \end{pmatrix*} \mid x \in \RR \right\} 
+        \end{pmatrix} \right\}
     \end{align*}
-    Por tanto, $\displaystyle \Nuc(T) = \Gen \left( \left\{ \begin{pmatrix*}[r]
+    lo cual, implica resolver el siguiente sistema
+    \begin{align*}
+        x + y & = 0 \\
+        x + y & = 0
+    \end{align*}
+    donde se reduce a la expresión
+    $$y = - x$$
+    Por lo tanto, $\displaystyle \Nuc(T) = \Gen \left( \left\{ \begin{pmatrix*}[r]
         1 \\
         -1
     \end{pmatrix*} \right\} \right) \neq \begin{pmatrix}
         0 \\
         0
-    \end{pmatrix}$, y por el teorema anterior, $T$ no es uno a uno.
+    \end{pmatrix}$, y dado el teorema anterior, $T$ no es uno a uno.
+\end{example}
+
+\begin{example}\label{exam:tlmar4}
+    Verifique que la transformación lineal $T:\mathcal{M}_{2 \times 2}(\RR) \longrightarrow \RR[4]$, definida como sigue
+    $$T \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix} = \begin{pmatrix}
+        a \\
+        b \\
+        c \\
+        d
+    \end{pmatrix}$$
+    es uno a uno. \\
+    \solucion Al igual que los ejemplos anteriores, utilizaremos el teorema anterior. Por definición,
+    \begin{align*}
+        \Nuc(T) & = \left\{ \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix} \in \mathcal{M}_{2 \times 2}(\RR) \mid T \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix} = \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{pmatrix} \right\} \\
+        & = \left\{ \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix} \in \mathcal{M}_{2 \times 2}(\RR) \mid \begin{pmatrix}
+            a \\
+            b \\
+            c \\
+            d
+        \end{pmatrix} = \begin{pmatrix}
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{pmatrix} \right\}
+    \end{align*}\newpage\noindent
+    lo cual implica que
+    $$\begin{pmatrix}
+        a \\
+        b \\
+        c \\
+        d
+    \end{pmatrix} = \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0
+    \end{pmatrix}$$
+    Por lo tanto, $\displaystyle \Nuc(T) = \left\{ \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        0
+    \end{pmatrix} \right\}$, y dado el teorema anterior, $T$ es uno a uno.
+\end{example}
+
+\begin{example}
+    Sea $V = C^1(-\infty, \infty)$ el espacio vectorial de funciones con derivadas continuas de primer orden en $(-\infty, \infty)$, y sea $W = F(-\infty, \infty)$ el espacio vectorial de todas las funciones de valores reales definidas en $(-\infty, \infty)$. Sea $D: V \longrightarrow W$ la transformación que asigna a una función $f(x)$ su derivada, es decir,
+    $$D_f = f'(x)$$
+    A partir de las propiedades de la diferenciación, tenemos
+    $$D(f + g) = D_f + D_g \quad \text{ y } \quad D(kf) = kD_f$$
+    Esta transformación lineal no es uno a uno, ya que asigna funciones que difieren en una constante a la misma función. Por ejemplo,
+    $$D(x^2) = 2x = D(x^2 + 1)$$
 \end{example}
 
 \begin{definition}
-    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $T$ es sobre si para todo $\mathbb{w} \in W$, existe al menos $\mathbb{v} \in V$ tal que $T\mathbb{v} = \mathbb{w}$.
+    Sea $T: V \longrightarrow W$ una transformación lineal. Entonces decimos que $T$ es sobre\infoBulle{Una transformación sobre se denomina también suprayectiva.}$W$ o simplemente sobre si para todo $\mathbb{w} \in W$ existe cuando menos $\mathbb{v} \in V$ tal que $T\mathbb{v} = \mathbb{w}$. Es decir, $T$ es sobre $W$ si y solo si $\Ima(T) = W$.
 \end{definition}
 
-\begin{observation}
-    Una transformación lineal $T:V \longrightarrow W$ sea uno a uno o sobre, admite una interpretación como se muestra en la siguiente figura:
-    \begin{figure}[h!]
+Observemos que una transformación lineal $T:V \longrightarrow W$ se puede interpretar de acuerdo con lo que se muestra en las siguientes figuras:
+\begin{figure*}[h!]
     \centering
-    \begin{minipage}[c]{0.4\textwidth}
-        \begin{center}
-            \begin{tikzpicture}
-                \foreach[count=\i] \lseti/\lsetmi in {V/{$\mathbb{u}$,$\mathbb{v}$,$\mathbb{w}$},W/{$T\mathbb{u}$,$T\mathbb{v}$,$T\mathbb{w}$}} {
-                \begin{scope}[local bounding box=\lseti, x=3cm, y=0.5cm]
-                    \foreach[count=\j] \lj in \lsetmi {
-                    \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
-                    }
-                \end{scope}
-                \node[ellipse = (1.5cm and 3cm), draw=black, thick, fit=(\lseti), label={[name=l-\lseti]above:$\lseti$}] {};
-                }
-                \draw[-latex] (n-1-V) -- (n-1-W);
-                \draw[-latex] (n-2-V) -- (n-2-W);
-                \draw[-latex] (n-3-V) -- (n-3-W);
-                \draw[-latex] (l-V) -- node[above]{$T$}(l-V.center-|l-W.west);
-            \end{tikzpicture}
-            
-            \textbf{(a)} Transformación lineal uno a uno
-        \end{center}
-    \end{minipage} \hspace{0.5cm}
-    \begin{minipage}[c]{0.4\textwidth}
-        \begin{center}
-            \begin{tikzpicture}
-                \foreach[count=\i] \lseti/\lsetmi in {V/{$\mathbb{u}$,$\mathbb{v}$,$\mathbb{w}$},W/{$T\mathbb{u}$,$T\mathbb{v}$,$T\mathbb{w}$}} {
-                \begin{scope}[local bounding box=\lseti, x=3cm, y=0.5cm]
-                    \foreach[count=\j] \lj in \lsetmi {
-                    \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
-                    }
-                \end{scope}
-                \node[ellipse = (1.5cm and 3cm), draw=black, thick, fit=(\lseti), label={[name=l-\lseti]above:$\lseti$}] {};
-                }
-                \draw[-latex] (n-1-V) -- (n-1-W);
-                \draw[-latex, dash pattern=on 3pt off 3pt] (n-2-V) -- (n-1-W);
-                \draw[-latex, dash pattern=on 3pt off 3pt] (n-3-V) -- (n-1-W);
-                \draw[-latex] (l-V) -- node[above]{$T$}(l-V.center-|l-W.west);
-            \end{tikzpicture}
-            
-            \textbf{(b)} Transformación lineal sobre
-        \end{center}
-    \end{minipage}
-    \caption{Interpretación de una transformación uno a uno y sobre}
-    \end{figure}
-\end{observation}
-
-\newpage
-
-\begin{observation}
-    $T$ es sobre si y solo si $\Ima(T) = W$.
-\end{observation}
+    \subfloat[Uno a uno: Los vectores distintos en $V$ tienen imágenes distintas en $W$]{
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=1.25cm and 1.25cm of P1] (P2) {};
+        \coordinate[above=3cm of P2, label=above:$V$] (P3) {};
+        \coordinate[below left=1.25cm and 1.25cm of P3] (P4);
+        \def\dista{2.25cm}
+        \coordinate[right=\dista of P1] (P11) {};
+        \coordinate[right=\dista of P2] (P22) {};
+        \coordinate[right=\dista of P3, label=above:$W$] (P33) {};
+        \coordinate[right=\dista of P4] (P44) {};
+        %
+        \coordinate[above right=1cm and 0.4cm of P1] (V1);
+        \coordinate[above right=1.5cm and 0.5cm of P1] (V2);
+        \coordinate[above right=2.1cm and 0.7cm of P1] (V3);
+        \coordinate[above right=2.7cm and 0.8cm of P1] (V4);
+        \coordinate[above right=3.3cm and 1cm of P1] (V5);
+        %%%%% V %%%%%
+        \filldraw[gray,opacity=0.2] (P1) -- (P2) -- (P3) -- (P4) -- (P1) -- cycle;
+        %%%%% PUNTOS Y FLECHAS %%%%%
+        \foreach \i in {1,2,...,5} {
+        \filldraw (V\i) circle (1.75pt);
+        \coordinate[right=\dista of V\i] (W\i);
+        \filldraw (W\i) circle (1.75pt);
+        \draw[-Stealth, shorten >=4pt] (V\i) -- (W\i);
+        }
+        %%%%% W %%%%%
+        \filldraw[gray,opacity=0.2] (P11) -- (P22) -- (P33) -- (P44) -- (P11) -- cycle;
+    \end{tikzpicture}
+    } \hfill
+    \subfloat[No uno a uno: Existen vectores distintos en $V$ con la misma imagen]{
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=1.25cm and 1.25cm of P1] (P2) {};
+        \coordinate[above=3cm of P2, label=above:$V$] (P3) {};
+        \coordinate[below left=1.25cm and 1.25cm of P3] (P4);
+        \def\dista{2.25cm}
+        \coordinate[right=\dista of P1] (P11) {};
+        \coordinate[right=\dista of P2] (P22) {};
+        \coordinate[right=\dista of P3, label=above:$W$] (P33) {};
+        \coordinate[right=\dista of P4] (P44) {};
+        %
+        \coordinate[above right=1cm and 0.4cm of P1] (V1);
+        \coordinate[above right=1.5cm and 0.5cm of P1] (V2);
+        \coordinate[above right=2.1cm and 0.7cm of P1] (V3);
+        \coordinate[above right=2.7cm and 0.8cm of P1] (V4);
+        \coordinate[above right=3.3cm and 1cm of P1] (V5);
+        %
+        \coordinate[right=\dista of V1] (W1);
+        \coordinate[right=\dista of V3] (W2);
+        \coordinate[right=\dista of V4] (W3);
+        %%%%% V %%%%%
+        \filldraw[gray,opacity=0.2] (P1) -- (P2) -- (P3) -- (P4) -- (P1) -- cycle;
+        %%%%% PUNTOS %%%%%
+        \foreach \i in {1,2,...,5} 
+        \filldraw (V\i) circle (1.75pt);
+        \foreach \j in {1,2,3}
+        \filldraw (W\j) circle (1.75pt);
+        %%%%% FLECHAS %%%%%
+        \draw[-Stealth, shorten >=4pt] (V1) -- (W1);
+        \draw[-Stealth, shorten >=4pt] (V2) -- (W3);
+        \draw[-Stealth, shorten >=4pt] (V3) -- (W2);
+        \draw[-Stealth, shorten >=4pt] (V4) -- (W3);
+        \draw[-Stealth, shorten >=4pt] (V5) -- (W2);
+        %%%%% W %%%%%
+        \filldraw[gray,opacity=0.2] (P11) -- (P22) -- (P33) -- (P44) -- (P11) -- cycle;
+    \end{tikzpicture}
+    } \hfill 
+    \subfloat[Sobre: Cada vector en $W$ es la \\ imagen de algún vector en $V$]{
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=1.25cm and 1.25cm of P1] (P2) {};
+        \coordinate[above=3cm of P2, label=above:$V$] (P3) {};
+        \coordinate[below left=1.25cm and 1.25cm of P3] (P4);
+        \def\dista{2.25cm}
+        \coordinate[right=\dista of P1] (X1);
+        \coordinate[right=\dista of P2] (X2);
+        \coordinate[right=\dista of P3, label=above:$W$] (X3);
+        \coordinate[right=\dista of P4] (X4);
+        \coordinate[above right=2cm and 3cm=of P1] (PP);
+        %%%%% V %%%%%
+        \filldraw[gray,opacity=0.2] (P1) -- (P2) -- (P3) -- (P4) -- (P1) -- cycle;
+        %%%%% LÍNEAS %%%%%
+        \foreach \i in {1,2,3,4}
+        \draw[dash pattern=on 3pt off 3pt] (P\i) -- (X\i);
+        %%%%% W %%%%%
+        \filldraw[gray,opacity=0.4] (X1) -- (X2) -- (X3) -- (X4) -- (X1) -- cycle;
+        \node[above right=0.01cm and 3cm of P1, font=\footnotesize] (C) {\makecell{Rango \\ de $T$}};
+        \draw[-latex] (C) .. controls ($(C)!.65!(PP) + (0.5,0)$) and ($(C)!.65!(PP) + (0,0.5)$) .. (PP);
+    \end{tikzpicture}
+    } \hfill 
+    \subfloat[No sobre: No todos los vectores en $W$ son la imagen de algún vector en $V$]{
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate (P1) {};
+        \coordinate[above right=1.25cm and 1.25cm of P1] (P2) {};
+        \coordinate[above=3cm of P2, label=above:$V$] (P3) {};
+        \coordinate[below left=1.25cm and 1.25cm of P3] (P4);
+        \def\dista{2.25cm}
+        \coordinate[right=\dista of P1] (X1);
+        \coordinate[right=\dista of P2] (X2);
+        \coordinate[right=\dista of P3, label=above:$W$] (X3);
+        \coordinate[right=\dista of P4] (X4);
+        \coordinate (Y1) at ($(X1)!.25!(X3)$);
+        \coordinate (Y2) at ($(X2)!.25!(X4)$);
+        \coordinate (Y3) at ($(X1)!.75!(X3)$);
+        \coordinate (Y4) at ($(X2)!.75!(X4)$);
+        \coordinate[above right=2cm and 3cm=of P1] (PP);
+        %%%%% V %%%%%
+        \filldraw[gray,opacity=0.2] (P1) -- (P2) -- (P3) -- (P4) -- (P1) -- cycle;
+        %%%%% LÍNEAS %%%%%
+        \foreach \i in {1,2,3,4}
+        \draw[dash pattern=on 3pt off 3pt] (P\i) -- (Y\i);
+        %%%%% W %%%%%
+        \filldraw[gray,opacity=0.2] (X1) -- (X2) -- (X3) -- (X4) -- (X1) -- cycle;
+        \filldraw[gray,opacity=0.4] (Y1) -- (Y2) -- (Y3) -- (Y4) -- (Y1) -- cycle;
+        \node[above right=0.01cm and 3cm of P1, font=\footnotesize] (C) {\makecell{Rango \\ de $T$}};
+        \draw[-latex] (C) .. controls ($(C)!.65!(PP) + (0.5,0)$) and ($(C)!.65!(PP) + (0,0.5)$) .. (PP);
+    \end{tikzpicture}
+    }
+\end{figure*}
 
 \begin{definition}
-    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $T$ es un isomorfismo si $T$ es uno a uno y sobre, y decimos que $V$ y $W$ son espacios vectoriales isomorfos y se denota como $V \cong W$.
+    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $T$ es un isomorfismo si $T$ es uno a uno y sobre.
+\end{definition}
+
+\begin{definition}
+    Se dice que los espacios vectoriales $V$ y $W$ son isomorfos si existe un isomorfismo $T$ de $V$ sobre $W$. En este caso, se escribe $V \cong W$.
 \end{definition}
 
 \begin{theorem}\label{theo:unoauno-sobre}
-    Sea $T:V \longrightarrow W$ una transformación lineal con $\Dim V = n = \Dim W$.
+    Sean $V$ y $W$ dos espacios vectoriales de dimensión finita con la misma dimensión, digamos $n$, es decir, $\Dim V = n = \Dim W$. Consideremos $T: V \longrightarrow W$ una transformación lineal,\newpage
     \begin{enumerate}[label=\roman*)]
         \item Si $T$ es uno a uno, entonces $T$ es sobre.
         \item Si $T$ es sobre, entonces $T$ es uno a uno.
@@ -1313,12 +1453,364 @@ Las transformaciones lineales no solo son conceptos abstractos en el ámbito de 
         Esto es, dado $\mathbb{w} \in W$, existe al menos un $\mathbb{v} \in V$ tal que $T\mathbb{v} = \mathbb{w}$, es decir, $T$ es sobre.
         \item Se deja como ejercicio al lector.
     \end{enumerate}
-    En conclusión, $V \cong W$.
 \end{theorem}
 
+\begin{example}
+    Si consideramos los espacios vectoriales $V = \mathcal{M}_{2 \times 2}(\RR)$ y $W = \RR[4]$, notemos que ambos espacios vectoriales tienen la misma dimensión, es decir, $\Dim \mathcal{M}_{2 \times 2}(\RR)= 4 = \Dim \RR[4]$. Sea $T$ definida como en el ejemplo \ref{exam:tlmar4}:
+    $$T \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix} = \begin{pmatrix}
+        a \\
+        b \\
+        c \\
+        d
+    \end{pmatrix}$$
+    Se sigue del teorema anterior que $T$ es un isomorfismo entre $\mathcal{M}_{2 \times 2}(\RR)$ y $\RR[4]$, pues en el ejemplo \ref{exam:tlmar4} se probó que $T$ es uno a uno, lo cual implica que $T$ es sobre. Este es un caso especial del isomorfismo que asigna una matriz $m \times n$ a un vector de $mn \times 1$. A esto lo llamamos el \emph{isomorfismo natural entre $\mathcal{M}_{m \times n}(\RR)$ y $\RR[mn]$}.
+\end{example}
+
+\newpage
+
+\begin{example}
+    Si consideramos los espacios vectoriales $V = P_{n-1}(x)$ y $W = \RR[n]$, notemos que ambos espacios vectoriales tienen la misma dimensión, es decir, $\Dim P_{n-1}(x) = n = \Dim \RR[n]$. Sea $T: P_{n-1}(x) \longrightarrow \RR[n]$ definida como
+    $$T(a_0 + a_1 + \cdots + a_{n-1}x^{n-1}) = \begin{pmatrix} a_0 \\ a_1 \\ \vdots \\ a_{n-1} \end{pmatrix}$$
+    Es fácil probar que $T$ es uno a uno, pues si $\mathbb{p} = a_0 + a_1 + \cdots + a_{n-1}x^{n-1}$, entonces por definición
+    $$\Nuc(T) = \left\{ \mathbb{p} \in P_{n-1}(x) \mid T(\mathbb{p}) = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix} \right\}$$
+    lo cual implica que
+    $$\begin{pmatrix}
+        a_0 \\
+        a_1 \\
+        \vdots \\
+        a_{n-1}
+    \end{pmatrix} = \begin{pmatrix}
+        0 \\
+        0 \\
+        \vdots \\
+        0
+    \end{pmatrix}$$
+    Por lo tanto, $\displaystyle \Nuc(T) = \left\{ \begin{pmatrix}
+        0 \\
+        0 \\
+        \vdots \\
+        0
+    \end{pmatrix} \right\}$, y dado el teorema \ref{theo:nu_cero}, $T$ es uno a uno. Se sigue del teorema anterior que $T$ es un isomorfismo entre $P_{n-1}(x)$ y $\RR[n]$, pues se probó que $T$ es uno a uno, lo cual implica que $T$ es sobre. A esto lo llamamos el \emph{isomorfismo natural entre $P_{n-1}(x)$ y $\RR[n]$}.
+\end{example}
+
+\begin{example}
+    Consideremos la transformación de diferenciación dada por $D: P_3(x) \longrightarrow P_2(x)$ en el espacio vectorial de polinomios de grado $3$ o menor. Si mapeamos $P_3(x)$ y $P_2(x)$ en $\RR[4]$ y $\RR[3]$, respectivamente, mediante los isomorfismos naturales, entonces la transformación $D$ produce una transformación matricial correspondiente de $\RR[4]$ a $\RR[3]$. Específicamente, la transformación de diferenciación
+    $$D(a_0 + a_1x + a_2x^2 + a_3x^3) = a_1 + 2a_2x + 3a_3x^2$$
+    produce la transformación matricial
+    $$\begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{bmatrix}\begin{bmatrix}
+        a_0 \\
+        a_1 \\
+        a_2 \\
+        a_3
+    \end{bmatrix} = \begin{bmatrix}
+        a_1 \\
+        2a_2 \\
+        3a_3
+    \end{bmatrix}$$
+    Así, por ejemplo, la derivada
+    $$\frac{d}{dx}(2 + x + 4x^2 - x^3) = 1 + 8x - 3x^2$$
+    se puede calcular como el producto matricial
+    $$\begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 2 & 0 \\
+        0 & 0 & 0 & 3
+    \end{bmatrix}\begin{bmatrix*}[r]
+        2 \\
+        1 \\
+        4 \\
+        -1
+    \end{bmatrix*} = \begin{bmatrix*}[r]
+        1 \\
+        8 \\
+        -3
+    \end{bmatrix*}$$
+    Esta idea es útil para construir algoritmos numéricos para calcular derivadas.
+\end{example}
+
+\newpage
+
+\section{Composición y transformación inversa}
+
+\infoBulle{Observe que la palabra “con” establece el orden de las operaciones en una composición. La composición de $T_2$ con $T_1$ está dada por
+$$(T_2 \circ T_1)(\mathbb{u}) = T_2 \big(T_1(\mathbb{u})\big)$$
+mientras que la composición de $T_1$ con $T_2$ está dada por
+$$(T_1 \circ T_2)(\mathbb{u}) = T_1 \big(T_2(\mathbb{u})\big)$$
+En general, no es cierto que
+$$T_1 \circ T_2 = T_2 \circ T_1$$}
+
 \begin{definition}
-    Sea $T:V \longrightarrow W$ una transformación lineal. Decimos que $\mathcal{T}:W \longrightarrow V$ es la transformación inversa de $T$ si $T \circ \mathcal{T} = I_V$ y se denota por $T^{-1}$, es decir, $\mathcal{T} = T^{-1}$.
+    Si $T_1: U \longrightarrow V$ y $T_2: V \longrightarrow W$ son transformaciones lineales, entonces la composición de $T_2$ con $T_1$, denotada por $T_2 \circ T_1$ (que se lee como “$T_2$ composición $T_1$”), es la función definida como
+    $$(T_2 \circ T_1)(\mathbb{u}) = T_2\big(T_1(\mathbb{u})\big), \quad \text{ con } \mathbb{u} \in U$$
 \end{definition}
+
+Observe que esta definición requiere que el dominio de $T_2$ (que es $V$) contenga la imagen de $T_1$. Esto es esencial para que la expresión $T_2\big(T_1(\mathbb{u})\big)$ tenga sentido. La siguiente figura ilustra lo dicho anteriormente:
+\begin{center}
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate[label=below left:$U$] (U1) {};
+        \coordinate[right=2cm of U1] (U2);
+        \coordinate[above right=1.2cm and 0.25cm of U2] (U3);
+        \coordinate[left=2cm of U3] (U4);
+        %
+        \def\dista{4cm}
+        \coordinate[right=\dista of U1, label=below left:$V$] (V1);
+        \coordinate[right=\dista of U2] (V2);
+        \coordinate[right=\dista of U3] (V3);
+        \coordinate[right=\dista of U4] (V4);
+        %
+        \coordinate[right=\dista of V1, label=below left:$W$] (W1);
+        \coordinate[right=\dista of V2] (W2);
+        \coordinate[right=\dista of V3] (W3);
+        \coordinate[right=\dista of V4] (W4);
+        %
+        \coordinate[above right=0.6cm and 1.125cm of U1] (U);
+        \coordinate[right=\dista of U] (V);
+        \coordinate[right=\dista of V] (W);
+        %%%%% ESPACIOS VEC. %%%%%
+        \filldraw[gray,opacity=0.2] (U1) -- (U2) -- (U3) -- (U4) -- (U1) -- cycle;
+        \filldraw[gray,opacity=0.2] (V1) -- (V2) -- (V3) -- (V4) -- (V1) -- cycle;
+        \filldraw[gray,opacity=0.2] (W1) -- (W2) -- (W3) -- (W4) -- (W1) -- cycle;
+        %%%%% LETRAS %%%%%
+        \filldraw (U) circle (1.75pt) node[below] {$\mathbb{u}$};
+        \filldraw (V) circle (1.75pt) node[below] {$T_1(\mathbb{u})$};
+        \filldraw (W) circle (1.75pt) node[below] {$T_2\big(T_1(\mathbb{u})\big)$};
+        %%%%% FLECHAS %%%%%
+        \draw[-Stealth, shorten >=4pt] (U) .. controls ($(U)!.3!(V) + (0,0.5)$) and ($(U)!.7!(V) + (0,0.5)$) .. node[midway, below] {$T_1$} (V);
+        \draw[-Stealth, shorten >=4pt] (V) .. controls ($(V)!.3!(W) + (0,0.5)$) and ($(V)!.7!(W) + (0,0.5)$) .. node[midway, below] {$T_2$} (W);
+        \draw[-Stealth, shorten >=4pt] (U) .. controls ($(U)!.3!(W) + (0,1.25)$) and ($(U)!.7!(W) + (0,1.25)$) .. node[midway, above] {$T_2 \circ T_1$} (W);
+    \end{tikzpicture}
+\end{center}
+
+Nuestro siguiente teorema muestra que la composición de dos transformaciones lineales es en sí misma una transformación lineal.
+
+\begin{theorem}
+    Si $T_1: U \longrightarrow V$ y $T_2: V \longrightarrow W$ son transformaciones lineales, entonces $(T_2 \circ T_1): U \longrightarrow W$ también es una transformación lineal. \\
+    \demostracion Si $\mathbb{u}$ y $\mathbb{v}$ son vectores en $U$ y $c$ es un escalar, entonces se deduce de la definición de composición y de la linealidad de $T_1$ y $T_2$ que
+    \begin{align*}
+        (T_2 \circ T_1)(\mathbb{u} + \mathbb{v}) & = T_2\big(T_1(\mathbb{u} + \mathbb{v})\big) \\
+        & = T_2\big(T_1(\mathbb{u}) + T_1(\mathbb{v})\big) \\
+        & = T_2\big(T_1(\mathbb{u})\big) + T_2\big(T_1(\mathbb{v})\big) \\
+        & = (T_2 \circ T_1)(\mathbb{u}) + (T_2 \circ T_1)(\mathbb{v})
+    \end{align*}
+    y
+    \begin{align*}
+        (T_2 \circ T_1)(c\mathbb{u}) & =T_2\big(T_1(c\mathbb{u})\big) \\
+        & = T_2\big(cT_1(\mathbb{u})\big) \\
+        & = cT_2\big(T_1(\mathbb{u})\big) \\
+        & = c(T_2 \circ T_1)(\mathbb{u})
+    \end{align*}
+    Ya que $T_2 \circ T_1$ satisface las dos condiciones de una transformación lineal, se sigue que $T_2 \circ T_1$ es una transformación lineal.
+\end{theorem}
+
+\begin{example}
+    Sean $T_1: P_1 \longrightarrow P_2$ y $T_2: P_2 \longrightarrow P_2$ transformaciones lineales dadas por las fórmulas
+    $$T_1\big(p(x)\big) = xp(x) \quad \text{ y } \quad T_2\big(p(x)\big) = p(2x + 4)$$
+    Entonces la composición $(T_2 \circ T_1): P_1 \longrightarrow P_2$ está dada por la fórmula
+    $$(T_2 \circ T_1)\big(p(x)\big) = T_2\big(T_1(p(x))\big) = T_2\big(xp(x)\big) = (2x + 4)p(2x + 4)$$
+    En particular, si $p(x) = c_0 + c_1x$, entonces
+    \begin{align*}
+        (T_2 \circ T_1)\big(p(x)\big) & = (T_2 \circ T_1)(c_0 + c_1x) \\
+        & = (2x + 4)\big(c_0 + c_1(2x + 4)\big) \\
+        & = c_0(2x + 4) + c_1(2x + 4)^2
+    \end{align*}
+\end{example}
+
+\newpage
+
+\begin{example}
+    Si $T: V \longrightarrow V$ es un operador lineal y $I: V \longrightarrow V$ es el operador identidad, entonces para cualquier vector $\mathbb{v} \in V$, se cumple que
+    \begin{align*}
+        (T \circ I)(\mathbb{v}) = T\big(I(\mathbb{v})\big) = T(\mathbb{v}) \\
+        (I \circ T)(\mathbb{v}) = I\big(T(\mathbb{v})\big) = T(\mathbb{v})
+    \end{align*}
+    De esto se deduce que $T \circ I$ e $I \circ T$ son lo mismo que $T$, es decir
+    $$T \circ I = T \quad \text{ e } \quad I \circ T = T$$
+\end{example}
+
+Como se ilustra en la siguiente figura, las composiciones pueden definirse para más de dos transformaciones lineales.
+\begin{center}
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate[label=below left:$U$] (U1) {};
+        \coordinate[right=2cm of U1] (U2);
+        \coordinate[above right=1.2cm and 0.25cm of U2] (U3);
+        \coordinate[left=2cm of U3] (U4);
+        %
+        \def\dista{2.9cm}
+        \coordinate[right=\dista of U1, label=below left:$V$] (V1);
+        \coordinate[right=\dista of U2] (V2);
+        \coordinate[right=\dista of U3] (V3);
+        \coordinate[right=\dista of U4] (V4);
+        %
+        \coordinate[right=\dista of V1, label=below left:$W$] (W1);
+        \coordinate[right=\dista of V2] (W2);
+        \coordinate[right=\dista of V3] (W3);
+        \coordinate[right=\dista of V4] (W4);
+        %
+        \coordinate[right=\dista of W1, label=below left:$Y$] (Y1);
+        \coordinate[right=\dista of W2] (Y2);
+        \coordinate[right=\dista of W3] (Y3);
+        \coordinate[right=\dista of W4] (Y4);
+        %
+        \coordinate[above right=0.6cm and 1.125cm of U1] (U);
+        \coordinate[right=\dista of U] (V);
+        \coordinate[right=\dista of V] (W);
+        \coordinate[right=\dista of W] (Y);
+        %%%%% ESPACIOS VEC. %%%%%
+        \filldraw[gray,opacity=0.2] (U1) -- (U2) -- (U3) -- (U4) -- (U1) -- cycle;
+        \filldraw[gray,opacity=0.2] (V1) -- (V2) -- (V3) -- (V4) -- (V1) -- cycle;
+        \filldraw[gray,opacity=0.2] (W1) -- (W2) -- (W3) -- (W4) -- (W1) -- cycle;
+        \filldraw[gray,opacity=0.2] (Y1) -- (Y2) -- (Y3) -- (Y4) -- (Y1) -- cycle;
+        %%%%% LETRAS %%%%%
+        \filldraw (U) circle (1.75pt) node[below] {$\mathbb{u}$};
+        \filldraw (V) circle (1.75pt) node[below] {$T_1(\mathbb{u})$};
+        \filldraw (W) circle (1.75pt) node[below] {$T_2\big(T_1(\mathbb{u})\big)$};
+        \filldraw (Y) circle (1.75pt) node[below] {$T_3\big(T_2(T_1(\mathbb{u}))\big)$};
+        %%%%% FLECHAS %%%%%
+        \draw[-Stealth, shorten >=4pt] (U) .. controls ($(U)!.3!(V) + (0,0.5)$) and ($(U)!.7!(V) + (0,0.5)$) .. node[midway, below] {$T_1$} (V);
+        \draw[-Stealth, shorten >=4pt] (V) .. controls ($(V)!.3!(W) + (0,0.5)$) and ($(V)!.7!(W) + (0,0.5)$) .. node[midway, below] {$T_2$} (W);
+        \draw[-Stealth, shorten >=4pt] (W) .. controls ($(W)!.3!(Y) + (0,0.5)$) and ($(W)!.7!(Y) + (0,0.5)$) .. node[midway, below] {$T_3$} (Y);
+        \draw[-Stealth, shorten >=4pt] (U) .. controls ($(U)!.3!(Y) + (0,1.5)$) and ($(U)!.7!(Y) + (0,1.5)$) .. node[midway, above] {$T_3 \circ T_2 \circ T_1$} (Y);
+    \end{tikzpicture}
+\end{center}
+Por ejemplo, si $T_1: U \longrightarrow V$, $T_2: V \longrightarrow W$ y $T_3: W \longrightarrow Y$ son transformaciones lineales, entonces la composición $T_3 \circ T_2 \circ T_1$ se define como
+$$(T_3 \circ T_2 \circ T_1)(\mathbb{u}) = T_3\big(T_2(T_1(\mathbb{u}))\big)$$
+
+Si $T: V \longrightarrow W$ es una transformación lineal uno a uno con rango $\rho(T)$, y si $\mathbb{w}$ es un vector cualquiera en $\rho(T)$, el hecho de que $T$ sea uno a uno significa que existe exactamente un vector $\mathbb{v} \in V$ para el cual $T(\mathbb{v}) = \mathbb{w}$. Este hecho nos permite definir una nueva función, llamada la inversa de $T$ (y denotada por $T^{-1}$), que está definida en el rango de $T$ y que asigna $\mathbb{w}$ de vuelta a $\mathbb{v}$.
+\begin{center}
+    \begin{tikzpicture}
+        %%%%% COORDENADAS %%%%%
+        \coordinate[label=below left:$V$] (U1) {};
+        \coordinate[right=2cm of U1] (U2);
+        \coordinate[above right=1.2cm and 0.25cm of U2] (U3);
+        \coordinate[left=2cm of U3] (U4);
+        %
+        \def\dista{4cm}
+        \coordinate[right=\dista of U1] (V1);
+        \coordinate[right=\dista of U2, label=below right:$\rho(T)$] (V2);
+        \coordinate[right=\dista of U3] (V3);
+        \coordinate[right=\dista of U4] (V4);
+        %
+        \coordinate[above right=0.6cm and 1.125cm of U1] (U);
+        \coordinate[right=\dista of U] (V);
+        %%%%% ESPACIOS VEC. %%%%%
+        \filldraw[gray,opacity=0.2] (U1) -- (U2) -- (U3) -- (U4) -- (U1) -- cycle;
+        \filldraw[gray,opacity=0.2] (V1) -- (V2) -- (V3) -- (V4) -- (V1) -- cycle;
+        %%%%% LETRAS %%%%%
+        \filldraw (U) circle (1.75pt) node[left] {$\mathbb{v}$};
+        \filldraw (V) circle (1.75pt) node[right] {$\mathbb{w} = T(\mathbb{v})$};
+        %%%%% FLECHAS %%%%%
+        \draw[-Stealth, shorten >=4pt] (U) .. controls ($(U)!.3!(V) + (0,0.5)$) and ($(U)!.7!(V) + (0,0.5)$) .. node[midway, above] {$T$} (V);
+        \draw[-Stealth, shorten >=4pt] (V) .. controls ($(V)!.3!(U) + (0,-0.5)$) and ($(V)!.7!(U) + (0,-0.5)$) .. node[midway, below] {$T^{-1}$} (U);
+    \end{tikzpicture}
+\end{center}
+
+A continuación, vamos a demostrar que $T^{-1}: \rho(T) \longrightarrow V$ es una transformación lineal. Además, de la definición de $T^{-1}$ se obtiene que
+\begin{equation}
+    T^{-1}\big(T(\mathbb{v})\big) = T^{-1}(\mathbb{w}) = \mathbb{v} \label{JAJAIIAIAIQIOOCQJQ}
+\end{equation}
+y
+\begin{equation}
+    T\big(T^{-1}(\mathbb{w})\big) = T(\mathbb{v}) = \mathbb{w}
+\end{equation}
+Por lo tanto, $T$ y $T^{-1}$, cuando se aplican sucesivamente en cualquier orden, se anulan mutuamente.
+
+\begin{theorem}
+    Si $T: V \longrightarrow W$ es una transformación lineal uno a uno, entonces $T^{-1}: \rho(T) \longrightarrow V$ también es una transformación lineal uno a uno. \\
+    \demostracion Sea $T: V \longrightarrow W$ una transformación lineal uno a uno. Entonces, para cada $\mathbb{w} \in \rho(T)$, existe un único $\mathbb{v} \in V$ tal que $T(\mathbb{v}) = \mathbb{w}$. Así, la función $T^{-1}: \rho(T) \longrightarrow V$, que asigna a cada $\mathbb{w} \in \rho(T)$ el único $\mathbb{v}$ tal que $T(\mathbb{v}) = \mathbb{w}$, está bien definida, y este $\mathbb{v}$ se denota por $T^{-1}(\mathbb{w})$. Ahora, dado $\mathbb{v} \in V$, si definimos $\mathbb{w} = T(\mathbb{v})$, entonces, dado que $T$ es uno a uno, $\mathbb{v}$ es el único vector en $V$ tal que $T(\mathbb{v}) = \mathbb{w}$. De este modo, $T^{-1}(\mathbb{w}) = T^{-1}\big(T(\mathbb{v})\big) = \mathbb{v}$. Para $\mathbb{w} \in \rho(T)$, como $\mathbb{v} = T^{-1}(\mathbb{w})$ es el único vector en $V$ tal que $T(\mathbb{v}) = \mathbb{w}$, se sigue que $T\big(T^{-1}(\mathbb{w})\big) = \mathbb{w}$. Por lo tanto,
+    $$T^{-1}\big(T(\mathbb{v})\big) = \mathbb{v}, \forall \mathbb{v} \in V \quad \text{ y } T\big(T^{-1}(\mathbb{w})\big) = \mathbb{w}, \forall \mathbb{w} \in \rho(T)$$
+    Dado que $T$ es uno a uno, para $\mathbb{w}_1, \mathbb{w}_2 \in \rho(T)$ existen únicos $\mathbb{v}_1, \mathbb{v}_2 \in V$ tales que
+    $$T(\mathbb{v}_1) = \mathbb{w}_1 \quad \text{ y } \quad T(\mathbb{v}_2) = \mathbb{w}_2.$$
+    Entonces,
+    \begin{align*}
+        T^{-1}(\mathbb{w}_1 + \mathbb{w}_2) & = T^{-1}\big(T(\mathbb{v}_1) + T(\mathbb{v}_2)\big) \\
+        & = T^{-1}\big(T(\mathbb{v}_1 + \mathbb{v}_2)\big) \\
+        & = \mathbb{v}_1 + \mathbb{v}_2 \\
+        & = T^{-1}\big(T(\mathbb{v}_1)\big) + T^{-1}\big(T(\mathbb{v}_2)\big) \\
+        & = T^{-1}(\mathbb{w}_1) + T^{-1}(\mathbb{w}_2).
+    \end{align*}
+    Además, para $\mathbb{w} \in \rho(T)$, existe un único $\mathbb{v} \in V$ tal que $T(\mathbb{v}) = \mathbb{w}$, lo que implica que para cualquier escalar $k$ se tiene:
+    \begin{align*}
+        T^{-1}(k\mathbb{w}) & = T^{-1}\big(kT(\mathbb{v})\big) \\
+        & = T^{-1}\big(T(k\mathbb{v})\big) \\
+        & = k\mathbb{v} \\
+        & = kT^{-1}\big(T(\mathbb{v})\big) \\
+        & = kT^{-1}(\mathbb{w}).
+    \end{align*}
+    Por lo tanto, $T^{-1}$ es una transformación lineal. 
+
+    Finalmente, consideremos $\mathbb{w} \in \Nuc(T^{-1})$. Si $T^{-1}(\mathbb{w}) = \mathbb{0}_V$, aplicando $T$ obtenemos $T\big(T^{-1}(\mathbb{w})\big) = T(\mathbb{0}_V)$. Como $T\big(T^{-1}(\mathbb{w})\big) = \mathbb{w}$ y $T(\mathbb{0}_V) = \mathbb{0}_W$, se deduce que $\mathbb{w} = \mathbb{0}_W$. Así, $\Nuc(T^{-1}) = \{\mathbb{0}_W\}$, y según el teorema \ref{theo:nu_cero}, $T^{-1}$ es uno a uno.
+\end{theorem}
+
+\begin{example}
+    Dado $T: \RR[3] \longrightarrow \RR[3]$ el operador lineal definido por la fórmula
+    $$T\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 3x_1 + x_2 \\ -2x_1 - 4x_2 + 3x_3 \\ 5x_1 + 4x_2 - 2x_3 \end{pmatrix}$$
+    determine si $T$ es uno a uno; si es así, encuentre $T^{-1}$. \\
+    \solucion Para probar que $T$ es uno a uno, debemos probar que $T(\mathbb{x}) = \mathbb{0}_{\RR[3]}$. Esto nos lleva a resolver el siguiente sistema
+    \begin{align*}
+        3x_1 + x_2 & = 0 \\
+        -2x_1 - 4x_2 + 3x_3 & = 0 \\
+        5x_1 + 4x_2 - 2x_3 & = 0
+    \end{align*}
+    Aplicando el método de reducción de Gauss-Jordan, obtenemos que el sistema tiene solución única y $x_1 = x_2 = x_3 = 0$. Por lo tanto, $T$ es uno a uno. Se sigue del teorema \ref{matrix_representationtl} que la representación matricial de $T$ es
+    $$A_T = \begin{bmatrix*}[r]
+        3 & 1 & 0 \\
+        -2 & -4 & 3 \\
+        5 & 4 & -2
+    \end{bmatrix*}$$
+    Usando el teorema \ref{singular_determinante}, tenemos que $\Det(A_T) = -1$ y, por lo tanto, $A_T$ es invertible. De esta forma, encontrando la inversa de $A_T$ tenemos que
+    $$A^{-1}_T = \begin{bmatrix*}[r]
+        4 & -2 & -3 \\
+        -11 & 6 & 9 \\
+        -12 & 7 & 10
+    \end{bmatrix*}$$\newpage\noindent
+    de donde se sigue que
+    $$T^{-1}\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 4x_1 - 2x_2 - 3x_3 \\ -11x_1 + 6x_2 + 9x_3 \\ -12x_1 + 7x_2 + 10x_3 \end{pmatrix}$$
+\end{example}
+
+Concluimos esta sección con un teorema que muestra que la composición de transformaciones lineales uno a uno también es uno a uno, y que el inverso de una composición es la composición de los inversos en el orden inverso.
+
+\begin{theorem}
+    Si $T_1: U \longrightarrow V$ y $T_2: V \longrightarrow W$ son transformaciones lineales uno a uno, entonces:
+    \begin{enumerate}[label=\alph*)]
+        \item $T_2 \circ T_1$ es uno a uno.
+        \item $(T_2 \circ T_1)^{-1} = T_1^{-1} \circ T_2^{-1}$.
+    \end{enumerate}
+    \demostracion
+    \begin{enumerate}[label=\alph*)]
+        \item Queremos demostrar que $T_2 \circ T_1$ mapea vectores distintos en $U$ en vectores distintos en $W$. Pero si $\mathbb{u}$ y $\mathbb{v}$ son vectores distintos en $U$, entonces $T_1(\mathbb{u})$ y $T_1(\mathbb{v})$ son vectores distintos en $V$ ya que $T_1$ es uno a uno. Esto, junto con el hecho de que $T_2$ es uno a uno, implica que
+        $$T_2\big(T_1(\mathbb{u})\big) \quad \text{ y } \quad T_2\big(T_1(\mathbb{v})\big)$$
+        también son vectores distintos. Pero estas expresiones también pueden escribirse como
+        $$(T_2 \circ T_1)(\mathbb{u}) \quad \text{ y } \quad (T_2 \circ T_1)(\mathbb{v})$$
+        Por lo tanto, $T_2 \circ T_1$ mapea $\mathbb{u}$ y $\mathbb{v}$ en vectores distintos en $W$.
+        \item Queremos demostrar que
+        $$(T_2 \circ T_1)^{-1}(\mathbb{w}) = (T_1^{-1} \circ T_2^{-1})(\mathbb{w})$$
+        para cada vector $\mathbb{w}$ en la imagen de $T_2 \circ T_1$. Para este propósito, sea
+        \begin{equation}
+            \mathbb{u} = (T_2 \circ T_1)^{-1}(\mathbb{w}) \label{IAIOPAPAIUVCGQ}
+        \end{equation}
+        por lo que nuestro objetivo es demostrar que
+        $$\mathbb{u} = (T_1^{-1} \circ T_2^{-1})(\mathbb{w})$$
+        Pero se sigue de \eqref{IAIOPAPAIUVCGQ} que
+        $$T_2\big(T_1(\mathbb{u})\big) = \mathbb{w}$$
+        o de manera equivalente,
+        $$(T_2 \circ T_1)(\mathbb{u}) = \mathbb{w}$$
+        Ahora, al aplicar $T_1^{-1}$ en ambos lados de esta ecuación y luego $T_2^{-1}$ en ambos lados del resultado, y usando \eqref{JAJAIIAIAIQIOOCQJQ}, se obtiene que
+        $$\mathbb{u} = T_1^{-1}\big(T_2^{-1}(\mathbb{w})\big)$$
+        o de manera equivalente,
+        $$\mathbb{u} = (T_1^{-1} \circ T_2^{-1})(\mathbb{w})$$
+    \end{enumerate}
+\end{theorem}
+
+En otras palabras, la parte (b) del teorema anterior establece que la inversa de una composición es la composición de las inversas en el orden inverso. Este resultado puede extenderse a composiciones de tres o más transformaciones lineales; por ejemplo,
+$$(T_3 \circ T_2 \circ T_1)^{-1} = T_1^{-1} \circ T_2^{-1} \circ T_3^{-1}$$
 
 \newpage
 
@@ -1735,7 +2227,7 @@ De los problemas 1 al 39 determine si la transformación de $V$ en $W$ dada es l
     \item $T: \mathcal{M}_{n \times n}(\RR) \longrightarrow \mathcal{M}_{n \times n}(\RR)$; $T(A)=A^{T} A$
     \item $T: \mathcal{M}_{p \times q}(\RR) \longrightarrow \mathcal{M}_{p \times q}(\RR)$; $T(A)=A^{T}$
     \item $T: \mathcal{M}_{m \times n}(\RR) \longrightarrow \mathcal{M}_{q \times n}(\RR)$; $T(A)=B A$, donde $B$ es una matriz fija de $q \times m$
-    \item $T: D_{n} \longrightarrow D_{n}$; $T(D)=D^{2}$\infoBulle{$D_{n}$ es el conjunto de matrices diagonales de $n \times n$}
+    \item $T: D_{n} \longrightarrow D_{n}$; $T(D)=D^{2}$\infoBulle{$D_{n}$ es el conjunto de matrices diagonales de $n \times n$.}
     \item $T: D_{5} \longrightarrow \RR[3]$; $T(D)=\begin{pmatrix*}d_{11}+2 d_{33} \\ d_{22}-3 d_{33} \\ d_{55}\end{pmatrix*}$
     \item $T: P_{2} \longrightarrow P_{1}$; $T\left(a_{0}+a_{1} x+a_{2} x^{2}\right)=a_{0}+a_{1} x$
     \item $T: P_{2} \longrightarrow P_{1}$; $T\left(a_{0}+a_{1} x+a_{2} x^{2}\right)=a_{1}+a_{2} x$
