@@ -1,0 +1,784 @@
+\chapter{NÚMEROS COMPLEJOS}\label{chap:numeros-complejos}
+
+La resolución de ecuaciones algebraicas ha sido, a lo largo de la historia de las matemáticas, uno de los problemas más fundamentales y, al mismo tiempo, un motor impulsor del desarrollo teórico de la disciplina. Desde los antiguos matemáticos babilonios, pasando por los matemáticos árabes y europeos del Renacimiento, hasta los avances modernos, el interés por resolver ecuaciones polinómicas ha generado herramientas y conceptos que han transformado profundamente nuestra forma de entender las matemáticas.
+
+Entre las ecuaciones algebraicas, aquellas de una incógnita y con coeficientes reales poseen una importancia particular. Estas ecuaciones se escriben generalmente en la forma:
+$$a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0 = 0,$$
+donde $a_n$, $a_{n-1}$, $\dots$, $a_1$, $a_0$ son números reales, y $x$ representa la incógnita o indeterminada. Cada uno de los coeficientes describe una característica particular de la ecuación y, en conjunto, definen las propiedades del polinomio asociado. El término $a_n$, que corresponde al coeficiente del término de mayor exponente, es de especial relevancia, ya que si $a_n \neq 0$, el valor $n$ se conoce como el grado del polinomio o de la ecuación. Este grado determina el comportamiento del polinomio, tales como su forma general y el número máximo de soluciones posibles en un sistema numérico dado.
+
+Resolver una ecuación polinómica como la anterior implica encontrar todos los valores de $x$ que la satisfagan. Dichos valores se conocen como las \emph{raíces} o \emph{soluciones} de la ecuación. En otras palabras, son aquellos números que, al sustituirlos en lugar de $x$ y realizar todas las operaciones indicadas, reducen el primer miembro de la ecuación a cero. Por ejemplo, si consideramos la ecuación cuadrática simple $x^2 - 5x + 6 = 0$, sus raíces son los valores de $x$ que satisfacen la igualdad, en este caso, $x = 2$ y $x = 3$. Para cada una de estas soluciones, al sustituir $x$ en el polinomio $x^2 - 5x + 6$, obtenemos $0$, verificando que son efectivamente soluciones.
+
+\newpage
+
+El sistema de los números reales $\RR$ es extremadamente poderoso y útil. Desde su construcción formal, este conjunto ha servido como el fundamento de gran parte de las matemáticas y ha permitido resolver una amplia variedad de problemas en diversas disciplinas. Sin embargo, hay situaciones en las que $\RR$ resulta insuficiente, especialmente cuando tratamos de resolver ciertas ecuaciones algebraicas.
+
+Consideremos, por ejemplo, la ecuación cuadrática
+\begin{equation}
+    x^2 + 1 = 0. \label{JAJAJJAJAJAKOQIQPo}
+\end{equation}
+Esta ecuación, aunque simple, nos revela una limitación fundamental del sistema de números reales. Supongamos que $t \in \RR$ es una solución de \eqref{JAJAJJAJAJAKOQIQPo}, entonces debe cumplirse que
+$$t^2 + 1 = 0.$$
+Por lo tanto,
+$$t^2 = -1.$$
+Aquí radica el problema: dentro del sistema de números reales, no existe ningún número $t$ tal que $t^2 = -1$. Si $t > 0$, entonces $t^2 > 0$. Si $t = 0$, entonces $t^2 = 0$. Si $t < 0$, entonces $t^2 > 0$. En todos los casos, el valor de $t^2$ es siempre mayor o igual a cero. Por lo tanto, no existe ningún número real $t$ tal que $t^2 = -1$. Esto significa que la ecuación $x^2 + 1 = 0$ no tiene solución en el conjunto de los números reales.
+
+La imposibilidad de resolver ecuaciones como $x^2 + 1 = 0$ dentro del sistema de números reales plantea una pregunta natural: ¿es posible extender $\RR$ de alguna manera que permita encontrar soluciones a este tipo de ecuaciones? La respuesta es afirmativa, y lo que haremos enseguida es ampliar el sistema de los números reales, a un sistema de números donde, por lo menos, la ecuación \eqref{JAJAJJAJAJAKOQIQPo} tenga solución.
+
+\begin{definicion}{}{definiciondecomplejo}
+    Un número complejo $z$ es una pareja ordenada de $\RR$. El conjunto de números complejos lo denotaremos por $\CC$, donde
+    $$\CC = \left\{ (a, b) \mid a, b \in \RR \right\}.$$
+\end{definicion}
+
+El sistema $\CC$ no es una simple extensión arbitraria de $\RR$, sino una construcción cuidadosamente definida que conserva muchas de las propiedades de $\RR$.
+
+\begin{definicion}{}{}
+    Decimos que dos números complejos $z = (a, b)$ y $w = (c, d)$ son iguales, y lo denotaremos por $z = w$, si $a = c$ y $b = d$.
+\end{definicion}
+
+\begin{definicion}{}{}
+    Sea $z \in \CC$, con $z = (a, b)$. Definimos:
+    \begin{enumerate}[label=\roman*., topsep=6pt, itemsep=0pt]
+        \item La parte real de $z$, denotada por $\operatorname{Re}(z)$, como $\operatorname{Re}(z) = a$.
+        \item La parte imaginaria de $z$, denotada por $\operatorname{Im} (z)$, como $\operatorname{Im} (z) = b$.
+    \end{enumerate}
+\end{definicion}
+
+\section{Operaciones con números complejos}
+
+El conjunto de los números complejos se caracteriza por la presencia de dos operaciones fundamentales: la suma y el producto. Para definir la suma de dos números complejos $z$ y $w$, representados como $z = (a, b)$ y $w = (c, d)$ en el conjunto $\CC$, utilizamos la siguiente expresión:
+$$z + w = (a, b) + (c, d) = (a + c, b + d).$$
+Asimismo, para definir el producto de estos números complejos $z$ y $w$, expresados como $z = (a, b)$ y $w = (c, d)$ en el conjunto $\CC$, empleamos la siguiente fórmula:
+$$zw = (a, b)(c, d) = (ac - bd, ad + bc).$$
+Es importante destacar que la suma cumple con las siguientes propiedades:\newpage
+\begin{enumerate}[label=A\arabic*.]
+    \item Cerradura: Si $z$, $w \in \CC$, entonces $z + w \in \CC$. En efecto: Sean $z$, $w \in \CC$ con $z = (a, b)$ y $w = (c, d)$, entonces
+    \begin{align*}
+        z + w & = (a, b) + (c, d) \\
+        & = (a + c, b + d) \in \CC.
+    \end{align*}
+    \item Asociatividad: Si $z$, $w$, $y \in \CC$, entonces
+    $$(z + w) + y = z + (w + y).$$
+    En efecto: Sean $z$, $w \in \CC$ con $z = (a, b)$, $w = (c, d)$ e $y = (e, f)$. Entonces
+    \begin{align*}
+        (z + w) + y & = \big((a, b) + (c, d)\big) + (e, f) \\
+        & = (a + c, b + d) + (e, f) \\
+        & = \big((a + c) + e, (b + d) + f\big) \\
+        & = \big(a + (c + e), b + (d + f)\big) \\
+        & = (a, b) + (c + e, d + f) \\
+        & = (a, b) + \big((c, d) + (e, f)\big) \\
+        & = z + (w + y).
+    \end{align*}
+    \item Conmutatividad: Si $z$, $w \in \CC$, entonces
+    $$z + w = w + z.$$
+    En efecto: Sean $z$, $w \in \CC$ tal que $z = (a, b)$ y $w = (c, d)$, entonces
+    \begin{align*}
+        z + w & = (a, b) + (c, d) \\
+        & = (a + c, b + d) \\
+        & = (c + a, d + b) \\
+        & = (c, d) + (a, b) \\
+        & = w + z.
+    \end{align*}
+    \item Elemento neutro: Existe un único número complejo, denotado por $0$, que satisface
+    $$z + 0 = z, \forall z \in \CC.$$
+    En efecto: Sea $z \in \CC$, con $z = (a, b)$.
+    
+    \textbf{Existencia:} Sea $w = (0, 0)$, entonces
+    \begin{align*}
+        z + w & = (a, b) + (0, 0) \\
+        & = (a + 0, b + 0) \\
+        & = (a, b) \\
+        & = z.
+    \end{align*}
+    Por lo que $z + w = z$.
+    
+    \textbf{Unicidad:} Sea $v \in \CC$ tal que
+    $$z + v = z, \forall z \in \CC,$$
+    en particular para $z = w$, tenemos que $w + v = w$. Pero $z + w = z$, $\forall z \in \CC$, en particular para $z = v$, tenemos $v + w = v$. Así que
+    \begin{align*}
+        v & = v + w \\
+        & = w + v \\
+        & = w.
+    \end{align*}
+    Por lo tanto $v = w$.\newpage
+    \item Inverso aditivo: Dado $z \in \CC$, existe un único número complejo, denotado por $-z$, que satisface
+    $$z + (-z) = 0.$$
+    En efecto: Sea $z \in \CC$, con $z = (a, b)$.
+    
+    \textbf{Existencia:} Sea $w = (-a, -b)$, entonces
+    \begin{align*}
+        z + w & = (a, b) + (-a, -b) \\
+        & = \big(a + (-a), b + (-b)\big) \\
+        & = (0, 0) \\
+        & = 0.
+    \end{align*}
+    \textbf{Unicidad:} Sea $v \in \CC$ tal que $z + v = 0$. Tenemos
+    \begin{align*}
+        w & = w + 0 \\
+        & = w + (z + v) \\
+        & = (w + z) + v \\
+        & = 0 + v \\
+        & = v.
+    \end{align*}
+    Por lo tanto $w = v$.
+\end{enumerate}
+El producto satisface:
+\begin{enumerate}[resume,label=A\arabic*.]
+    \item Cerradura: Sea $z$, $w \in \CC$, entonces $zw \in \CC$. En efecto: Sea $z$, $w \in \CC$ con $z = (a, b)$ y $w = (c, d)$, entonces
+    \begin{align*}
+        zw & = (a, b)(c, d) \\
+        & = (ac - bd, ad + bc) \in \CC.
+    \end{align*}
+    \item Asociatividad: Si $z$, $w$, $y \in \CC$, entonces
+    $$(zw)y = z(wy).$$
+    En efecto: Sean $z$, $w$, $y \in \CC$ con $z = (a, b)$, $w = (c, d)$ e $y = (e, f)$. Entonces
+    \begin{align*}
+        (zw)y & = [(a, b)(c, d)](e, f) \\
+        & = (ac - bd, ad + bc)(e, f) \\
+        & = \big((ac - bd)e - (ad + bc)f, (ac - bd)f + (ad + bc)e\big) \\
+        & = (ace - bde - adf - bcf, acf - bdf + ade + bce) \\
+        & = (ace - adf - bcf - bde, acf + ade + bce - bdf) \\
+        & = \big(a(ce - df) - b(cf + de), a(cf + de) + b(ce - df)\big) \\
+        & = (a, b)(ce - df, cf + de) \\
+        & = (a, b)\big((c, d)(e, f)\big) \\
+        & = z(wy).
+    \end{align*}
+    \item Conmutatividad: Si $z$, $w \in \CC$, entonces
+    $$zw = wz.$$
+    En efecto: Sean $z$, $w \in \CC$ con $z = (a, b)$ y $w = (c, d)$, entonces
+    \begin{align*}
+        zw & = (a, b)(c, d) \\
+        & = (ac - bd, ad + bc) \\
+        & = (ca - db, cb + da) \\
+        & = (c, d)(a, b) \\
+        & = wz.
+    \end{align*}
+    \newpage
+    \item Elemento identidad: Existe un único complejo, denotado por $1$, que satisface
+    $$1 \cdot z = z, \forall z \in \CC.$$
+    En efecto: Sea $z \in \CC$ con $z = (a, b)$.
+    
+    \textbf{Existencia:} Sea $w = (1, 0)$, entonces
+    \begin{align*}
+        wz & = (1, 0)(a, b) \\
+        & = (1a - 0b, 1b + 0a) \\
+        & = (a, b) \\
+        & = z.
+    \end{align*}
+    
+    \textbf{Unicidad:} Sea $v \in \CC$ tal que
+    $$vz = z, \; \forall z \in \CC,$$
+    en particular para $z = w$, entonces $vw = w$. Como $wz = z$, $\forall z \in \CC$, en particular $z = v$, entonces $wv = v$. Así que
+    \begin{align*}
+        v & = wv \\
+        & = vw \\
+        & = w.
+    \end{align*}
+    Por tanto, $v = w$.
+    \item Inverso multiplicativo: Dado $z \in \CC$, con $z \neq 0$, existe un único complejo tal que
+    $$z \cdot z^{-1} = 1.$$
+    En efecto: Sea $z \in \CC$, con $z = (a, b)$ y $z \neq 0$, entonces $a \neq 0$ o $b \neq 0$. Deseamos encontrar $w \in \CC$ tal que $zw = (1, 0)$. Expresemos $w = (x, y)$, entonces
+    \begin{align*}
+        (1, 0) &= zw \\
+        & = (a, b)(x, y) \\
+        & = (ax - by, ay + bx).
+    \end{align*}
+    Luego $ax - by = 1$ y $ay + bx = 0$. Es decir
+    \begin{equation}
+        \begin{cases}
+            \begin{aligned}
+                ax - by & = 1 \\
+                ay + bx & = 0
+            \end{aligned}
+        \end{cases} \label{SISTEMAIMAGINARIO}
+    \end{equation}
+    \begin{enumerate}[label=\roman*.]
+        \item Si $a = 0$, entonces $b \neq 0$. Por lo tanto, $by = 1$, de donde se sigue que $\displaystyle y = -\frac{1}{b}$. Además, $bx = 0$, lo que implica que $x = 0$.
+        \item Si $b = 0$, entonces $a \neq 0$. Por lo tanto, $ax = 1$, de donde se sigue que $\displaystyle x = \frac{1}{a}$. Además, $ay = 0$, lo que implica que $y = 0$.
+        \item Supongamos que $a$, $b \neq 0$. Entonces $a^2 + b^2 \neq 0$. Multiplicando la primer ecuación de \eqref{SISTEMAIMAGINARIO} por $a$ y la segunda ecuación de \eqref{SISTEMAIMAGINARIO} por $b$, obtenemos que
+        $$\begin{cases}
+            \begin{aligned}
+                a^2x - aby & = a \\
+                aby + b^2x & = 0
+            \end{aligned}
+        \end{cases}$$
+        Sumando dichas ecuaciones, se sigue que
+        $$x\left(a^2 + b^2\right) = a.$$
+        Por lo tanto,
+        $$x = \frac{a}{a^2 + b^2}.$$\newpage
+        Por otro lado, multiplicando la primer ecuación de \eqref{SISTEMAIMAGINARIO} por $-b$ y la segunda ecuación de \eqref{SISTEMAIMAGINARIO} por $a$, obtenemos que
+        $$\begin{cases}
+            \begin{aligned}
+                -bax + b^2y & = -b \\
+                bax + a^2y & = 0
+            \end{aligned}
+        \end{cases}$$
+        Sumando dichas ecuaciones, se sigue que
+        $$y\left(a^2 + b^2\right) = -b.$$
+        Por lo tanto,
+        $$y = -\frac{b}{a^2 + b^2}.$$
+        De donde se hereda que,
+        $$z^{-1} = \left(\frac{a}{a^2 + b^2}, \frac{-b}{a^2 + b^2}\right).$$
+    \end{enumerate}
+\end{enumerate}
+La adición y el producto se relacionan con la siguiente propiedad:
+\begin{enumerate}[resume,label=A\arabic*.]
+    \item Distributividad: Sean $z$, $w$, $y \in \CC$, entonces
+    $$z(x + y) = zx + zy.$$
+    En efecto: Se deja como ejercicio al lector.
+\end{enumerate}
+
+\begin{adjustwidth}{-7.6cm}{-2cm}
+    \begin{tcolorbox}[
+        theorem style=change break,
+        enhanced,
+        breakable,
+        boxrule=0pt,
+        frame hidden,
+        left = 1.8cm,
+        right = 1.8cm,
+        top=4mm,
+        bottom=2mm,
+        colback=black!7!white,
+        coltitle=black,
+        attach title to upper={\ },
+        sharp corners,
+        borderline north={1.5pt}{0pt}{black},
+        title = {Isomorfismo entre los números reales:},
+        fonttitle=\selectfont\Lato\bfseries\LARGE,
+        fontupper=\normalsize
+    ]
+        \,\\[4mm]
+        Sea $X = \{(a, 0) \mid a \in \RR \}$. Sea $f: \RR \longrightarrow X$ dada por $f(a) = (a, 0)$, para todo $a \in \RR$. Sean $a$, $b \in \RR$. Entonces
+        \begin{align*}
+            f(a + b) & = (a + b, 0) & f(a) f(b) & = (a, 0)(b, 0) \\
+            & = (a, 0) + (b, 0) & & = (a b, 0) \\
+            & = f(a) + f(b) & & = f(a b)
+        \end{align*}
+        De esta forma,\vspace{0.3cm}
+        \begin{enumerate}[label=\roman*., topsep=6pt, itemsep=0pt]
+            \item Para demostrar que $f$ es una función inyectiva, tomemos $a$, $b \in \RR$ tal que $f(a) = f(b)$. Esto implica que $(a, 0) = (b, 0)$, lo que a su vez conduce a $a = b$. Por lo tanto, concluimos que $f$ es inyectiva.
+            \item Para demostrar la sobreyectividad de $f$, tomemos $(a, 0) \in X$. Entonces, se cumple que $f(a)=(a, 0)$.
+            \item Dado que hemos probado que $f$ es inyectiva y sobreyectiva, concluimos que $f$ es biyectiva.\\
+        \end{enumerate}
+        Basándonos en lo expuesto anteriormente, podemos afirmar que $X$ es isomorfo al conjunto de los números reales. Esto implica que, para cualquier elemento $a \in \RR$, podemos asociarlo de manera natural con el elemento $(a, 0) \in X$. Por conveniencia, identificaremos directamente cada número real $a$ con el elemento $(a, 0)$ en $X$, escribiendo $a = (a, 0)$. Esta notación simplifica la representación y mantiene consistencia con las propiedades algebraicas del conjunto. Bajo esta identificación, los elementos neutros de la suma y del producto en $X$ se representan de la siguiente manera: $0 = (0, 0)$ y $1 = (1, 0)$.
+    \end{tcolorbox}
+\end{adjustwidth}
+
+Para desarrollar una notación más conveniente, definimos la \emph{unidad imaginaria} como $i = (0, 1)$. Observemos que
+\begin{align*}
+    i^2 & = (0, 1)(0, 1) \\
+    & = \big(0 \cdot 0 - 1 \cdot 1, 0 \cdot 1 + 1 \cdot 0\big) \\
+    & = (-1, 0) \\
+    & = -1
+\end{align*}
+Como identificamos $(-1, 0)$ con el número real $-1$, hemos demostrado que $i^2 = -1$. Además, si $b \in \RR$, entonces
+\begin{align*}
+    b i & = (b, 0)(0, 1) \\
+    & = (b \cdot 0 - 0 \cdot 1, b \cdot 1 + 0 \cdot 0) \\
+    & = (0, b)
+\end{align*}
+\newpage\noindent
+Un número complejo $z = bi$ cuya parte real es cero se dice que es un \emph{imaginario puro}. De esta forma, cualquier número complejo $z = (a, b)$ se puede reescribir usando la unidad imaginaria $i$:
+\infoBulle{A la expresión $a + b i$ se le llama \emph{forma binómica}, donde $a$ es la parte real y $b$ es la parte imaginaria.}
+\begin{align*}
+    z & = (a, b) \\
+    & = (a, 0) + (0, b) \\
+    & = (a, 0) + (b, 0)(0, 1) \\
+    & = a + b i
+\end{align*}
+Sean $z$, $w \in \CC$ con $z = a + b i$ y $w = c + d i$, entonces
+\begin{align*}
+    z + w & = (a + b i) + (c + d i) \\
+    & = (a + c) + (b i + d i) \\
+    & = (a + c) + (b + d) i
+\intertext{y}
+    zw & = (a + b i)(c + d i) \\
+    & =  a c + a d i + b c i + b i d i \\
+    & = a c + (a d + b c) i - b d \\
+    & = (a c - b d) + (a d + b c) i
+\end{align*}
+El inverso multiplicativo de un número complejo $w = c + di$, con $w \neq 0$ se puede expresar en forma binómica. Multiplicando el numerador y el denominador por $c - di$, obtenemos que
+\begin{align*}
+    w^{-1} & = \frac{1}{w} \\
+    & = \frac{1}{c + d i} \\
+    & = \frac{1}{c + d i} \cdot \frac{c - d i}{c - d i} \\
+    & = \frac{c - d i}{(c + d i)(c - d i)} \\
+    & = \frac{c}{c^2 + d^2} - \frac{d}{c^2 + d^2} i
+\end{align*}
+De esta manera, la división de dos números complejos $z$ y $w$ se define como:
+\begin{align*}
+    \frac{z}{w} & = \frac{a + b i}{c + d i} \\
+    & = \frac{a + b i}{c + d i} \cdot \frac{c - d i}{c - d i} \\
+    & = \frac{a c + b d + (-a d + b c) i}{c^2 + d^2} \\
+    & = \frac{a c + b d}{c^2 + d^2} + \frac{-a d + b c}{c^2 + d^2} i.
+\end{align*}
+
+El siguiente teorema enuncia algunas propiedades.
+\begin{theorem}{}{}
+    Sea $z \in \CC$, entonces
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item $z \cdot 0 = 0$.
+        \item $-z = (-1)z$.
+        \item $-(-z) = z$.
+    \end{enumerate}
+
+    \tcblower
+    \demostracion Se dejan como ejercicio al lector.
+\end{theorem}
+
+\newpage
+
+\begin{examplebox}{}{}
+    En la práctica, suele ser más conveniente calcular productos de números complejos por expansión, en lugar de sustituir en alguna fórmula. Por ejemplo,
+    $$(3 - 2i)(4 + 5i) = 12 + 15i - 8i - 10i^2 = (12 + 10) + 7i = 22 + 7i.$$
+\end{examplebox}
+
+Un número complejo $z = a + bi$ puede asociarse con el par ordenado $(a, b)$ de números reales y representarse geométricamente mediante un punto o un vector en el plano $xy$ (figura \ref{fig:figuracomplex1}). A esto lo llamamos el \emph{plano complejo}. Los puntos en el eje $x$ tienen una parte imaginaria de cero y, por lo tanto, corresponden a números reales, mientras que los puntos en el eje $y$ tienen una parte real de cero y corresponden a números imaginarios puros. En consecuencia, llamamos al eje $x$ el \emph{eje real} y al eje $y$ el \emph{eje imaginario} (figura \ref{fig:figuracomplex2}).
+\begin{figure*}[h!]
+    \centering
+    \subfloat[\label{fig:figuracomplex1}]{
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-1,0) -- (3.5,0) node[above left] {$x$};
+        \draw[thick,-Stealth] (0,-1) -- (0,3.5) node[below right] {$y$};
+        \draw[dashed] (0,2) node[left] {$b$} -- (2,2) -- (2,0) node[below] {$a$};
+        \filldraw (2,2) circle (2pt) node[above right] {$a + bi$};
+        \begin{scope}[xshift=5.25cm]
+            \draw[thick,-Stealth] (-1,0) -- (3.5,0) node[above left] {$x$};
+            \draw[thick,-Stealth] (0,-1) -- (0,3.5) node[below right] {$y$};
+            \draw[dashed] (0,2) node[left] {$b$} -- (2,2) -- (2,0) node[below] {$a$};
+            \draw[thick,-Latex] (0,0) -- (2,2) node[above right] {$a + bi$};
+        \end{scope}
+    \end{tikzpicture}
+    } \hfill
+    \subfloat[\label{fig:figuracomplex2}]{
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-1,0) -- (4.5,0) node[above left] {Eje real};
+        \draw[thick,-Stealth] (0,-1) -- (0,3.5) node[below right] {Eje imaginario};
+        \draw[dashed] (0,2) node[left] {$b$} -- (2,2) -- (2,0) node[below] {$a$};
+        \filldraw (2,2) circle (2pt) node[above right] {$z = a + bi$};
+        \draw[thick,-Latex] (0,0) -- (2,2);
+        \node[below] at (2,-0.25) {(Parte real de $z$)};
+        \node[left] at (-0.5,2) {\makecell[l]{(Parte \\ imaginaria \\ de $z$)}};
+    \end{tikzpicture}
+    }
+    \caption{Representación geométrica de un número complejo como punto y vector en el plano complejo}
+\end{figure*}
+
+Los números complejos pueden sumarse, restarse o multiplicarse por números reales geométricamente al realizar estas operaciones sobre sus vectores asociados (véase, por ejemplo, la figura \ref{fig:sumayrestacomplejos}). En este sentido, el sistema de los números complejos $\CC$ está estrechamente relacionado con $\RR[2]$, siendo la principal diferencia que los números complejos pueden multiplicarse para producir otros números complejos, mientras que no existe una operación de multiplicación en $\RR[2]$ que produzca otros vectores en $\RR[2]$ (el producto punto de la definición \ref{definicion:JUNSJSNSN} produce un escalar, no un vector en $\RR[2]$).
+\begin{figure}[h!]
+    \centering
+    \subfloat[]{
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-1,0) -- (4,0) node[above left] {$x$};
+        \draw[thick,-Stealth] (0,-1) -- (0,3.5) node[below right] {$y$};
+        \draw[thick,-Latex] (0,0) -- (0.75,2.5) node[below left,xshift=-3pt] {$z_1$};
+        \draw[thick,-Latex] (0,0) -- (2.5,0.75) node[below left,yshift=-3pt] {$z_2$};
+        \draw[dashed] (0.75,2.5) -- (3.25,3.25) -- (2.5,0.75);
+        \draw[thick,-Latex] (0,0) -- (3.25,3.25) node[right] {$z_1 + z_2$};
+    \end{tikzpicture}
+    } \hfill
+    \subfloat[]{
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-1,0) -- (4,0) node[above left] {$x$};
+        \draw[thick,-Stealth] (0,-1) -- (0,3.5) node[below right] {$y$};
+        \draw[thick,-Latex] (0,0) -- (0.75,2.5) node[below left,xshift=-3pt] {$z_1$};
+        \draw[thick,-Latex] (0,0) -- (2.5,0.75) node[below left,yshift=-3pt] {$z_2$};
+        \draw[thick,-Latex] (2.5,0.75) -- node[midway,above right] {$z_1 - z_2$} (0.75,2.5);
+    \end{tikzpicture}
+    }
+    \caption{La suma y resta de dos números complejos}
+    \label{fig:sumayrestacomplejos}
+\end{figure}
+
+Si $z = a + bi$ es un número complejo, entonces el \emph{conjugado complejo} de $z$, o simplemente el \emph{conjugado} de $z$, se denota por $\overline{z}$ (se lee “$z$ barra”) y se define por
+$$\overline{z} = a - bi.$$
+Numéricamente, $\overline{z}$ se obtiene a partir de $z$ invirtiendo el signo de la parte imaginaria, y geométricamente se obtiene reflejando el vector de $z$ con respecto al eje real (figura \ref{fig:compleconjugado}).\sideFigure[\label{fig:compleconjugado}]{\begin{tikzpicture}
+    \draw[thick,-Stealth] (-1,0) -- (4,0) node[above left] {$x$};
+    \draw[thick,-Stealth] (0,-3) -- (0,3) node[below right] {$y$};
+    \draw[thick,-Latex] (0,0) -- (3,2.5) node[below left,xshift=-10pt] {$z = a + bi$};
+    \draw[thick,-Latex] (0,0) -- (3,-2.5) node[above left,xshift=-10pt] {$\overline{z} = a - bi$};
+    \draw[dashed] (3,2.5) -- (3,-2.5);
+\end{tikzpicture}}
+
+\newpage
+
+\begin{examplebox}{}{}
+    Consideremos el número complejo $z = 4 + 7i$. Para encontrar el conjugado, solo cambiamos el signo de la parte imaginaria. Por lo tanto, $\overline{z} = 4 - 7i$.
+\end{examplebox}
+
+Observamos que $z$ y su conjugado $\overline{z}$ son diferentes cuando la parte imaginaria de $z$ no es cero. Esto nos lleva a una propiedad importante que caracteriza a los números reales entre los números complejos.
+
+\begin{theorem}{}{conjugado-real}
+    Un número complejo $z$ es un número real si y solo si es igual a su conjugado, es decir, si $z = \overline{z}$.
+\end{theorem}
+
+El siguiente cálculo muestra que el producto de un número complejo $z = a + bi$ y su conjugado $\overline{z} = a - bi$ es un número real no negativo:
+$$z\overline{z} = (a + bi)(a - bi) = a^2 - abi + bai - b^2 i^2 = a^2 + b^2.$$
+Observemos que
+$$\sqrt{z\overline{z}} = \sqrt{a^2 + b^2}.$$
+es la longitud del vector correspondiente a $z$ (figura \ref{fig:complemodulo}); a esta longitud la llamamos el \emph{módulo} (o \emph{valor absoluto} de $z$) y lo denotamos por $|z|$. Así, tenemos que\sideFigure[\label{fig:complemodulo}]{\begin{tikzpicture}
+    \draw[thick,-Stealth] (-1,0) -- (4,0) node[above left] {$x$};
+    \draw[thick,-Stealth] (0,-1) -- (0,4) node[below right] {$y$};
+    \draw[thick,-Latex] (0,0) -- node[midway,fill=white] {$|z|$} (3,3) node[right] {$z = a + bi$};
+    \draw[dashed] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+\end{tikzpicture}}
+$$|z| = \sqrt{z\overline{z}} = \sqrt{a^2 + b^2}.$$
+Notemos que si $b = 0$, entonces $z = a$ es un número real y $|z| = \sqrt{a^2} = |a|$, lo cual nos indica que el módulo de un número real coincide con su valor absoluto.
+
+Recordemos que si $z \neq 0$, entonces el inverso multiplicativo de $z$ se define mediante la propiedad
+$$z \cdot z^{-1} = 1.$$
+Esta ecuación tiene una solución única para $z^{-1}$, la cual se puede obtener multiplicando ambos lados por $\overline{z}$ y usando el hecho de que $z\overline{z} = |z|^2$. Esto da como resultado
+$$z^{-1} = \frac{1}{z} = \frac{\overline{z}}{|z|^2}.$$
+Si $w \neq 0$, entonces la división entre los números complejos $z$ y $w$ se define como el producto de $z$ y $w^{-1}$. Esto nos da la fórmula
+$$\frac{z}{w} = z\frac{\overline{w}}{|w|^2} = \frac{z \overline{w}}{|w|^2}.$$
+Observemos que la expresión en el lado derecho se obtiene si el numerador y el denominador se multiplican por $\overline{w}$. En la práctica, esta suele ser la mejor forma de realizar divisiones de números complejos.
+
+\begin{examplebox}{}{}
+    Sean $z = 3 + 4i$ y $w = 1 - 2i$. Expresa la división $z$ entre $w$.
+
+    \tcblower
+    \solucion Multiplicaremos el numerador y denominador por $\overline{w}$. Por lo tanto,
+    $$\frac{z}{w} = \frac{z\overline{w}}{w\overline{w}} = \frac{3 + 4i}{1 - 2i} \cdot \frac{1 + 2i}{1 + 2i} = \frac{3 + 6i + 4i + 8i^2}{1 - 4i^2} = -1 + 2i.$$
+\end{examplebox}
+
+Los siguientes teoremas enumeran algunas propiedades útiles del módulo y el conjugado de un número complejo.
+
+\begin{theorem}{}{}
+    Sean $z$, $z_1$, $z_2 \in \CC$. Entonces
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$.
+        \item $\overline{z_1 - z_2} = \overline{z_1} - \overline{z_2}$.
+        \item $\overline{z_1z_2} = \overline{z_1} \, \overline{z_2}$.
+        \item $\overline{\overline{z}} = z$.
+    \end{enumerate}
+\end{theorem}
+
+\newpage
+
+\begin{theorem}{}{}
+    Sean $z$, $z_1$, $z_2 \in \CC$. Entonces
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item $|\overline{z}| = |z|$.
+        \item $|z_1 z_2| = |z_1| |z_2|$.
+        \item $\left| z^{-1} \right| = |z|^{-1}$.
+        \item $\left| \dfrac{z_1}{z_2} \right| = \dfrac{|z_1|}{|z_2|}$.
+        \item $|z_1 + z_2| \leq |z_1| + |z_2|$.
+    \end{enumerate}
+\end{theorem}
+
+\section{Forma polar de un número complejo}
+
+Sea $z = a + bi$ un número complejo y sea $r = |z|$. Si $z \neq 0$, considerando su representación geométrica, sea $\theta$ la medida del ángulo que forman el eje real positivo y el segmento que une el origen del plano complejo con el punto que representa a $z$, entonces se tiene que
+\begin{align*}
+    a & = r \cos \theta , \\ 
+    b & = r \sen \theta .
+\end{align*}
+En consecuencia,
+\begin{align*}
+    z & = r \cos \theta + r i \sen \theta \\ 
+    & = r \left( \cos \theta + i \sen \theta \right)
+\end{align*}
+A $\theta$ se le llama la \emph{amplitud} o \emph{argumento} de $z$, y escribimos $\theta = \arg z$. Si $z = 0$, entonces $r = 0$, y por lo tanto $z = r(\cos \theta + i\sen \theta)$ para cualquier $\theta$.
+
+En consecuencia, todo complejo $z = a + bi$ puede expresarse como
+$$z = r(\cos \theta + i\sen \theta),$$
+donde $r = |z|$ y $\theta = \arg z$, llamada \emph{forma trigonométrica de $z$} o \emph{forma polar de $z$}.
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \coordinate (A) at (0,0);
+        \draw[thick,-Latex] (0,0) -- (3,3) coordinate (C);
+        \node[fill=white] at (1.5,1.5) {$|z|$};
+            
+        \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b = |z| \sen \theta$} -- (3,3) -- (3,0) node[below] {$a = |z| \cos \theta$};
+        
+        \draw[thick,-Stealth] (0,-1) -- (0,4);
+        \draw[thick,-Stealth] (-1,0) -- (4,0) coordinate (B);
+            
+        \node[right] at (3,3) {$z = a + bi$};
+            
+        \pic[draw, -, "$\theta$", angle eccentricity=1.5] {angle = B--A--C};
+    \end{tikzpicture}
+    \caption{Forma polar de un número complejo}
+\end{figure}
+
+Puesto que $\forall m \in \ZZ$
+$$\cos(2m\pi + \alpha ) = \cos(\alpha)$$
+y
+$$\sen(2m\pi + \alpha) = \sen(\alpha),$$
+entonces $\theta = \arg z$ puede tomar muchos valores, difiriendo cada dos por múltiplos de $2\pi$. Será conveniente elegir $\theta$ de modo que $-2\pi < \theta < 2\pi$.
+
+Dado $z = a + bi$, con $a \neq 0$ y $b \neq 0$, para determinar un argumento de $\theta$ de $z$ podemos emplear la función tangente, pues por definición
+$$\tan(\alpha) = \frac{\sen (\alpha)}{\cos (\alpha)},$$
+\newpage\noindent
+y las tablas trigonométricas, bajo las siguientes condiciones: Primero determinamos el ángulo agudo $\omega$ (positivo) por
+$$\omega = \arctan \frac{|b|}{|a|}$$
+y luego
+\begin{enumerate}[label=\roman*)]
+    \item Si $a>0$ y $b>0$, elegimos $\theta = \omega >0$ o $\theta = \omega - 2\pi<0$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw[thick,-Latex] (0,0) -- (3,3) coordinate (C);
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+        
+            \draw[thick,-Stealth] (0,-2) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \node[right] at (3,3) {$a + bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\omega - 2\pi$", angle eccentricity=2,angle radius=0.5cm] {angle = C--A--B};
+        \end{tikzpicture}
+    \end{center}
+    \item Si $a<0$ y $b<0$, elegimos $\theta = \omega + \pi >0$ o $\theta = \omega - \pi <0$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw[thick,-Latex] (0,0) -- (3,3) coordinate (C);
+            \draw[thick,-Latex] (0,0) -- (-3,-3) coordinate (D);
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (0,-3) node[right] {$-b$} -- (-3,-3) -- (-3,0) node[above] {$-a$};
+        
+            \draw[thick,-Stealth] (0,-5) -- (0,5);
+            \draw[thick,-Stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \node[right] at (3,3) {$a + bi$};
+            \node[left] at (-3,-3) {$-a - bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$\quad\omega - \pi$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+            \pic[draw, -latex, "$\omega + \pi\quad$", angle eccentricity=1.6,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+    \end{center}
+    \newpage
+    \item Si $a>0$ y $b<0$, elegimos $\theta = 2\pi - \omega >0$ o $\theta = - \omega <0$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw[thick,-Latex] (0,0) -- (3,3) coordinate (C);
+            \draw[thick,-Latex] (0,0) -- (3,-3) coordinate (D);
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[left] {$b$} -- (3,3) -- (3,0) node[below right] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (3,0) -- (3,-3) -- (0,-3) node[left] {$-b$};
+        
+            \draw[thick,-Stealth] (0,-5) -- (0,5);
+            \draw[thick,-Stealth] (-2,0) -- (5,0) coordinate (B);
+            
+            \node[right] at (3,3) {$a + bi$};
+            \node[right] at (3,-3) {$a - bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, latex-, "$-\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = D--A--B};
+            \pic[draw, -latex, "$2\pi - \omega$", angle eccentricity=2.4,angle radius=0.4cm] {angle = B--A--D};
+        \end{tikzpicture}
+    \end{center}
+    \item Si $a<0$ y $b>0$, elegimos $\theta = \pi - \omega >0$ o $\theta = -\pi - \omega <0$.
+    \begin{center}
+        \begin{tikzpicture}[scale=1.15]
+            \coordinate (A) at (0,0);
+            \draw[thick,-Latex] (0,0) -- (3,3) coordinate (C);
+            \draw[thick,-Latex] (0,0) -- (-3,3) coordinate (D);
+            
+            \draw[dash pattern=on 3pt off 3pt] (0,3) node[above right] {$b$} -- (3,3) -- (3,0) node[below] {$a$};
+            \draw[dash pattern=on 3pt off 3pt] (0,3) -- (-3,3) -- (-3,0) node[below] {$-a$};
+        
+            \draw[thick,-Stealth] (0,-2) -- (0,5);
+            \draw[thick,-Stealth] (-5,0) -- (5,0) coordinate (B);
+            
+            \node[right] at (3,3) {$a + bi$};
+            \node[left] at (-3,3) {$-a + bi$};
+            
+            \pic[draw, -latex, "$\omega$", angle eccentricity=1.3,angle radius=1.1cm] {angle = B--A--C};
+            \pic[draw, -latex, "$\pi - \omega\quad$", angle eccentricity=1.7,angle radius=0.4cm] {angle = B--A--D};
+            \pic[draw, latex-, "$-\pi - \omega\quad$", angle eccentricity=1.4,angle radius=0.7cm] {angle = D--A--B};
+        \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+
+Sean $z$, $w$ dos números complejos tal que en su forma polar estén dados por $z = r \left( \cos \theta + i\sen \theta \right)$ con $r = |z|$ y $w = s \left( \cos \varphi + i\sen \varphi \right)$ con $s = |w|$.
+\begin{itemize}
+    \item Si $0 \leq \theta, \varphi < 2\pi$, entonces $z = w$ si y solo si $r = s$ y $\theta = \varphi$.
+    \item Si $\theta$, $\varphi$ no tienen restricción alguna, entonces $z = w$ si y solo si $r = s$ y $\theta = \varphi + 2m\pi$ con $m \in \ZZ$.
+\end{itemize}
+
+\newpage
+
+\begin{examplebox}{}{}
+    Expresar a $z = 1 - \sqrt{3}i$ en forma polar.
+
+    \tcblower
+    \solucion El módulo de $z$ es
+    $$|z| = \sqrt{1^2 + \left(-\sqrt{3}\right)^2} = 2,$$
+    y el argumento de $z$ es
+    $$\theta = \arctan \frac{\sqrt{3}}{1} = \frac{\pi}{3}.$$
+    De la figura \ref{ejemplocomplejopolar}, se sigue que la forma polar de $z$ es
+    $$z = 2 \left( \cos \left( -\frac{\pi}{3} \right) + i\sen\left( - \frac{\pi}{3} \right) \right) = 2 \left( \cos \frac{\pi}{3} - i\sen \frac{\pi}{3} \right).$$
+\end{examplebox}
+
+\sideFigure[\label{ejemplocomplejopolar}]{\vspace{-4cm}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \draw[thick,-Latex] (0,0) -- (2,{-2*sqrt(3)}) coordinate (C);
+    \draw[thick,-Stealth] (0,-4) -- (0,1);
+    \draw[thick,-Stealth] (-1,0) -- (4,0) coordinate (B);
+    \pic[draw, latex-, "$-\dfrac{\pi}{3}$", angle eccentricity=1.3,angle radius=1cm] {angle = C--A--B};
+    \draw[dashed] (0,{-2*sqrt(3)}) node[left] {$-\sqrt{3}$} -- (2,{-2*sqrt(3)}) node[right] {$z = 1 -\sqrt{3}i$} -- (2,0) node[above] {$1$};
+\end{tikzpicture}
+}
+
+Mostraremos ahora cómo las formas polares de los números complejos proporcionan interpretaciones geométricas de la multiplicación y la división. Sean
+$$z_1 = r (\cos \phi_1 + i \sen \phi_1) \quad \text{ y } \quad z_2 = s (\cos \phi_2 + i \sen \phi_2)$$
+con $r = |z_1|$ y $s = |z_2|$, las formas polares de los números complejos distintos de cero $z_1$ y $z_2$. Al multiplicar, obtenemos
+$$z_1 z_2 = rs \left[ (\cos \phi_1 \cos \phi_2 - \sen \phi_1 \sen \phi_2) + i(\sen \phi_1 \cos \phi_2 + \cos \phi_1 \sen \phi_2) \right].$$
+Aplicando ahora las identidades trigonométricas
+\begin{align*}
+    \cos(\phi_1 + \phi_2) & = \cos \phi_1 \cos \phi_2 - \sen \phi_1 \sen \phi_2 \\
+    \sen(\phi_1 + \phi_2) & = \sen \phi_1 \cos \phi_2 + \cos \phi_1 \sen \phi_2
+\end{align*}
+se obtiene
+\begin{equation}
+    z_1 z_2 = |z_1||z_2| \left[ \cos(\phi_1 + \phi_2) + i \sen(\phi_1 + \phi_2) \right] \label{prodcomplejopolar}
+\end{equation}
+que es una forma polar del número complejo cuyo módulo es $|z_1||z_2|$ y cuyo argumento es $\phi_1 + \phi_2$. Así, hemos demostrado que \emph{multiplicar dos números complejos tiene el efecto geométrico de multiplicar sus módulos y sumar sus argumentos} (ver figura \ref{sumadeangulosformapolarc}).\sideFigure[\label{sumadeangulosformapolarc}]{\vspace{-4cm}
+\begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    %
+    \draw[thick,-Stealth] (0,-1) -- (0,4);
+    \draw[thick,-Stealth] (-2,0) -- (3,0) coordinate (B);
+    \draw[thick,-Latex] (0,0) -- (2.5,1.4) coordinate (C);
+    \draw[thick,-Latex] (0,0) -- (0.4,2) coordinate (D);
+    \draw[thick,-Latex] (0,0) -- (-1.6,2.5) coordinate (E);
+    %
+    \node[above] at (2.5,1.4) {$z_1$};
+    \node[below right] at (2.5,1.4) {$|z_1|$};
+    \node[above] at (0.4,2) {$z_2$};
+    \node[below right] at (0.4,2) {$|z_2|$};
+    \node[above] at (-1.6,2.5) {$z_1z_2$};
+    \node[below] at (-1.6,1.5) {$|z_1||z_2|$};
+    %
+    \pic[draw, -latex, "$\phi_1$", angle eccentricity=1.2,angle radius=1.5cm] {angle = B--A--C};
+    \pic[draw, -latex, "$\phi_2$", angle eccentricity=1.25,angle radius=1cm] {angle = B--A--D};
+    \pic[draw, -latex, angle eccentricity=1.5,angle radius=0.5cm] {angle = B--A--E};
+    %
+    \node[below left] at (3,0) {$x$};
+    \node[below left] at (0,4) {$y$};
+    \draw[thin] (0.5,-0.1) -- (1,-0.5) node[right] {$\phi_1 + \phi_2$};
+\end{tikzpicture}
+}
+
+Cálculos similares muestran que
+\begin{equation}
+    \frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} \left[ \cos(\phi_1 - \phi_2) + i \sen(\phi_1 - \phi_2) \right] \label{divcomplejopolar}
+\end{equation}
+lo cual nos indica que \emph{dividir números complejos tiene el efecto geométrico de dividir sus módulos y restar sus argumentos} (cada uno en el orden correspondiente).
+
+\begin{examplebox}{}{}
+    Consideremos los números complejos
+    $$z_1 = 1 + \sqrt{3}i \quad \text{ y } \quad z_2 = \sqrt{3} + i,$$
+    y las formas polares de estos números complejos,
+    $$z_1 = 2 \left( \cos \frac{\pi}{3} + i \sen \frac{\pi}{3} \right) \quad \text{ y } \quad z_2 = 2 \left( \cos \frac{\pi}{6} + i \sen \frac{\pi}{6} \right).$$
+    Así, se sigue de \eqref{prodcomplejopolar} que
+    $$z_1 z_2 = 4 \left[ \cos \left( \frac{\pi}{3} + \frac{\pi}{6} \right) + i \sen \left( \frac{\pi}{3} + \frac{\pi}{6} \right) \right] = 4 \left[ \cos \left( \frac{\pi}{2} \right) + i \sen \left( \frac{\pi}{2} \right) \right] = 4i$$
+    y de \eqref{divcomplejopolar} que
+    $$\frac{z_1}{z_2} = 1 \left[ \cos \left( \frac{\pi}{3} - \frac{\pi}{6} \right) + i \sen \left( \frac{\pi}{3} - \frac{\pi}{6} \right) \right] = \cos \left( \frac{\pi}{6} \right) + i \sen \left( \frac{\pi}{6} \right) = \frac{\sqrt{3}}{2} + \frac{1}{2}i.$$
+    \newpage
+    Como verificación, tenemos que
+    $$z_1 z_2 = \left(1 + \sqrt{3}i\right)\left(\sqrt{3} + i\right) = \sqrt{3} + i + 3i + \sqrt{3}i^2 = 4i$$
+    y
+    $$\frac{z_1}{z_2} = \frac{1 + \sqrt{3}i}{\sqrt{3} + i} = \frac{1 + \sqrt{3}i}{\sqrt{3} + i} \cdot \frac{\sqrt{3} - i}{\sqrt{3} - i} = \frac{\left(1 + \sqrt{3}i\right)\left(\sqrt{3} - i\right)}{3 - i^2} = \frac{\sqrt{3}}{2} + \frac{1}{2}i$$
+    lo que concuerda con los resultados obtenidos usando formas polares.
+\end{examplebox}
+
+\section{Fórmula de De Moivre y de Euler}
+
+Si $n$ es un entero positivo y si $z$ es un número complejo no nulo con forma polar
+$$z = |z| (\cos \phi + i \sen \phi)$$
+entonces elevar $z$ a la $n$-ésima potencia da
+$$z^n = z z \cdots z = |z|^n \left[ \cos (\phi + \phi + \cdots + \phi) + i \sen (\phi + \phi + \cdots + \phi) \right]$$
+donde hay $n$ factores y $n$ términos, lo que podemos escribir más concisamente como
+$$z^n = |z|^n (\cos n\phi + i \sen n\phi).$$
+En el caso especial donde $|z| = 1$, esta fórmula se simplifica a
+$$z^n = \cos n\phi + i \sen n\phi$$
+De hecho, usando la forma polar para $z$, se convierte en
+\begin{equation}
+    (\cos \phi + i \sen \phi)^n = \cos n\phi + i \sen n\phi. \label{formuladedemoivre}
+\end{equation}
+Este resultado se llama la \emph{fórmula de De Moivre}, nombrada por el matemático francés Abraham de Moivre (1667-1754).
+
+Si $\theta$ es un número real, digamos la medida en radianes de algún ángulo, entonces la función exponencial compleja $e^{i\theta}$ se define como
+\begin{equation}
+    e^{i\theta} = \cos \theta + i \sen \theta \label{formuladeeuler}
+\end{equation}
+lo que a veces se llama la \emph{fórmula de Euler}, nombrada por el matemático suizo Leonhard Euler (1707-1783). Una motivación para esta fórmula proviene de las series de Maclaurin en cálculo. Los lectores que han estudiado series infinitas en cálculo pueden deducir \eqref{formuladeeuler} formalmente sustituyendo $i\theta$ por $x$ en la serie de Maclaurin para $e^x$ y escribiendo
+\begin{align*}
+    e^{i\theta} & = 1 + i\theta + \frac{(i\theta)^2}{2!} + \frac{(i\theta)^3}{3!} + \frac{(i\theta)^4}{4!} + \frac{(i\theta)^5}{5!} + \frac{(i\theta)^6}{6!} + \cdots \\
+    & = 1 + i\theta - \frac{\theta^2}{2!} - i \frac{\theta^3}{3!} + \frac{\theta^4}{4!} + i \frac{\theta^5}{5!} - \frac{\theta^6}{6!} + \cdots \\
+    & = \left( 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \cdots \right) + i \left( \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots \right) \\
+    & = \cos \theta + i \sen \theta
+\end{align*}
+donde el último paso sigue de las series de Maclaurin para $\cos \theta$ y $\sen \theta$.
+
+Si $z = a + bi$ es cualquier número complejo, entonces la exponencial compleja $e^z$ se define como
+$$e^z = e^{a+bi} = e^a e^{bi} = e^a (\cos b + i \sen b).$$
+Se puede probar que las exponenciales complejas satisfacen las leyes estándar de los exponentes. Así, por ejemplo,
+$$e^{z_1} e^{z_2} = e^{z_1 + z_2}, \quad \frac{e^{z_1}}{e^{z_2}} = e^{z_1 - z_2}, \quad \frac{1}{e^z} = e^{-z}.$$
+
+\newpage
+
+\section{Ejercicios del Apéndice B}
+
+\noindent De los problemas 1 al 10 realice las operaciones indicadas.
+\begin{multienumerate}
+    \mitemxx{$(2 - 3i) + (7 - 4i)$}{$3(4 + i) - 5(-3 + 6i)$}
+    \mitemxx{$5i(2 + 3i) + 4(6 + 2i)$}{$(1 + i)(1 - i)$}
+    \mitemxx{$(2 - 3i)(4 + 7i)$}{$(6 + 7i)(3 - 7i)$}
+    \mitemxx{$(-3 + 2i)(7 + 3i)$}{$i^3$}
+    \mitemxx{$i^4$}{$i^{2025}$}
+\end{multienumerate}
+\begin{enumerate}[start=11]
+    \item Sea $i$ la unidad imaginaria. Demuestra que
+    $$i^n = \begin{cases}
+        1 & \text{ si } n \equiv 0 \pmod{4}, \\
+        i & \text{ si } n \equiv 1 \pmod{4}, \\
+        -1 & \text{ si } n \equiv 2 \pmod{4}, \\
+        -i & \text{ si } n \equiv 3 \pmod{4}.
+    \end{cases}$$
+    \item Sean $z_1$, $z_2$, $z_3 \in \CC$. Demuestre las siguientes propiedades:
+    \begin{enumerate}
+        \item $(-z_1)(z_2) = z_1(-z_2) = -(z_1z_2)$.
+        \item $(-z_1)(-z_2) = z_1z_2$.
+        \item $z_1(z_2-z_3) = z_1z_2 - z_1z_3$.
+    \end{enumerate}
+\end{enumerate}
+De los problemas 13 al 20 escriba a $z$ en forma binómica.
+\begin{multienumerate}\setcounter{multienumi}{12}
+    \mitemxx{$z = 3 - 7i - 8 - 2i$}{$\dfrac{1 + i}{1 - i} - \dfrac{2 - i}{1 + i}$}
+    \mitemxx{$z = \dfrac{3 - 2i}{-5 + i}$}{$z = \dfrac{1 + i}{i} - \dfrac{i}{1 - i}$}
+    \mitemxx{$z = \dfrac{1}{1 + i + \frac{i}{1 + i + \frac{i}{1 + i}}}$}{$z = 5 - 2i - (6 - 9i)i$}
+    \mitemxx{$z = -\dfrac{i}{(1 + i)(2 - i)}$}{$z = \dfrac{(4 + 3i)(2 - i)}{7 - i} + \left( \dfrac{1}{2} + \dfrac{3}{2}i \right)^3$}
+\end{multienumerate}
+De los problemas 21 al 26 escriba el conjugado de $z$.
+\begin{multienumerate}\setcounter{multienumi}{20}
+    \mitemxx{$z = 7 + 9i$}{$z = 128 + 2i$}
+    \mitemxx{$z = 12 - 189i$}{$z = 5 - \dfrac{4}{5}i$}
+    \mitemxx{$z = \dfrac{\pi}{9} + \dfrac{2}{9}i$}{$1900 - 2022i$}
+\end{multienumerate}
+\begin{enumerate}[start=27]
+    \item Sea $z \in \CC$. Demuestre que se cumplen las siguientes propiedades.
+    \begin{enumerate}
+        \item $\overline{-z} = -\overline{z}$.
+        \item $\overline{z^{-1}} = \overline{z}^{-1}$.
+        \item $z + \overline{z} = 2\operatorname{Re}(z)$.
+        \item $z - \overline{z} = 2i\operatorname{Im}(z)$.
+    \end{enumerate}
+\end{enumerate}
+De los problemas 28 al 31 represente a $z$ en el plano complejo.
+\begin{multienumerate}\setcounter{multienumi}{27}
+    \mitemxx{$z = 5 + 8i$}{$z = \pi + i$}
+    \mitemxx{$z = \dfrac{5}{2} + \dfrac{1}{i}$}{$z = \sqrt{3} + 8i$}
+\end{multienumerate}
+
+

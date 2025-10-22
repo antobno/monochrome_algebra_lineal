@@ -1,0 +1,259 @@
+\chapter[TRANSFORMACIONES LINEALES]{TRANSFORMACIONES \\ LINEALES}
+
+En los capítulos precedentes, hemos explorado los conceptos fundamentales de los espacios vectoriales, que nos han proporcionado el marco abstracto para operar con vectores. Posteriormente, estudiamos las matrices como arreglos numéricos que facilitan la resolución de sistemas de ecuaciones lineales y, a su vez, analizamos los determinantes como una herramienta para comprender propiedades clave de las matrices cuadradas, como la invertibilidad.
+
+Ahora, estamos en una posición ideal para unificar estas ideas bajo un concepto más general y profundo: las transformaciones lineales. En este capítulo, dejaremos de ver las matrices como simples arreglos de números y comenzaremos a entenderlas como operadores que actúan sobre vectores para transformarlos en otros vectores. Esta “acción” no es arbitraria; sigue reglas muy precisas que preservan la estructura subyacente del espacio vectorial.
+
+Una transformación lineal es, en esencia, una función entre dos espacios vectoriales que respeta las operaciones de suma de vectores y multiplicación por un escalar. Esta propiedad de preservar la estructura es lo que las convierte en un pilar del álgebra lineal y de sus innumerables aplicaciones. Descubriremos que toda matriz puede definir una transformación lineal y, de manera recíproca, toda transformación lineal entre espacios vectoriales de dimensión finita puede ser representada por una matriz.
+
+Este capítulo servirá como un puente entre el álgebra matricial concreta que hemos estudiado y la geometría de los espacios vectoriales. Exploraremos conceptos cruciales como el núcleo y la imagen de una transformación, que generalizan las ideas de espacio nulo y espacio columna de una matriz. 
+
+\newpage
+
+\section{Definición y ejemplos}
+
+\begin{definicion}{}{}
+    Si $T: V \longrightarrow W$ es una función de un espacio vectorial $V$ a un espacio vectorial $W$, entonces $T$ se llama \emph{transformación lineal} de $V$ a $W$ si las siguientes dos propiedades se cumplen para cada $\mathbf{u}$, $\mathbf{v} \in V$ y para todos los escalares $k$:
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item $T(\mathbf{u} + \mathbf{v}) = T\mathbf{u} + T\mathbf{v}$.
+        \item $T(k\mathbf{u}) = kT\mathbf{u}$.
+    \end{enumerate}
+\end{definicion}
+
+\infoBulle{Se escriben indistintamente $T\mathbb{v}$ y $T(\mathbb{v})$. Denotan lo mismo; las dos se leen “$T$ de $\mathbb{v}$”. Si $T$ tiene como dominio y codominio a $\RR[n]$, lo llamaremos \emph{operador en $\RR[n]$}.}
+
+Existen muchas formas de transformar los espacios $\RR[2]$ y $\RR[3]$. Por ejemplo, rotaciones alrededor del origen, reflexiones sobre rectas y planos que pasan por el origen, y proyecciones sobre rectas y planos a través del origen. Los siguientes ejemplos mostrarán uno de los operadores más importantes: \emph{operadores de reflexión}.
+
+\sideFigure[\label{HDFDDFHUYFGHFUYGFFGUY}]{\vspace{3cm}
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-1,0) -- (4,0) node[above left] {$x$};
+        \draw[thick,-Stealth] (0,-3) -- (0,3);
+        \draw[dashed] (0,2) node[left] {$y$} -- (3,2) -- (3,-2) -- (0,-2) node[left] {$-y$};
+        \draw[thick,-Latex] (0,0) -- (3,2) node[above] {$\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}$};
+        \draw[thick,-Latex] (0,0) -- (3,-2) node[below] {$\begin{pmatrix*}[r]
+            x \\
+            -y
+        \end{pmatrix*}$};
+        \node at (0,0) [below left] {$\mathbb{0}$};
+    \end{tikzpicture}
+}
+
+\begin{examplebox}{}{}
+    Consideremos la siguiente función
+    \begin{align*}
+        T: \RR[2] & \longrightarrow \RR[2] \\
+        \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} & \longmapsto T \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} = \begin{pmatrix*}[r]
+            x \\
+            -y
+        \end{pmatrix*}
+    \end{align*}
+    Geométricamente $T$ toma un vector en $\RR[2]$ y lo refleja respecto al eje $x$ como se muestra en la figura \ref{HDFDDFHUYFGHFUYGFFGUY}, así se comprueba que $T$ es función. Ahora verifiquemos que $T$ es un operador en $\RR[2]$:
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item Sea $\mathbb{u}$, $\mathbb{v} \in \RR[2]$ con $\mathbb{u} = \begin{pmatrix}
+            x_1 \\
+            y_1
+        \end{pmatrix}$, $\mathbb{v} = \begin{pmatrix}
+            x_2 \\
+            y_2
+        \end{pmatrix}$. Entonces
+        \begin{align*}
+            T(\mathbb{u} + \mathbb{v}) & = T\left( \begin{pmatrix}
+                x_1 \\
+                y_1
+            \end{pmatrix} + \begin{pmatrix}
+                x_2 \\
+                y_2
+            \end{pmatrix} \right) \\
+            & = T \begin{pmatrix}
+                x_1 + x_2 \\
+                y_1 + y_2
+            \end{pmatrix} \\
+            & = \begin{pmatrix}
+                x_1 + x_2 \\
+                -(y_1 + y_2)
+            \end{pmatrix} \\
+            & = \begin{pmatrix}
+                x_1 + x_2 \\
+                -y_1 + (-y_2)
+            \end{pmatrix} \\
+            & = \begin{pmatrix*}[r]
+                x_1 \\
+                -y_1
+            \end{pmatrix*} + \begin{pmatrix*}[r]
+                x_2 \\
+                -y_2
+            \end{pmatrix*} \\
+            & = T\mathbb{u} + T\mathbb{v}
+        \end{align*}
+        Por tanto $T(\mathbb{u} + \mathbb{v}) = T\mathbb{u} + T\mathbb{v}$.
+        \item Sea $\mathbb{u} \in \RR[2]$ con $\mathbb{u} = \begin{pmatrix}
+            x_1 \\
+            y_1
+        \end{pmatrix}$ y $\alpha \in \RR$. Entonces
+        \begin{align*}
+            T(\alpha \mathbb{u}) & = T \left( \alpha \begin{pmatrix}
+                x_1 \\
+                y_1
+            \end{pmatrix} \right) \\
+            & = T \begin{pmatrix}
+                \alpha x_1 \\
+                \alpha y_1
+            \end{pmatrix} \\
+            & = \begin{pmatrix*}[r]
+                \alpha x_1 \\
+                - \alpha y_1
+            \end{pmatrix*} \\
+            & = \alpha \begin{pmatrix*}[r]
+                x_1 \\
+                -y_1
+            \end{pmatrix*} \\
+            & = \alpha T \mathbb{u}
+        \end{align*}
+        Por tanto, $T(\alpha \mathbb{u}) = \alpha T\mathbb{u}$.
+    \end{enumerate}
+    Por tanto, $T$ es un operador en $\RR[2]$.
+\end{examplebox}
+
+\newpage
+\sideFigure[\label{ISISJAJAJAVAVHQQUIQQJP}]{\vspace{3cm}
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-2.5,0) -- (2.5,0);
+        \draw[thick,-Stealth] (0,-1) -- (0,4) node[below left] {$y$};
+        \draw[dashed] (-2,0) node[below] {$-x$} -- (-2,2) -- (2,2) -- (2,0) node[below] {$x$};
+        \draw[thick,-Latex] (0,0) -- (-2,2) node[above,xshift=6pt] {$\begin{pmatrix*}[r]
+            -x \\
+            y
+        \end{pmatrix*}$};
+        \draw[thick,-Latex] (0,0) -- (2,2) node[above,xshift=-4pt] {$\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}$};
+        \node at (0,0) [below left] {$\mathbb{0}$};
+    \end{tikzpicture}
+}
+
+\begin{examplebox}{}{}
+    Consideremos la siguiente función
+    \begin{align*}
+        T: \RR[2] & \longrightarrow \RR[2] \\
+        \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} & \longmapsto T \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} = \begin{pmatrix*}[r]
+            -x \\
+            y
+        \end{pmatrix*}
+    \end{align*}
+    Geométricamente $T$ toma un vector en $\RR[2]$ y lo refleja respecto al eje $y$ como se muestra en la figura \ref{ISISJAJAJAVAVHQQUIQQJP}, así se comprueba que $T$ es función. Ahora verifiquemos que $T$ es un operador en $\RR[2]$:
+    \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
+        \item Sea $\mathbb{u}$, $\mathbb{v} \in \RR[2]$ con $\mathbb{u} = \begin{pmatrix}
+            x_1 \\
+            y_1
+        \end{pmatrix}$, $\mathbb{v} = \begin{pmatrix}
+            x_2 \\
+            y_2
+        \end{pmatrix}$. Entonces
+        \begin{align*}
+            T(\mathbb{u} + \mathbb{v}) & = T\left( \begin{pmatrix}
+                x_1 \\
+                y_1
+            \end{pmatrix} + \begin{pmatrix}
+                x_2 \\
+                y_2
+            \end{pmatrix} \right) \\
+            & = T \begin{pmatrix}
+                x_1 + x_2 \\
+                y_1 + y_2
+            \end{pmatrix} \\
+            & = \begin{pmatrix}
+                -(x_1 + x_2) \\
+                y_1 + y_2
+            \end{pmatrix} \\
+            & = \begin{pmatrix}
+                -x_1 + (-x_2) \\
+                y_1 + y_2
+            \end{pmatrix} \\
+            & = \begin{pmatrix*}[r]
+                -x_1 \\
+                y_1
+            \end{pmatrix*} + \begin{pmatrix*}[r]
+                -x_2 \\
+                y_2
+            \end{pmatrix*} \\
+            & = T\mathbb{u} + T\mathbb{v}
+        \end{align*}
+        Por tanto $T(\mathbb{u} + \mathbb{v}) = T\mathbb{u} + T\mathbb{v}$.
+        \item Sea $\mathbb{u} \in \RR[2]$ con $\mathbb{u} = \begin{pmatrix}
+            x_1 \\
+            y_1
+        \end{pmatrix}$ y $\alpha \in \RR$. Entonces
+        \begin{align*}
+            T(\alpha \mathbb{u}) & = T \left( \alpha \begin{pmatrix}
+                x_1 \\
+                y_1
+            \end{pmatrix} \right) \\
+            & = T \begin{pmatrix}
+                \alpha x_1 \\
+                \alpha y_1
+            \end{pmatrix} \\
+            & = \begin{pmatrix*}[r]
+                - \alpha x_1 \\
+                \alpha y_1
+            \end{pmatrix*} \\
+            & = \alpha \begin{pmatrix*}[r]
+                -x_1 \\
+                y_1
+            \end{pmatrix*} \\
+            & = \alpha T \mathbb{u}
+        \end{align*}
+        Por tanto, $T(\alpha \mathbb{u}) = \alpha T\mathbb{u}$.
+    \end{enumerate}
+    Por tanto, $T$ es un operador en $\RR[2]$.
+\end{examplebox}
+
+\begin{examplebox}{}{}
+    Consideremos la siguiente función
+    \begin{align*}
+        T: \RR[2] & \longrightarrow \RR[2] \\
+        \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} & \longmapsto T \begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix} = \begin{pmatrix}
+            y \\
+            x
+        \end{pmatrix}
+    \end{align*}
+    Este operador intercambia las coordenadas de cada vector del plano, de modo que la primera pasa a ser la segunda y viceversa. A nivel geométrico, puede interpretarse como una simetría respecto a la recta $y = x$ como se muestra en la figura \ref{ASWEGGYTGUIOIGVCZSG}. Dicho de otra manera, $T$ actúa como un espejo cuya “línea de simetría” es precisamente $y = x$, de modo que todo vector que se encuentre sobre esta recta permanece inalterado, mientras que los vectores situados fuera de ella cambian de posición de forma que su distancia a la recta se conserva. Se deja al lector demostrar que $T$ es un operador en $\RR[2]$.
+\end{examplebox}
+
+\sideFigure[\label{ASWEGGYTGUIOIGVCZSG}]{
+    \begin{tikzpicture}
+        \draw[thick,-Stealth] (-0.5,0) -- (4.5,0) node[above left] {$x$};
+        \draw[thick,-Stealth] (0,-0.5) -- (0,3.75) node[below left] {$y$};
+        \draw[thick,-Latex] (0,0) -- (3,1.25) node[right] {$\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}$};
+        \draw[thick,-Latex] (0,0) -- (1.25,3) node[right,yshift=4pt] {$\begin{pmatrix}
+            y \\
+            x
+        \end{pmatrix}$};
+        \draw[thick] (-0.5,-0.5) -- (3,3) node[right] {$y = x$};
+        \draw[dashed] (3,1.25) -- (1.25,3);
+    \end{tikzpicture}
+}

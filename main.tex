@@ -1,15 +1,15 @@
 \documentclass{monochrome}
-
-\input{configuracion_TikZ}
+\usepackage{lipsum}
 
 \begin{document}
 
-\counterwithin{equation}{section}
-
 \pagestyle{fancy}
 \pagestyle{empty}
+\counterwithin{equation}{section}
 
 \input{tex/portada}
+
+\input{tex/prefacio}
 
 \renewcommand{\contentsname}{CONTENIDO}
 \hypersetup{hidelinks}
@@ -20,40 +20,30 @@
 
 \pagestyle{fancy}
 
-\input{tex/prefacio}
+\input{tex/Chapters/capitulo1}
 
-\input{tex/bibliografia}
+\input{tex/Chapters/capitulo2}
 
-\part{FUNDAMENTOS DEL ÁLGEBRA LINEAL}
+\input{tex/Chapters/capitulo3}
 
-\input{tex/chapters/capitulo1}
+\input{tex/Chapters/capitulo4}
 
-\input{tex/chapters/capitulo2}
+\input{tex/Chapters/capitulo5}
 
-\input{tex/chapters/capitulo3}
+\input{tex/Chapters/capitulo6}
 
-\input{tex/chapters/capitulo4}
+\input{tex/Chapters/capitulo7}
 
-\part{PRINCIPIOS Y EXTENSIONES}
-
-\input{tex/chapters/capitulo5}
-
-\input{tex/chapters/capitulo6}
-
-\input{tex/chapters/capitulo7}
-
-\input{tex/chapters/capitulo8}
-
-\part*{APÉNDICES}
+\input{tex/Chapters/capitulo8}
 
 \appendix
 
-\input{tex/appendices/apendiceA}
+\input{tex/Appendices/apendiceA}
 
-\input{tex/appendices/apendiceB}
+\input{tex/Appendices/apendiceB}
 
-\input{tex/appendices/apendiceC}
+\input{tex/Appendices/apendiceC}
 
-\input{tex/appendices/apendiceD}
+\input{tex/Appendices/apendiceD}
 
 \end{document}

@@ -1,3 +1,8 @@
+\newlength\outermarginwidth
+\setlength\outermarginwidth{1.5cm}
+\newlength\covershift
+\setlength\covershift{5cm}
+
 \begin{tikzpicture}[remember picture,overlay]
     \fill[black!90]
     (current page.north west) rectangle (current page.south east);
@@ -36,9 +41,9 @@
     \node[anchor=south,right] at ([xshift=-5.5\outermarginwidth, yshift=-.457\paperheight]current page.north) {\selectfont           \color{white}\cabin\bfseries\fontsize{95}{95}\selectfont ÁLGEBRA};
     \node[anchor=south,right] at ([xshift=-5.65\outermarginwidth, yshift=-.59\paperheight]current page.north) {\selectfont           \color{white}\cabin\bfseries\fontsize{95}{95}\selectfont LINEAL};
     \node[anchor=west, font=\cabin\fontsize{23}{23}\selectfont, text=white] at ([xshift=1.5\outermarginwidth, yshift=-1.25\covershift]current page.west) {Fundamentos y principios del álgebra lineal};
-    \node[anchor=west, font=\cabin\LARGE, text=white] at ([xshift=-5.51\outermarginwidth, yshift=-2.2\covershift]current page.center) {Antonio M. Mendoza ~$\bullet$~ Luis A. Godínez};
+    \node[anchor=west, font=\cabin\LARGE, text=white] at ([xshift=-1.5\outermarginwidth, yshift=-2.3\covershift]current page.center) {Antonio M. Mendoza ~$\bullet$~ Luis A. Godínez};
     %%%%% LOGO %%%%%
-    \node[anchor=west] at ([xshift=3.25\outermarginwidth, yshift=-2.2\covershift]current page.center) {\includegraphics[width=3.5cm]{Images/Portada/LOGO.pdf}};
+    %\node[anchor=west] at ([xshift=3.25\outermarginwidth, yshift=-2.2\covershift]current page.center) {\includegraphics[width=3.5cm]{Images/Portada/LOGO.pdf}};
 \end{tikzpicture}
 
 \newpage
@@ -46,7 +51,16 @@
 
 \newpage
 
-\symmetricalPage%
+\newgeometry{
+	ignorefoot,
+	ignorehead,
+	left=3cm,
+	right=3cm,
+	top=3cm,
+	bottom=3cm,
+	marginparwidth=0cm,
+	marginparsep=0mm
+}
 
 \begin{tikzpicture}[remember picture,overlay]%
       \coordinate (A) at ($(current page.north)!.4!(current page.north east)$);
@@ -81,11 +95,11 @@
 
 \newpage
 
-~\vfill\hfill\begin{minipage}[l]{0.67\textwidth}
-     \selectfont\cabin\itshape Quiero expresar mi agradecimiento al Lic. Luis Alfonso Godínez Contreras, quien aparte de haber sido mi profesor en algunos cursos, me permitió recopilar el presente trabajo.
-\end{minipage}
-
 \restoregeometry%
+
+~\vfill\hfill\begin{minipage}[l]{0.72\textwidth}
+     \itshape Quiero expresar mi agradecimiento al Lic. Luis Alfonso Godínez Contreras, quien aparte de haber sido mi profesor en algunos cursos, me permitió recopilar el presente trabajo.
+\end{minipage}
 
 \newpage
 \,

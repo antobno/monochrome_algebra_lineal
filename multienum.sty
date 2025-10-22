@@ -16,62 +16,62 @@
 \newlength{\remainxxxxx}
 \newlength{\usedxxxxx}
 
-\newcommand{\labelname}{\bfseries\csname
+\newcommand{\labelname}{\fontencoding{T1}\fontfamily{phv}\selectfont\bfseries\csname
 labelenum\romannumeral\themultienumdepth\endcsname}
 
-\newcommand{\itemx}[1]{\parbox[t]%
+\newcommand{\itemx}[1]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep%
-\parbox[t]{\remainx}{\raggedright #1}}
+\parbox[t]{\remainx}{\hspace{0.005pt}#1}}
 
-\newcommand{\itemxx}[2]{\parbox[t]%
+\newcommand{\itemxx}[2]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{.5\remainxx}{\raggedright #1}\hfill\parbox[t]%
+\parbox[t]{.5\remainxx}{\hspace{0.005pt}#1}\hfill\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.5\remainxx}{\raggedright #2}}
+\parbox[t]{0.5\remainxx}{\hspace{0.005pt}#2}}
 
-\newcommand{\itemxxx}[3]{\parbox[t]%
+\newcommand{\itemxxx}[3]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep%
-\parbox[t]{.3333\remainxxx}{\raggedright #1}\hfill\parbox[t]%
+\parbox[t]{.3333\remainxxx}{\raggedright\hspace{0.005pt} #1}\hfill\parbox[t]%
 {\labelwidth}{\hfill {\labelname}}\hskip\labelsep%
-\parbox[t]{0.3333\remainxxx}{\raggedright #2}\hfill\parbox[t]%
+\parbox[t]{0.3333\remainxxx}{\raggedright\hspace{0.005pt} #2}\hfill\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep%
-\parbox[t]{0.3333\remainxxx}{\raggedright #3}}
+\parbox[t]{0.3333\remainxxx}{\raggedright\hspace{0.005pt} #3}}
 
-\newcommand{\itemxxxx}[4]{\parbox[t]%
+\newcommand{\itemxxxx}[4]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{.25\remainxxxx}{\raggedright #1}\hfill\parbox[t]%
+\parbox[t]{.25\remainxxxx}{\raggedright\hspace{0.005pt} #1}\hfill\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.25\remainxxxx}{\raggedright #2}\hfill%
+\parbox[t]{0.25\remainxxxx}{\raggedright\hspace{0.005pt} #2}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.25\remainxxxx}{\raggedright #3}\hfill%
+\parbox[t]{0.25\remainxxxx}{\raggedright\hspace{0.005pt} #3}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.25\remainxxxx}{\raggedright #4}}
+\parbox[t]{0.25\remainxxxx}{\raggedright\hspace{0.005pt} #4}}
 
 
-\newcommand{\itemxxxxx}[5]{\parbox[t]%
+\newcommand{\itemxxxxx}[5]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.2\remainxxxxx}{\raggedright #1}\hfill%
+\parbox[t]{0.2\remainxxxxx}{\raggedright\hspace{0.005pt} #1}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.2\remainxxxxx}{\raggedright #2}\hfill%
+\parbox[t]{0.2\remainxxxxx}{\raggedright\hspace{0.005pt} #2}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.2\remainxxxxx}{\raggedright #3}\hfill%
+\parbox[t]{0.2\remainxxxxx}{\raggedright\hspace{0.005pt} #3}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.2\remainxxxxx}{\raggedright #4}\hfill%
+\parbox[t]{0.2\remainxxxxx}{\raggedright\hspace{0.005pt} #4}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.2\remainxxxxx}{\raggedright #5}}
+\parbox[t]{0.2\remainxxxxx}{\raggedright\hspace{0.005pt} #5}}
 
 
 \newcommand{\itemxox}[2]{\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{\remainxox}{\raggedright #1}\hfill%
+\parbox[t]{\remainxox}{\raggedright\hspace{0.005pt} #1}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.3333\remainxxx}{\raggedright #2}}
+\parbox[t]{0.3333\remainxxx}{\raggedright\hspace{0.005pt} #2}}
 
-\newcommand{\itemxxo}[2]{\parbox[t]%
+\newcommand{\itemxxo}[2]{\hspace{-2pt}\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{0.3333\remainxxx}{\raggedright #1}\hfill%
+\parbox[t]{0.3333\remainxxx}{\raggedright\hspace{0.005pt} #1}\hfill%
 \parbox[t]{\labelwidth}{\hfill{\labelname}}\hskip\labelsep
-\parbox[t]{\remainxox}{\raggedright #2}}
+\parbox[t]{\remainxox}{\raggedright\hspace{0.005pt} #2}}
 
 \newcommand{\itemxoxx}[3]{\parbox[t]%
 {\labelwidth}{\hfill{\labelname}}\hskip\labelsep
@@ -187,4 +187,4 @@ r{multienumi}{-2}\else
 \addtolength{\usedxxxxx}{\leftmargin}%
 \setlength{\remainxxxxx}{\hsize}%
 \addtolength{\remainxxxxx}{-\usedxxxxx}%
-\setlength{\itemindent}{0pt}}}{\addtocounter{multienumdepth}{-1}\end{list}}
+\setlength{\itemindent}{0pt}}}{\addtocounter{multienumdepth}{-1}\end{list}\vspace{-0.4cm}}

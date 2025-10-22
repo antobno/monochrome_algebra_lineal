@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{monochrome}[2024/03/14 Una plantilla para mis notas de álgebra lineal]
+\ProvidesClass{monochrome}[2024/03/14 Una plantilla que está destinada, en principio, a mis notas de álgebra lineal]
 
 \DeclareOption*{
 	\PassOptionsToClass{\CurrentOption}{book}
@@ -12,123 +12,57 @@
 \RequirePackage[spanish, es-noshorthands, es-tabla, es-lcroman]{babel}
 
 
-%------------------------------------------------------------------------------
-%	DECLARACIÓN DE FUENTES
-%------------------------------------------------------------------------------
+% =========================================================
+%     PAQUETES NECESARIOS
+% =========================================================
 
-\RequirePackage[no-math]{fontspec}
+\RequirePackage{ifthen}  % Proporciona sentencias condicionales.
+\RequirePackage{etoolbox}  % Herramientas avanzadas de programación para LaTeX.
+\RequirePackage{floatrow} % Proporciona herramientas avanzadas para flotadores.
+\RequirePackage[section]{placeins} % Evita que los flotadores lleguen a las secciones transversales.
+\RequirePackage{graphicx}  % Para incluir y manipular imágenes.
+\RequirePackage[font=normalsize]{subfig}  % Para subfiguras o figuras más complejas.
+\RequirePackage{tabularx}  % Tablas de ancho flexible.
+\RequirePackage{nicematrix} % Para crear tablas complejas
+\RequirePackage{booktabs}  % Estilo profesional para tablas.
+\RequirePackage{makecell} % Construye celdas locales.
+\RequirePackage{caption}  % Personalización de títulos de tablas y figuras.
+\RequirePackage[inline]{enumitem}  % Personalización de listas.
+\RequirePackage{tasks}  % Personalización de listas en multicolumnas.
+\RequirePackage{multienum}  %.sty
+\RequirePackage{amsmath, amsfonts, amssymb, amsthm, mathtools}  % Expresiones matemáticas avanzadas y símbolos matemáticos extendidos.
+\RequirePackage{eqparbox}  % Principalmente para nombres de ecuaciones
+\RequirePackage[dvipsnames,table]{xcolor}  % Soporte extendido para colores.
+\RequirePackage{tcolorbox}  % Crear cajas de colores y resaltadas.
+\tcbuselibrary{most}  % Cargar la mayoría de las bibliotecas del paquete tcolorbox.
 
-\setmonofont{Source Code Pro Light}[
-BoldFont=Source Code Pro,
-Scale=MatchLowercase,
-]
-
-\setsansfont{Lato Light}[
-%Numbers=OldStyle,
-BoldFont=Lato Regular,
-ItalicFont=Lato Light Italic,
-BoldItalicFont=Lato Italic
-]
-
-\setmainfont{Lato Light}[
-%Numbers=OldStyle,
-BoldFont=Lato Bold,
-ItalicFont=Lato Light Italic,
-BoldItalicFont=Lato Italic
-]
-
-\newfontfamily{\titlefont}{Lato Light}[
-%Numbers=OldStyle,
-BoldFont=Lato Regular,
-ItalicFont=Lato Light Italic,
-BoldItalicFont=Lato Italic
-]
-
-\newfontfamily{\upperNumber}{Lato Light}[
-BoldFont=Lato Regular,
-ItalicFont=Lato Light Italic,
-BoldItalicFont=Lato Italic
-]
-
-\newfontfamily\Montserrat[Path=fonts/]{Montserrat-SemiBold.otf}
-
-\newfontfamily\cabin[Path=fonts/, Extension = .otf,
-   UprightFont = *-Regular,
-      BoldFont = *-Bold,
-    ItalicFont = *-Italic,
-BoldItalicFont = *-BoldItalic,]{Cabin}
-
-\newfontfamily\sansa[Path=fonts/, Extension = .ttf,
-   UprightFont = *_Regular,
-      BoldFont = *_Bold,
-    ItalicFont = *_Italic,
-BoldItalicFont = *_Bold_Italic,]{Sansation}
-
-\newfontfamily\rodondo[Path=fonts/, BoldFont = *,]{Rodondo.otf}
-
-
-%------------------------------------------------------------------------------
-%	TODOS LOS PAQUETES NECESARIOS PARA EL CORRECTO FUNCIONAMIENTO DEL DOCUMENTO
-%------------------------------------------------------------------------------
-
-\RequirePackage{fix-cm}
 \RequirePackage[
-  compact,
-  newparttoc,
-  newlinetospace,
-]{titlesec}
+    compact,
+    newparttoc,
+    newlinetospace,
+]{titlesec}  % Personalización de títulos de secciones y capítulos.
 \RequirePackage{titletoc}
-\RequirePackage[strict]{changepage}
-
-\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
-
-\RequirePackage[bbgreekl]{mathbbol}
-\RequirePackage{amsmath, amsfonts, amssymb, amsthm}
-\RequirePackage{bm}
-\RequirePackage{stmaryrd}
-\RequirePackage{thmtools}
-\RequirePackage{mathtools}
-\RequirePackage{bookmark}
-\RequirePackage{booktabs}
-\RequirePackage{calc}
-\RequirePackage{caption}
-\RequirePackage[inline]{enumitem}
-\RequirePackage{tasks}
-\RequirePackage{multienum} %.sty
-\RequirePackage{etoolbox}
-\RequirePackage{fancyhdr}
-\RequirePackage{floatrow}
-\RequirePackage{graphicx}
-\RequirePackage{subfig}
-\RequirePackage{makecell}
-\RequirePackage{nicematrix}
-\RequirePackage[section]{placeins} % Evita que los flotadores lleguen a las secciones transversales
-\RequirePackage{marginnote} % Provides options for margin notes
-\RequirePackage{marginfix} % Proporciona opciones para notas al margen
-\RequirePackage{sidenotes} % Para usar notas al margen
-\RequirePackage{chngcntr} % Restablecer contadores en secciones
-\RequirePackage[bottom, symbol*, hang, flushmargin, stable]{footmisc} % Requerido para configurar las notas al pie
+\RequirePackage{hyperref}  % Hipervínculos y metadatos en PDF.
+\RequirePackage{silence}  % Suprimir advertencias específicas de paquetes.
+\RequirePackage{fontawesome5}  % Iconos de Font Awesome.
+\RequirePackage{calc}  % Notación infija para aritmética.
 \RequirePackage{footnotebackref} % Crea referencias posteriores de las notas al pie de página al texto
 \RequirePackage{mdframed}
 \RequirePackage{microtype}
-\RequirePackage{multicol}
+\RequirePackage{fix-cm}
+\RequirePackage[strict]{changepage}
 \RequirePackage{ragged2e}
-\RequirePackage{verbatim}
-\RequirePackage{hyperref}
-\RequirePackage{geometry}
-\RequirePackage{qrcode}
-\RequirePackage{ccicons}
-\RequirePackage{emptypage} % Este paquete elimina encabezados y pies de página en páginas vacías entre capítulos. Importante para prólogos, introducción, etc.
-\RequirePackage{pdfpages}
+\RequirePackage{multicol}
 
-\RequirePackage{circuitikz,siunitx}
-\RequirePackage{tikz}
-\RequirePackage{ifthen}
+
+\RequirePackage{tikz}  % Crear gráficos de alta calidad.
+%%% Librerías de Tikz %%%
 \usetikzlibrary{shapes}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{calendar}
 \usetikzlibrary{mindmap}
+\usetikzlibrary{trees}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{calc}
 \usetikzlibrary{intersections}
@@ -139,49 +73,103 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 \usetikzlibrary{fit}
 \usetikzlibrary{3d}
 \usetikzlibrary{patterns,angles,quotes,math}
+%\usetikzlibrary{snakes}
 \RequirePackage{tikz-3dplot}
-\usetikzlibrary{snakes}
-
-\RequirePackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usetikzlibrary{pgfplots.fillbetween}
-
-\RequirePackage[most]{tcolorbox}
-\tcbuselibrary{skins}
-\tcbuselibrary{listings,breakable}
-\tcbuselibrary{documentation}
-\usetikzlibrary{shadings}
+\usetikzlibrary{decorations}
 
 
-\RequirePackage{lipsum} % Genera texto aleatorio, esto sirve para hacer pruebas a la plantilla
+\usepackage{pgfplots}
+%%% Librerías de pgfplots y configuración %%%
+\usepgfplotslibrary{colormaps}
+\pgfplotsset{compat=newest}
 
-% Un entorno para tener más “control” del espacio en un bloque de un párrafo
-\newenvironment{nscenter}
- {\parskip=0pt\par\nopagebreak\centering}
- {\par\noindent\ignorespacesafterend}
+\RequirePackage{qrcode}
+\RequirePackage{pdfpages} % Para agregar documentos PDF (algunas páginas o incluso todo un documento)
+\RequirePackage{emptypage} % Este paquete elimina encabezados y pies de página en páginas vacías entre capítulos. Importante para prólogos, introducción, etc.
+
+\RequirePackage{marginnote} % Proporciona opciones para notas al margen
+\RequirePackage{marginfix} % Proporciona opciones para notas al margen
 
 
-%------------------------------------------------------------------------------
-%	 UNIDADES DE MEDIDAS Y DIMENSIONES PARA EL DOCUMENTO
-%------------------------------------------------------------------------------
 
+% =========================================================
+%     FUENTES
+% =========================================================
+
+\usepackage{fontspec}  % Requerido para fuentes personalizadas con XeLaTeX o LuaLaTeX.
+\usepackage{unicode-math}
+  
+\setmainfont{XITS}
+[    Extension = .otf,
+   UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+BoldItalicFont = *-BoldItalic,
+]
+
+\setmathfont{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold,
+]
+
+\newfontfamily\Lato[
+  Ligatures       = TeX,
+  UprightFont     = *-Regular,
+  ItalicFont      = *-Italic,
+  BoldFont        = *-Bold,
+  BoldItalicFont  = *-BoldItalic,
+]{Lato}
+
+\newfontfamily\cabin[Path=fonts/, Extension = .otf,
+   UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+BoldItalicFont = *-BoldItalic,]{Cabin}
+
+\newfontfamily\altone[Path=fonts/, Extension = .ttf,
+   UprightFont = *-Regular,
+      BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+BoldItalicFont = *-BoldItalic]{Altone}
+
+% A mi parecer, es mejor estéticamente utilizar lo siguiente:
+\AtBeginDocument{%
+  \mathchardef\stdcomma=\mathcode`,
+  \mathcode`,="8000
+}
+\begingroup\lccode`~=`, \lowercase{\endgroup\def~}{\stdcomma\,}
+
+\setmathfont{Latin Modern Math}[range=\sum]
+\setmathfont{Latin Modern Math}[range=\nabla]
+\DeclareMathSymbol{(}{\mathopen}{operators}{40}
+\DeclareMathSymbol{)}{\mathclose}{operators}{41}
+\setmathfont[range={\mathopen,\mathclose,\mathpunct,\mathord}]{Latin Modern Math}
+
+% =========================================================
+
+\newcommand{\demostracion}{\noindent\textbf{\fontencoding{T1}\fontfamily{phv}\selectfont\color{black}Demostración:\hspace{5pt plus 1pt minus 1pt}}}
+
+\newcommand{\solucion}{\noindent\textbf{\fontencoding{T1}\fontfamily{phv}\selectfont\color{black}Solución:\hspace{5pt plus 1pt minus 1pt}}}
+
+
+\newcommand{\TituloBox}[1]{\textbf{\fontencoding{T1}\fontfamily{phv}\selectfont\color{black}#1}}
+
+
+
+% =========================================================
+%     UNIDADES
+% =========================================================
 \setlength{\parskip}{0.8\baselineskip}
 %\setlength{\parindent}{0ex}
 \setlength{\headheight}{12.0pt}
 
-% Guardar alguna longitudes como comandos
-\newlength{\wholeMargin}
-\setlength{\wholeMargin}{\marginparwidth}
-\addtolength{\wholeMargin}{\marginparsep}
 
-\newlength{\wholeWidth}
-\setlength{\wholeWidth}{\textwidth}
-\addtolength{\wholeWidth}{\wholeMargin}
 
-\newlength\outermarginwidth
-\setlength\outermarginwidth{1.5cm}
-\newlength\covershift
-\setlength\covershift{5cm}
+% =========================================================
+%     MARGENES
+% =========================================================
+
+\RequirePackage{geometry}
 
 \geometry{
     %showframe,
@@ -189,8 +177,8 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
     asymmetric,
 	ignorefoot,
 	ignorehead,
-	right=7.7cm,
-	left=2cm,
+    left=7.5cm,
+	right=2cm,
 	top=2.5cm,
 	bottom=2.5cm,
 	footskip=2\baselineskip,
@@ -199,97 +187,46 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 	marginparsep=7mm,
 	headheight=0mm,
 }
-%\reversemarginpar
+\reversemarginpar
 
-\newcommand{\symmetricalPage}{
-	\fancyhfoffset[L]{0mm}
-	\newgeometry{
-		ignorefoot,
-		ignorehead,
-		left=3cm,
-		right=3cm,
-		top=3cm,
-		bottom=3cm,
-		marginparwidth=0cm,
-		marginparsep=0mm
-	}
-}
 \newcommand{\TOCPage}{
-	\fancyhfoffset[L]{0mm}
+	%\fancyhfoffset[R]{0mm}
 	\newgeometry{
 		asymmetric,
-        ignorefoot,
-		ignorehead,
-		left=2cm,
-		right=6cm,
-		top=2cm,
-		bottom=2cm,
+	    ignorefoot,
+	    ignorehead,
+        left=5cm,
+	    right=1.5cm,
+	    top=2.5cm,
+	    bottom=2.5cm,
 		marginparwidth=0cm,
 		marginparsep=0mm
 	}
 }
-\newcommand{\asymmetricalPage}{
-	\restoregeometry
-}
 
 
-%------------------------------------------------------------------------------
-%	HYPERVINCULOS, ENLACES, METADATOS, ETC.
-%------------------------------------------------------------------------------
 
-\urlstyle{rm}
-\hypersetup{
-	pdfborder={1 1 0},
-	pdfcreator=LuaLaTeX,
-    pdftitle={Fundamentos y principios del álgebra lineal},
-	pdfauthor={Antonio M. Mendoza},
-    pdfsubject={Desde la teoría de espacios vectoriales y sus transformaciones lineales hasta la resolución de sistemas de ecuaciones lineales y la diagonalización de matrices.},
-    %pdfpagemode=FullScreen,
-    %bookmarks=true,
-    bookmarksopen=false,
-    linktocpage=true,
-	colorlinks=true,
-	linkcolor=black,
-	linktoc=all,
-	urlcolor=black,
-	citecolor=black,
-	filecolor=black,
-}
+% =========================================================
+%     ENCABEZADOS
+% =========================================================
 
-
-%------------------------------------------------------------------------------
-%	MARCADORES
-%------------------------------------------------------------------------------
-
-\bookmarksetup{
-	open, % Abre todos los marcadores automáticamente
-	numbered, % Agregar números de sección a marcadores
-	addtohook={%
-		\ifnum\bookmarkget{level}=-1 % Personalizar marcadores de partes
-			\bookmarksetup{color=black, bold}% Negrita y coloreada
-		\fi
-		\ifnum\bookmarkget{level}=0 % Personalizar marcadores de capítulos
-			\bookmarksetup{bold}% Negrita
-		\fi
-	}
-}
-
-
-%------------------------------------------------------------------------------
-%	ENCABEZADOS
-%------------------------------------------------------------------------------
+\RequirePackage{fancyhdr}
 
 \fancypagestyle{fancy}{
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyhf{}
-	\fancyhfoffset[RO]{\marginparsep + \marginparwidth}
-    %\fancyhfoffset[LE]{- 0.05\marginparsep}
-    \rhead[{\bfseries\protect\hyperref[toc-contents]{\small\thepage}\hspace{-\marginparwidth -\marginparsep}}]{\small\rightmark}
-    \lhead[\small\leftmark]{{\bfseries\protect\hyperref[toc-contents]{\small\thepage}}}
+	\fancyhfoffset[LE]{\marginparsep + \marginparwidth}
+    \rhead[{\bfseries\protect\hyperref[toc-contents]{\selectfont\Lato\small\color{black}\thepage}}]{%
+        \makebox[\textwidth][r]{\small\rightmark}%
+    }
+    % Ajuste en el encabezado izquierdo (páginas pares)
+    \lhead[\small\leftmark]{%
+        \hspace{-\marginparwidth -\marginparsep}{\bfseries\protect\hyperref[toc-contents]{\selectfont\Lato\small\color{black}\thepage}}%
+    }
 }
 
-\def\chaptermark#1{\markboth{\protect\hyper@linkstart{link}{\@currentHref}{\textbf{\MakeUppercase{\chaptertitlename}~\thechapter} ~#1}\protect\hyper@linkend}{}}
-\def\sectionmark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{\textbf{SECCIÓN~\thesection} ~\MakeUppercase{#1}}\protect\hyper@linkend}}
+\def\chaptermark#1{\markboth{\protect\hyper@linkstart{link}{\@currentHref}{\selectfont\Lato\textbf{\color{black}\MakeUppercase{\chaptertitlename}~\thechapter} ~#1}\protect\hyper@linkend}{}}
+\def\sectionmark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{\selectfont\Lato\textbf{\color{black}SECCIÓN~\thesection} ~\MakeUppercase{#1}}\protect\hyper@linkend}}
 
 \fancypagestyle{plain}{ % Estilo para cuando se especifica un estilo de página simple
 	\fancyhead{} % Borrar encabezados
@@ -297,33 +234,84 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%		CAPÍTULO
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\newlength{\subtitleRubberWidth}\setlength{\subtitleRubberWidth}{3cm}
-%\newlength{\subtitleDefaultPadding}\setlength{\subtitleDefaultPadding}{2mm}
-%\newlength{\subtitleRubberHeight}\setlength{\subtitleRubberHeight}{7cm}
+% =========================================================
+%     TABLA DE CONTENIDO
+% =========================================================
+
+\renewcommand{\tableofcontents}{
+\pagestyle{empty} % No headers
+%\newgeometry{left=0cm,asymmetric} % No left margin
+\setcounter{tocdepth}{1} % TOC depth
+
+{
+\setlength{\parskip}{0pt}
+\chapter*{\vspace*{-20\p@}%
+\begin{tikzpicture}[remember picture, overlay]%
+\fill[black!50] (current page.north west) coordinate (NW) --++(0,-0.15\paperheight) [bend left=-9] to ([shift={(\paperwidth,-.8*0.1\paperheight-2.96cm)}]NW) |- (NW)  --cycle;
+\fill[black] (current page.north west) coordinate (NW) --++(0,-0.1\paperheight) [bend left=-10] to ([shift={(\paperwidth,-.8*0.1\paperheight-3.5cm)}]NW) |- (NW)  --cycle;
+%
+\pgftext[right,x=14cm,y=7cm]{\altone\color{white} 
+\contentsname};%
+\end{tikzpicture}}
+\vspace{-5.5cm}
+
+\@starttoc{toc}
+}
+
+\clearpage
+}
+
+% Estilo de texto de capítulo
+\titlecontents{chapter}[-7em]{\selectfont\Lato \bfseries\addvspace{5ex}}%
+{\MakeUppercase\chaptertitlename~~{\huge \thecontentslabel}\quad\Large \MakeUppercase}%
+{}%
+{\hfill\Large\thecontentspage}%
+
+% Para arreglar la diferencia entre capítulo y apéndice
+\newcommand\originalappendix{}
+\let\originalappendix\appendix
+\renewcommand\appendix{\originalappendix\addtocontents{toc}{\protect\appendixintoc}}
+\newcommand\appendixintoc{\def\chaptertitlename{\appendixname}}
+
+% Estilo de texto de sección
+\titlecontents{section}[2em]{\addvspace{2pt}}%
+{\thecontentslabel\qquad}%
+{}%
+{\hfill\thecontentspage}%
+
+% Estilo de texto de subsección
+\titlecontents{subsection}[3.2em]{}%
+{\thecontentslabel\quad}%
+{}%
+{\hfill\thecontentspage}%
+
+
+
+% =========================================================
+%     SECCIONES EN EL DOCUMENTO
+% =========================================================
+
 \titleformat{\chapter}[block]
 {} % format
 {\begin{flushleft}%
 	\begin{tikzpicture}[remember picture, overlay, inner sep=2mm]
-		\node[yshift = 0.5cm, xshift = 0.2cm + \hoffset, right, font=\fontsize{1.2cm}{1.2cm}\selectfont\bfseries] (chapterLabel) {\chaptertitlename};
+		\node[yshift = 0.5cm, xshift = -0.5cm - \hoffset, left, font=\fontsize{1.2cm}{1.2cm}\selectfont\bfseries] (chapterLabel) {\chaptertitlename};
         \filldraw[black!80] ($(chapterLabel.west)+(-\textwidth,0)$) rectangle (current page.north east);
         \filldraw[white] (chapterLabel.south west) rectangle (chapterLabel.north east);
 		\draw[black!80, ultra thick] (chapterLabel.south west) rectangle (chapterLabel.north east);
-        \node[font=\fontsize{1cm}{1.2cm}\selectfont\bfseries] at (chapterLabel) {\chaptertitlename};
-        \node[white, font=\bfseries, yshift=2.5cm, above of=chapterLabel] {\scalebox{16}{\thechapter\startcontents}};
+        \node[font=\fontsize{1cm}{1.2cm}\fontencoding{T1}\fontfamily{pag}\selectfont\bfseries\color{black!80}] at (chapterLabel) {\chaptertitlename};
+        \node[white, font=\fontencoding{T1}\fontfamily{phv}\selectfont\bfseries, yshift=2.5cm, above of=chapterLabel] {\scalebox{16}{\thechapter}};
 	\end{tikzpicture}
 \end{flushleft}
 }
 {0pt} % 
 {% 
 	\blockmargin%
-	\begin{adjustwidth}{0mm}{-\wholeMargin}
+	\begin{adjustwidth}{-\marginparsep - \marginparwidth}{0mm}
 		\begingroup
-        \FlushLeft
-		%\chapterFont
+        \sloppy\FlushLeft
+		\selectfont\Lato
         \fontsize{1.5cm}{1.8cm}\selectfont\bfseries%
 		\noHyphen%
 }[ % 
@@ -337,10 +325,11 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 {}
 {0pt} % 
 { % 
-	\begin{adjustwidth}{0mm}{-\wholeMargin}
+	\begin{adjustwidth}{0mm}{-\marginparwidth}
 		\FlushLeft
 		\begingroup
-        \fontsize{1.5cm}{1.8cm}\selectfont\raggedright\bfseries%
+        \selectfont\Lato
+        \fontsize{1.5cm}{1.8cm}\selectfont\raggedright%
 		\noHyphen%
 	}[ % 
 	\endgroup
@@ -354,27 +343,81 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
     {4ex}% Espaciado después del título
     [0pt]% Margen extra a la derecha
 
+\titleformat{\section}
+    {\normalfont\Large\bfseries}
+    {\hspace{-2.375\marginparsep}\makebox[0.5in][r]{\color{black}\fontencoding{T1}\fontfamily{phv}\selectfont\Large\thesection}}
+    {0.5\marginparsep}
+    {\selectfont\Lato\raggedright}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%		LISTAS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titleformat{\subsection}
+    {\large\bfseries}
+    {\hspace{-2.375\marginparsep}\makebox[0.5in][r]{\color{black}\fontencoding{T1}\fontfamily{phv}\selectfont\thesubsection}}
+    {0.5\marginparsep}
+    {\selectfont\Lato\raggedright}
 
-\setlist{
-  topsep=0mm,
+
+
+% =========================================================
+%     FLOTADORES
+% =========================================================
+
+\DeclareCaptionFont{myCaptionFont}{\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont\color{black}}
+\DeclareCaptionLabelSeparator{myCaptionLabelSeparator}{\hspace*{1.25ex}}
+\captionsetup{
+    labelfont=myCaptionFont,
+    %justification=raggedright,
+    singlelinecheck=false,
+    labelsep=myCaptionLabelSeparator,
+    strut=yes,%
+    %hypcap=true, % Los enlaces apuntan a la parte superior de la figura
+    %singlelinecheck=false,%
+    %width=\marginparwidth,
+    %indention=0pt, % Suprimir la sangría
+    %parindent=0pt, % Suprimir el espacio entre los párrafos
 }
-\setlist[description]{font=\scshape}
-\setlist[enumerate]{font=\bfseries}
-\setlist[itemize]{label={$\bullet$}}
 
-\settasks{
-    label-format = \bfseries,
-    item-indent = 0.94cm,
+\DeclareFloatVCode{parskip}{{\vspace{\parskip}}}
+\newlength{\twoparskip}
+\setlength{\twoparskip}{-\parskip}
+\DeclareFloatVCode{twoparskip}{{\vspace\twoparskip}}
+\DeclareFloatSeparators{marginparsep}{\hspace\marginparsep}
+
+\floatsetup[figure]{
+    %precode=twoparskip,
+    margins=hangleft,
+    floatwidth=\textwidth,
+    font={normalsize},
+    capposition=beside,
+    captionskip=0mm,
+    capbesideposition={top,left},
+    capbesidewidth=sidefil,
+    capbesidesep=marginparsep,%
+    footposition=caption,
+    footskip=0.5\baselineskip,
+    footfont={small},
+	postcode=twoparskip,
 }
 
+\floatsetup[table]{
+    %precode=twoparskip,
+    margins=hangleft,
+    floatwidth=\textwidth,
+    font={normalsize},
+    capposition=beside,
+    captionskip=0mm,
+    capbesideposition={top,left},
+    capbesidewidth=sidefil,
+    capbesidesep=marginparsep,%
+    footposition=caption,
+    footskip=0.5\baselineskip,
+    footfont={small},
+	postcode=twoparskip,
+}
 
-%----------------------------------------------------------------------------------------
-%	NOTAS AL PIE, NOTAS AL MARGEN Y NOTAS AL MARGEN
-%----------------------------------------------------------------------------------------
+\floatsetup[widefloat]{%
+	capposition=bottom,
+	captionskip=\baselineskip,
+}
 
 \pgfkeys{
 	/yMarginDesign/.cd,
@@ -400,48 +443,6 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 	}}\unskip%
 }%
 
-\newcounter{marginnote}
-
-% Para escribir un párrafo en el margen con un número (como nota a pie de página)
-\DeclareDocumentCommand{\marginNote}{m}{%
-  \stepcounter{marginnote}%
-  \hyper@anchor{from-\theHmarginnote}%
-  {%
-    \bfseries%
-    \hyper@link{}{to-\theHmarginnote}{\textsuperscript{\textcolor{\pgfkeysvalueof{/yMarginDesign/emph color}}{\themarginnote}}}%
-  }%
-	\marginElement{%
-	  \hyper@anchor{to-\theHmarginnote}%
-	  {%
-	    \bfseries%
-      \hyper@link{}{from-\theHmarginnote}{\textcolor{\pgfkeysvalueof{/yMarginDesign/emph color}}{\themarginnote.}}~%
-	  }%
-	  \ignorespaces%
-		#1%
-	}%
-}%
-
-% Escriba un párrafo en el margen exactamente en la posición exacta en la que se llama el comando
-\DeclareDocumentCommand{\forcedMarginElement}{m}{%
-  \marginnote{{%
-    \pgfkeys{/yMarginDesign/alignment}%
-    \pgfkeys{/yMarginDesign/size}%
-    \color{\pgfkeysvalueof{/yMarginDesign/text color}}
-		#1%
-  }}%
-}
-
-% Escriba un párrafo en el margen exactamente en la posición exacta donde se llama al comando con un número (como nota a pie de página)
-\DeclareDocumentCommand{\forcedMarginNote}{m}{%
-	\printMarginNoteMark
-	\ignorespaces%
-	\forcedMarginElement{%
-		\sideMark[#1]{\thefootnote}%
-		\ignorespaces%
-		#1%
-	}%
-}
-
 \DeclareDocumentCommand{\sideTable}{o m}{%
 	\marginpar{%
 		\strictpagechecktrue%
@@ -454,7 +455,7 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 		\@afterindentfalse\@afterheading
 		\vspace*{6mm} % Compensa el espacio de la tabla añadido por encima de la primera línea 
 		#2
-		\captionsetup*[table]{font={footnotesize},hypcap=false}
+		\captionsetup*[table]{font={normalsize},hypcap=false}
 		\IfValueT{#1}{\captionof{table}{#1}}
 	}
 }
@@ -470,296 +471,326 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 		\fi%
 		\@afterindentfalse\@afterheading%
 		#2%
-		\captionsetup*[figure]{font={footnotesize},hypcap=false}%
+		\captionsetup*[figure]{font={normalsize},hypcap=false}%
 		\IfValueT{#1}{\vspace*{-2mm}\captionof{figure}{#1}}
 	}
 }
+
+\newcommand{\infoBulle}[1]{
+\marginElement{\justify
+{\color{black}\vrule width 3pt}\colorbox{white}{
+    \parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{\vspace{1mm}\textbf{\textcolor{black}{\faInfoCircle}\qquad\fontencoding{T1}\fontfamily{pag}\selectfont\small Nota}\\[1.5mm]
+    #1
+    }\,\,\,}
+}}
 
 \newcommand{\noHyphen}{%
   \righthyphenmin=62
   \lefthyphenmin=62
 }
 
-\DeclareDocumentCommand{\yTitle}{m}{%
-  \begingroup%
-    \large\scshape\bfseries%
-    #1%
-  \endgroup%
-}
+% =========================================================
+%     METADATOS
+% =========================================================
 
-\DeclareDocumentCommand{\printchaptertableofcontents}{}{%
-  \marginElement{%
-    {%
-      %\vspace*{9mm}
-      \yTitle{Contenido}\\[2mm]
-      \printcontents{c}{1}[1]{\hypersetup{linkcolor=black}}%
-    }%
-  } 
-}
-
-\newcommand{\infoBulle}[1]{
-\marginElement{\justify
-\textcolor{black}{\vrule width 3pt}\colorbox{white}{
-    \parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{\vspace{1mm}\textbf{\textcolor{black}{\fontfamily{lmr}\selectfont\large i}\qquad\small Nota}\\[1.5mm]
-    #1
-    }\,\,\,}
-}}
-
-\newcommand{\remarkBulle}[1]{
-\marginElement{\justify
-\textcolor{black}{\vrule width 3pt}\colorbox{white}{
-    \parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{\vspace{1mm}\textbf{Recordatorio}\\[1.5mm]
-    #1
-    }\,\,\,}
-}}
-
-\newcommand{\sugeBulle}[1]{
-\marginElement{\justify
-\textcolor{black}{\vrule width 3pt}\colorbox{white}{
-    \parbox[c]{\dimexpr\linewidth-3pt-2\fboxsep-2\fboxrule}{\vspace{1mm}\textbf{\textcolor{black}{\fontfamily{lmr}\selectfont\large i}\qquad\small Sugerencia}\\[1.5mm]
-    #1
-    }\,\,\,}
-}}
-
-%----------------------------------------------------------------------------------------
-%	FLOTADORES: FIGURAS, TABLAS, LISTADOS Y LEYENDAS
-%----------------------------------------------------------------------------------------
-
-\DeclareDocumentCommand{\isOddPage}{mm}{%
-	\strictpagechecktrue%
-	\checkoddpage%
-	\ifoddpage%
-	#1%
-	\else%
-	#2%
-	\fi%
-}
-
-\DeclareCaptionFont{myCaptionFont}{\bfseries}
-\DeclareCaptionLabelSeparator{myCaptionLabelSeparator}{\hspace*{1ex}}
-\captionsetup{
-    labelfont=myCaptionFont,
-    %justification=RaggedRight,
-    labelsep=myCaptionLabelSeparator,
-    %strut=no,%
-    %hypcap=true, % Los enlaces apuntan a la parte superior de la figura
-    %singlelinecheck=false,%
-    %width=\marginparwidth,
-    %indention=0pt, % Suprimir la sangría
-    %parindent=0pt, % Suprimir el espacio entre los párrafos
-}
-
-\DeclareFloatVCode{parskip}{{\vspace{\parskip}}}
-\newlength{\twoparskip}
-\setlength{\twoparskip}{1.5\parskip}
-\DeclareFloatVCode{twoparskip}{{\vspace\twoparskip}}
-\DeclareFloatSeparators{marginparsep}{\hspace\marginparsep}
-
-\floatsetup[figure]{
-    %precode=twoparskip,
-    margins=hangright,
-    floatwidth=\textwidth,
-    font={normalsize},
-    capposition=beside,
-    captionskip=0mm,
-    capbesideposition={top,right},
-    capbesidewidth=sidefil,
-    capbesidesep=marginparsep,%
-    footposition=caption,
-    footskip=0.5\baselineskip,
-    footfont={small},
-	%postcode=twoparskip,
-}
-
-\floatsetup[table]{
-    %precode=twoparskip,
-    margins=hangright,
-    floatwidth=\textwidth,
-    font={normalsize},
-    capposition=beside,
-    captionskip=0mm,
-    capbesideposition={top,right},
-    capbesidewidth=sidefil,
-    capbesidesep=marginparsep,%
-    footposition=caption,
-    footskip=0.5\baselineskip,
-    footfont={small},
-	%postcode=twoparskip,
-}
-
-\floatsetup[widefloat]{%
-	capposition=bottom,
-	captionskip=\baselineskip,
+\urlstyle{rm}
+\hypersetup{
+	pdfborder={1 1 0},
+	pdfcreator={LuaLaTeX via Overleaf},
+    pdftitle={Fundamentos y principios del álgebra lineal},
+	pdfauthor={Antonio M. Mendoza},
+    pdfsubject={Desde la teoría de espacios vectoriales y sus transformaciones lineales hasta la resolución de sistemas de ecuaciones lineales y la diagonalización de matrices.},
+    %pdfpagemode=FullScreen,
+    %bookmarks=true,
+    bookmarksopen=false,
+    linktocpage=true,
+	colorlinks=true,
+	linkcolor=black,
+	linktoc=all,
+	urlcolor=black,
+	citecolor=black,
+	filecolor=black,
 }
 
 
-%-----------------------------------------------------------------------------
-%   TABLA DE CONTENIDOS
-%-----------------------------------------------------------------------------
 
-\contentsmargin{0cm}
+% =========================================================
+%     LISTAS
+% =========================================================
 
-% Estilo de texto de parte
-\titlecontents{part}[0cm]
-{\addvspace{20pt}\centering\large\bfseries\color{white}}
-{}
-{}
-{}
+\setlist{
+  topsep=0mm,
+}
+\setlist[description]{font=\fontencoding{T1}\fontfamily{phv}\selectfont\scshape\color{black}}
+\setlist[enumerate]{font=\fontencoding{T1}\fontfamily{phv}\selectfont\bfseries\color{black}}
+\setlist[itemize]{label={$\bullet$}}
 
-\titlecontents{lchapter}[1.4cm] % Sangría
-{\addvspace{12pt}\large\bfseries} % Opciones de espaciado y fuente para los capítulos
-{\contentslabel[\Large\thecontentslabel]{1cm}} % Número de capítulo
-{}
-{\normalsize\;\titlerule*[.6pc]{.}\;\thecontentspage} % Número de página
-
-% Estilo de texto de capítulo
-\titlecontents{chapter}[1.4cm] % Sangría
-{\addvspace{12pt}\large\bfseries} % Opciones de espaciado y fuente para los capítulos
-{\contentslabel[\Large\thecontentslabel]{1cm}} % Número de capítulo
-{}
-{\normalsize\hfill\thecontentspage} % Número de página
-
-% Estilo de texto de sección 
-\titlecontents{section}[2.4cm] % Sangría
-{\addvspace{1pt}} % Opciones de espaciado y fuente para las secciones
-{\contentslabel[\thecontentslabel]{1cm}} % Número de sección
-{}
-{\normalsize\;\titlerule*[.6pc]{.}\;\thecontentspage} % Número de página
-[]
-
-\titlecontents{csection}
-  [6mm] % 
-  {\addvspace{1.5pt}} % 
-  {\contentslabel[\bfseries\thecontentslabel]{6mm}\noHyphen} % 
-  {\hspace*{-6mm}\noHyphen} % 
-  {\;\titlerule*[.6pc]{.}\;\thecontentspage} % 
-
-% Estilo de texto de subsección 
-\titlecontents{subsection}[3.4cm] % Sangría
-{\addvspace{1pt}\small} % Opciones de espaciado y fuente para las secciones
-{\contentslabel[\thecontentslabel]{1cm}} % Número de subsección
-{}
-{\ \titlerule*[.8pc]{.}\;\thecontentspage} % Número de página
-[]
-
-
-\DeclareDocumentCommand{\printchaptertableofcontents}{}{%
-  \marginElement{%
-    {%
-      %\vspace*{9mm}
-      \yTitle{Contenido}\\[2mm]
-      \printcontents{c}{1}[1]{\hypersetup{linkcolor=black}}%
-    }%
-  } 
+\settasks{
+    label-format = \fontencoding{T1}\fontfamily{phv}\selectfont\bfseries\color{black},
+    item-indent = 0.94cm,
 }
 
-%------------------------------------------------------------------------------
-%   TÍTULOS DE PARTE
-%------------------------------------------------------------------------------
-
-% Parte numerada en la tabla de contenido
-\newcommand{\@mypartnumtocformat}[2]{%
-\setlength\fboxsep{0pt}%
-\noindent\colorbox{black!20}{\strut\parbox[c][.8cm]{\ecart}{\color{black!70}\Large\bfseries\centering#1}}\hskip\esp\colorbox{black}{\strut\parbox[c][.8cm]{\linewidth-\ecart-\esp}{\Large\centering\vphantom{é}\smash{#2}}}}%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Parte no numerada en la tabla de contenido
-\newcommand{\@myparttocformat}[1]{%
-\setlength\fboxsep{0pt}%
-\noindent\colorbox{black!40}{\strut\parbox[c][.8cm]{\linewidth}{\Large\centering#1}}}%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newlength\esp
-\setlength\esp{4pt}
-\newlength\ecart
-\setlength\ecart{1.2cm-\esp}
-\newcommand{\thepartimage}{}%
-\newcommand{\partimage}[1]{\renewcommand{\thepartimage}{#1}}%
-\def\@part[#1]#2{%
-\ifnum \c@secnumdepth >-2\relax%
-\refstepcounter{part}%
-\addcontentsline{toc}{part}{\texorpdfstring{\protect\@mypartnumtocformat{\thepart}{#1}}{\partname~\thepart\ ---\ #1}}
-\else%
-\addcontentsline{toc}{part}{\texorpdfstring{\protect\@myparttocformat{#1}}{#1}}%
-\fi%
-\startcontents%
-\markboth{}{}%
-{\thispagestyle{empty}%
-\begin{tikzpicture}[remember picture,overlay]%
-    \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%   
-        \coordinate (A) at ($(current page.east)+(0,2.5)$);
-        \coordinate (B) at (current page.south west);
-        \draw[black!70,name path=A--B] (A) -- (B);
-        \coordinate (C) at ($(current page.west)+(0,-2.5)$);
-        \coordinate (D) at ($(current page.south)+(2,0)$);
-        \draw[black!90,name path=C--D] (C) -- (D);
-        \path [name intersections={of=A--B and C--D,by=E}];
-        
-        \fill[black!80] (0cm,0cm) rectangle (\paperwidth,-\paperheight);
-        
-        \fill[black!70] ($(current page.east)+(0,2.5)$) -- (current page.south east) -- (current page.south west) -- cycle;
-        \fill[black!90] ($(current page.west)+(0,-2.5)$) -- (current page.south west) -- ($(current page.south)+(2,0)$) -- cycle;
-        \fill[black!60] (current page.south west) -- ($(current page.south)+(2,0)$) -- (E) -- cycle;
-        \node[right,inner sep=0pt] at ($(current page.west)+(2,8)$) {\color{white}\scalebox{20}{\bfseries\@Roman\c@part}};
-        \node[right] at ($(current page.west)+(2,0.75)$) {\parbox[t][][t]{15cm}{\strut\raggedright\renewcommand\baselinestretch{1.2}\selectfont\color{white}\fontsize{56}{56}\bfseries#2}};
-    \end{tikzpicture}};
-\end{tikzpicture}}%
-\@endpart}
-\def\@spart#1{%
-\startcontents%
-\phantomsection
-{\thispagestyle{empty}%
-\begin{tikzpicture}[remember picture,overlay]%
-    \node at (current page.north west){\begin{tikzpicture}[remember picture,overlay]%   
-        \coordinate (A) at ($(current page.east)+(0,2.5)$);
-        \coordinate (B) at (current page.south west);
-        \draw[black!70,name path=A--B] (A) -- (B);
-        \coordinate (C) at ($(current page.west)+(0,-2.5)$);
-        \coordinate (D) at ($(current page.south)+(2,0)$);
-        \draw[black!90,name path=C--D] (C) -- (D);
-        \path [name intersections={of=A--B and C--D,by=E}];
-        
-        \fill[black!80] (0cm,0cm) rectangle (\paperwidth,-\paperheight);
-        
-        \fill[black!70] ($(current page.east)+(0,2.5)$) -- (current page.south east) -- (current page.south west) -- cycle;
-        \fill[black!90] ($(current page.west)+(0,-2.5)$) -- (current page.south west) -- ($(current page.south)+(2,0)$) -- cycle;
-        \fill[black!60] (current page.south west) -- ($(current page.south)+(2,0)$) -- (E) -- cycle;
-
-        \node[right] at ($(current page.west)+(2,0.75)$) {\parbox[t][][t]{15cm}{\strut\raggedright\color{white}\fontsize{60}{60}\bfseries#1}};
-    \end{tikzpicture}
-    };
-\end{tikzpicture}}
-\addcontentsline{toc}{part}{\texorpdfstring{%
-\setlength\fboxsep{0pt}%
-% Apendice
-\noindent\protect\colorbox{black!70}{\strut\protect\parbox[c][.8cm]{\linewidth}{\Large\protect\centering\vphantom{é}\smash{#1} \quad\mbox{}}}}{#1}}%
-\@endpart}
-\def\@endpart{\vfil\newpage
-\if@twoside
-\if@openright
-\null
-\thispagestyle{empty}%
-\newpage
-\fi
-\fi
-\if@tempswa
-\twocolumn
-\fi}
 
 
-%------------------------------------------------------------------------------
-%   MATEMÁTICAS
-%------------------------------------------------------------------------------
+% =========================================================
+%     MATEMÁTICAS
+% =========================================================
 
-% A mi parecer, es mejor estéticamente utilizar lo siguiente:
-\AtBeginDocument{%
-  \mathchardef\stdcomma=\mathcode`,
-  \mathcode`,="8000
-}
-\begingroup\lccode`~=`, \lowercase{\endgroup\def~}{\stdcomma\,}
+\newtcbtheorem[number within=section]{examplebox}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    borderline north={1.5pt}{0pt}{black},
+    borderline south={1.5pt}{0pt}{black},
+    borderline east={1.5pt}{0pt}{black},
+    % Colores
+    colback=white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Ejemplo~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=-1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay middle={},
+    overlay last={}
+}{examplebox}
+
+\newtcbtheorem[number within=section]{definicion}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    % Colores
+    colback=black!7!white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Definición~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay middle={},
+    overlay last={}
+}{definicion}
+
+\newtcbtheorem[number within=section]{prop}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    borderline north={1.5pt}{0pt}{black},
+    borderline south={1.5pt}{0pt}{black},
+    %borderline east={1.5pt}{0pt}{black},
+    % Colores
+    colback=white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Proposición~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=-1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay middle={},
+    overlay last={}
+}{prop}
+
+\newtcbtheorem[number within=section]{theorem}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    %borderline north={1.5pt}{0pt}{blue},
+    borderline south={1.5pt}{0pt}{black},
+    %borderline east={1.5pt}{0pt}{black},
+    % Colores
+    colback=white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Teorema~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=-1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+        \draw[black,line width=1.5pt] ($(frame.north west)+(-3.5,-0.03)$) -- ($(frame.north east)+(0,-0.03)$);
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+        \draw[black,line width=1.5pt] ($(frame.north west)+(-3.5,-0.03)$) -- ($(frame.north east)+(0,-0.03)$);
+    },
+    overlay middle={},
+    overlay last={}
+}{theorem}
+
+\newtcbtheorem[number within=section]{corollary}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    %borderline north={1.5pt}{0pt}{blue},
+    borderline south={1.5pt}{0pt}{black},
+    borderline east={1.5pt}{0pt}{black},
+    % Colores
+    colback=white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Corolario~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=-1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+        \draw[black,line width=1.5pt] ($(frame.north west)+(-3.5,-0.03)$) -- ($(frame.north east)+(0,-0.03)$);
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+        \draw[black,line width=1.5pt] ($(frame.north west)+(-3.5,-0.03)$) -- ($(frame.north east)+(0,-0.03)$);
+    },
+    overlay middle={},
+    overlay last={}
+}{corollary}
+
+\newtcbtheorem[number within=section]{lemma}{}{
+    % Estilo del teorema
+    theorem style=change apart,
+    enhanced,
+    lower separated=false,
+    breakable,
+    % Bordes
+    boxrule=0pt,
+    frame hidden,
+    borderline east={1.5pt}{0pt}{black},
+    % Colores
+    colback=black!7!white,
+    coltitle=black,
+    % Título
+    detach title,
+    before title={Lema~},
+    after title={:},
+    fonttitle=\bfseries\fontencoding{T1}\fontfamily{phv}\selectfont,
+    boxed title style={colframe=white, colback=white, boxrule=0pt},
+    % Texto
+    fontupper=\normalsize,
+    before upper={\abovedisplayskip=8pt\belowdisplayskip=8pt},
+    % Márgenes
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    % Esquinas
+    sharp corners,
+    % Superposición
+    overlay unbroken={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay first={
+        \node[left, minimum width=2cm, anchor=east, xshift=-0.5\marginparsep, yshift=-0.348cm] at (frame.north west) {\tcbtitle};
+    },
+    overlay middle={},
+    overlay last={}
+}{lemma}
+
+% FUENTES
 
 \DeclareSymbolFontAlphabet{\mathbbm}{AMSb}
-\DeclareSymbolFontAlphabet{\mathbb}{bbold}%
+\DeclareMathAlphabet{\mathcalm}{OMS}{cmsy}{m}{n}
 
 % OPERADORES
 
@@ -771,54 +802,44 @@ BoldItalicFont = *_Bold_Italic,]{Sansation}
 \newcommand{\CC}[1][]{\ensuremath{\ifstrempty{#1}{\mathbbm{C}}{\mathbbm{C}^{#1}}}}
 \newcommand{\PP}[1][]{\ensuremath{\ifstrempty{#1}{\mathbbm{P}}{\mathbbm{P}^{#1}}}}
 \newcommand{\HH}[1][]{\ensuremath{\ifstrempty{#1}{\mathbbm{H}}{\mathbbm{H}^{#1}}}}
-% valor esperado
-\newcommand{\EE}{\ensuremath{\mathbbm{E}}}
 
-% otros
-\DeclareMathOperator{\Lap}{\mathcal{L}}
-\DeclareMathOperator{\Var}{Var} % varience
-\DeclareMathOperator{\Cov}{Cov} % covarience
-\DeclareMathOperator{\E}{E} % expected
 \DeclareMathOperator{\Gen}{gen} % generator
 \DeclareMathOperator{\Dim}{dim} % dimension
 \DeclareMathOperator{\Ima}{Im} % imagen
-\DeclareMathOperator{\Det}{det} % determinante
-\DeclareMathOperator{\Adj}{adj} % adjunta
+\DeclareMathOperator{\adj}{adj} % adjunta
 \DeclareMathOperator{\Nuc}{Nu} % Nucleo de t.l
-\newcommand{\matrizmn}{\mathcal{M}_{m\times n} (\RR)} % conjunto de matrices
+\newcommand{\matrizmn}{\mathcalm{M}_{m\times n} (\RR)} % conjunto de matrices
 \DeclareMathOperator{\proy}{proy}
 
-\newcommand{\REN}[1][]{\ensuremath{\ifstrempty{#1}{\widetilde{\mathcal{R}}}{\widetilde{\mathcal{R}}_{#1}}}}
-\newcommand{\COL}[1][]{\ensuremath{\ifstrempty{#1}{\widetilde{\mathcal{C}}}{\widetilde{\mathcal{C}}_{#1}}}}
 
-\newtheoremstyle{myplain}
-  {1.2\topsep}   % 
-  {1.2\topsep}   % 
-  {}  % 
-  {0pt}       % 
-  {\bfseries} % 
-  {:}         % 
-  {5pt plus 1pt minus 1pt} % 
-  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Especifica el encabezado del teorema (se puede dejar vacía, lo que significa "normal")
 
-\theoremstyle{myplain}
+% =========================================================
+%     MACROS Y COMANDOS
+% =========================================================
 
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{axiom}{Axioma}[section]
-\newtheorem{lemma}{Lema}[section]
-\newtheorem{proposition}{Proposición}[section]
-\newtheorem{corollary}{Corolario}[section]
-\newtheorem{definition}{Definición}[section]
-\newtheorem{example}{Ejemplo}[section]
-\newtheorem*{examples}{Ejemplos}
-\newtheorem{observation}{Observación}[section]
-\newtheorem*{remark}{Nota}
-\newtheorem*{notation}{Notación}
-\newtheorem*{commentary}{Comentario}
-\newtheorem*{convention}{Convención}
-\newtheorem{problem}{Problema}
-\newtheorem*{Problem}{Problema}
+\newenvironment{nscenter}
+ {\parskip=5pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
 
-\newcommand{\demostracion}{\noindent\textbf{Demostración:\hspace{5pt plus 1pt minus 1pt}}}
+\newenvironment{matriz}
+ {\belowdisplayshortskip=-2pt\belowdisplayskip=-0.5pt\vspace{-0.1cm}\begin{equation}}
+ {\end{equation}\noindent\ignorespacesafterend}
+ 
+\newenvironment{matrizn}
+ {\belowdisplayshortskip=-2pt\belowdisplayskip=-0.5pt\vspace{-0.1cm}\begin{equation*}}
+ {\end{equation*}\noindent\ignorespacesafterend}
 
-\newcommand{\solucion}{\noindent\textbf{Solución:\hspace{5pt plus 1pt minus 1pt}}}
+\newcommand{\eqtext}[3][l]{%
+    \eqmakebox[#2][#1]{#3}%
+}
+
+
+
+% =========================================================
+%     SUPRIMIR ADVERTENCIAS INNECESARIAS
+% =========================================================
+
+
+\WarningsOff[caption]  % Suprimir advertencias del paquete caption.
+\WarningsOff[unicode-math]
+\WarningsOff[fancyhdr]
