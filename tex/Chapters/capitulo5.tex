@@ -330,10 +330,10 @@ Las normas y el producto punto en $\RR[n]$ poseen relaciones fundamentales que c
 \newpage
 
 \begin{definicion}{}{vectores_ortonormales}
-    Dados $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_k \in \RR[n]$.
+    Dados $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_r \in \RR[n]$.
     \begin{enumerate}[label=\roman*), topsep=6pt, itemsep=0pt]
-        \item Diremos que dos vectores $\mathbb{u}_i$ y $\mathbb{u}_j$ con $i \neq j$ son \emph{ortogonales} si $\mathbb{u}_i \bullet \mathbb{u}_j = 0$. En general, un conjunto $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_k \right\}$ se llama \emph{conjunto ortogonal} si todos sus vectores son ortogonales entre sí.
-        \item Si además se cumple que cada $\mathbb{u}_i$ es un vector unitario, entonces los vectores se denominan \emph{ortonormales}, y el conjunto $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_k \right\}$ se llama \emph{conjunto ortonormal}.
+        \item Diremos que dos vectores $\mathbb{u}_i$ y $\mathbb{u}_j$ con $i \neq j$ son \emph{ortogonales} si $\mathbb{u}_i \bullet \mathbb{u}_j = 0$. En general, un conjunto $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_r \right\}$ se llama \emph{conjunto ortogonal} si todos sus vectores son ortogonales entre sí.
+        \item Si además se cumple que cada $\mathbb{u}_i$ es un vector unitario, entonces los vectores se denominan \emph{ortonormales}, y el conjunto $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_r \right\}$ se llama \emph{conjunto ortonormal}.
     \end{enumerate}
 \end{definicion}
 
@@ -637,18 +637,291 @@ En muchos problemas que involucran espacios vectoriales, quien resuelve el probl
 En $\RR[2]$, dos vectores ortogonales no nulos son linealmente independientes porque ninguno es múltiplo escalar del otro; y en $\RR[3]$, tres vectores mutuamente ortogonales no nulos son linealmente independientes porque ninguno se encuentra en el plano de los otros dos (y, por lo tanto, no se pueden expresar como una combinación lineal de los otros dos). El siguiente teorema generaliza estas observaciones.
 
 \begin{theorem}{}{ortoindependiente}
-    Sean $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_k \in \RR[n]$. Si $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_k \right\}$ es un conjunto ortogonal de vectores diferentes del vector cero, entonces dicho conjunto es linealmente independiente.
+    Sean $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_r \in \RR[n]$. Si $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_r \right\}$ es un conjunto ortogonal de vectores diferentes del vector cero, entonces dicho conjunto es linealmente independiente.
 
     \tcblower
-    \demostracion Ya que $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_k \right\}$ es un conjunto ortogonal, entonces $\mathbb{u}_i \bullet \mathbb{u}_j = 0$, $\forall i \neq j$ con $i, j = 1, 2, \dots, k$. Sea
-    $$\mathbb{0} = \alpha_1\mathbb{u}_1 + \alpha_2\mathbb{u}_2 + \cdots + \alpha_k\mathbb{u}_k$$
-    con $\alpha_i \in \RR$, debemos probar que $\alpha_i = 0$ para $i = 1, 2, \dots, k$. Así,
+    \demostracion Ya que $\left\{ \mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_r \right\}$ es un conjunto ortogonal, entonces $\mathbb{u}_i \bullet \mathbb{u}_j = 0$, $\forall i \neq j$ con $i, j = 1, 2, \dots, r$. Sea
+    $$\mathbb{0} = \alpha_1\mathbb{u}_1 + \alpha_2\mathbb{u}_2 + \cdots + \alpha_r\mathbb{u}_r$$
+    con $\alpha_i \in \RR$, debemos probar que $\alpha_i = 0$ para $i = 1, 2, \dots, r$. Así,
     \begin{align*}
-        0 = \mathbb{u}_i \bullet \mathbb{0} & = \mathbb{u}_i \bullet \left( \alpha_1\mathbb{u}_1 + \alpha_2\mathbb{u}_2 + \cdots + \alpha_k\mathbb{u}_k \right) \\
-        & = \mathbb{u}_i \bullet ( \alpha_1\mathbb{u}_1) + \mathbb{u}_i \bullet (\alpha_2\mathbb{u}_2) + \cdots + \mathbb{u}_i \bullet (\alpha_i\mathbb{u}_i) + \cdots + \mathbb{u}_i \bullet (\alpha_k\mathbb{u}_k) \\
-        & = \alpha_1 ( \mathbb{u}_i \bullet \mathbb{u}_1) + \alpha_2 (\mathbb{u}_i \bullet \mathbb{u}_2) + \cdots + \alpha_i (\mathbb{u}_i \bullet \mathbb{u}_i) + \cdots + \alpha_k (\mathbb{u}_i \bullet \mathbb{u}_k) \\
-        & = \alpha_1 \cdot 0 + \alpha_2 \cdot 0 + \cdots + \alpha_i \| \mathbb{u}_i \|^2 + \cdots + \alpha_k \cdot 0
+        0 = \mathbb{u}_i \bullet \mathbb{0} & = \mathbb{u}_i \bullet \left( \alpha_1\mathbb{u}_1 + \alpha_2\mathbb{u}_2 + \cdots + \alpha_r\mathbb{u}_r \right) \\
+        & = \mathbb{u}_i \bullet ( \alpha_1\mathbb{u}_1) + \mathbb{u}_i \bullet (\alpha_2\mathbb{u}_2) + \cdots + \mathbb{u}_i \bullet (\alpha_i\mathbb{u}_i) + \cdots + \mathbb{u}_i \bullet (\alpha_r\mathbb{u}_r) \\
+        & = \alpha_1 ( \mathbb{u}_i \bullet \mathbb{u}_1) + \alpha_2 (\mathbb{u}_i \bullet \mathbb{u}_2) + \cdots + \alpha_i (\mathbb{u}_i \bullet \mathbb{u}_i) + \cdots + \alpha_r (\mathbb{u}_i \bullet \mathbb{u}_r) \\
+        & = \alpha_1 \cdot 0 + \alpha_2 \cdot 0 + \cdots + \alpha_i \| \mathbb{u}_i \|^2 + \cdots + \alpha_r \cdot 0
     \end{align*}
-    Como $\mathbb{u}_i \neq \mathbb{0}$ por hipótesis, $\| \mathbb{u}_i \|^2 > 0$ y se tiene $\alpha_i = 0$ para $i = 1, 2, \dots, k$. Por tanto, $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_k$ son linealmente independientes.
+    Como $\mathbb{u}_i \neq \mathbb{0}$ por hipótesis, $\| \mathbb{u}_i \|^2 > 0$ y se tiene $\alpha_i = 0$ para $i = 1, 2, \dots, r$. Por tanto, $\mathbb{u}_1$, $\mathbb{u}_2$, $\dots$, $\mathbb{u}_r$ son linealmente independientes.
 \end{theorem}
 
+Una forma de expresar un vector $\mathbb{u}$ como una combinación lineal de vectores base $S = \{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n\}$ es convertir la ecuación vectorial
+$$\mathbb{u} = c_1\mathbb{v}_1 + c_2\mathbb{v}_2 + \dots + c_n\mathbb{v}_n$$
+en un sistema lineal y resolver para los coeficientes $c_1, c_2, \dots, c_n$. Sin embargo, si la base resulta ser ortogonal o ortonormal, entonces el siguiente teorema muestra que los coeficientes pueden obtenerse de manera más simple calculando productos internos apropiados.
+
+\begin{theorem}{}{}
+    \begin{enumerate}[label=\alph*), topsep=6pt, itemsep=0pt]
+        \item Si $S = \{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n\}$ es una base ortogonal para $V$, y si $\mathbb{u}$ es cualquier vector en $V$, entonces
+        $$\mathbb{u} = \frac{(\mathbb{u} \bullet \mathbb{v}_1)}{\|\mathbb{v}_1\|^2} \mathbb{v}_1 + \frac{(\mathbb{u} \bullet \mathbb{v}_2)}{\|\mathbb{v}_2\|^2} \mathbb{v}_2 + \dots + \frac{(\mathbb{u} \bullet \mathbb{v}_n)}{\|\mathbb{v}_n\|^2} \mathbb{v}_n.$$
+        \item Si $S = \{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_n\}$ es una base ortonormal para $V$, y si $\mathbb{u}$ es cualquier vector en $V$, entonces
+        $$\mathbb{u} = (\mathbb{u} \bullet \mathbb{v}_1) \mathbb{v}_1 + (\mathbb{u} \bullet \mathbb{v}_2) \mathbb{v}_2 + \dots + (\mathbb{u} \bullet \mathbb{v}_n) \mathbb{v}_n.$$
+    \end{enumerate}
+\end{theorem}
+
+Iniciaremos nuestro estudio del algoritmo para construir bases ortonormales ilustrándolo con el producto punto, dado que ofrece una interpretación geométrica clara. Realizaremos la demostración formal para este contexto y, más adelante, generalizaremos el teorema para cualquier producto interno, del que el producto punto es solo un caso particular. Veremos que la demostración en el caso general es una extensión directa de la lógica usada aquí.
+
+\newpage
+\sideFigure[\label{fig:ortonormalizacionproy1}]{\vspace{3cm}
+\begin{tikzpicture}
+    \draw[thick] (-1,0) -- (4,0);
+    \draw[thick,dashed] (0,2) -- (3,2) -- (3,0);
+    \draw[thick,-Latex] (0,0) -- (1.5,0) node[below] {$\mathbb{u}_1$};
+    \draw[thick,-Latex] (0,0) -- (3,0) node[below] {$\proy_{\mathbb{u}_1} \mathbb{v}_2$};
+    \draw[thick,-Latex] (0,0) -- node[midway,above,xshift=-2pt] {$\mathbb{v}_2$} (3,2);
+    \draw[thick,-Latex] (0,0) -- (0,2) node[above] {$\mathbb{u}_2 = \mathbb{v}_2 - \proy_{\mathbb{u}_1} \mathbb{v}_2$};
+\end{tikzpicture}
+}
+\sideFigure[\label{fig:ortonormalizacionproy2}]{\vspace{3cm}
+\begin{tikzpicture}
+    \begin{axis}[
+    view={110}{15},
+    width=7cm,height=10cm,
+    xtick=\empty,
+    ytick=\empty,
+    ztick=\empty,
+    xmin=-5, xmax=10,
+    ymin=-5, ymax=15,
+    zmin=-6, zmax=10,
+    axis lines=center,
+    axis line style={draw=none},
+    ticks=none]
+        \draw[thick,dashed] (xyz cs:x=0,y=0,z=8) -- (xyz cs:x=10,y=10,z=8) -- (xyz cs:x=10,y=10,z=0);
+        \draw[thick,dashed] (xyz cs:x=10,y=0,z=0) -- (xyz cs:x=10,y=10,z=0) -- (xyz cs:x=0,y=10,z=0);
+        %
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- (xyz cs:x=16,y=0,z=0) node[above,xshift=-4pt] {$\mathbb{u}_1$};
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- (xyz cs:x=0,y=16,z=0) node[above] {$\mathbb{u}_2$};
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- (xyz cs:x=0,y=0,z=8) node[above,xshift=15pt] {$\mathbb{u}_3 = \mathbb{v}_3 - (\proy_{\mathbb{u}_1} \mathbb{v}_3 + \proy_{\mathbb{u}_2} \mathbb{v}_3)$};
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- (xyz cs:x=10,y=10,z=8) node[right] {$\mathbb{v}_3$};
+        %
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- node[midway,left] {$\proy_{\mathbb{u}_1} \mathbb{v}_3$} (xyz cs:x=10,y=0,z=0);
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- node[midway,above right] {$\proy_{\mathbb{u}_2} \mathbb{v}_3$} (xyz cs:x=0,y=10,z=0);
+        \draw[thick,-Latex] (xyz cs:x=0,y=0,z=0) -- (xyz cs:x=10,y=10,z=0) node[below] {$\proy_{\mathbb{u}_1} \mathbb{v}_3 + \proy_{\mathbb{u}_2} \mathbb{v}_3$};
+    \end{axis}
+\end{tikzpicture}
+}
+
+\begin{theorem}{}{}
+    Sea $W$ un subespacio de $\RR[n]$ de dimensión menor o igual a $n$. Entonces $W$ tiene una base ortonormal de vectores.
+
+    \tcblower
+    \demostracion Sea $W$ cualquier subespacio de $\RR[n]$ de dimensión menor o igual a $n$, y supongamos que $\{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_r\}$ es cualquier base para $W$. A continuación mostraremos que $W$ tiene una base ortonormal. La siguiente secuencia de pasos producirá dicha base ortonormal $\{\mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_r\}$ para $W$:
+    \begin{description}[topsep=6pt, itemsep=0pt, leftmargin=0pt]
+        \item[Paso 1.] Sea $\mathbb{u}_1 = \mathbb{v}_1$. Luego, se normaliza dicho vector como
+        $$\hat{\mathbb{u}}_1 = \frac{1}{\| \mathbb{u}_1 \|} \mathbb{u}_1.$$
+        \item[Paso 2.] Como se ilustra en la figura \ref{fig:ortonormalizacionproy1}, podemos obtener un vector $\mathbb{u}_2$ que es ortogonal a $\mathbb{u}_1$. Usando la fórmula \eqref{eq:defproyeccionvu} para realizar este cálculo, obtenemos
+        $$\mathbb{u}_2 = \mathbb{v}_2 - \proy_{\mathbb{u}_1} \mathbb{v}_2 = \mathbb{u}_2 - (\mathbb{v}_2 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1.$$
+        Análogo al primer paso, se normaliza el vector para obtener $\hat{\mathbb{u}}_2$. Por supuesto, si $\mathbb{u}_2 = \mathbb{0}$, entonces $\mathbb{u}_2$ no es un vector base. Pero esto no puede suceder, ya que entonces seguiría de la fórmula precedente para $\mathbb{u}_2$ que
+        $$\mathbb{v}_2 = (\mathbb{v}_2 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 = \frac{(\mathbb{v}_2 \bullet \mathbb{u}_1)}{\|\mathbb{v}_1\|^2} \mathbb{v}_1$$
+        lo que implica que $\mathbb{v}_2$ es un múltiplo de $\mathbb{v}_1$, contradiciendo la independencia lineal de la base $\{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_r\}$.
+        \item[Paso 3.] Para poder construir un vector $\mathbb{u}_3$ que sea ortogonal tanto a $\mathbb{u}_1$ como a $\mathbb{u}_2$ (como se ilustra en la figura \ref{fig:ortonormalizacionproy2}), podemos usar la fórmula \eqref{eq:defproyeccionvu} para realizar este cálculo. De esta forma, obtenemos que
+        $$\mathbb{u}_3 = \mathbb{v}_3 - (\proy_{\mathbb{u}_1} \mathbb{v}_3 + \proy_{\mathbb{u}_2} \mathbb{v}_3) = \mathbb{v}_3 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) \hat{\mathbb{u}}_2.$$
+        Análogo a los anteriores pasos, se normaliza el vector para obtener $\hat{\mathbb{u}}_3$. Como en el paso anterior, la independencia lineal de $\{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_r\}$ asegura que $\mathbb{u}_3 \neq \mathbb{0}$. Ahora, solo basta probar que $\mathbb{u}_3$ es ortogonal tanto a $\mathbb{u}_1$ como a $\mathbb{u}_2$. Primero,
+        \begin{align*}
+            \mathbb{u}_3 \bullet \hat{\mathbb{u}}_1 & = \big[ \mathbb{v}_3 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) \hat{\mathbb{u}}_2 \big] \bullet \hat{\mathbb{u}}_1 \\
+            & = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) (\hat{\mathbb{u}}_1 \bullet \hat{\mathbb{u}}_1) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) (\hat{\mathbb{u}}_2 \bullet \hat{\mathbb{u}}_1) \\
+            %& = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) (1) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) (0) \\
+            & = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) \\
+            & = 0
+        \end{align*}
+        y luego,
+        \begin{align*}
+            \mathbb{u}_3 \bullet \hat{\mathbb{u}}_2 & = \big[ \mathbb{v}_3 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) \hat{\mathbb{u}}_2 \big] \bullet \hat{\mathbb{u}}_2 \\
+            & = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) (\hat{\mathbb{u}}_1 \bullet \hat{\mathbb{u}}_2) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) (\hat{\mathbb{u}}_2 \bullet \hat{\mathbb{u}}_2) \\
+            %& = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) (0) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) (1) \\
+            & = (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) \\
+            & = 0
+        \end{align*}
+    \end{description}
+    Continuando de esta manera hasta el paso $r$, produciremos un conjunto ortonormal de vectores no nulos $\{ \hat{\mathbb{u}}_1, \hat{\mathbb{u}}_2, \dots, \hat{\mathbb{u}}_r\}$. Dado que es un conjunto ortonormal, es trivial que es ortogonal y por el teorema \ref{theorem:ortoindependiente} habremos producido una base ortonormal para el espacio $W$ de dimensión $r \leq n$.
+\end{theorem}
+
+La construcción paso a paso de una base ortonormal dada en la demostración anterior se llama el \emph{proceso de ortonormalización de Gram-Schmidt}. Este método constructivo es tan importante que merece ser resumido. Para referencia, proporcionamos el siguiente resumen de los pasos.
+
+\newpage
+
+\begin{tcolorbox}[
+    theorem style=break,
+    colback = white,
+    colframe = black,
+    boxrule = 1pt,
+    sharp corners,
+    title={Proceso de ortonormalización de Gram-Schmidt:\\},
+    left=0.5mm,
+    right=0.5mm,
+    top=0.5mm,
+    bottom=0.5mm,
+    fonttitle=\selectfont\Lato\bfseries\color{black}
+]
+    Para convertir una base $\{\mathbb{v}_1, \mathbb{v}_2, \dots, \mathbb{v}_r\}$ en una base ortonormal $\{ \hat{\mathbb{u}}_1, \hat{\mathbb{u}}_2, \dots, \hat{\mathbb{u}}_r\}$, realice los siguientes cálculos:
+    \begin{description}[topsep=6pt, itemsep=3pt, leftmargin=0pt]
+        \item[Paso 1.] $\mathbb{u}_1 = \mathbb{v}_1$.
+        \item[Paso 2.] $\mathbb{u}_2 = \mathbb{v}_2 - (\mathbb{v}_2 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1$.
+        \item[Paso 3.] $\mathbb{u}_3 = \mathbb{v}_3 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 - (\mathbb{v}_3 \bullet \hat{\mathbb{u}}_2) \hat{\mathbb{u}}_2$.
+        \item[Paso 4.] $\mathbb{u}_4 = \mathbb{v}_4 - (\mathbb{v}_4 \bullet \hat{\mathbb{u}}_1) \hat{\mathbb{u}}_1 - (\mathbb{v}_4 \bullet \hat{\mathbb{u}}_2) \hat{\mathbb{u}}_2 - (\mathbb{v}_4 \bullet \hat{\mathbb{u}}_3) \hat{\mathbb{u}}_3$.
+        \item[$\qquad\boldsymbol{\vdots}$] \phantom{A}
+        \item[Paso \textit{r}.] $\mathbb{u}_r = \mathbb{v}_r - (\mathbb{v}_r \bullet \hat{\mathbb{u}}_1)\hat{\mathbb{u}}_1 - (\mathbb{v}_r \bullet \hat{\mathbb{u}}_2)\hat{\mathbb{u}}_2 - \cdots - (\mathbb{v}_r \bullet \hat{\mathbb{u}}_{r-1})\hat{\mathbb{u}}_{r-1}$.
+    \end{description}
+    En cada paso, se debe \emph{normalizar} el vector obtenido.
+\end{tcolorbox}
+
+\begin{examplebox}{}{procesoortopp}
+    Considere
+    \begin{matrizn}
+        \makecell{\includegraphics[page=9]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    Encuentre un conjunto generador y construya una base ortonormal para $W$.
+
+    \tcblower
+    \solucion Primero, encontremos un conjunto generador para $W$. Sea
+    $$2x - y + 3z - w = 0.$$
+    Despejando a $y$ de la expresión anterior,
+    $$y = 2x + 3z - w.$$
+    Entonces
+    \begin{matrizn}
+        \makecell{\includegraphics[page=10]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    Por lo tanto,
+    \begin{matrizn}
+        \makecell{\includegraphics[page=11]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    Ahora, sean
+    \begin{matrizn}
+        \makecell{\includegraphics[page=12]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    Construyamos una base ortonormal para $W$ aplicando el proceso de ortonormalización de Gram-Schmidt.
+    \begin{description}[topsep=6pt, itemsep=0pt, leftmargin=0pt]
+        \item[Paso 1.] Sea $\mathbb{u}_1 = \mathbb{v}_1$, entonces
+        $$\| \mathbb{u}_1 \| = \sqrt{5}$$
+        y por consiguiente, el vector normalizado es
+        \begin{matrizn}
+            \makecell{\includegraphics[page=13]{Externalizacion/C5/MatricesC5.pdf}}
+        \end{matrizn}
+        \newpage
+        \item[Paso 2.] Ahora, calculamos
+        \begin{matrizn}
+            \makecell{\includegraphics[page=14]{Externalizacion/C5/MatricesC5.pdf}}
+        \end{matrizn}
+        y análogo al paso anterior,
+        \begin{matrizn}
+            \makecell{\includegraphics[page=15]{Externalizacion/C5/MatricesC5.pdf}}
+        \end{matrizn}
+        \item[Paso 3.] Por último, calculamos
+        \begin{matrizn}
+            \makecell{\includegraphics[page=16]{Externalizacion/C5/MatricesC5.pdf}}
+        \end{matrizn}
+        \newpage
+        y análogo a los pasos anteriores,
+        \begin{matrizn}
+            \makecell{\includegraphics[page=17]{Externalizacion/C5/MatricesC5.pdf}}
+        \end{matrizn}
+    \end{description}
+    Por lo tanto, una base ortonormal para $W$ es
+    \begin{matrizn}
+        \makecell{\includegraphics[page=18]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+\end{examplebox}
+
+Recordemos del teorema \ref{theorem:conjuntoextabaseV} que un conjunto linealmente independiente en un espacio vectorial de dimensión finita puede extenderse a una base agregando vectores apropiados. El siguiente teorema es un análogo de ese resultado para conjuntos ortonormales en $\RR[n]$.
+
+\begin{theorem}{}{}
+    Si $W$ es un subespacio de $\RR[n]$ de dimensión menor o igual a $n$, entonces todo conjunto ortonormal en $W$ puede ser extendido a una base ortonormal para $W$.
+
+    \tcblower
+    \demostracion Supongamos que $\mathcalm{B} = \{\mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_s\}$ es un conjunto ortonormal de vectores en $W$. El teorema \ref{theorem:conjuntoextabaseV} nos dice que podemos extender $\mathcalm{B}$ a alguna base
+    $$\mathcalm{B}' = \{\mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_s, \mathbb{u}_{s+1}, \dots, \mathbb{u}_k\}$$
+    para $W$. Si ahora aplicamos el proceso de ortonormalización de Gram-Schmidt al conjunto $\mathcalm{B}'$, entonces los vectores $\mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_s$ no serán afectados ya que ya son ortonormales, y el conjunto resultante
+    $$\mathcalm{B}'' = \{\mathbb{u}_1, \mathbb{u}_2, \dots, \mathbb{u}_s, \mathbb{u}'_{s+1}, \dots, \mathbb{u}'_k\}$$
+    será una base ortonormal para $W$.
+\end{theorem}
+
+\begin{examplebox}{}{}
+    Tomemos el conjunto $\mathcalm{B}$ del ejemplo \ref{examplebox:procesoortopp} y extendámoslo para que sea una base ortonormal para $\RR[4]$. Podemos elegir un cuarto vector, por ejemplo,
+    \begin{matrizn}
+        \makecell{\includegraphics[page=19]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    que no es combinación lineal de los vectores en $\mathcalm{B}$ y por tanto, es una base para $\RR[4]$. Ahora bien, para poder obtener una base ortonormal debemos aplicar el proceso de ortonormalización de Gram-Schmidt al nuevo conjunto $\mathcalm{B}' = \{ \hat{\mathbb{u}}_1, \hat{\mathbb{u}}_2, \hat{\mathbb{u}}_3, \mathbb{v}_4 \}$. Al hacer los cálculos para obtener el último vector ortonormal tenemos que
+    \begin{matrizn}
+        \makecell{\includegraphics[page=20]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+    Por lo tanto, hemos extendido $\mathcalm{B}$ a una base ortonormal para $\RR[4]$, obteniendo así:
+    \begin{matrizn}
+        \makecell{\includegraphics[page=21]{Externalizacion/C5/MatricesC5.pdf}}
+    \end{matrizn}
+\end{examplebox}
+
+\newpage
+
+\begin{definicion}{}{}
+    Sea $W$ un subespacio de $\RR[n]$ de dimensión menor o igual a $n$ y sea $\{ \hat{\mathbb{u}}_1, \hat{\mathbb{u}}_2, \dots, \hat{\mathbb{u}}_r \}$ una base ortonormal de $W$. Dado $\mathbb{v} \in \RR[n]$, definimos la \emph{proyección ortogonal de $\mathbb{v}$ sobre $W$}, denotado por $\proy_{W} \mathbb{v}$, como
+    \begin{equation}
+        \proy_{W} \mathbb{v} = (\mathbb{v} \bullet \hat{\mathbb{u}}_1)\hat{\mathbb{u}}_1 + (\mathbb{v} \bullet \hat{\mathbb{u}}_2)\hat{\mathbb{u}}_2 + \cdots + (\mathbb{v} \bullet \hat{\mathbb{u}}_r)\hat{\mathbb{u}}_r. \label{defdeproyeccionWpp}
+    \end{equation}
+\end{definicion}
+
+Si $W$ es un subespacio unidimensional de $\RR[n]$, digamos $\Gen (\{\mathbf{v}\})$, entonces la fórmula \eqref{defdeproyeccionWpp} tiene solo un término
+$$\proy_W \mathbf{u} = (\mathbb{u} \bullet \hat{\mathbb{v}})\hat{\mathbb{v}}.$$
+Observemos que esto es exactamente la fórmula \eqref{eq:defproyeccionvu} para la proyección ortogonal de $\mathbb{u}$ sobre $\mathbb{v}$. Esto sugiere que podemos pensar en \eqref{defdeproyeccionWpp} como la suma de proyecciones ortogonales sobre “ejes” determinados por los vectores base para el subespacio $W$ (figura \ref{fig:sumadeproyecciones}).
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+        view={45}{20},
+        width=11cm,height=10cm,
+        xtick=\empty,
+        ytick=\empty,
+        ztick=\empty,
+        axis lines=center,
+        axis line style={draw=none},
+        enlargelimits=0.15,
+        ticks=none]
+            \addplot3[fill=black!7!white, draw=black!7!white] coordinates {(0,0,0) (20,0,0) (20,30,0) (0,30,0)};
+            %
+            \addplot3[thick,dashed] coordinates {(10,0,0) (10,15,0) (0,15,0)};
+            \addplot3[thick,dashed] coordinates {(10,15,4) (10,0,0)};
+            \addplot3[thick,dashed] coordinates {(10,15,4) (0,15,0)};
+            \addplot3[thick,dashed] coordinates {(10,15,4) (10,15,0)};
+            %
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (16,0,0)} node[below,xshift=-10pt] {$\mathbb{u}_1$};
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (0,25,0)} node[above] {$\mathbb{u}_2$};
+            \addplot3[thick] coordinates {(0,0,0) (0,0,4)};
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (10,15,4)} node[right] {$\mathbb{v}$};
+            %
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (10,0,0)} node[below,xshift=-10pt] {$\proy_{\mathbb{u}_1} \mathbb{v}$};
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (0,15,0)} node[left,yshift=6pt] {$\proy_{\mathbb{u}_2} \mathbb{v}$};
+            \addplot3[thick,-Latex] coordinates {(0,0,0) (10,15,0)} node[right] {$\proy_{W} \mathbb{v}$};
+            \node[left,xshift=-20pt] at (xyz cs:x=20,y=30,z=0) {$W$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Descomposición de la proyección ortogonal sobre un subespacio con base ortonormal}
+    \label{fig:sumadeproyecciones}
+\end{figure}
+
+\begin{examplebox}{}{}
+    Encuentre $\proy_W \mathbb{v}$ siendo
+\end{examplebox}
+
+\newpage
+
+\section{Operadores ortogonales y sus matrices}
+
+Los operadores ortogonales son transformaciones lineales que mantienen la longitud y los ángulos entre vectores en un espacio vectorial. Es decir, preservan la estructura geométrica del espacio en el que operan. En un espacio euclidiano, un operador lineal $T$ se considera ortogonal si para cualquier par de vectores $\mathbb{u}$ y $\mathbb{v}$ en el espacio, el producto escalar de $T\mathbb{u}$ y $T\mathbb{v}$ es igual al producto punto de $\mathbb{u}$ y $\mathbb{v}$.
+
+\begin{definicion}{}{}
+    Sea $W$ un subespacio de $\RR[n]$ de dimensión menor o igual a $n$ y sea $\{ \hat{\mathbb{u}}_1, \hat{\mathbb{u}}_2, \dots, \hat{\mathbb{u}}_r \}$ una base ortonormal de $W$. Sea $T: \RR[n] \longrightarrow W$ una transformación lineal definida como:
+    $$T\mathbb{v} = (\mathbb{v} \bullet \hat{\mathbb{u}}_1)\hat{\mathbb{u}}_1 + (\mathbb{v} \bullet \hat{\mathbb{u}}_2)\hat{\mathbb{u}}_2 + \cdots + (\mathbb{v} \bullet \hat{\mathbb{u}}_r)\hat{\mathbb{u}}_r.$$
+    A esta transformación se le llamará \emph{transformación de proyección ortogonal}.
+\end{definicion}
+
+Cuando se trabaja con operadores ortogonales, es común representarlos mediante matrices ortogonales.
+
+\begin{definicion}{}{matrixortogonal}
+    Una \emph{matriz ortogonal} es una matriz cuadrada cuya inversa es igual a su transpuesta, es decir, $Q^{-1} = Q^T$. Formalmente, una matriz $Q$ se considera ortogonal si cumple con la siguiente propiedad:
+    $$QQ^T = Q^T Q = I_n.$$
+\end{definicion}

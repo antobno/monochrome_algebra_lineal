@@ -177,8 +177,8 @@ BoldItalicFont = *-BoldItalic]{Altone}
     asymmetric,
 	ignorefoot,
 	ignorehead,
-    left=7.5cm,
-	right=2cm,
+    left=7.53cm, % 7.5
+	right=1.97cm, % 2
 	top=2.5cm,
 	bottom=2.5cm,
 	footskip=2\baselineskip,
